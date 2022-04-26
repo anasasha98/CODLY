@@ -90,7 +90,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" name="submit" type="submit">Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
@@ -127,3 +127,31 @@
 </body>
 
 </html>
+
+<?php
+include'./forms/connection.php';
+if(isset($_POST['submit'])){
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $query = " insert into signup(name,email,username,password) values('$name','$email','$username','$password') ";
+
+ $res = mysqli_query($con,$query);
+
+  if($res){
+    ?>
+     <script>
+       alert("data inserted properly "); 
+       </script>
+    <?php
+  }else{
+    ?>
+     <script>
+       alert("data not inserted "); 
+       </script>
+    <?php
+  }
+}
+
+?>

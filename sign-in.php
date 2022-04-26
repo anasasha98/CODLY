@@ -127,7 +127,3 @@
 
 </html>
 
-<?php
-include'./forms/connection.php';
-
-?>
