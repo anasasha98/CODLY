@@ -1,3 +1,22 @@
+<?php
+$username = "root";
+$password = "";
+$server = "localhost";
+$db = "demo2";
+
+$con = mysqli_connect($server, $username, $password, $db);
+
+if ($con) {
+?>
+  <script>
+    // alert('Connection Successful')
+  </script>
+<?php
+} else {
+  die("Connection Failed" . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +33,7 @@
   <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
@@ -62,7 +79,7 @@
             <a class="nav-link scrollto" href="team.html#team">Success stories</a>
           </li>
           <li class="dropdown">
-            <a href="index.html #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Web development</a></li>
               <li class="dropdown">
@@ -97,8 +114,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
-          data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
           <h1>Build your business with top freelancers</h1>
           <h2>
             Post a job for free and connect with independent talent today.
@@ -209,121 +225,36 @@
       </div>
     </section>
 
-    <section class="container overflow-hidden py-5">
+    <section class="container overflow-hidden py-5" style="margin-top: -50px ;">
       <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
         <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
-          <a href="detailed-service.html#ser"
-            class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="service card-img" src="./assets/img/services-01.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
-                  Design</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
+        <?php
+        $query = " SELECT `sec-name`, `sec-img` FROM `service-section` ";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
+              <a href="detailed-service.php#ser" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                <img class="service card-img" src="./assets/img/<?php echo $row['sec-img'] ?>" alt="Card image" />
+                <div class="service-work-vertical card-img-overlay d-flex align-items-end">
+                  <div class="service-work-content text-left text-light">
+                    <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
+                      <?php echo $row['sec-name'] ?></span>
+                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-02.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Design Logo</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-03.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Data</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-04.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Graphic</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-05.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">WordPress</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-06.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Web development</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-07.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Business</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic branding">
-          <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/services-08.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Game Art</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
+          <?php }
+        } else {
+          ?>
+          <h5 class="h5 pb-4 typo-space-line text-center">
+            <?php echo "❌ result is empty"; ?>
+            <h5>
+            <?php }
+            ?>
+            <!-- End Recent Work -->
       </div>
     </section>
     <!-- End Service -->
@@ -340,8 +271,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
               <p>Happy Clients</p>
             </div>
           </div>
@@ -349,8 +279,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
               <p>Projects</p>
             </div>
           </div>
@@ -358,8 +287,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
               <p>Hours Of Support</p>
             </div>
           </div>
@@ -367,8 +295,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
-                class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
               <p>Hard Workers</p>
             </div>
           </div>
@@ -449,8 +376,7 @@
     </div>
   </footer><!-- End Footer -->
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>

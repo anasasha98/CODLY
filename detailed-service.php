@@ -1,3 +1,22 @@
+<?php
+$username = "root";
+$password = "";
+$server = "localhost";
+$db = "demo2";
+
+$con = mysqli_connect($server, $username, $password, $db);
+
+if ($con) {
+?>
+  <script>
+    // alert('Connection Successful')
+  </script>
+<?php
+} else {
+  die("Connection Failed" . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +33,7 @@
   <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
@@ -48,7 +65,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
+          <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="about.html#about">About</a></li>
           <li class="dropdown">
             <a href="ask.html#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
@@ -62,7 +79,7 @@
             <a class="nav-link scrollto" href="team.html#team">Success stories</a>
           </li>
           <li class="dropdown">
-            <a href="index.html #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Web development</a></li>
               <li class="dropdown">
@@ -97,8 +114,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
-          data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
           <h1>Build your business with top freelancers</h1>
           <h2>
             Post a job for free and connect with independent talent today.
@@ -158,8 +174,7 @@
           </div>
 
           <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
-            <h5 class="h5 pb-4 typo-space-line text-center"
-              style="padding-left: 30%; margin-right: -50px; margin-top: -20px; margin-bottom: -70px;">
+            <h5 class="h5 pb-4 typo-space-line text-center" style="padding-left: 30%; margin-right: -50px; margin-top: -20px; margin-bottom: -70px;">
               Planning and projection of visual communication through the use of imagery, words, space, typography or
               fonts and color palettes.
               <h5>
@@ -172,116 +187,32 @@
     <section class="container overflow-hidden py-5">
       <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
         <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="service card-img" src="./assets/img/detailed/ui-ux-design.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
-                  UX/UI Designers</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
+        <?php
+        $query = " SELECT `name`, `img` FROM `detailed-service` ";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
+              <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                <img class="service card-img" src="./assets/img/detailed/<?php echo $row['img'] ?>" alt="Card image" />
+                <div class="service-work-vertical card-img-overlay d-flex align-items-end">
+                  <div class="service-work-content text-left text-light">
+                    <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
+                      <?php echo $row['name'] ?></span>
+                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/graphic-design.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Graphic Designers</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/illustrator.png" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Illustration</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/photoshop.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Photoshop</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/inturior-design.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Interior Designers</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/video-editing.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Video Editors</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/art-designers.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Art Designers</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- End Recent Work -->
-
-        <!-- Start Recent Work -->
-        <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic branding">
-          <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-            <img class="card-img" src="./assets/img/detailed/motion-design.jpg" alt="Card image" />
-            <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-              <div class="service-work-content text-left text-light">
-                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Motion Designers</span>
-                <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-              </div>
-            </div>
-          </a>
-        </div>
+          <?php }
+        } else {
+          ?>
+          <h5 class="h5 pb-4 typo-space-line text-center">
+            <?php echo "❌ result is empty"; ?>
+            <h5>
+            <?php }
+            ?>
         <!-- End Recent Work -->
       </div>
     </section>
@@ -360,8 +291,7 @@
     </div>
   </footer><!-- End Footer -->
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>

@@ -6,19 +6,19 @@ $server = "localhost";
 $db = "codly";
 
 
-$con = mysqli_connect($server, $username, $password , $db);
+$con = mysqli_connect($server, $username, $password, $db);
 
 
-if($con){
-    ?>
-       <script>
-           alert('Connection Successful')
-       </script>
-    <?php
-   
-}else{
-    
-    die("Connection Failed" . mysqli_connect_error()); 
+if ($con) {
+?>
+  <script>
+    alert('Connection Successful')
+  </script>
+<?php
+
+} else {
+
+  die("Connection Failed" . mysqli_connect_error());
 }
 
 
