@@ -56,6 +56,10 @@ if ($con) {
 </head>
 
 <body>
+  <!-- ======= Splash Screen ======= -->
+  <!-- <div class="splash" data-aos="zoom-out-down" data-aos-delay="10"></div> -->
+  <!-- End Header -->
+
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -208,20 +212,18 @@ if ($con) {
     <section id="ser" class="service-wrapper py-3">
       <div class="container-fluid pb-3">
         <div class="row">
-          <div class="section-title" data-aos="zoom-out">
+          <div class="section-title" data-aos="zoom-out" style="margin-bottom: -30px;">
             <h2>Services</h2>
           </div>
-
-          <div class="service-header col-2 col-lg-3 text-end light-300" style="margin: -3.5% 0% 0% 1.5%; width: 500px">
-            <i class="bx bx-gift h3 mt-1"></i>
-          </div>
-          <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
-            <h2 class="h3 pb-4 typo-space-line" style="margin: -4.3% 0% 0% 53%; justify-content: center">&nbsp;&nbsp;
-              Make Success for future
-            </h2>
-          </div>
         </div>
-        <p class="service-footer col-10 offset-2 col-lg-9 offset-lg-3 text-start pb-3 text-muted px-2"></p>
+        <div class="text-center service-heading text-start light-300">
+          <i class="bx bx-gift h3 mt-1" style="padding-right: 1%;"></i>
+          <h2 class="h3 pb-4 typo-space-line" style="display: contents;">
+            Make Success for future
+          </h2>
+        </div>
+      </div>
+      <p class="service-footer col-10 offset-2 col-lg-9 offset-lg-3 text-start pb-3 text-muted px-2"></p>
       </div>
     </section>
 
@@ -229,21 +231,24 @@ if ($con) {
       <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
         <!-- Start Recent Work -->
         <?php
-        $query = " SELECT `sec-name`, `sec-img` FROM `service-section` ";
+        $query = " SELECT * FROM `service-section` ";
         $result = mysqli_query($con, $query);
         if ($result) {
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         ?>
             <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
-              <a href="detailed-service.php#ser" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+              <a href="detailed-service.php?sid=<?php echo $row['sec-id']; ?>&sname=<?php echo $row['sec-name']; ?>&sdesc=<?php echo $row['sec-desc']; ?> #ser " class=" service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
                 <img class="service card-img" src="./assets/img/<?php echo $row['sec-img'] ?>" alt="Card image" />
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                   <div class="service-work-content text-left text-light">
                     <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
-                      <?php echo $row['sec-name'] ?></span>
+                      <?php
+                      echo $row['sec-name'];
+                      ?></span>
                     <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
                   </div>
                 </div>
+
               </a>
             </div>
           <?php }
@@ -261,7 +266,7 @@ if ($con) {
 
     <!-- ======= Counts Section ======= -->
     <br /><br />
-    <section id="counts" class="counts section-bg">
+    <section id="counts" class="counts section-bg" style="margin-top: -60px;">
       <div class="container">
         <div class="row">
           <div class="section-title" data-aos="zoom-out">

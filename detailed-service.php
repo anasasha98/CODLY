@@ -168,15 +168,18 @@ if ($con) {
     <!-- Start Service -->
     <section id="ser" class="service-wrapper py-3" style="margin-top: 100px ;">
       <div class="container-fluid pb-3">
+        <?php
+        $sname = $_GET['sname'];
+        $sdesc = $_GET['sdesc'];
+        ?>
         <div class="row">
           <div class="section-title" data-aos="zoom-out">
-            <h2>Design</h2>
+            <h2><?php echo $sname; ?></h2>
           </div>
 
           <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
             <h5 class="h5 pb-4 typo-space-line text-center" style="padding-left: 30%; margin-right: -50px; margin-top: -20px; margin-bottom: -70px;">
-              Planning and projection of visual communication through the use of imagery, words, space, typography or
-              fonts and color palettes.
+              <?php echo $sdesc; ?>
               <h5>
           </div>
         </div>
@@ -188,10 +191,13 @@ if ($con) {
       <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
         <!-- Start Recent Work -->
         <?php
-        $query = " SELECT `name`, `img` FROM `detailed-service` ";
+        $sid = $_GET['sid'];
+        $counter = 0;
+        $query = " SELECT `name`, `img` FROM `detailed-service` WHERE `sec-id` = $sid  ";
         $result = mysqli_query($con, $query);
         if ($result) {
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $counter += 1;
         ?>
             <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
               <a href="service.html#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
@@ -199,21 +205,23 @@ if ($con) {
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                   <div class="service-work-content text-left text-light">
                     <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
-                      <?php echo $row['name'] ?></span>
+                      <?php echo $row['name']; ?></span>
                     <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
                   </div>
                 </div>
               </a>
             </div>
-          <?php }
-        } else {
+          <?php
+          }
+        }
+        if ($counter == 0) {
           ?>
           <h5 class="h5 pb-4 typo-space-line text-center">
             <?php echo "❌ result is empty"; ?>
             <h5>
             <?php }
             ?>
-        <!-- End Recent Work -->
+            <!-- End Recent Work -->
       </div>
     </section>
     <!-- End Service -->
