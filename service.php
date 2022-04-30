@@ -65,7 +65,7 @@ if ($con) {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.php">Home</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="about.html#about">About</a></li>
           <li class="dropdown">
             <a href="ask.html#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
@@ -79,7 +79,7 @@ if ($con) {
             <a class="nav-link scrollto" href="team.html#team">Success stories</a>
           </li>
           <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Web development</a></li>
               <li class="dropdown">
@@ -133,107 +133,142 @@ if ($con) {
   <!-- End Hero -->
 
   <main id="main">
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
+    <!--packages start-->
+    <section id="pack" class="packages">
+      <?php
+      $sname = $_GET['sname'];
+      ?>
       <div class="container">
-        <div class="row" data-aos="zoom-in">
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
+        <div class="gallary-header text-center">
+          <div class="section-title aos-init aos-animate text-center" data-aos="zoom-out">
+            <h2><?php echo $sname ?></h2>
           </div>
 
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+          <div class="text-center service-heading text-start light-300" style="margin-top: -3%; color: #293C5D;">
+            <i class="bi bi-wrench" style="padding-right: 1%; font-size: 140%;"></i>
+            <h2 class="h3 pb-4 typo-space-line" style="display: contents;">
+              Service Providers
+            </h2>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- End Cliens Section -->
 
-    <!-- Start Service -->
-    <section id="ser" class="service-wrapper py-3" style="margin-top: 100px ;">
-      <div class="container-fluid pb-3">
-        <?php
-        $sname = $_GET['sname'];
-        $sdesc = $_GET['sdesc'];
-        ?>
-        <div class="row">
-          <div class="section-title" data-aos="zoom-out">
-            <h2><?php echo $sname; ?></h2>
-          </div>
+        <!--/.gallery-header-->
+        <div class="packages-content">
+          <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+            <?php
+            $sno = $_GET['sno'];
+            $num1 = null;
+            $num2 = 20;
+            $counter = 0;
+            $query = " SELECT * FROM `service-provider` WHERE `sno` = $sno ";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+              while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $counter += 1;
+            ?>
+                <!--  -->
+                <div class="col-6 col-md-4 col-sm-6 project ui branding">
+                  <div class="single-package-item">
+                    <!-- image -->
+                    <div class="single-package-item-txt">
+                      <h3><?php echo $row['ename'] ?></h3>
+                      <h4><?php echo $row['job_title'] ?></h4>
+                      <div class="packages-para">
+                        <p>
+                          <span>
+                            <i class="fa fa-angle-right"></i>
+                            <?php
+                            if ($row['tag1']) {
+                            ?>
+                              <a href="#" style="color: #47b2e4;">
+                                <?php echo $row['tag1']; ?>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                          </span>
+                          <i class="fa fa-angle-right"></i>
+                          <?php
+                          if ($row['tag2']) {
+                          ?>
+                            <a href="#" style="color: #47b2e4;">
+                              <?php echo $row['tag2']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </p>
+                        <p>
+                          <span>
+                            <i class="fa fa-angle-right"></i>
+                            <?php
+                            if ($row['tag3']) {
+                            ?>
+                              <a href="#" style="color: #47b2e4;">
+                                <?php echo $row['tag3']; ?>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                          </span>
+                          <i class="fa fa-angle-right"></i>
+                          <?php
+                          if ($row['tag4']) {
+                          ?>
+                            <a href="#" style="color: #47b2e4;">
+                              <?php echo $row['tag4']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </p>
+                      </div>
 
-          <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
-            <h5 class="h5 pb-4 typo-space-line text-center" style="padding-left: 30%; margin-right: -50px; margin-top: -20px; margin-bottom: -70px;">
-              <?php echo $sdesc; ?>
-              <h5>
-          </div>
-        </div>
-        <p class="service-footer col-10 offset-2 col-lg-9 offset-lg-3 text-start pb-3 text-muted px-2"></p>
-      </div>
-    </section>
-
-    <section class="container overflow-hidden py-5">
-      <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
-        <!-- Start Recent Work -->
-        <?php
-        $sid = $_GET['sid'];
-        $counter = 0;
-        $query = " SELECT `sno`, `name`, `img` FROM `detailed-service` WHERE `sec-id` = $sid  ";
-        $result = mysqli_query($con, $query);
-        if ($result) {
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $counter += 1;
-        ?>
-            <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
-              <a href="service.php?sno=<?php echo $row['sno']; ?>&sname=<?php echo $row['name']; ?>#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                <img class="service card-img" src="./assets/img/detailed/<?php echo $row['img'] ?>" alt="Card image" />
-                <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                  <div class="service-work-content text-left text-light">
-                    <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
-                      <?php echo $row['name']; ?></span>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
+                      <div class="packages-review">
+                        <p>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <span>0 reviews</span>
+                        </p>
+                      </div>
+                      <!--/.Service Provider-review-->
+                      <a href="#" class="btn-get-started scrollto"><span>Preview</span></a>
+                    </div>
+                    <!--/.about-btn-->
                   </div>
+                  <!--/.single-package-item-txt-->
+
                 </div>
-              </a>
-            </div>
-          <?php
-          }
-        }
-        if ($counter == 0) {
-          ?>
-          <h5 class="h5 pb-4 typo-space-line text-center">
-            <?php echo "❌ result is empty"; ?>
-          </h5>
-        <?php }
-        ?>
-        <!-- End Recent Work -->
+                <!--  -->
+
+              <?php
+              }
+            }
+            if ($counter == 0) {
+              ?>
+              <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 80px;">
+                <?php echo "❌ result is empty"; ?>
+              </h5>
+            <?php }
+            ?>
+
+            <!--/.single-package-item-->
+            <!--/.single-package-item-txt-->
+          </div>
+        </div>
+        <!--/.col-->
       </div>
     </section>
-    <!-- End Service -->
+    <!--/.packages-->
+    <!--packages end-->
 
   </main>
-  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
-
-
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -297,7 +332,9 @@ if ($con) {
         Designed by <a href="#">IT Development Team</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- End Footer -->
+
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

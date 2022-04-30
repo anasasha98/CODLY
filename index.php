@@ -63,9 +63,9 @@ if ($con) {
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.html">codly</a></h1>
+      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
@@ -256,10 +256,10 @@ if ($con) {
           ?>
           <h5 class="h5 pb-4 typo-space-line text-center">
             <?php echo "❌ result is empty"; ?>
-            <h5>
-            <?php }
-            ?>
-            <!-- End Recent Work -->
+          </h5>
+        <?php }
+        ?>
+        <!-- End Recent Work -->
       </div>
     </section>
     <!-- End Service -->

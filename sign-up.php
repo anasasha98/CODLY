@@ -38,7 +38,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index.html">
+                <a href="index.php">
 
                   <span class="d-none d-lg-block">Codly</span>
                 </a>
@@ -129,28 +129,28 @@
 </html>
 
 <?php
-include'./forms/connection.php';
-if(isset($_POST['submit'])){
+include './forms/connection.php';
+if (isset($_POST['submit'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $username = $_POST['username'];
   $password = $_POST['password'];
   $query = " insert into signup(name,email,username,password) values('$name','$email','$username','$password') ";
 
- $res = mysqli_query($con,$query);
+  $res = mysqli_query($con, $query);
 
-  if($res){
-    ?>
-     <script>
-       alert("data inserted properly "); 
-       </script>
-    <?php
-  }else{
-    ?>
-     <script>
-       alert("data not inserted "); 
-       </script>
-    <?php
+  if ($res) {
+?>
+    <script>
+      alert("data inserted properly ");
+    </script>
+  <?php
+  } else {
+  ?>
+    <script>
+      alert("data not inserted ");
+    </script>
+<?php
   }
 }
 

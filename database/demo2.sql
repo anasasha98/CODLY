@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2022 at 01:27 AM
+-- Generation Time: Apr 30, 2022 at 05:47 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -46,7 +46,35 @@ INSERT INTO `detailed-service` (`sno`, `name`, `img`, `sec-id`) VALUES
 (1005, 'Interior Design', 'interior-design.jpg', 1),
 (1006, 'Video Editing', 'video-editing.jpg', 1),
 (1007, 'Art Designers', 'art-designers.jpg', 1),
-(1008, 'Motion Design', 'motion-design.jpg', 1);
+(1008, 'Motion Design', 'motion-design.jpg', 1),
+(7001, 'Marketing', 'interior-design.jpg', 7),
+(8001, 'Game Animation', 'motion-design.jpg', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service-provider`
+--
+
+CREATE TABLE `service-provider` (
+  `sno` int(4) NOT NULL,
+  `emp_id` int(11) NOT NULL,
+  `ename` varchar(30) NOT NULL,
+  `job_title` varchar(30) NOT NULL,
+  `job_desc` varchar(200) NOT NULL,
+  `tag1` varchar(14) DEFAULT NULL,
+  `tag2` varchar(14) DEFAULT NULL,
+  `tag3` varchar(14) DEFAULT NULL,
+  `tag4` varchar(14) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `service-provider`
+--
+
+INSERT INTO `service-provider` (`sno`, `emp_id`, `ename`, `job_title`, `job_desc`, `tag1`, `tag2`, `tag3`, `tag4`) VALUES
+(1006, 1234, 'James Bond', 'Professional Video Editing', 'video editing using Adobe Premiere for adding and modifying all required effects to get a professional video as a result', 'video', 'creative', '', 'creation'),
+(8001, 1235, 'Jack Black', 'Advanced game animator', 'game animation is a special skill to make animation game for any purpose', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -57,22 +85,23 @@ INSERT INTO `detailed-service` (`sno`, `name`, `img`, `sec-id`) VALUES
 CREATE TABLE `service-section` (
   `sec-id` int(11) NOT NULL,
   `sec-name` varchar(25) NOT NULL,
-  `sec-img` varchar(25) NOT NULL
+  `sec-img` varchar(25) NOT NULL,
+  `sec-desc` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `service-section`
 --
 
-INSERT INTO `service-section` (`sec-id`, `sec-name`, `sec-img`) VALUES
-(1, 'Design', 'services-01.jpg'),
-(2, 'Design Logo', 'services-02.jpg'),
-(3, 'Data', 'services-03.jpg'),
-(4, 'Graphic', 'services-04.jpg'),
-(5, 'WordPress', 'services-05.jpg'),
-(6, 'Development', 'services-06.jpg'),
-(7, 'Business', 'services-07.jpg'),
-(8, 'Game Art', 'services-08.jpg');
+INSERT INTO `service-section` (`sec-id`, `sec-name`, `sec-img`, `sec-desc`) VALUES
+(1, 'Design', 'services-01.jpg', 'Planning and projection of visual communication through the use of imagery, words, space, typography or fonts, and color palettes.'),
+(2, 'Design Logo', 'services-02.jpg', 'Design Logo Description'),
+(3, 'Data', 'services-03.jpg', 'Data Description'),
+(4, 'Graphic', 'services-04.jpg', 'Graphic Description'),
+(5, 'WordPress', 'services-05.jpg', 'WordPress Description'),
+(6, 'Development', 'services-06.jpg', 'Development Description'),
+(7, 'Business', 'services-07.jpg', 'Business Description'),
+(8, 'Game Art', 'services-08.jpg', 'Game Art Description');
 
 --
 -- Indexes for dumped tables
@@ -84,6 +113,12 @@ INSERT INTO `service-section` (`sec-id`, `sec-name`, `sec-img`) VALUES
 ALTER TABLE `detailed-service`
   ADD PRIMARY KEY (`sno`),
   ADD KEY `sec-id-fk` (`sec-id`);
+
+--
+-- Indexes for table `service-provider`
+--
+ALTER TABLE `service-provider`
+  ADD KEY `sno-fk` (`sno`);
 
 --
 -- Indexes for table `service-section`
@@ -99,7 +134,7 @@ ALTER TABLE `service-section`
 -- AUTO_INCREMENT for table `detailed-service`
 --
 ALTER TABLE `detailed-service`
-  MODIFY `sno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1009;
+  MODIFY `sno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8002;
 
 --
 -- AUTO_INCREMENT for table `service-section`
@@ -116,6 +151,12 @@ ALTER TABLE `service-section`
 --
 ALTER TABLE `detailed-service`
   ADD CONSTRAINT `sec-id-fk` FOREIGN KEY (`sec-id`) REFERENCES `service-section` (`sec-id`);
+
+--
+-- Constraints for table `service-provider`
+--
+ALTER TABLE `service-provider`
+  ADD CONSTRAINT `sno-fk` FOREIGN KEY (`sno`) REFERENCES `detailed-service` (`sno`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
