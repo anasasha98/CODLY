@@ -14,9 +14,7 @@
   <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
@@ -49,17 +47,17 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.html#about">About</a></li>
+          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
 
           <li class="dropdown">
-            <a href="ask.html#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="ask.html#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.html#faq">Frequently Asked Questions</a></li>
+              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
+              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
             </ul>
           </li>
           <li>
-            <a class="nav-link scrollto active" href="#team">Success stories</a>
+            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
           </li>
           <li class="dropdown">
             <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
@@ -80,7 +78,7 @@
             </ul>
           </li>
           <li>
-            <a class="nav-link scrollto" href="contact.html#contact">Contact</a>
+            <a class="nav-link scrollto active" href="#contact">Contact</a>
           </li>
           <li>
             <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
@@ -97,8 +95,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
-          data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
           <h1>Build your business with top freelancers</h1>
           <h2>
             Post a job for free and connect with independent talent today.
@@ -149,141 +146,150 @@
     </section>
     <!-- End Cliens Section -->
 
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
-        <div class="section-title" data-aos="zoom-out">
-          <h2>Success stories</h2>
+
+        <div class="section-title">
+          <h2>Contact</h2>
         </div>
-        <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
 
         <div class="row">
-          <div class="col-lg-6">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="" />
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
               </div>
-              <div class="member-info">
-                <h4>Ahmad Ali</h4>
-                <span>Web developer</span>
-                <p>
-                  Before Codly appeared, I was finding it difficult to find a
-                  job that suits my level of experience, so I decided to work
-                  in my own home. My friend advised me to use Codly to show my
-                  work on it ,Indeed, I used this wonderful site and quickly
-                  found customers and I had my own business and I am now the
-                  largest web developer in Jordan
-                </p>
-                <!-- <div class="social">
-                    <a href=""><i class="ri-twitter-fill"></i></a>
-                    <a href=""><i class="ri-facebook-fill"></i></a>
-                    <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                  </div> -->
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
               </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13783.832878660562!2d35.675448810559104!3d30.26677161135485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xecb9574de4155292!2sAl-Hussein%20Bin%20Talal%20University!5e0!3m2!1sen!2sjo!4v1650107281519!5m2!1sen!2sjo" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
             </div>
+
           </div>
 
-          <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pic">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="" />
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" required>
+                </div>
               </div>
-              <div class="member-info">
-                <h4>Sarah Ameer</h4>
-                <span>photographer</span>
-                <p>
-                  I used to love photography since my childhood, but I found
-                  it difficult to find clients and did not find a place to
-                  display my works, but when the Codly website appeared and I
-                  subscribed to it, I created a personal page for me and
-                  displayed all my work, and from here I have a lot of
-                  customers and I received photography reservations On a daily
-                  basis
-                </p>
-                <!-- <div class="social">
-                    <a href=""><i class="ri-twitter-fill"></i></a>
-                    <a href=""><i class="ri-facebook-fill"></i></a>
-                    <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                  </div> -->
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
               </div>
-            </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
           </div>
 
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="" />
-              </div>
-              <div class="member-info">
-                <h4>William Adam</h4>
-                <span>Logo Designer</span>
-                <p>
-                  Quisquam facilis cum velit laborum corrupti fuga rerum quia
-                </p>
-                <!-- <div class="social">
-                    <a href=""><i class="ri-twitter-fill"></i></a>
-                    <a href=""><i class="ri-facebook-fill"></i></a>
-                    <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                  </div> -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pic">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="" />
-              </div>
-              <div class="member-info">
-                <h4>Alia Hani</h4>
-                <span>Games programmer</span>
-                <p>
-                  Dolorum tempora officiis odit laborum officiis et et
-                  accusamus
-                </p>
-                <!-- <div class="social">
-                    <a href=""><i class="ri-twitter-fill"></i></a>
-                    <a href=""><i class="ri-facebook-fill"></i></a>
-                    <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                  </div> -->
-              </div>
-            </div>
-          </div>
         </div>
+
       </div>
-    </section>
-    <!-- End Team Section -->
+    </section><!-- End Contact Section -->
+
+
   </main>
   <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="container footer-bottom clearfix">
-      <div class="credits">
-        <!-- ======= Footer ======= -->
-        <footer id="footer">
-          <div class="container footer-bottom clearfix">
-            <div class="credits">
-              <!-- All the links in the footer should remain intact. -->
-              <!-- You can delete the links only if you purchased the pro version. -->
-              <!-- Licensing information: https://bootstrapmade.com/license/ -->
-              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Codly</h3>
+            <p>
+              Al-Hussein Bin Talal University students <br>
+              Ma'an <br>
+              Jordan <br><br>
+              <strong>Phone:</strong> 060001<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Designing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">graphic</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Business</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Data</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
-        </footer>
-        <!-- End Footer -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+        Designed by <a href="#">IT Development Team</a>
       </div>
     </div>
   </footer>
   <!-- End Footer -->
-
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>

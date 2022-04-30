@@ -1,22 +1,3 @@
-<?php
-$username = "root";
-$password = "";
-$server = "localhost";
-$db = "demo2";
-
-$con = mysqli_connect($server, $username, $password, $db);
-
-if ($con) {
-?>
-  <script>
-    // alert('Connection Successful')
-  </script>
-<?php
-} else {
-  die("Connection Failed" . mysqli_connect_error());
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,10 +37,6 @@ if ($con) {
 </head>
 
 <body>
-  <!-- ======= Splash Screen ======= -->
-  <!-- <div class="splash" data-aos="zoom-out-down" data-aos-delay="10"></div> -->
-  <!-- End Header -->
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
@@ -69,8 +46,9 @@ if ($con) {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
+
           <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -78,12 +56,11 @@ if ($con) {
               <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
             </ul>
           </li>
-
           <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
+            <a class="nav-link scrollto active" href="#team">Success stories</a>
           </li>
           <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Web development</a></li>
               <li class="dropdown">
@@ -169,147 +146,117 @@ if ($con) {
     </section>
     <!-- End Cliens Section -->
 
-    <!-- ======= Features Section ======= -->
-    <section>
-      <div class="categories">
-        <div class="small-container">
-          <div class="section-title" data-aos="zoom-out">
-            <h2>Our Features</h2>
-          </div>
-
-          <div class="row" id="fet">
-            <div class="col-4">
-              <abbr title="Creative Ideas">
-                <img src="assets/img/creative-ideas.png" />
-              </abbr>
-              <h4>Creative Ideas</h4>
-            </div>
-            <div class="col-4">
-              <abbr title="Technology">
-                <img src="assets/img/technology.png" />
-              </abbr>
-              <h4>Technology</h4>
-            </div>
-            <div class="col-4">
-              <abbr title="Ready Target">
-                <img src="assets/img/ready-target.png" style="padding-top: 10px" />
-              </abbr>
-              <h4>Ready Target</h4>
-            </div>
-            <div class="col-4">
-              <abbr title="Useful Tricks">
-                <img src="assets/img/useful-tricks.png" style="padding-top: 10px" />
-              </abbr>
-              <h4>Useful Tricks</h4>
-            </div>
-          </div>
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Success stories</h2>
         </div>
-      </div>
-    </section>
-    <!-- End Features Section -->
+        <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
 
-    <!-- Start Service -->
-    <section id="ser" class="service-wrapper py-3">
-      <div class="container-fluid pb-3">
         <div class="row">
-          <div class="section-title" data-aos="zoom-out" style="margin-bottom: -30px;">
-            <h2>Services</h2>
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic">
+                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="member-info">
+                <h4>Ahmad Ali</h4>
+                <span>Web developer</span>
+                <p>
+                  Before Codly appeared, I was finding it difficult to find a
+                  job that suits my level of experience, so I decided to work
+                  in my own home. My friend advised me to use Codly to show my
+                  work on it ,Indeed, I used this wonderful site and quickly
+                  found customers and I had my own business and I am now the
+                  largest web developer in Jordan
+                </p>
+                <!-- <div class="social">
+                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a href=""><i class="ri-facebook-fill"></i></a>
+                    <a href=""><i class="ri-instagram-fill"></i></a>
+                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic">
+                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="member-info">
+                <h4>Sarah Ameer</h4>
+                <span>photographer</span>
+                <p>
+                  I used to love photography since my childhood, but I found
+                  it difficult to find clients and did not find a place to
+                  display my works, but when the Codly website appeared and I
+                  subscribed to it, I created a personal page for me and
+                  displayed all my work, and from here I have a lot of
+                  customers and I received photography reservations On a daily
+                  basis
+                </p>
+                <!-- <div class="social">
+                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a href=""><i class="ri-facebook-fill"></i></a>
+                    <a href=""><i class="ri-instagram-fill"></i></a>
+                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic">
+                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="member-info">
+                <h4>William Adam</h4>
+                <span>Logo Designer</span>
+                <p>
+                  Quisquam facilis cum velit laborum corrupti fuga rerum quia
+                </p>
+                <!-- <div class="social">
+                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a href=""><i class="ri-facebook-fill"></i></a>
+                    <a href=""><i class="ri-instagram-fill"></i></a>
+                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+              <div class="pic">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="" />
+              </div>
+              <div class="member-info">
+                <h4>Alia Hani</h4>
+                <span>Games programmer</span>
+                <p>
+                  Dolorum tempora officiis odit laborum officiis et et
+                  accusamus
+                </p>
+                <!-- <div class="social">
+                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a href=""><i class="ri-facebook-fill"></i></a>
+                    <a href=""><i class="ri-instagram-fill"></i></a>
+                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div> -->
+              </div>
+            </div>
           </div>
         </div>
-        <div class="text-center service-heading text-start light-300">
-          <i class="bx bx-gift h3 mt-1" style="padding-right: 1%;"></i>
-          <h2 class="h3 pb-4 typo-space-line" style="display: contents;">
-            Make Success for future
-          </h2>
-        </div>
-      </div>
-      <p class="service-footer col-10 offset-2 col-lg-9 offset-lg-3 text-start pb-3 text-muted px-2"></p>
       </div>
     </section>
-
-    <section class="container overflow-hidden py-5" style="margin-top: -50px ;">
-      <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
-        <!-- Start Recent Work -->
-        <?php
-        $query = " SELECT * FROM `service-section` ";
-        $result = mysqli_query($con, $query);
-        if ($result) {
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        ?>
-            <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
-              <a href="detailed-service.php?sid=<?php echo $row['sec-id']; ?>&sname=<?php echo $row['sec-name']; ?>&sdesc=<?php echo $row['sec-desc']; ?> #ser " class=" service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                <img class="service card-img" src="./assets/img/<?php echo $row['sec-img'] ?>" alt="Card image" />
-                <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                  <div class="service-work-content text-left text-light">
-                    <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
-                      <?php
-                      echo $row['sec-name'];
-                      ?></span>
-                    <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
-                  </div>
-                </div>
-
-              </a>
-            </div>
-          <?php }
-        } else {
-          ?>
-          <h5 class="h5 pb-4 typo-space-line text-center">
-            <?php echo "❌ result is empty"; ?>
-          </h5>
-        <?php }
-        ?>
-        <!-- End Recent Work -->
-      </div>
-    </section>
-    <!-- End Service -->
-
-    <!-- ======= Counts Section ======= -->
-    <br /><br />
-    <section id="counts" class="counts section-bg" style="margin-top: -60px;">
-      <div class="container">
-        <div class="row">
-          <div class="section-title" data-aos="zoom-out">
-            <h2>Reviews</h2>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Counts Section -->
+    <!-- End Team Section -->
   </main>
   <!-- End #main -->
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

@@ -66,17 +66,17 @@ if ($con) {
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.html#about">About</a></li>
+          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
           <li class="dropdown">
-            <a href="ask.html#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="ask.html#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.html#faq">Frequently Asked Questions</a></li>
+              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
+              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
             </ul>
           </li>
 
           <li>
-            <a class="nav-link scrollto" href="team.html#team">Success stories</a>
+            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
           </li>
           <li class="dropdown">
             <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
@@ -97,7 +97,7 @@ if ($con) {
             </ul>
           </li>
           <li>
-            <a class="nav-link scrollto" href="contact.html#contact">Contact</a>
+            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
           </li>
           <li>
             <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
@@ -267,8 +267,11 @@ if ($con) {
 
   </main>
 
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
+
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -288,9 +291,9 @@ if ($con) {
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="about.html#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="contact.html#contact">Contact</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
               <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
             </ul>
           </div>
@@ -334,7 +337,6 @@ if ($con) {
     </div>
   </footer>
   <!-- End Footer -->
-
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
