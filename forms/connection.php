@@ -11,9 +11,9 @@ $con = mysqli_connect($server, $username, $password, $db);
 
 if ($con) {
 ?>
-  <script>
+  <!-- <script>
     alert('Connection Successful')
-  </script>
+  </script> -->
 <?php
 
 } else {

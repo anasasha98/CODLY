@@ -60,9 +60,7 @@ include './forms/connection.php';
             </ul>
           </li>
 
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
+          <li><a class="nav-link scrollto" href="team.php#team">Success stories</a></li>
           <li class="dropdown">
             <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -81,12 +79,8 @@ include './forms/connection.php';
               <li><a href="#">WordPress</a></li>
             </ul>
           </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <li>
-            <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-          </li>
+          <li><a class="nav-link scrollto" href="contact.php#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="sign-in.php">Sign in</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
