@@ -220,7 +220,7 @@ include './forms/connection.php';
                         </p>
                       </div>
                       <!--/.Service Provider-review-->
-                      <a href="#" class="btn-get-started scrollto"><span>Preview</span></a>
+                      <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
                     </div>
                     <!--/.about-btn-->
                   </div>
