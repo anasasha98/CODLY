@@ -42,7 +42,7 @@ include './forms/connection.php';
 
 <body>
   <!-- ======= Splash Screen ======= -->
-  <!-- <div class="splash" data-aos="zoom-out-down" data-aos-delay="10"></div> -->
+  <!-- <div class="splash" data-aos="zoom-out-down"></div> -->
   <!-- End Header -->
 
   <!-- ======= Header ======= -->
