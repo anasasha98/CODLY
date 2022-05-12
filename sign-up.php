@@ -90,7 +90,10 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" name="submit" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" name="submit-customer" type="submit" title="Customer purchase service only">Create Customer Account</button>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-secondary w-100" name="submit-captain" type="submit" title="Captain publish and purchase service">Create Captain Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
