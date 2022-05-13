@@ -124,27 +124,39 @@
       <div class="container">
         <div class="row" data-aos="zoom-in">
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
+            <a href="https://www.oracle.com" target="_blank">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
+            </a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
+            <a href="https://www.microsoft.com" target="_blank">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
+            </a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
+            <a href="https://www.orange.com" target="_blank">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
+            </a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
+            <a href="https://www.ahu.edu.jo" target="_blank">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
+            </a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
+            <a href="https://www.paypal.com" target="_blank">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
+            </a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+            <a href="https://www.github.com" target="_blank">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+            </a>
           </div>
         </div>
       </div>
