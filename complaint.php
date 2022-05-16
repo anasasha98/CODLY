@@ -1,4 +1,3 @@
-
 <?php
 include './forms/connection.php';
 ?>
@@ -156,108 +155,56 @@ include './forms/connection.php';
     </section>
     <!-- End Cliens Section -->
     <main>
-      <div class="page-header pb-10 ">
+    <div class="page-header pb-10 ">
           <div class="container-fluid">
              
               <div class="section-title" data-aos="zoom-out">
-                <h2>Purchase List</h2>
+                <h2>Complaints Form</h2>
               </div>
           </div>
+          <!-- START FORM -->
+       
       </div>
-      <!--Start Table-->
       <div class="container-fluid mt-n10">
-          <div class="card mb-4">
-              
-              <div class="card-body">
-                  <div class="datatable table-responsive">
-                      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                          <thead>
-                               <tr>
-                                  <th>Purchase ID</th>
-                                  <th>Customer Username </th>
-                                  <th>Service ID </th>
-                                  <th>Service Name</th>
-                                  <th>Captin Username</th>
-                                  <th>Price</th>
-                                  <th>Date</th>
-                                  
-                                  <th>Report</th>
-                                  <th>Status</th>
-                                  
-                              </tr> 
-                       
+                        <div class="card mb-4">
+                            <div class="card-header">Complaints Area:</div>
+                            <div class="card-body">
+                                <form>
+                                <div class="form-group">
+                                        <label for="user-name">Customer User name:</label>
+                                        <input class="form-control" id="user-name" type="text" placeholder="User name ..."  value="" />
+                                    </div>  
+                                    <div class="form-group">
+                                        <label for="user-name">Captain User name:</label>
+                                        <input class="form-control" id="user-name" type="text" placeholder="User name ..."  value="" />
+                                    </div> 
+                                    <div class="form-group">
+                                        <label for="post-content">Complaints Details:</label>
+                                        <textarea class="form-control" placeholder="Type your complaint here..." id="post-content" rows="9" ></textarea>
+                                    </div>
+                                                          
 
-            
-           
-           
+                                    <div class="form-group">
+                                        <label for="post-tags">Image (optional)</label>
+                                        <input type="file" class="form-control"  id="post-tags" >
+                                    </div>
 
-                          </thead>
-                           <tbody> 
-                           <?php
-        $query = " SELECT * FROM  `purchase_list` ";
-        $result = mysqli_query($con, $query);
-        if ($result) {
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
-          {?>
-        
-                              <tr>
-                                  <td align="center"><?php echo $row['Purchase ID']; ?></td>
-                                  <td align="center"><?php echo $row['Customer Username']; ?></td>
-                                  <td align="center"><?php echo $row['Service ID']; ?></td>
-                                  
-                                  <td>
-                                  <?php echo $row['Service Name']; ?>
-                                  </td>
-                                  <td>
-                                  <?php echo $row['Captin Username']; ?>
-                                  </td>
-                                  <td><?php echo $row['Price'].'$' ; ?></td>
-                                  <td><?php echo $row['Date']; ?></td>
-                                 
-                                  <td>
-                                  <a href="complaint.php" class="btn btn-danger btn-icon" ></a>
-                                     
-                                     
-                                 
-                                    </td>
-                                  <td>
-                                  <?php echo $row['Status']; ?>
-                                  </td>
-                                  
-                                 
-                                
-                              </tr>
-                         <?php   }}?>  
-                              <!-- <tr> 
-                                  <td align="center">2</td>
-                                  <td>
-                                    Design web
-                                  </td>
-                                  <td>
-                                  Smith Blake
-                                  </td>
-                                  <td>Free $</td>
-                                  <td>17 Nov 2020</td>
-                                  <td>
-                                      <div class="badge badge-success">Pending
-                                      </div>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-success btn-icon"><i data-feather="mail"></i></button>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
-                                  </td>
-                                
-                              </tr>     -->                
-                          </tbody> 
-                      
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!--End Table-->
+                                    <button class="btn btn-primary mr-2 my-1" type="button">Send My Complaint</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Form-->
+
+
+
+
+
+
+
+
+
+
 
 </main>
 
