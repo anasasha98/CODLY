@@ -181,6 +181,7 @@ include './forms/connection.php';
                                   <th>Date</th>
                                   
                                   <th>Report</th>
+                                  <th>Status</th>
                                   
                               </tr> 
                        
@@ -213,8 +214,12 @@ include './forms/connection.php';
                                   <td><?php echo $row['Date']; ?></td>
                                  
                                   <td>
-                                      <button class="btn btn-success btn-icon"><i data-feather="check"><?php  $row['Report']; ?></i></button>
+                                      <button class="btn btn-danger btn-icon"><i data-feather="check"><?php  $row['Report']; ?></i></button>
                                   </td>
+                                  <td>
+                                  <?php echo $row['Status']; ?>
+                                  </td>
+                                  
                                  
                                 
                               </tr>
