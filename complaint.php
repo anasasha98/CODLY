@@ -189,7 +189,7 @@ include './forms/connection.php';
                                         <input type="file" class="form-control"  id="post-tags" >
                                     </div>
 
-                                    <button class="btn btn-primary mr-2 my-1" type="button">Send My Complaint</button>
+                                    <input type="submit" class="btn btn-primary mr-2 my-1" type="button" value="Send My Complaint">
                                 </form>
                             </div>
                         </div>
