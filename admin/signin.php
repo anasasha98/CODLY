@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../forms/connection.php';
 
 if (isset($_POST['submit'])) {
