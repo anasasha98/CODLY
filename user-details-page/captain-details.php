@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,16 +16,14 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
   <script>
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 
-        reader.onload = function (e) {
+        reader.onload = function(e) {
           $('#blah')
             .attr('src', e.target.result);
         };
@@ -104,11 +103,9 @@
                 <div class="form-flex">
                   <div class="form-group">
                     <label for="image" class="form-label img-label">Upload Your Image<br>
-                      <img id="blah" src="images/img_avatar.png" alt="your image"
-                        onerror='this.src="images/img_avatar.png"' />
+                      <img id="blah" src="images/img_avatar.png" alt="your image" onerror='this.src="images/img_avatar.png"' />
                     </label>
-                    <input type='file' onchange="readURL(this);" id="image" name="image"
-                      accept="image/png, image/gif, image/jpeg" />
+                    <input type='file' onchange="readURL(this);" id="image" name="image" accept="image/png, image/gif, image/jpeg" />
                     <span class="text-input">Accepted :<span style="color: #333333; font-weight: 500;"> png, gif, jpg,
                         jpeg</span></span>
                   </div>

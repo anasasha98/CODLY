@@ -1,3 +1,12 @@
+<?php
+session_start();
+include '../forms/connection.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php');
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,20 +23,14 @@
 
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-        <a class="navbar-brand d-none d-sm-block" href="index.html">Admin Panel</a><button
-            class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i
-                data-feather="menu"></i></button>
+        <a class="navbar-brand d-none d-sm-block" href="index.html">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
 
             <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="#"
-                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                        data-feather="bell"></i></a>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
 
-                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
-                    aria-labelledby="navbarDropdownAlerts">
-                    <h6 class="dropdown-header dropdown-notifications-header"><i class="mr-2"
-                            data-feather="bell"></i>Alerts Center</h6>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
+                    <h6 class="dropdown-header dropdown-notifications-header"><i class="mr-2" data-feather="bell"></i>Alerts Center</h6>
                     <a class="dropdown-item dropdown-notifications-item" href="#!">
                         <div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
                         <div class="dropdown-notifications-item-content">
@@ -43,8 +46,7 @@
                                 here to view!</div>
                         </div>
                     </a><a class="dropdown-item dropdown-notifications-item" href="#!">
-                        <div class="dropdown-notifications-item-icon bg-danger"><i
-                                class="fas fa-exclamation-triangle"></i></div>
+                        <div class="dropdown-notifications-item-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></div>
                         <div class="dropdown-notifications-item-content">
                             <div class="dropdown-notifications-item-content-details">December 8, 2022</div>
                             <div class="dropdown-notifications-item-content-text">Critical system failure, systems
@@ -62,11 +64,8 @@
             </li>
 
             <li class="nav-item dropdown no-caret mr-3 dropdown-user">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
-                    href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><img class="img-fluid" src="./assets/img/user.jpg" /></a>
-                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
-                    aria-labelledby="navbarDropdownUserImage">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="./assets/img/user.jpg" /></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
 
                         <div class="dropdown-user-details">
@@ -93,8 +92,7 @@
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
 
-                        <a class="nav-link collapsed" href="all-services-published.html" data-toggle="collapse"
-                            data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a class="nav-link collapsed" href="all-services-published.html" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="nav-link-icon"><i data-feather="layout"></i></div>
                             services
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -135,72 +133,6 @@
         </nav>
     </div>
 
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
-                        <div class="container-fluid">
-                            <div class="page-header-content d-flex align-items-center justify-content-between text-white">
-                                <h1 class="page-header-title">
-                                    <div class="page-header-icon"><i data-feather="users"></i></div>
-                                    <span>All Users</span>
-                                </h1>
-                               
-                                    
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <!--Start Table-->
-                    <div class="container-fluid mt-n10">
-                        <div class="card mb-4">
-                            <div class="card-header">All Users</div>
-                            <div class="card-body">
-                                <div class="datatable table-responsive">
-                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>User Name</th>
-                                                <th>User Email</th>
-                                                <th>Registered on</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>User Name</td>
-                                                <td>emai.com</td>
-                                                <td>Registered Date</td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                                                </td>
-                                            </tr>  
-                                            <tr>
-                                                <td>1</td>
-                                                <td>User Name</td>
-                                                <td>emai.com</td>
-                                                <td>Registered Date</td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Table-->
-                </main>
 
-               
-            </div>
-        </div>
-
-        <!--Script JS-->
-        <script src="js/jquery-3.4.1.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
+    <div id="layoutSidenav_content">
+        <main>
