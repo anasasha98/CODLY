@@ -214,10 +214,10 @@ include './forms/connection.php';
                                   <td><?php echo $row['Price'].'$' ; ?></td>
                                   <td><?php echo $row['Date']; ?></td>
                                  
-                                  <td>
-                                  <a href="complaint.php" class="btn btn-danger btn-icon" ></a>
-                                     
-                                     
+                                  <td align="center">
+                                  <a href="complaint.php" class="btn btn-danger btn-icon"  ></a>
+                              <br>
+                              click 
                                  
                                     </td>
                                   <td>

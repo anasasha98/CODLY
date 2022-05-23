@@ -188,3 +188,7 @@ INSERT INTO `purchase_list`
     `Date`,
      `Report`,`Status`) 
 VALUES ('1', 'heba-malo', '1001', ' Design ', 'ford', '20', '2022-05-03', '0','Un complete')
+
+
+
+CREATE TABLE `codly`.`complaint-user` ( `complaint-id` INT NOT NULL AUTO_INCREMENT , `customer-username` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL , `captin-username` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL , `complaint-details` VARCHAR(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL , `image` VARCHAR(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL , PRIMARY KEY (`complaint-id`)) ENGINE = InnoDB;

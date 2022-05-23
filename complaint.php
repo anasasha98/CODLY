@@ -169,24 +169,24 @@ include './forms/connection.php';
                         <div class="card mb-4">
                             <div class="card-header">Complaints Area:</div>
                             <div class="card-body">
-                                <form>
+                                <form action="test.php" method="post">
                                 <div class="form-group">
-                                        <label for="user-name">Customer User name:</label>
-                                        <input class="form-control" id="user-name" type="text" placeholder="User name ..."  value="" />
+                                        <label for="user-name" ><b>Customer User name:</b></label>
+                                        <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..."  value=""  />
                                     </div>  
                                     <div class="form-group">
-                                        <label for="user-name">Captain User name:</label>
-                                        <input class="form-control" id="user-name" type="text" placeholder="User name ..."  value="" />
+                                        <label for="user-name"><b>Captain User name:</b></label>
+                                        <input class="form-control" id="captain-user-name" required name="captain-user-name" type="text" placeholder="User name ..."  value="" />
                                     </div> 
                                     <div class="form-group">
-                                        <label for="post-content">Complaints Details:</label>
-                                        <textarea class="form-control" placeholder="Type your complaint here..." id="post-content" rows="9" ></textarea>
+                                        <label for="post-content"><b>Complaints Details:</b></label>
+                                        <textarea class="form-control" placeholder="Type your complaint here..." id="content" name="content" rows="9" ></textarea>
                                     </div>
                                                           
 
                                     <div class="form-group">
-                                        <label for="post-tags">Image (optional)</label>
-                                        <input type="file" class="form-control"  id="post-tags" >
+                                        <label for="post-tags"><b>Image (optional)</b></label>
+                                        <input type="file" class="form-control"  id="img-comp" name="img-comp" >
                                     </div>
 
                                     <input type="submit" class="btn btn-primary mr-2 my-1" type="button" value="Send My Complaint">
