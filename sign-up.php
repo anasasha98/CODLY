@@ -1,3 +1,13 @@
+<?php
+if (isset($_POST['signupCaptain'])) {
+  header('location: ./user-details/captain-details.php');
+}
+if (isset($_POST['signupCustomer'])) {
+  header('location: ./user-details/customer-details.php');
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,29 +54,44 @@
                 </a>
               </div><!-- End Logo -->
 
+
+
               <div class="card mb-3">
 
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Sign Up</h5>
+
+                  </div>
+
+                  <form class="row g-3 needs-validation" method="post">
 
 
 
 
-                <div class="col-12">
-                  <a href="user-details/customer-details.php"><button class="btn btn-primary w-100" name="submit-customer" type="submit" title="Customer purchase service only">Create Customer Account</button></a>
+
+
+
+                    <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="signupCaptain" id="signupCaptain">Sign Up as a Captain</button>
+                    <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="signupCustomer" id="signupCustomer">Sign Up as a Customer</button>
+                    <div class="col-12">
+                      <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
+                    </div>
+                  </form>
+
+
                 </div>
-                <div class="col-12">
-                  <a href="user-details/captain-details.php"><button class="btn btn-primary w-100" name="submit-customer" type="submit" title="Customer purchase service only">Create Captain Account</button></a>
-                </div>
-                <div class="col-12">
-                  <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
-                </div>
-                </form>
-
               </div>
+
+              </form>
+
             </div>
-
-
           </div>
+
+
         </div>
+    </div>
     </div>
 
     </section>

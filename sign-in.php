@@ -2,39 +2,46 @@
 session_start();
 include 'forms/connection.php';
 
-if (isset($_POST['submit'])) {
-$username = $_POST['username'];
-$password = $_POST['password'];
- 
-if(strpos($username,'captain') !== false )
-{
-    $query = "SELECT * FROM captain WHERE 'captain-username'='$username' AND 'password'='$password'";
-    $results = mysqli_query($con, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      header('location: index.php');
-    } 
-  
-}else{
-    $query = "SELECT * FROM customer WHERE 'customer-username'='$username' AND 'password' ='$password'";
-    $results = mysqli_query($con, $query);
-    if (mysqli_num_rows($results) == 1) {
-      $_SESSION['username'] = $username;
-      $_SESSION['success'] = "You are now logged in";
-      header('location: index.php');
-    } else {
+if (isset($_POST['submitcaptain'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-      echo '<script language="javascript">';
-      echo 'alert("Wrong username/password combination")';
-      echo '</script>';
-    }
+
+
+
+  $query = "SELECT * FROM captain WHERE captainusername ='$username' AND password ='$password'";
+  $results = mysqli_query($con, $query);
+  if (mysqli_num_rows($results) == 1) {
+    $_SESSION['username'] = $username;
+    $_SESSION['success'] = "You are now logged in";
+    header('location: ./index.php');
+  } else {
+
+    echo '<script language="javascript">';
+    echo 'alert("Wrong username/password combination")';
+    echo '</script>';
+  }
 }
+if (isset($_POST['submitcustomer'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
 
 
+
+  $query = "SELECT * FROM customer WHERE customerusername = '$username' AND password = '$password'";
+  $results = mysqli_query($con, $query);
+  if (mysqli_num_rows($results) == 1) {
+    $_SESSION['username'] = $username;
+    $_SESSION['success'] = "You are now logged in";
+    header('location: index.php');
+  } else {
+
+    echo '<script language="javascript">';
+    echo 'alert("Wrong username/password combination")';
+    echo '</script>';
+  }
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -99,7 +106,7 @@ if(strpos($username,'captain') !== false )
                     <p class="text-center small">Enter your username & password to Sign in</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" method="post" >
+                  <form class="row g-3 needs-validation" method="post">
 
                     <div class="col-12">
                       <label for="username" class="form-label">Username</label>
@@ -116,17 +123,14 @@ if(strpos($username,'captain') !== false )
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
-                    <div class="col-12">
-                     
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" name="submit" id="submit">Sign in</button>
-                    </div>
+
+                    <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="submitcaptain" id="submitcaptain">Sign in as a Captain</button>
+                    <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="submitcustomer" id="submitcustomer">Sign in as a Customer</button>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="sign-up.php">Create an account</a></p>
                     </div>
                   </form>
-
+                
 
                 </div>
               </div>

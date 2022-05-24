@@ -17,12 +17,12 @@ if (isset($_POST['submit'])) {
 
 
 
-    $user_check_query = "SELECT * FROM captain WHERE 'captain-username' ='$username' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM captain WHERE 'captainusername' ='$username' OR email='$email' LIMIT 1";
     $res = mysqli_query($con, $user_check_query);
     $user = mysqli_fetch_assoc($res);
 
     if ($user) { // if user exists
-        if ($user['username'] === $username) {
+        if ($user['captainusername'] === $username) {
             array_push($errors, "Username already exists");
         }
 
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 
 
     if (count($errors) == 0) {
-        $result = mysqli_query($con, "insert into captain values('$username','$firstname', '$lastname',  '$email','$password','$phone' , '$date','$image','$major','$writeaboutself','$attachment')");
+        $result = mysqli_query($con, "insert into captain values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$major','$writeaboutself','$attachment','$image')");
         
         if ($result) {
 ?>
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
                 alert("data inserted properly ");
             </script>
         <?php
-            header('location: ../index.php');
+            header('location: ../sign-in.php');
         } else {
         ?>
             <script>
@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
                                                 <div class="form-group"><label class="small mb-1" for="lastname">Last Name</label><input class="form-control py-4" id="lastname" type="text" placeholder="Enter last name" name="lastname" required /></div>
                                             </div>
                                         </div>
-                                        <div class="form-group"><label class="small mb-1" for="username">User name</label><input class="form-control py-4" id="username" type="text" placeholder="Enter User name" name="username" value="captain " required /></div>
+                                        <div class="form-group"><label class="small mb-1" for="username">User name</label><input class="form-control py-4" id="username" type="text" placeholder="Enter User name" name="username"  required /></div>
                                         <div class="form-group"><label class="small mb-1" for="email">Email</label><input class="form-control py-4" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" required /></div>
                                         <div class="form-group"><label class="small mb-1" for="phone">Your phone number</label><input class="form-control py-4" id="phone" type="text" placeholder="Enter Your phone number" value="0962" name="phone" required /></div>
                                         <div class="form-row">

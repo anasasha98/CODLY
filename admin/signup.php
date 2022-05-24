@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
 
 
-    $user_check_query = "SELECT * FROM administrator WHERE username ='$inputUserName' OR email='$inputEmailAddress' LIMIT 1";
+    $user_check_query = "SELECT * FROM administrator WHERE captusername ='$inputUserName' OR email='$inputEmailAddress' LIMIT 1";
     $res = mysqli_query($con, $user_check_query);
     $user = mysqli_fetch_assoc($res);
 

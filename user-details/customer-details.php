@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 
 
 
-    $user_check_query = "SELECT * FROM customer WHERE 'customer-username' ='$username' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM customer WHERE 'customerusername' ='$username' OR email='$email' LIMIT 1";
     $res = mysqli_query($con, $user_check_query);
     $user = mysqli_fetch_assoc($res);
 
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 
 
     if (count($errors) == 0) {
-        $result = mysqli_query($con, "insert into customer values('$username','$firstname', '$lastname',  '$email','$password','$phone' , '$date','$image')");
+        $result = mysqli_query($con, "insert into customer values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$image')");
 
         if ($result) {
 ?>
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
                 alert("data inserted properly ");
             </script>
         <?php
-            header('location: ../index.php');
+            header('location: ../sign-in.php');
         } else {
         ?>
             <script>
