@@ -6,23 +6,33 @@ if (isset($_POST['submit'])) {
 $username = $_POST['username'];
 $password = $_POST['password'];
  
-$check;
+if(strpos($username,'captain') !== false )
+{
+    $query = "SELECT * FROM captain WHERE 'captain-username'='$username' AND 'password'='$password'";
+    $results = mysqli_query($con, $query);
+    if (mysqli_num_rows($results) == 1) {
+      $_SESSION['username'] = $username;
+      $_SESSION['success'] = "You are now logged in";
+      header('location: index.php');
+    } 
+  
+}else{
+    $query = "SELECT * FROM customer WHERE 'customer-username'='$username' AND 'password' ='$password'";
+    $results = mysqli_query($con, $query);
+    if (mysqli_num_rows($results) == 1) {
+      $_SESSION['username'] = $username;
+      $_SESSION['success'] = "You are now logged in";
+      header('location: index.php');
+    } else {
 
-
-$query = "SELECT * FROM customer,captain WHERE username='$username' AND password='$password'";
-$results = mysqli_query($con, $query);
-if (mysqli_num_rows($results) == 1) {
-$_SESSION['username'] = $username;
-$_SESSION['success'] = "You are now logged in";
-header('location: index.php');
-} else {
-
-echo '<script language="javascript">
-  ';
-  echo 'alert("Wrong username/password combination")';
-  echo '
-</script>';
+      echo '<script language="javascript">';
+      echo 'alert("Wrong username/password combination")';
+      echo '</script>';
+    }
 }
+
+
+
 }
 
 
