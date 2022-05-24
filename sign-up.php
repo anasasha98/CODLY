@@ -46,30 +46,30 @@
 
               <div class="card mb-3">
 
-               
 
-                 
-                    
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" name="submit-customer" type="submit" title="Customer purchase service only">Create Customer Account</button>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-secondary w-100" name="submit-captain" type="submit" title="Captain publish and purchase service">Create Captain Account</button>
-                    </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
-                    </div>
-                  </form>
 
+
+
+                <div class="col-12">
+                  <a href="user-details/customer-details.php"><button class="btn btn-primary w-100" name="submit-customer" type="submit" title="Customer purchase service only">Create Customer Account</button></a>
                 </div>
+                <div class="col-12">
+                  <a href="user-details/captain-details.php"><button class="btn btn-primary w-100" name="submit-customer" type="submit" title="Customer purchase service only">Create Captain Account</button></a>
+                </div>
+                <div class="col-12">
+                  <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
+                </div>
+                </form>
+
               </div>
-
-
             </div>
+
+
           </div>
         </div>
+    </div>
 
-      </section>
+    </section>
 
     </div>
   </main><!-- End #main -->
@@ -91,4 +91,3 @@
 </body>
 
 </html>
-

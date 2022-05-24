@@ -1,3 +1,32 @@
+<?php
+session_start();
+include 'forms/connection.php';
+
+if (isset($_POST['submit'])) {
+$username = $_POST['username'];
+$password = $_POST['password'];
+ 
+$check;
+
+
+$query = "SELECT * FROM customer,captain WHERE username='$username' AND password='$password'";
+$results = mysqli_query($con, $query);
+if (mysqli_num_rows($results) == 1) {
+$_SESSION['username'] = $username;
+$_SESSION['success'] = "You are now logged in";
+header('location: index.php');
+} else {
+
+echo '<script language="javascript">
+  ';
+  echo 'alert("Wrong username/password combination")';
+  echo '
+</script>';
+}
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,31 +89,28 @@
                     <p class="text-center small">Enter your username & password to Sign in</p>
                   </div>
 
-                  <form class="row g-3 needs-validation">
+                  <form class="row g-3 needs-validation" method="post" >
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="username" class="form-label">Username</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <input type="text" name="username" class="form-control" id="username" required>
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
+                     
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Sign in</button>
+                      <button class="btn btn-primary w-100" type="submit" name="submit" id="submit">Sign in</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="sign-up.php">Create an account</a></p>

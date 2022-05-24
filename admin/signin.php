@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 
    
         
-        $query = "SELECT * FROM administrator WHERE username='$inputUserName' AND password='$inputPassword'";
+        $query = "SELECT * FROM administrator WHERE username='$inputUserName' AND 'password' ='$inputPassword'";
         $results = mysqli_query($con, $query);
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['username'] = $username;
