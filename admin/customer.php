@@ -14,6 +14,28 @@ if (isset($_POST['delateCustomer'])) {
 }
 
 
+if (isset($_POST['search'])) {
+
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query =
+    "SELECT * FROM `customer` WHERE CONCAT(`customerusername`,`firstname`,`lastname`)  LIKE '%" . $valueToSearch . "%'";
+    $search_result = filterTable($query);
+} else {
+    $query = "SELECT customerusername,firstname,lastname,email,phonenumber FROM customer";
+    $search_result = filterTable($query);
+}
+
+
+function filterTable($query)
+{
+    include '../forms/connection.php';
+    $filter_Result = mysqli_query($con, $query);
+    return $filter_Result;
+}
+
+
 ?>
 <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
     <div class="container-fluid">
@@ -30,12 +52,19 @@ if (isset($_POST['delateCustomer'])) {
 </div>
 <!--Start Table-->
 <div class="container-fluid mt-n10">
+
     <?php include('include/message-delete.php'); ?>
     <div class="card mb-4">
 
         <div class="card-header">All Customer</div>
         <div class="card-body">
             <div class="datatable table-responsive">
+                <form method="post">
+                    <div class="active-cyan-4 mb-4">
+                        <input class="form-control" type="text" placeholder="Filter for Customer" name="valueToSearch" aria-label="Search">
+                        <button type="submit" name="search" class="btn btn-outline-primary">Filter</button>
+                    </div>
+                </form>
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -49,57 +78,22 @@ if (isset($_POST['delateCustomer'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        include '../forms/connection.php';
-                        $query = " SELECT * FROM  customer ";
-                        $result = mysqli_query($con, $query);
-                        if ($result) {
-                            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
-                                echo  "<tr>";
-                                echo "<td>" . $row['firstname'] . "</td>";
-                                echo "<td>" . $row['lastname'] . "</td>";
-                                echo "<td>" . $row['customerusername'] . "</td>";
-                                echo "<td>" . $row['email'] . "</td>";
-                                echo "<td>" . $row['phonenumber'] . "</td>";
-                        ?>
+                        <?php while ($row = mysqli_fetch_array($search_result)) : ?>
+                            <tr>
+                                <td><?php echo $row['firstname']; ?></td>
+                                <td><?php echo $row['lastname']; ?></td>
+                                <td><?php echo $row['customerusername']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['phonenumber']; ?></td>
+
                                 <td>
                                     <form method="post">
                                         <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delateCustomer" value="<?= $row['customerusername'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
                                     </form>
-                                </td> <?php
-                                    }
-                                    mysqli_free_result($result);
-                                } else {
-                                    echo "No records matching your query were found.";
-                                }
-
-
-                                // Close connection
-                                mysqli_close($con);
-                                        ?>
-
-
-
-
-                        <!--  <tr>
-                            <td>1</td>
-                            <td>Customer Name</td>
-                            <td>emai.com</td>
-                            <td>Registered Date</td>
-                            <td>
-                                <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Customer Name</td>
-                            <td>emai.com</td>
-                            <td>Registered Date</td>
-                            <td>
-                                <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                            </td>
-                        </tr>-->
+                                </td>
+                            </tr>
+                        <?php  endwhile; ?>
                     </tbody>
                 </table>
             </div>
@@ -108,3 +102,6 @@ if (isset($_POST['delateCustomer'])) {
 </div>
 <!--End Table-->
 <?php include("include/footer.php"); ?>
+
+
+

@@ -2,15 +2,37 @@
 include 'include/header.php';
 include '../forms/connection.php';
 
-if (isset($_POST['delateCaptain'])) {
-    $captain_username = $_POST['delateCaptain'];
+if (isset($_POST['deleteCaptain'])) {
+    $captain_username = $_POST['deleteCaptain'];
     $query = "DELETE FROM captain WHERE captainusername='$captain_username'";
     $result = mysqli_query($con, $query);
     if ($result) {
-        $_SESSION["message"] = "Captain deleted successfully";
+        $_SESSION["message"] = "captain deleted successfully";
     } else {
         $_SESSION["message"] = "Something Wrong!";
     }
+}
+
+
+if (isset($_POST['search'])) {
+
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query =
+        "SELECT * FROM `captain` WHERE CONCAT(`captainusername`,`firstname`,`lastname`)  LIKE '%" . $valueToSearch . "%'";
+    $search_result = filterTable($query);
+} else {
+    $query = "SELECT captainusername,firstname,lastname,email,phonenumber,dob,major,bio,`attach` FROM captain";
+    $search_result = filterTable($query);
+}
+
+
+function filterTable($query)
+{
+    include '../forms/connection.php';
+    $filter_Result = mysqli_query($con, $query);
+    return $filter_Result;
 }
 
 
@@ -20,7 +42,7 @@ if (isset($_POST['delateCaptain'])) {
         <div class="page-header-content d-flex align-items-center justify-content-between text-white">
             <h1 class="page-header-title">
                 <div class="page-header-icon"><i data-feather="users"></i></div>
-                <span>All Captain</span>
+                <span>All captain</span>
             </h1>
 
 
@@ -30,12 +52,19 @@ if (isset($_POST['delateCaptain'])) {
 </div>
 <!--Start Table-->
 <div class="container-fluid mt-n10">
+
     <?php include('include/message-delete.php'); ?>
     <div class="card mb-4">
 
-        <div class="card-header">All Captain</div>
+        <div class="card-header">All captain</div>
         <div class="card-body">
             <div class="datatable table-responsive">
+                <form method="post">
+                    <div class="active-cyan-4 mb-4">
+                        <input class="form-control" type="text" placeholder="Filter for captain" name="valueToSearch" aria-label="Search">
+                        <button type="submit" name="search" class="btn btn-outline-primary">Filter</button>
+                    </div>
+                </form>
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -52,44 +81,27 @@ if (isset($_POST['delateCaptain'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        include '../forms/connection.php';
-                        $query = " SELECT * FROM  captain ";
-                        $result = mysqli_query($con, $query);
-                        if ($result) {
-                            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
-                                echo  "<tr>";
-                                echo "<td>" . $row['firstname'] . "</td>";
-                                echo "<td>" . $row['lastname'] . "</td>";
-                                echo "<td>" . $row['captainusername'] . "</td>";
-                                echo "<td>" . $row['email'] . "</td>";
-                                echo "<td>" . $row['phonenumber'] . "</td>";
-                                echo "<td>" . $row['dob'] . "</td>";
-                                echo "<td>" . $row['major'] . "</td>";
-                                echo "<td>" . $row['bio'] . "</td>";
-                                echo "<td>" . $row['attach'] . "</td>";
-                        ?>
+                        <?php while ($row = mysqli_fetch_array($search_result)) : ?>
+                            <tr>
+                                <td><?php echo $row['firstname']; ?></td>
+                                <td><?php echo $row['lastname']; ?></td>
+                                <td><?php echo $row['captainusername']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['phonenumber']; ?></td>
+                                <td><?php echo $row['dob']; ?></td>
+                                <td><?php echo $row['major']; ?></td>
+                                <td><?php echo $row['bio']; ?></td>
+                                <td><?php echo $row['attach']; ?></td>
+
+
                                 <td>
                                     <form method="post">
-                                        <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delateCaptain" value="<?= $row['captainusername'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
+                                        <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="deleteCaptain" value="<?= $row['captainusername'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
                                     </form>
-                                </td> <?php
-                                    }
-                                    mysqli_free_result($result);
-                                } else {
-                                    echo "No records matching your query were found.";
-                                }
-
-
-                                // Close connection
-                                mysqli_close($con);
-                                        ?>
-
-
-
-
-
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
             </div>
