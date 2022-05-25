@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +14,7 @@
     <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
@@ -41,7 +37,7 @@
     <link href="assets/css/features.css" rel="stylesheet" />
 </head>
 
-<body >
+<body>
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top header-inner-pages">
@@ -76,58 +72,66 @@
         </div>
     </header>
     <!-- End Header -->
-    
+
 
     <main id="main" style="padding-top: 220px">
 
 
-          <!--Start Form-->
-                    <div class="container-fluid mt-n10">
-                        <div class="card mb-4">
-                            <div class="card-header">Create New Service</div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="post-title">Service Title:</label>
-                                        <input class="form-control" id="post-title" type="text" placeholder="Service title ..." />
-                                    </div>
-                                   
-                                    <div class="form-group">
-                                        <label for="select-category">Select Service:</label>
-                                        <select class="form-control" id="select-category">
-                                            <option>Design</option>
-                                            <option>Design Logo</option>
-                                            <option>Date</option>
-                                            <option>Graphic</option>
-                                            <option>WordPress</option>
-                                            <option>Development</option>
-                                            <option>Business</option>
-                                            <option>Game Art</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="post-title">Choose photo:</label>
-                                        <input class="form-control" id="post-title" type="file" />
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="post-content">Service Details:</label>
-                                        <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="post-tags">Service Tags:</label>
-                                        <textarea class="form-control" placeholder="Tags..." id="post-tags" rows="3"></textarea>
-                                    </div>
-                                    <button class="btn btn-primary mr-2 my-1" type="button">Post Service Now</button>
-                                </form>
-                            </div>
+        <!--Start Form-->
+        <div class="container-fluid mt-n10">
+            <div class="card mb-4">
+                <div class="card-header">Create New Service</div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="post-title">Service Title:</label>
+                            <input class="form-control" id="post-title" type="text" placeholder="Service title ..." />
                         </div>
-                    </div>
-                    <!--End Form-->
 
-       
+                        <div class="form-group">
+                            <label for="select-category">Select Service:</label>
+                            <select class="form-control" id="select-category">
+                                <option>Design</option>
+                                <option>Design Logo</option>
+                                <option>Date</option>
+                                <option>Graphic</option>
+                                <option>WordPress</option>
+                                <option>Development</option>
+                                <option>Business</option>
+                                <option>Game Art</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-title">Choose photo:</label>
+                            <input class="form-control" id="post-title" type="file" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-content">Service Details:</label>
+                            <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
+                            <input type="text" class="form-control" value='#'>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
+                            <input type="text" class="form-control" value='#'>
+                        </div>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
+                            <input type="text" class="form-control" value='#'>
+                        </div>
+                </div>
+                <button class="btn btn-primary mr-2 my-1" type="button">Post Service Now</button>
+                </form>
+            </div>
+        </div>
+        </div>
+        <!--End Form-->
+
+
 
     </main><!-- End #main -->
 
@@ -205,8 +209,7 @@
     <!-- End Footer -->
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
