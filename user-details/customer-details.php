@@ -3,7 +3,7 @@ include '../forms/connection.php';
 session_start();
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $firstname = $_POST['firstname'];
+    $firstName = $_POST['firstName'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 
 
     if (count($errors) == 0) {
-        $result = mysqli_query($con, "insert into customer values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$image')");
+        $result = mysqli_query($con, "insert into customer values('$username','$firstName', '$lastname', '$password', '$email','$phone' , '$date','$image')");
 
         if ($result) {
 ?>
@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
                                     <form method="post">
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <div class="form-group"><label class="small mb-1" for="firstname">First Name</label><input class="form-control py-4" id="firstname" type="text" placeholder="Enter first name" name="firstName" required /></div>
+                                                <div class="form-group"><label class="small mb-1" for="firstName">First Name</label><input class="form-control py-4" id="firstName" type="text" placeholder="Enter first name" name="firstName" required /></div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group"><label class="small mb-1" for="lastname">Last Name</label><input class="form-control py-4" id="lastname" type="text" placeholder="Enter last name" name="lastname" required /></div>

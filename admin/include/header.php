@@ -15,7 +15,7 @@
 
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-        <a class="navbar-brand d-none d-sm-block" href="index.html">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+        <a class="navbar-brand d-none d-sm-block" href="index.php">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
 
             <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
@@ -84,33 +84,33 @@
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
 
-                        <a class="nav-link collapsed" href="all-services-published.html" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a class="nav-link collapsed" href="all-services-published.php" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="nav-link-icon"><i data-feather="layout"></i></div>
                             services
                             <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <a href="all-services-published.html">
+                        <a href="all-services-published.php">
                             <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
                         </a>
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
-                            <a class="nav-link" href="all-services-published.html">All services published</a>
-                            <a class="nav-link" href="all-services-purchased.html">All services purchased</a>
+                            <a class="nav-link" href="all-services-published.php">All services published</a>
+                            <a class="nav-link" href="all-services-purchased.php">All services purchased</a>
 
                         </nav>
                     </div>
-                    <a class="nav-link" href="users.html">
+                    <a class="nav-link" href="customer.php">
                         <div class="nav-link-icon"><i data-feather="users"></i></div>
-                        Users
+                        Customer
                     </a>
-                    <a class="nav-link" href="captains.html">
+                    <a class="nav-link" href="captains.php">
                         <div class="nav-link-icon"><i data-feather="user"></i></div>
                         Captains
                     </a>
-                    <a class="nav-link" href="contact-messages.html">
+                    <a class="nav-link" href="contact-messages.php">
                         <div class="nav-link-icon"><i data-feather="mail"></i></div>
                         Contact Message
                     </a>
-                    <a class="nav-link" href="complaint.html">
+                    <a class="nav-link" href="complaint.php">
                         <div class="nav-link-icon"><i data-feather="mail"></i></div>
                         Complaint
                     </a>

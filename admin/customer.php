@@ -2,12 +2,12 @@
 include 'include/header.php';
 include '../forms/connection.php';
 
-if (isset($_POST['delateCaptain'])) {
-    $captain_username = $_POST['delateCaptain'];
-    $query = "DELETE FROM captain WHERE captainusername='$captain_username'";
+if (isset($_POST['delateCustomer'])) {
+    $customer_username = $_POST['delateCustomer'];
+    $query = "DELETE FROM customer WHERE customerusername='$customer_username'";
     $result = mysqli_query($con, $query);
     if ($result) {
-        $_SESSION["message"] = "Captain deleted successfully";
+        $_SESSION["message"] = "Customer deleted successfully";
     } else {
         $_SESSION["message"] = "Something Wrong!";
     }
@@ -20,7 +20,7 @@ if (isset($_POST['delateCaptain'])) {
         <div class="page-header-content d-flex align-items-center justify-content-between text-white">
             <h1 class="page-header-title">
                 <div class="page-header-icon"><i data-feather="users"></i></div>
-                <span>All Captain</span>
+                <span>All Customer</span>
             </h1>
 
 
@@ -33,28 +33,25 @@ if (isset($_POST['delateCaptain'])) {
     <?php include('include/message-delete.php'); ?>
     <div class="card mb-4">
 
-        <div class="card-header">All Captain</div>
+        <div class="card-header">All Customer</div>
         <div class="card-body">
             <div class="datatable table-responsive">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Captain First Name</th>
-                            <th>Captain Last Name</th>
-                            <th>Captain User Name</th>
-                            <th>User Email</th>
-                            <th>User Phone Number</th>
-                            <th>Birth Date</th>
-                            <th>Major</th>
-                            <th>Introude Yourself</th>
-                            <th>Attachment</th>
+                            <th>Customer First Name</th>
+                            <th>Customer Last Name</th>
+                            <th>Customer Username</th>
+                            <th>Customer Email</th>
+                            <th>Customer Phone Number</th>
+
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include '../forms/connection.php';
-                        $query = " SELECT * FROM  captain ";
+                        $query = " SELECT * FROM  customer ";
                         $result = mysqli_query($con, $query);
                         if ($result) {
                             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -62,17 +59,13 @@ if (isset($_POST['delateCaptain'])) {
                                 echo  "<tr>";
                                 echo "<td>" . $row['firstname'] . "</td>";
                                 echo "<td>" . $row['lastname'] . "</td>";
-                                echo "<td>" . $row['captainusername'] . "</td>";
+                                echo "<td>" . $row['customerusername'] . "</td>";
                                 echo "<td>" . $row['email'] . "</td>";
                                 echo "<td>" . $row['phonenumber'] . "</td>";
-                                echo "<td>" . $row['dob'] . "</td>";
-                                echo "<td>" . $row['major'] . "</td>";
-                                echo "<td>" . $row['bio'] . "</td>";
-                                echo "<td>" . $row['attach'] . "</td>";
                         ?>
                                 <td>
                                     <form method="post">
-                                        <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delateCaptain" value="<?= $row['captainusername'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
+                                        <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delateCustomer" value="<?= $row['customerusername'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
                                     </form>
                                 </td> <?php
                                     }
@@ -89,7 +82,24 @@ if (isset($_POST['delateCaptain'])) {
 
 
 
-
+                        <!--  <tr>
+                            <td>1</td>
+                            <td>Customer Name</td>
+                            <td>emai.com</td>
+                            <td>Registered Date</td>
+                            <td>
+                                <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Customer Name</td>
+                            <td>emai.com</td>
+                            <td>Registered Date</td>
+                            <td>
+                                <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
+                            </td>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
