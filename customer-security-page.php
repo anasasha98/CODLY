@@ -1,7 +1,6 @@
-<!-- database connection -->
 <?php
 include './forms/connection.php';
-session_start();
+// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,10 +10,7 @@ session_start();
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <script data-search-pseudo-elements defer src="assets/js/j/all.min.js"></script>
-  <script src="assets/js/j/feather.min.js"></script>
-
-  <title>purchase service - codly</title>
+  <title>security page - Codly</title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
@@ -33,7 +29,6 @@ session_start();
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" />
@@ -88,9 +83,7 @@ session_start();
     }, 4000);
   </script>
 
-  <link href="assets/css/st.css" rel="stylesheet" />
 </head>
-
 
 <body>
 
@@ -128,32 +121,31 @@ session_start();
   </header>
   <!-- End Header -->
 
-
-  <!-- ===== Captain Account Details ===== -->
-  <?php
-  $captainusername = 'ali0Ziadeh';
-  // get captain username from previos page
-  if (isset($_GET['captainusername'])) {
-    $captainusername = $_GET['captainusername'];
-    $_SESSION['capview'] = $captainusername;
-  } else {
-    if (isset($_SESSION['capview'])) {
-      $captainusername = $_SESSION['capview'];
-    }
-  }
-  ?>
-
-
-  <!-- ======== Profile information ======== -->
+  <!-- ======= Main ======= -->
   <main id="main" style="padding-top: 60px;">
+
+    <!-- ===== Customer Security Page ===== -->
+
     <div class="container-xl px-4 mt-4">
+
+      <?php
+      // $customerusername = 'mohammed_ahmed';
+      // // get customer username from previos page
+      // if (isset($_GET['customerusername'])) {
+      //   $customerusername = $_GET['customerusername'];
+      //   $_SESSION['cusview'] = $customerusername;
+      // } else {
+      if (isset($_SESSION['cusview'])) {
+        $customerusername = $_SESSION['cusview'];
+      }
+      // }
+      ?>
+
       <!-- Account page navigation-->
       <nav class="nav nav-borders">
-        <a class="nav-link  ms-0" href="captain-account-details.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
-        <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a>
-        <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
-        <a class="nav-link" href="add-services.php?captainusername=<?php echo $captainusername; ?>">My serivce</a>
-        <a class="nav-link active" href="#">Purchased Service</a>
+        <a class="nav-link  ms-0" href="customer-account-details.php?customerusername=<?php echo $customerusername; ?>">Profile</a>
+        <a class="nav-link active" href="#">Security</a>
+        <a class="nav-link" href="purchase.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
       </nav>
       <hr class="mt-0 mb-4">
 
@@ -169,101 +161,117 @@ session_start();
         <strong>Error!</strong>
       </div>
 
-      <!--Start Table-->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="datatable table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Purchase ID</th>
-                  <th>Customer Username </th>
-                  <th>Service ID </th>
-                  <th>Service Name</th>
-                  <th>Captin Username</th>
-                  <th>Price</th>
-                  <th>Date</th>
+      <!-- ===== send any changed information to db ===== -->
+      <?php
+      if (isset($_POST['save'])) {
+        // Current password
+        $psw0 = $_POST['psw0'];
+        // New password
+        $psw = $_POST['psw'];
+        // Confirm password
+        $psw2 = $_POST['psw2'];
 
-                  <th>Report</th>
-                  <th>Status</th>
+        $query = "SELECT `password` FROM `customer` where `customerusername` = '$customerusername' ";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        }
 
-                </tr>
+        if ($psw0 == $row['password']) {
+          // Update DB 
+          $chnage = "UPDATE `customer` SET `password`='$psw' WHERE `customerusername` = '$customerusername'";
+          $info = mysqli_query($con, $chnage);
+          if ($info) {
+            echo '<script type="text/javascript">',
+            'showtrue("Password Updated Successfully.");',
+            '</script>';
+          } else {
+            echo '<script type="text/javascript">',
+            'showwrong("Password Not Updated.");',
+            '</script>';
+          }
+        } else {
+          echo '<script type="text/javascript">',
+          'showwrong("Invalid Password.");',
+          '</script>';
+        }
+      }
+      ?>
 
+      <?php
+      // pressed username
+      $counter = 0;
+      $query = "SELECT `password` FROM `customer` where `customerusername` = '$customerusername' ";
+      $result = mysqli_query($con, $query);
+      if ($result) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+          $counter = 1;
+      ?>
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Change password card-->
+              <div class="card mb-4">
+                <div class="card-header">Change Password</div>
+                <div class="card-body">
+                  <form method="POST" action="customer-security-page.php" enctype="multipart/form-data">
+                    <!-- Form Group (current password)-->
+                    <div class="mb-3">
+                      <label class="small mb-1" for="psw0">Current Password</label>
+                      <i class="bi bi-eye-slash" id="togglePassword0"></i>
+                      <input class="form-control" id="psw0" type="password" name="psw0" placeholder="Enter current password" title="current password" required>
+                    </div>
+                    <!-- Form Group (new password)-->
+                    <div class="mb-3">
+                      <label class="small mb-1" for="psw">New Password</label>
+                      <i class="bi bi-eye-slash" id="togglePassword"></i>
+                      <input class="form-control" type="password" id="psw" name="psw" placeholder="Enter new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" maxlength="25" minlength="8" required>
+                    </div>
+                    <!-- Form Group (confirm password)-->
+                    <div class="mb-3">
+                      <label class="small mb-1" for="psw2">Confirm Password</label>
+                      <i class="bi bi-eye-slash" id="togglePassword2"></i>
+                      <input class="form-control" type="password" id="psw2" name="psw2" placeholder="Confirm new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must Match the new password" maxlength="25" minlength="8" required>
+                    </div>
 
+                    <div class="mb-3" style="margin-left: 25px;">
+                      <p id="msg" style="display: none;"></p>
+                    </div>
 
+                    <!-- Save changes & Discard button-->
+                    <button class="btn btn-secondary" type="reset" id="discard" onClick="window.location.reload();">Discard</button>
+                    <button class="btn btn-primary" type="submit" id="save" name="save">Save changes</button>
+                  </form>
+                  <script type="text/javascript" src="assets/js/btn_check.js"></script>
+                </div>
 
+                <!-- ===== New Password Condition ===== -->
+                <div id="message">
+                  <h5>Password must contain the following:</h5>
+                  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                  <p id="number" class="invalid">A <b>number</b></p>
+                  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                  <p id="length2" class="valid">Maximum <b>25 characters</b></p>
+                </div>
 
-
-              </thead>
-              <tbody>
-                <?php
-                $query = " SELECT * FROM  `purchase_list` ";
-                $result = mysqli_query($con, $query);
-                if ($result) {
-                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-
-                    <tr>
-                      <td align="center"><?php echo $row['Purchase ID']; ?></td>
-                      <td align="center"><?php echo $row['Customer Username']; ?></td>
-                      <td align="center"><?php echo $row['Service ID']; ?></td>
-
-                      <td>
-                        <?php echo $row['Service Name']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['Captin Username']; ?>
-                      </td>
-                      <td><?php echo $row['Price'] . '$'; ?></td>
-                      <td><?php echo $row['Date']; ?></td>
-
-                      <td align="center">
-                        <a href="complaint.php" class="btn btn-danger btn-icon"></a>
-                        <br>
-                        click
-
-                      </td>
-                      <td>
-                        <?php echo $row['Status']; ?>
-                      </td>
-
-
-
-                    </tr>
-                <?php   }
-                } ?>
-                <!-- <tr> 
-                                  <td align="center">2</td>
-                                  <td>
-                                    Design web
-                                  </td>
-                                  <td>
-                                  Smith Blake
-                                  </td>
-                                  <td>Free $</td>
-                                  <td>17 Nov 2020</td>
-                                  <td>
-                                      <div class="badge badge-success">Pending
-                                      </div>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-success btn-icon"><i data-feather="mail"></i></button>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
-                                  </td>
-                                
-                              </tr>     -->
-              </tbody>
-
-            </table>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <!--End Table-->
-
     </div>
-  </main> <!-- End profile information -->
+    <!-- End password information -->
+  <?php
+        }
+      }
+      if ($counter == 0) {
+  ?>
+  <h5 class="h5 pb-4 typo-space-line text-center" title="Profile Not Found" style="cursor: default; padding-top: 220px;">
+    <?php echo "❌ result is empty"; ?>
+  </h5>
+<?php
+      }
+?>
 
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -337,6 +345,7 @@ session_start();
     </div>
   </footer>
   <!-- End Footer -->
+
 
   <style type="text/css">
     body {
@@ -496,16 +505,153 @@ session_start();
     .credits>a {
       color: #47b2e4;
     }
-
-    .table {
-      color: #687281;
-    }
   </style>
+
+
+  <!-- ==== New Password Conditions ==== -->
+  <script>
+    var myInput = document.getElementById("psw");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function() {
+      document.getElementById("message").style.display = "none";
+    }
+
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if (myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if (myInput.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if (myInput.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate length
+      if (myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+  </script>
+
+  <!-- ==== Confirmation Password ==== -->
+  <script>
+    var myInput2 = document.getElementById("psw2");
+    var msg = document.getElementById("msg");
+
+    // When the user clicks on the password field, show the message box
+    myInput2.onfocus = function() {
+      msg.style.display = "none";
+      msg.removeAttribute('class');
+      msg.style.display = "block";
+      msg.innerHTML = "password did not match";
+      msg.classList.add("invalid");
+    }
+
+    // When the user starts to type something inside the password field
+    myInput2.onkeyup = function() {
+      // Validate lowercase letters
+      var pw1 = document.getElementById("psw").value;
+      var pw2 = document.getElementById("psw2").value;
+      if (pw1 != pw2 && pw1 != "" && pw2 != "") {
+        msg.style.display = "block";
+        msg.innerHTML = "password did not match";
+        msg.removeAttribute('class');
+        msg.classList.add("invalid");
+      } else if (pw1 == pw2 && pw1 != "" && pw2 != "") {
+        msg.style.display = "block";
+        msg.innerHTML = "Password matched successfully";
+        msg.removeAttribute('class');
+        msg.classList.add("valid");
+      }
+    }
+  </script>
+
+  <script>
+    const togglePassword0 = document.querySelector("#togglePassword0");
+    const togglePassword = document.querySelector("#togglePassword");
+    const togglePassword2 = document.querySelector("#togglePassword2");
+
+    // const password = document.querySelector("#password");
+    var ps0 = document.getElementById("psw0");
+    var ps = document.getElementById("psw");
+    var ps2 = document.getElementById("psw2");
+
+    togglePassword0.addEventListener("click", function() {
+      // toggle the type attribute
+      if (ps0.type == 'password') {
+        ps0.type = 'text';
+      } else {
+        ps0.type = 'password';
+      }
+
+      // toggle the icon
+      this.classList.toggle("bi-eye");
+    });
+
+    togglePassword.addEventListener("click", function() {
+      // toggle the type attribute
+      if (ps.type == 'password') {
+        ps.type = 'text';
+      } else {
+        ps.type = 'password';
+      }
+
+      // toggle the icon
+      this.classList.toggle("bi-eye");
+    });
+
+    togglePassword2.addEventListener("click", function() {
+      // toggle the type attribute
+      if (ps2.type == 'password') {
+        ps2.type = 'text';
+      } else {
+        ps2.type = 'password';
+      }
+
+      // toggle the icon
+      this.classList.toggle("bi-eye");
+    });
+  </script>
 
   <script type="text/javascript">
 
   </script>
-
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -519,13 +665,8 @@ session_start();
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/purecounter/purecounter.js"></script>
-
-
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/j/jquery-3.4.1.min.js"></script>
-  <script src="assets/js/j/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/j/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
