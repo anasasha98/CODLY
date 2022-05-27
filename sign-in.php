@@ -122,8 +122,8 @@ if (isset($_POST['submitcustomer'])) {
                       <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
-
-
+                    <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
+<br>
                     <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="submitcaptain" id="submitcaptain">Sign in as a Captain</button>
                     <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="submitcustomer" id="submitcustomer">Sign in as a Customer</button>
                     <div class="col-12">
