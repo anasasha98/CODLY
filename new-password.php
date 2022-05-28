@@ -40,6 +40,10 @@ $email = $_SESSION['email'];
                         <?php
                     }
                     ?>
+                      <div class="form-group">
+                        <input class="form-control" type="email" name="email1" placeholder="re-enter your email" required value="<?php $email ?>">
+                     
+                    </div>
                     <div class="form-group">
                         <input class="form-control" type="password" name="password" placeholder="Create new password" required >
                         

@@ -40,12 +40,12 @@ $errors = array();
         if($password !== $cpassword){
             $errors['password'] = "Confirm password not matched!";
         }else{
-            $code = 0;
+            $email1=$_POST['email1'];
             $email = $fetch_data['email'];
             // $email = $_SESSION['email']; 
             //getting this email using session
             $encpass = password_hash($password, PASSWORD_BCRYPT);
-            $update_pass = "UPDATE customer SET  password = '$password' WHERE email = '$email'";
+            $update_pass = "UPDATE customer SET  password = '$password' WHERE email = '$email1'";
             $run_query = mysqli_query($con, $update_pass);
             if($run_query){
                 $info = "Your password changed. Now you can login with your new password.";
