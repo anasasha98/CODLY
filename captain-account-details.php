@@ -157,7 +157,7 @@ session_start();
             <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a>
             <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
             <a class="nav-link" href="add-services.php?captainusername=<?php echo $captainusername; ?>">My Service</a>
-            <a class="nav-link" href="purchase.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+            <a class="nav-link" href="purchase-captain.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 

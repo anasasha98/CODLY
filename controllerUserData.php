@@ -1,9 +1,10 @@
 <?php 
 session_start();
 require "connection.php";
-include './forms/connection.php';
+
 $email = "";
 $name = "";
+
 $errors = array();
 
 
@@ -43,6 +44,7 @@ $errors = array();
             $email1=$_POST['email1'];
             $email = $fetch_data['email'];
             // $email = $_SESSION['email']; 
+            
             //getting this email using session
             $encpass = password_hash($password, PASSWORD_BCRYPT);
             $update_pass = "UPDATE customer SET  password = '$password' WHERE email = '$email1'";
@@ -58,10 +60,42 @@ $errors = array();
     }
 }
 
-// INSERT INTO `customer` (`customerusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`, `image`) VALUES ('hebamalo', 'heba', 'maloalain', '12345678', 'hebamalo@gmail.com', '0788765400', '', '');
-    
+ 
    //if login now button click
     if(isset($_POST['login-now'])){
         header('Location: sign-in.php');
     }
+
+
+    if(isset($_POST['update-status'])){
+         
+        $sql = "UPDATE purchase_list SET Status ='complete' WHERE  'Purchase ID' = 1";
+        
+        $run_query = mysqli_query($con, $sql);
+      
+        if ($run_query) {
+     
+            
+            
+            header('Location: purchase-captain.php');
+         
+        } else {
+            $_SESSION['status'] = ' not updated';
+            header('Location: purchase-captain.php');
+        }
+        // header('Location:purchase-cabtain.php');
+      
+      
+      
+      
+      
+        
+                 
+                  
+                 
+                   
+       
+                
+                
+                }
 ?>

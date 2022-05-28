@@ -54,6 +54,7 @@ $email = $_SESSION['email'];
                     </div>
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="change-password" value="Change">
+    
                     </div>
                 </form>
             </div>

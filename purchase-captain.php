@@ -1,7 +1,8 @@
 <!-- database connection -->
 <?php
 include './forms/connection.php';
-session_start();
+ require_once "controllerUserData.php"; 
+// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +87,21 @@ session_start();
     setTimeout(() => {
       hidewrong();
     }, 4000);
-  </script>
 
+
+    
+  </script>
+<style>
+#purchasebutton
+{
+/* background-color:#22dba8;
+border-color:#22dba8; */
+
+
+
+}
+
+  </style>
   <link href="assets/css/st.css" rel="stylesheet" />
 </head>
 
@@ -184,7 +198,7 @@ session_start();
                   <th>Price</th>
                   <th>Date</th>
 
-                  <th>Report</th>
+                  <th>Complete </th>
                   <th>Status</th>
 
                 </tr>
@@ -216,11 +230,21 @@ session_start();
                       <td><?php echo $row['Price'] . '$'; ?></td>
                       <td><?php echo $row['Date']; ?></td>
 
-                      <td align="center">
-                        <a href="complaint.php" class="btn btn-danger btn-icon"></a>
-                        <br>
-                        click
+                      <td align="center" >
+                        <form action="controllerUserData.php" method="POST">
+                          <div class="form-group">
+                       <button type="submit" name="update-status"  class="btn btn-success ">
+click
+                       </button>
+                          <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
+                  </div>
+                      </form>
+                   
+   
 
+
+
+                       
                       </td>
                       <td>
                         <?php echo $row['Status']; ?>
