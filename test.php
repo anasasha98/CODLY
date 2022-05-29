@@ -16,7 +16,8 @@ if ($conn->connect_error){
 $stmt = $conn -> prepare("INSERT INTO `complaint-user` ( `customer-username`, `captin-username`, `complaint-details`, `image`) VALUES ( ?, ?, ?, ?) ") ;
 $stmt -> bind_param("ssss",$CustomerUserName , $CaptainUserName , $content , $ImageComp);
 $stmt->execute();
-echo "successfull";
+
+header('Location: complaint.php');
 
 $stmt->close();
 $conn->close();

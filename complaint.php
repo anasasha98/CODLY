@@ -189,13 +189,14 @@ include './forms/connection.php';
                                         <input type="file" class="form-control"  id="img-comp" name="img-comp" >
                                     </div>
 
-                                    <input type="submit" class="btn btn-primary mr-2 my-1" type="button" value="Send My Complaint">
+
+                                    <input type="submit" class="btn btn-primary mr-2 my-1" type="button" name="send-complaint" value="Send My Complaint">
+
                                 </form>
                             </div>
                         </div>
                     </div>
                     <!--End Form-->
-
 
 
 
