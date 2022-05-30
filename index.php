@@ -109,8 +109,11 @@ include './forms/connection.php';
             Post a job for free and connect with independent talent today.
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Hire a Freelancer</a>
             <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
+              <i class="bi bi-play-circle"></i>
+              <span>Watch Video</span>
+            </a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -350,14 +353,14 @@ include './forms/connection.php';
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
+            <img src="assets/img/logo.png" alt="codly logo image" height="180px">
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
-            <div class="social-links mt-3">
+            <div class="social-links mt-3" style="padding-left: 10px;">
+              <h4>Our Social Networks</h4>
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 

@@ -50,7 +50,9 @@ if (isset($_POST['signupCustomer'])) {
               <div class="d-flex justify-content-center py-4">
                 <a href="index.php">
 
-                  <span class="d-none d-lg-block">Codly</span>
+                  <span class="d-none d-lg-block">
+                    <img src="assets/img/logo.png" alt="Codly logo" width="140px" style="margin-top: -25px;">
+                  </span>
                 </a>
               </div><!-- End Logo -->
 
