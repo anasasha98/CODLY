@@ -2,6 +2,42 @@
 <?php
 include './forms/connection.php';
 session_start();
+if (isset($_POST['submit'])) {
+  $servicetitle = $_POST['servicetitle'];
+  $service = $_POST['service'];
+  $image1 = $_POST['image1'];
+  $servicedetails = $_POST['servicedetails'];
+  $tag1 = $_POST['tag1'];
+  $tag2 = $_POST['tag2'];
+  $tag3 = $_POST['tag3'];
+  $tag4 = $_POST['tag4'];
+  $captainusername = $_SESSION['captainusername'];
+  if (isset($_GET['captainusername'])) {
+    $captainusername = $_GET['captainusername'];
+    $_SESSION['captainuser'] = $captainusername;
+  } else {
+    if (isset($_SESSION['captainuser'])) {
+      $captainusername = $_SESSION['captainuser'];
+    }
+  }
+  $sql1 = "SELECT `sno` FROM `detailed-service` WHERE `name` = '$service' ";
+  $res = mysqli_query($con, $sql1);
+  $sno = mysqli_fetch_assoc($res);
+  $sql2 = "SELECT MAX(emp_id) FROM `service-provider` WHERE `emp_id` = `emp_id`+1 ";
+  $res = mysqli_query($con, $sql2);
+  $emp_id = mysqli_fetch_assoc($res);
+  $sql3 = "INSERT INTO `service-provider` VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails' , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1' )";
+  if (mysqli_query($link, $sql3)) {
+    echo '<script language="javascript">';
+    echo 'alert("Records added successfully.")';
+    echo '</script>';
+  } else {
+    echo '<script language="javascript">';
+    echo 'alert("ERROR: Could not able to execute")';
+    echo '</script>';
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -131,11 +167,11 @@ session_start();
   // get captain username from previos page
   if (isset($_GET['captainusername'])) {
     $captainusername = $_GET['captainusername'];
-    $_SESSION['capview'] = $captainusername;
+    $_SESSION['captainuser'] = $captainusername;
   } else {
-  if (isset($_SESSION['capview'])) {
-    $captainusername = $_SESSION['capview'];
-  }
+    if (isset($_SESSION['captainuser'])) {
+      $captainusername = $_SESSION['captainuser'];
+    }
   }
   ?>
 
@@ -170,49 +206,82 @@ session_start();
         <div class="card mb-4">
           <div class="card-header">Create New Service</div>
           <div class="card-body">
-            <form>
+            <form method="post">
               <div class="form-group">
                 <label for="post-title">Service Title:</label>
-                <input class="form-control" id="post-title" type="text" placeholder="Service title ..." />
+                <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" />
               </div>
 
-              <div class="form-group">
-                <label for="select-category">Select Service:</label>
-                <select class="form-control" id="select-category">
-                  <option>Design</option>
-                  <option>Design Logo</option>
-                  <option>Date</option>
-                  <option>Graphic</option>
-                  <option>WordPress</option>
-                  <option>Development</option>
-                  <option>Business</option>
-                  <option>Game Art</option>
+              <select class="selectpicker" name="service">
+                <optgroup label="Design" name="design" id="design">
+                  <option value="design1">UX/UI Design</option>
+                  <option value="design2">Graphic Designers</option>
+                  <option value="design3">Illustration Design</option>
+                  <option value="design4">Photoshop</option>
+                  <option value="design5">Inerior Design</option>
 
-                </select>
-              </div>
+                  <option value="design5">Video Editing</option>
+                  <option value="design7">Art Designers</option>
+                  <option value="design8">Motion Design</option>
+                </optgroup>
+                <optgroup label="Design Logo" name="designlogo">
+                  <option value="designlogo1">Design Logo1</option>
+
+
+                </optgroup>
+                <optgroup label="Data" name="data">
+                  <option value="data1">data1</option>
+
+                </optgroup>
+                <optgroup label="Graphic" name="graphic">
+                  <option value="graphic1">Graphic1</option>
+
+                </optgroup>
+                <optgroup label="WordPress" name="wordpress">
+                  <option value="wordpress1">WordPress</option>
+
+                </optgroup>
+                <optgroup label="Development" name="development">
+                  <option value="development1">Development</option>
+
+                </optgroup>
+                <optgroup label="Business" name="business">
+                  <option value="business1">Marketing</option>
+
+                </optgroup>
+                <optgroup label="Game Art" name="gameart">
+                  <option value="gameart1">Game Animation</option>
+
+                </optgroup>
+              </select>
+
               <div class="form-group">
                 <label for="post-title">Choose photo:</label>
-                <input class="form-control" id="post-title" type="file" />
+                <input class="form-control" id="post-title" type="file" name="image1" />
               </div>
 
               <div class="form-group">
                 <label for="post-content">Service Details:</label>
-                <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9"></textarea>
+                <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails"></textarea>
               </div>
               <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
-                <input type="text" class="form-control" value='#'>
+                <input type="text" class="form-control" name="tag1">
               </div>
               <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
-                <input type="text" class="form-control" value='#'>
+                <input type="text" class="form-control" name="tag2">
               </div>
               <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
-                <input type="text" class="form-control" value='#'>
+                <input type="text" class="form-control" name="tag3">
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
+                <input type="text" class="form-control" name="tag4">
               </div>
           </div>
-          <button class="btn btn-primary mr-2 my-1" type="button">Post Service Now</button>
+          <button class="btn btn-primary mr-2 my-1" type="button" name="submit">Post Service Now</button>
           </form>
         </div>
       </div>
@@ -460,7 +529,7 @@ session_start();
   </script>
 
 
-<div id="preloader"></div>
+  <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
