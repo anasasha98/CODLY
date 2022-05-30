@@ -308,6 +308,7 @@ include './forms/connection.php';
       </div>
     </section>
     <!-- End Counts Section -->
+
   </main>
   <!-- End #main -->
 
@@ -369,19 +370,53 @@ include './forms/connection.php';
     </div>
 
     <div class="container footer-bottom clearfix">
-
       <div class="credits">
+
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="#">IT Development Team</a>
+        Designed by <a href="">IT Development Team</a>
       </div>
     </div>
   </footer>
   <!-- End Footer -->
+
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bothelp.io widget -->
+  <script type="text/javascript">
+    ! function() {
+      var e = {
+          "buttons": [{
+            "type": "whatsapp",
+            "token": "+962790875241"
+          }, {
+            "type": "messenger",
+            "token": "https://www.facebook.com/profile.php?id=100067643372668"
+          }, {
+            "type": "instagram",
+            "token": "_codly"
+          }],
+          "color": "#47B2E4",
+          "position": "right",
+          "bottomSpacing": "60",
+          "callToActionMessage": "Need Help?",
+          "displayOn": "everywhere",
+          "lang": "en"
+        },
+        t = document.location.protocol + "//bothelp.io",
+        o = document.createElement("script");
+      o.type = "text/javascript", o.async = !0, o.src = t + "/widget-folder/widget-page.js", o.onload = function() {
+        new BhWidgetPage.init(e)
+      };
+      var n = document.getElementsByTagName("script")[0];
+      n.parentNode.insertBefore(o, n)
+    }();
+  </script>
+  <!-- /Bothelp.io widget -->
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
