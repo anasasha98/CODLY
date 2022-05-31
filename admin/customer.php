@@ -62,7 +62,7 @@ function filterTable($query)
                 <form method="post">
                     <div class="active-cyan-4 mb-4">
                         <input class="form-control" type="text" placeholder="Filter for Customer" name="valueToSearch" aria-label="Search">
-                        <button type="submit" name="search" class="btn btn-outline-primary">Filter</button>
+                        <button type="submit" name="search" class="btn btn-outline-primary">Search</button>
                     </div>
                 </form>
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
