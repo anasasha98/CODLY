@@ -40,9 +40,18 @@ $email = $_SESSION['email'];
                         <?php
                     }
                     ?>
-                      <div class="form-group">
-                        <input class="form-control" type="email" name="email1" placeholder="re-enter your email" required value="<?php $email ?>">
+                      <!-- <div class="form-group">
+                        <input class="form-control" type="email" name="email1" placeholder=" your email" required value="<?php $email ?>">
                      
+                    </div> -->
+                    <div >
+                      
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="username" class="form-control" id="username" required placeholder="Username">
+                        <div class="invalid-feedback">Please enter your username.</div>
+                      </div>
+                      <br>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="password" name="password" placeholder="Create new password" required >

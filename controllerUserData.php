@@ -1,6 +1,7 @@
 <?php 
 session_start();
-require "connection.php";
+
+include 'forms/connection.php';
 
 $email = "";
 $name = "";
@@ -31,23 +32,30 @@ $errors = array();
     }
 
     //if user click check reset otp button
-    
+ 
 
     //if user click change password button
     if(isset($_POST['change-password'])){
         $_SESSION['info'] = "";
+        $username = $_POST['username'];
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
         if($password !== $cpassword){
             $errors['password'] = "Confirm password not matched!";
         }else{
+            $q = "SELECT * FROM customer WHERE customerusername = '$username' ";
+            $r = mysqli_query($con, $q);
+            if (mysqli_num_rows($r) == 1) {
+              $_SESSION['username'] = $username;
+              $_SESSION['success'] = "You are now logged in";
+              
             $email1=$_POST['email1'];
             $email = $fetch_data['email'];
             // $email = $_SESSION['email']; 
             
             //getting this email using session
             $encpass = password_hash($password, PASSWORD_BCRYPT);
-            $update_pass = "UPDATE customer SET  password = '$password' WHERE email = '$email1'";
+            $update_pass = "UPDATE customer SET  password = '$password' WHERE customerusername = '$username'";
             $run_query = mysqli_query($con, $update_pass);
             if($run_query){
                 $info = "Your password changed. Now you can login with your new password.";
@@ -57,7 +65,16 @@ $errors = array();
                 $errors['db-error'] = "Failed to change your password!";
             }
         
+            
+            } else {
+          
+              echo '<script language="javascript">';
+              echo 'alert("Wrong username")';
+              echo '</script>';
+            }
+
     }
+   
 }
 
  
