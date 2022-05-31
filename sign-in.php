@@ -91,7 +91,9 @@ if (isset($_POST['submitcustomer'])) {
               <div class="d-flex justify-content-center py-4">
                 <a href="index.php">
 
-                  <span class="d-none d-lg-block">Codly</span>
+                  <span class="d-none d-lg-block">
+                    <img src="assets/img/logo.png" alt="Codly logo" width="140px" style="margin-top: -30px; margin-bottom: -8px;">
+                  </span>
                 </a>
               </div>
 
@@ -123,14 +125,14 @@ if (isset($_POST['submitcustomer'])) {
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
                     <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
-<br>
+                    <br>
                     <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="submitcaptain" id="submitcaptain">Sign in as a Captain</button>
                     <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="submitcustomer" id="submitcustomer">Sign in as a Customer</button>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="sign-up.php">Create an account</a></p>
                     </div>
                   </form>
-                
+
 
                 </div>
               </div>
