@@ -73,7 +73,39 @@ if (isset($_POST['submitcustomer'])) {
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" />
 
+  <style>
+    body {
+      color: #6e6b6b;
+    }
 
+    .btn-info {
+      color: #4e4e4e;
+      background-color: #98dcf3;
+      border-color: #98dcf3;
+    }
+
+    .btn-info:hover {
+      color: #4e4e4e;
+      background-color: #85ebff;
+      border-color: #85ebff;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #23aaf3;
+      border-color: #23aaf3;
+    }
+
+    .btn-primary:hover {
+      color: #fff;
+      background-color: #3195cb;
+      border-color: #3195cb;
+    }
+
+    .card {
+      border: 1px solid rgb(203 210 213);
+    }
+  </style>
 
 
 </head>
@@ -88,20 +120,17 @@ if (isset($_POST['submitcustomer'])) {
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="index.php">
-
-                  <span class="d-none d-lg-block">
-                    <img src="assets/img/logo.png" alt="Codly logo" width="140px" style="margin-top: -30px; margin-bottom: -8px;">
-                  </span>
-                </a>
-              </div>
-
-
-
               <div class="card mb-3">
 
-                <div class="card-body">
+                <div class="card-body" style="padding-top: 40px;">
+
+                  <div class="d-flex justify-content-center ">
+                    <a href="index.php">
+                      <center>
+                        <img src="assets/img/logo.png" alt="Codly logo" width="50px" style="margin-top: -30px; margin-bottom: -8px; ">
+                      </center>
+                    </a>
+                  </div>
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Sign in to Your Account</h5>
@@ -124,10 +153,10 @@ if (isset($_POST['submitcustomer'])) {
                       <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
-                    <div class="link forget-pass text-left"><a href="forgot-password.php">Forgot password?</a></div>
+                    <div class="link forget-pass text-left"><a href="forgot-password.php"><small>Forgot password?</small></a></div>
                     <br>
-                    <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="submitcaptain" id="submitcaptain">Sign in as a Captain</button>
                     <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="submitcustomer" id="submitcustomer">Sign in as a Customer</button>
+                    <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="submitcaptain" id="submitcaptain">Sign in as a Captain</button>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="sign-up.php">Create an account</a></p>
                     </div>

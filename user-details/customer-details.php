@@ -68,9 +68,32 @@ if (isset($_POST['submit'])) {
   <link rel="icon" type="image/x-icon" href="../admin/assets/img/favicon.png" />
   <script data-search-pseudo-elements defer src="../admin/js/all.min.js"></script>
   <script src="../admin/js/feather.min.js"></script>
+
+  <style>
+    body {
+      color: #6e6b6b;
+      background-color: #397cab;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #44a6eb;
+      border-color: #44a6eb;
+    }
+
+    .btn-primary:hover {
+      background-color: #3476a5;
+      border-color: #3476a5;
+    }
+
+    .card {
+      border: 1px solid rgb(203 210 213);
+    }
+  </style>
+
 </head>
 
-<body class="bg-primary">
+<body>
   <div id="layoutAuthentication">
     <div id="layoutAuthentication_content">
       <main>
@@ -79,7 +102,7 @@ if (isset($_POST['submit'])) {
             <div class="col-lg-7">
               <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header justify-content-center">
-                  <h3 class="font-weight-light my-4">Customer SignUp Detail</h3>
+                  <h3 class="font-weight-light my-4">Customer Sign Up Details</h3>
                 </div>
                 <div class="card-body">
                   <form method="post">
@@ -114,11 +137,11 @@ if (isset($_POST['submit'])) {
 
 
                 </div>
-                <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Customer Captain Account</button></div>
+                <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Create Customer Account</button></div>
                 </form>
               </div>
               <div class="card-footer text-center">
-                <div class="small"><a href="sign-in.php" style="color: #F9F5EC;">Have an account? Go to signin</a></div>
+                <div class="small"><a href="../sign-in.php" style="color: #F9F5EC;">Have an account? Go to sign in</a></div>
               </div>
             </div>
           </div>

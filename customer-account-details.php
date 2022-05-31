@@ -1,6 +1,6 @@
 <?php
 include './forms/connection.php';
-// session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -125,10 +125,10 @@ include './forms/connection.php';
   <!-- ===== Customer Account Details ===== -->
   <?php
   $customerusername = 'mohammed_ahmed';
+  $_SESSION['cusview'] = $customerusername;
   // get customer username from previos page
   if (isset($_POST['customerusername'])) {
     $customerusername = $_POST['customerusername'];
-    $_SESSION['cusview'] = $customerusername;
   } else {
     if (isset($_SESSION['cusview'])) {
       $customerusername = $_SESSION['cusview'];
@@ -153,7 +153,7 @@ include './forms/connection.php';
           <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="#">Profile</a>
             <a class="nav-link" href="customer-security-page.php?customerusername=<?php echo $customerusername; ?>">Security</a>
-            <a class="nav-link" href="purchase.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
+            <a class="nav-link" href="purchase-user.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 

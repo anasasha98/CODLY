@@ -149,10 +149,8 @@ session_start();
     <div class="container-xl px-4 mt-4">
       <!-- Account page navigation-->
       <nav class="nav nav-borders">
-        <a class="nav-link  ms-0" href="captain-account-details.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
-        <!-- <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a> -->
-        <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
-        <!-- <a class="nav-link" href="add-services.php?captainusername=<?php echo $captainusername; ?>">My serivce</a> -->
+        <a class="nav-link  ms-0" href="customer-account-details.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
+        <a class="nav-link" href="customer-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
         <a class="nav-link active" href="#">Purchased Service</a>
       </nav>
       <hr class="mt-0 mb-4">
@@ -218,7 +216,7 @@ session_start();
 
                       <td align="center">
                         <a href="complaint.php" class="btn btn-danger "><span>click</span></a>
-                      
+
 
                       </td>
                       <td>

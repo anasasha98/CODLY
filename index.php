@@ -54,7 +54,7 @@ include './forms/connection.php';
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
           <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>

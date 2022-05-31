@@ -185,7 +185,7 @@ if (isset($_POST['submit'])) {
         <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a>
         <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
         <a class="nav-link active" href="#">My serivce</a>
-        <a class="nav-link" href="purchase.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+        <a class="nav-link" href="purchase-captain.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
       </nav>
       <hr class="mt-0 mb-4">
 
@@ -202,88 +202,86 @@ if (isset($_POST['submit'])) {
       </div>
 
       <!--Start Form-->
-      <div class="container-fluid mt-n10">
-        <div class="card mb-4">
-          <div class="card-header">Create New Service</div>
-          <div class="card-body">
-            <form method="post">
-              <div class="form-group">
-                <label for="post-title">Service Title:</label>
-                <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" />
-              </div>
+      <div class="card mb-4">
+        <div class="card-header">Create New Service</div>
+        <div class="card-body">
+          <form method="post">
+            <div class="form-group">
+              <label for="post-title">Service Title:</label>
+              <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" />
+            </div>
 
-              <select class="selectpicker" name="service">
-                <optgroup label="Design" name="design" id="design">
-                  <option value="design1">UX/UI Design</option>
-                  <option value="design2">Graphic Designers</option>
-                  <option value="design3">Illustration Design</option>
-                  <option value="design4">Photoshop</option>
-                  <option value="design5">Inerior Design</option>
+            <select class="selectpicker" name="service">
+              <optgroup label="Design" name="design" id="design">
+                <option value="design1">UX/UI Design</option>
+                <option value="design2">Graphic Designers</option>
+                <option value="design3">Illustration Design</option>
+                <option value="design4">Photoshop</option>
+                <option value="design5">Inerior Design</option>
 
-                  <option value="design5">Video Editing</option>
-                  <option value="design7">Art Designers</option>
-                  <option value="design8">Motion Design</option>
-                </optgroup>
-                <optgroup label="Design Logo" name="designlogo">
-                  <option value="designlogo1">Design Logo1</option>
+                <option value="design5">Video Editing</option>
+                <option value="design7">Art Designers</option>
+                <option value="design8">Motion Design</option>
+              </optgroup>
+              <optgroup label="Design Logo" name="designlogo">
+                <option value="designlogo1">Design Logo1</option>
 
 
-                </optgroup>
-                <optgroup label="Data" name="data">
-                  <option value="data1">data1</option>
+              </optgroup>
+              <optgroup label="Data" name="data">
+                <option value="data1">data1</option>
 
-                </optgroup>
-                <optgroup label="Graphic" name="graphic">
-                  <option value="graphic1">Graphic1</option>
+              </optgroup>
+              <optgroup label="Graphic" name="graphic">
+                <option value="graphic1">Graphic1</option>
 
-                </optgroup>
-                <optgroup label="WordPress" name="wordpress">
-                  <option value="wordpress1">WordPress</option>
+              </optgroup>
+              <optgroup label="WordPress" name="wordpress">
+                <option value="wordpress1">WordPress</option>
 
-                </optgroup>
-                <optgroup label="Development" name="development">
-                  <option value="development1">Development</option>
+              </optgroup>
+              <optgroup label="Development" name="development">
+                <option value="development1">Development</option>
 
-                </optgroup>
-                <optgroup label="Business" name="business">
-                  <option value="business1">Marketing</option>
+              </optgroup>
+              <optgroup label="Business" name="business">
+                <option value="business1">Marketing</option>
 
-                </optgroup>
-                <optgroup label="Game Art" name="gameart">
-                  <option value="gameart1">Game Animation</option>
+              </optgroup>
+              <optgroup label="Game Art" name="gameart">
+                <option value="gameart1">Game Animation</option>
 
-                </optgroup>
-              </select>
+              </optgroup>
+            </select>
 
-              <div class="form-group">
-                <label for="post-title">Choose photo:</label>
-                <input class="form-control" id="post-title" type="file" name="image1" />
-              </div>
+            <div class="form-group">
+              <label for="post-title">Choose photo:</label>
+              <input class="form-control" id="post-title" type="file" name="image1" />
+            </div>
 
-              <div class="form-group">
-                <label for="post-content">Service Details:</label>
-                <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails"></textarea>
-              </div>
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
-                <input type="text" class="form-control" name="tag1">
-              </div>
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
-                <input type="text" class="form-control" name="tag2">
-              </div>
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
-                <input type="text" class="form-control" name="tag3">
-              </div>
-              <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
-                <input type="text" class="form-control" name="tag4">
-              </div>
-          </div>
-          <button class="btn btn-primary mr-2 my-1" type="button" name="submit">Post Service Now</button>
-          </form>
+            <div class="form-group">
+              <label for="post-content">Service Details:</label>
+              <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails"></textarea>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
+              <input type="text" class="form-control" name="tag1">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
+              <input type="text" class="form-control" name="tag2">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
+              <input type="text" class="form-control" name="tag3">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
+              <input type="text" class="form-control" name="tag4">
+            </div>
         </div>
+        <button class="btn btn-primary mr-2 my-1" type="button" name="submit">Post Service Now</button>
+        </form>
       </div>
       <!--End Form-->
 

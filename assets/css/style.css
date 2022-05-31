@@ -1945,7 +1945,7 @@ font-size: 40px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
-  background: #5a5af3;
+  background: #44a6eb;
   color: #fff;
   border-radius: 50px;
   width: 48px;
@@ -1959,7 +1959,7 @@ font-size: 40px;
   font-size: 36px;
   display: block;
   font-weight: 600;
-  color: #0c0ca8;
+  color: #3476a5;
 }
 
 .counts .count-box p {

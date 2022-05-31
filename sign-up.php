@@ -38,6 +38,38 @@ if (isset($_POST['signupCustomer'])) {
   <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 
+<style>
+  body {
+    color: #6e6b6b;
+  }
+
+  .btn-info {
+    color: #4e4e4e;
+    background-color: #98dcf3;
+    border-color: #98dcf3;
+  }
+
+  .btn-info:hover {
+    background-color: #85ebff;
+    border-color: #85ebff;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #23aaf3;
+    border-color: #23aaf3;
+  }
+
+  .btn-primary:hover {
+    background-color: #3195cb;
+    border-color: #3195cb;
+  }
+
+  .card {
+    border: 1px solid rgb(203 210 213);
+  }
+</style>
+
 <body>
 
   <main>
@@ -47,57 +79,42 @@ if (isset($_POST['signupCustomer'])) {
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="index.php">
-
-                  <span class="d-none d-lg-block">
-                    <img src="assets/img/logo.png" alt="Codly logo" width="140px" style="margin-top: -25px;">
-                  </span>
-                </a>
-              </div><!-- End Logo -->
-
-
-
               <div class="card mb-3">
 
-                <div class="card-body">
+                <div class="card-body" style="padding-top: 40px;">
+
+                  <div class="d-flex justify-content-center">
+                    <a href="index.php">
+                      <center>
+                        <img src="assets/img/logo.png" alt="Codly logo" width="50px" style="margin-top: -30px; margin-bottom: -8px; ">
+                      </center>
+                    </a>
+                  </div>
+                  <!-- End Logo -->
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Sign Up</h5>
-
+                    <h5 class="card-title text-center pb-0 fs-4">Sign up to new Account</h5>
+                    <p class="text-center small"></p>
                   </div>
 
                   <form class="row g-3 needs-validation" method="post">
 
-
-
-
-
-
-
-                    <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="signupCaptain" id="signupCaptain">Sign Up as a Captain</button>
                     <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="signupCustomer" id="signupCustomer">Sign Up as a Customer</button>
+                    <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="signupCaptain" id="signupCaptain">Sign Up as a Captain</button>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="sign-in.php">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="sign-in.php">Sign in</a></p>
                     </div>
                   </form>
 
-
                 </div>
               </div>
-
-              </form>
 
             </div>
           </div>
 
 
         </div>
-    </div>
-    </div>
-
-    </section>
-
+      </section>
     </div>
   </main><!-- End #main -->
 

@@ -1,6 +1,6 @@
 <?php
 include './forms/connection.php';
-// session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
