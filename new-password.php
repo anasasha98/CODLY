@@ -11,6 +11,7 @@ $email = $_SESSION['email'];
     <title>Create a New Password</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="container">
@@ -66,9 +67,10 @@ $email = $_SESSION['email'];
     
                     </div>
                 </form>
+               
             </div>
         </div>
     </div>
-    
+      
 </body>
 </html>
