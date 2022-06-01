@@ -326,8 +326,9 @@ include './forms/connection.php';
               Al-Hussein Bin Talal University students <br>
               Ma'an <br>
               Jordan <br><br>
-              <strong>Phone:</strong> 060001<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> <a href="tel:+962 32179000">+962 32179000</a><br>
+              <strong>Email:</strong> <a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a><br>
+
             </p>
           </div>
 
@@ -338,7 +339,7 @@ include './forms/connection.php';
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
+              <li><i class="bx bx-chevron-right"></i> <a href="term.html">Term of service</a></li>
             </ul>
           </div>
 

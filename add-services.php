@@ -67,9 +67,6 @@ if (isset($_POST['submit'])) {
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" />
-
   <!-- Contact Us CSS File -->
   <link rel="stylesheet" href="assets/css/contact-us.css" />
   <link rel="stylesheet" href="admin/css/styles.css" />
@@ -83,6 +80,9 @@ if (isset($_POST['submit'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
 
   <script>
     if (window.history.replaceState) {
@@ -184,8 +184,9 @@ if (isset($_POST['submit'])) {
         <a class="nav-link  ms-0" href="captain-account-details.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
         <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a>
         <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
-        <a class="nav-link active" href="#">My serivce</a>
-        <a class="nav-link" href="purchase-captain.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+        <a class="nav-link active" href="#">Publish serivce</a>
+        <a class="nav-link" href="purchase-user2.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+        <a class="nav-link" href="purchase-captain.php?captainusername=<?php echo $captainusername; ?>">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
 
@@ -208,10 +209,10 @@ if (isset($_POST['submit'])) {
           <form method="post">
             <div class="form-group">
               <label for="post-title">Service Title:</label>
-              <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" />
+              <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" required />
             </div>
 
-            <select class="selectpicker" name="service">
+            <select class="selectpicker" name="service" required style="margin: 5px 0 15px 0;">
               <optgroup label="Design" name="design" id="design">
                 <option value="design1">UX/UI Design</option>
                 <option value="design2">Graphic Designers</option>
@@ -256,12 +257,12 @@ if (isset($_POST['submit'])) {
 
             <div class="form-group">
               <label for="post-title">Choose photo:</label>
-              <input class="form-control" id="post-title" type="file" name="image1" />
+              <input class="form-control" id="post-title" type="file" name="image1" required />
             </div>
 
             <div class="form-group">
               <label for="post-content">Service Details:</label>
-              <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails"></textarea>
+              <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails" required></textarea>
             </div>
             <div class="input-group input-group-sm mb-3">
               <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
@@ -280,7 +281,7 @@ if (isset($_POST['submit'])) {
               <input type="text" class="form-control" name="tag4">
             </div>
         </div>
-        <button class="btn btn-primary mr-2 my-1" type="button" name="submit">Post Service Now</button>
+        <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Post Service Now</button>
         </form>
       </div>
       <!--End Form-->
@@ -292,6 +293,7 @@ if (isset($_POST['submit'])) {
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -302,8 +304,9 @@ if (isset($_POST['submit'])) {
               Al-Hussein Bin Talal University students <br>
               Ma'an <br>
               Jordan <br><br>
-              <strong>Phone:</strong> 060001<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> <a href="tel:+962 32179000">+962 32179000</a><br>
+              <strong>Email:</strong> <a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a><br>
+
             </p>
           </div>
 
@@ -314,7 +317,7 @@ if (isset($_POST['submit'])) {
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -330,14 +333,14 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
+            <img src="assets/img/logo.png" alt="codly logo image" height="180px">
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
-            <div class="social-links mt-3">
+            <div class="social-links mt-3" style="padding-left: 10px;">
+              <h4>Our Social Networks</h4>
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 
@@ -346,17 +349,13 @@ if (isset($_POST['submit'])) {
     </div>
 
     <div class="container footer-bottom clearfix">
-
-      <div class="copyright">
-        &copy; Copyright <strong><span>Codly</span></strong>. All Rights Reserved
-      </div>
-
       <div class="credits">
+
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="#">IT Development Team</a>
+        Designed by <a href="">IT Development Team</a>
       </div>
     </div>
   </footer>

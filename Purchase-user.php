@@ -35,8 +35,6 @@ session_start();
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" />
 
   <!-- Contact Us CSS File -->
   <link rel="stylesheet" href="assets/css/contact-us.css" />
@@ -50,6 +48,9 @@ session_start();
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
 
   <script>
     if (window.history.replaceState) {
@@ -265,6 +266,7 @@ session_start();
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -275,8 +277,9 @@ session_start();
               Al-Hussein Bin Talal University students <br>
               Ma'an <br>
               Jordan <br><br>
-              <strong>Phone:</strong> 060001<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> <a href="tel:+962 32179000">+962 32179000</a><br>
+              <strong>Email:</strong> <a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a><br>
+
             </p>
           </div>
 
@@ -287,7 +290,7 @@ session_start();
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -303,14 +306,14 @@ session_start();
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
+            <img src="assets/img/logo.png" alt="codly logo image" height="180px">
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
-            <div class="social-links mt-3">
+            <div class="social-links mt-3" style="padding-left: 10px;">
+              <h4>Our Social Networks</h4>
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 
@@ -319,17 +322,13 @@ session_start();
     </div>
 
     <div class="container footer-bottom clearfix">
-
-      <div class="copyright">
-        &copy; Copyright <strong><span>Codly</span></strong>. All Rights Reserved
-      </div>
-
       <div class="credits">
+
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="#">IT Development Team</a>
+        Designed by <a href="">IT Development Team</a>
       </div>
     </div>
   </footer>

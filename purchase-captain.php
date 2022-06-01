@@ -1,7 +1,7 @@
 <!-- database connection -->
 <?php
 include './forms/connection.php';
- require_once "controllerUserData.php"; 
+require_once "controllerUserData.php";
 // session_start();
 ?>
 
@@ -87,20 +87,12 @@ include './forms/connection.php';
     setTimeout(() => {
       hidewrong();
     }, 4000);
-
-
-    
   </script>
-<style>
-#purchasebutton
-{
-/* background-color:#22dba8;
+  <style>
+    /* #purchasebutton { */
+    /* background-color:#22dba8;
 border-color:#22dba8; */
-
-
-
-}
-
+    /* } */
   </style>
   <link href="assets/css/st.css" rel="stylesheet" />
 </head>
@@ -166,8 +158,9 @@ border-color:#22dba8; */
         <a class="nav-link  ms-0" href="captain-account-details.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
         <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a>
         <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
-        <a class="nav-link" href="add-services.php?captainusername=<?php echo $captainusername; ?>">My serivce</a>
-        <a class="nav-link active" href="#">Purchased Service</a>
+        <a class="nav-link" href="add-services.php?captainusername=<?php echo $captainusername; ?>">Publish serivce</a>
+        <a class="nav-link" href="purchase-user2.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+        <a class="nav-link active" href="#">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
 
@@ -230,21 +223,21 @@ border-color:#22dba8; */
                       <td><?php echo $row['Price'] . '$'; ?></td>
                       <td><?php echo $row['Date']; ?></td>
 
-                      <td align="center" >
+                      <td align="center">
                         <form action="controllerUserData.php" method="POST">
                           <div class="form-group">
-                       <button type="submit" name="update-status"  class="btn btn-success ">
-click
-                       </button>
-                          <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
-                  </div>
-                      </form>
-                   
-   
+                            <button type="submit" name="update-status" class="btn btn-success ">
+                              click
+                            </button>
+                            <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
+                          </div>
+                        </form>
 
 
 
-                       
+
+
+
                       </td>
                       <td>
                         <?php echo $row['Status']; ?>
@@ -292,6 +285,7 @@ click
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -302,8 +296,9 @@ click
               Al-Hussein Bin Talal University students <br>
               Ma'an <br>
               Jordan <br><br>
-              <strong>Phone:</strong> 060001<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> <a href="tel:+962 32179000">+962 32179000</a><br>
+              <strong>Email:</strong> <a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a><br>
+
             </p>
           </div>
 
@@ -314,7 +309,7 @@ click
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -330,14 +325,14 @@ click
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
+            <img src="assets/img/logo.png" alt="codly logo image" height="180px">
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
-            <div class="social-links mt-3">
+            <div class="social-links mt-3" style="padding-left: 10px;">
+              <h4>Our Social Networks</h4>
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 
@@ -346,17 +341,13 @@ click
     </div>
 
     <div class="container footer-bottom clearfix">
-
-      <div class="copyright">
-        &copy; Copyright <strong><span>Codly</span></strong>. All Rights Reserved
-      </div>
-
       <div class="credits">
+
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="#">IT Development Team</a>
+        Designed by <a href="">IT Development Team</a>
       </div>
     </div>
   </footer>

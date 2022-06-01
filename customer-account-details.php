@@ -325,12 +325,12 @@ session_start();
                       <!-- Form Group (first name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputFirstName">First name</label>
-                        <input class="form-control" id="inputFirstName" type="text" name="fname" placeholder="Enter your first name" value="<?php echo $row['firstname']; ?>" maxlength="25">
+                        <input class="form-control" id="inputFirstName" type="text" name="fname" placeholder="Enter your first name" value="<?php echo $row['firstname']; ?>" maxlength="25" required>
                       </div>
                       <!-- Form Group (last name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputLastName">Last name</label>
-                        <input class="form-control" id="inputLastName" type="text" name="lname" placeholder="Enter your last name" value="<?php echo $row['lastname']; ?>" maxlength="25">
+                        <input class="form-control" id="inputLastName" type="text" name="lname" placeholder="Enter your last name" value="<?php echo $row['lastname']; ?>" maxlength="25" required>
                       </div>
                     </div>
                     <!-- Form Group (email address)-->
@@ -340,7 +340,7 @@ session_start();
                     </div>
                     <!-- Form Row-->
                     <div class="row gx-3 mb-3">
-                      <!-- Form Group (phone number)-->
+                      <!-- Form Group (phone number) - (optional)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputPhone">Phone number</label>
                         <input class="form-control" id="inputPhone" type="tel" name="phone" placeholder="Enter your phone number" value="<?php echo $row['phonenumber']; ?>" maxlength="13">
@@ -348,7 +348,7 @@ session_start();
                       <!-- Form Group (birthday)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputBirthday">Date of Birth</label>
-                        <input class="form-control" id="inputBirthday" type="text" name="dob" placeholder="Enter your birthday" value="<?php echo $row['dob']; ?>">
+                        <input class="form-control" id="inputBirthday" type="text" name="dob" placeholder="Enter your birthday" value="<?php echo $row['dob']; ?>" required>
                       </div>
                     </div>
                     <!-- Save changes & Discard button-->
@@ -379,6 +379,7 @@ session_start();
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
+
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -389,8 +390,9 @@ session_start();
               Al-Hussein Bin Talal University students <br>
               Ma'an <br>
               Jordan <br><br>
-              <strong>Phone:</strong> 060001<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> <a href="tel:+962 32179000">+962 32179000</a><br>
+              <strong>Email:</strong> <a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a><br>
+
             </p>
           </div>
 
@@ -401,7 +403,7 @@ session_start();
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -417,14 +419,14 @@ session_start();
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
+            <img src="assets/img/logo.png" alt="codly logo image" height="180px">
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
-            <div class="social-links mt-3">
+            <div class="social-links mt-3" style="padding-left: 10px;">
+              <h4>Our Social Networks</h4>
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 
@@ -433,17 +435,13 @@ session_start();
     </div>
 
     <div class="container footer-bottom clearfix">
-
-      <div class="copyright">
-        &copy; Copyright <strong><span>Codly</span></strong>. All Rights Reserved
-      </div>
-
       <div class="credits">
+
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="#">IT Development Team</a>
+        Designed by <a href="">IT Development Team</a>
       </div>
     </div>
   </footer>
