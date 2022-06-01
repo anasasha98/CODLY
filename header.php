@@ -36,7 +36,7 @@ function cartElement($productimg, $productname, $productprice, $productid){
 
 ?>
 <header id="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark "style=" background: #37517e;">
         <a href="index.php" class="navbar-brand">
             <h3 class="px-5">
                 <i class="fas fa-shopping-basket"></i> Shopping Cart
@@ -63,9 +63,9 @@ function cartElement($productimg, $productname, $productprice, $productid){
 
                         if (isset($_SESSION['cart'])){
                             $count = count($_SESSION['cart']);
-                            echo "<sup><span id=\"cart_count\" class=\"text-info\">$count</span></sup>";
+                            echo "<sup><span id=\"cart_count\" class=\"text-white\">$count</span></sup>";
                         }else{
-                            echo "<sup> <span id=\"cart_count\" class=\"text-info \">0</span></sup>";
+                            echo "<sup> <span id=\"cart_count\" class=\"text-primary \">0</span></sup>";
                         }
 
                         ?>

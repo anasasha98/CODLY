@@ -10,6 +10,9 @@ $errors = array();
 
 
 
+
+
+
     //if user click continue button in forgot password form
     if(isset($_POST['check-email'])){
         $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -38,10 +41,10 @@ $errors = array();
     if(isset($_POST['change-password'])){
         $_SESSION['info'] = "";
         $username = $_POST['username'];
-        $password = mysqli_real_escape_string($con, $_POST['password']);
-        $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
+        $password = mysqli_real_escape_string($con, $_POST['psw']);
+        $cpassword = mysqli_real_escape_string($con, $_POST['psw2']);
         if($password !== $cpassword){
-            $errors['password'] = "Confirm password not matched!";
+            $errors['psw2'] = "Confirm password not matched!";
         }else{
             $q = "SELECT * FROM customer WHERE customerusername = '$username' ";
             $r = mysqli_query($con, $q);
@@ -85,10 +88,11 @@ $errors = array();
 
 
     if(isset($_POST['update-status'])){
-         
-        $sql = "UPDATE purchase_list SET Status ='complete' WHERE  'Purchase ID' = 1";
+   
+        $purchaseId = "SELECT `Purchase ID` FROM `purchase_list`  ";
+        $updateQuery = "UPDATE purchase_list SET Status ='complete' ";
         
-        $run_query = mysqli_query($con, $sql);
+        $run_query = mysqli_query($con, $updateQuery);
       
         if ($run_query) {
      

@@ -68,9 +68,22 @@ if (isset($_POST['remove'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
 
     <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css">  -->
+    <style>
+        #tablecart thead tr{
+text-align="center";
+            color :#37517e;;
+
+
+
+        }
+
+
+
+
+        </style>
 </head>
 <body class="bg-light">
 
@@ -82,67 +95,74 @@ if (isset($_POST['remove'])){
     <div class="row px-5">
         <div class="col-md-7">
             <div class="shopping-cart">
-                <h6>My Cart</h6>
-                <hr>
-
-                <?php
-
-                $total = 0;
-                    if (isset($_POST['add'])){
-                    //    $service-id = array_column($_SESSION['cart'], "service-id");
-
-                        $result = $codly->getData();
-                        while ($row = mysqli_fetch_assoc($result)){
-                            foreach ($service-id as $id){
-                                if ($row['id'] == $id){
-                                    cartElement($row['image'], $row['service-name'],$row['service-price'], $row['id']);
-                                    $total = $total + (int)$row['service-price'];
-                                }
-                            }
-                        }
-                    }else{
-                        echo "<h5>Cart is Empty</h5>";
-                    }
-
-                ?>
+                <!-- <h6>My Cart</h6>
+                <hr> -->
+               
 
             </div>
-        </div>
-        <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
-
-            <div class="pt-4">
-                <h6>PRICE DETAILS</h6>
-                <hr>
-                <div class="row price-details">
-                    <div class="col-md-6">
-                        <?php
-                            if (isset($_SESSION['cart'])){
-                                $count  = count($_SESSION['cart']);
-                                echo "<h6>Price ($count items)</h6>";
-                            }else{
-                                echo "<h6>Price (0 items)</h6>";
-                            }
-                        ?>
-                        <h6>Delivery Charges</h6>
-                        <hr>
-                        <h6>Amount Payable</h6>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>$<?php echo $total; ?></h6>
-                        <h6 class="text-success">FREE</h6>
-                        <hr>
-                        <h6>$<?php
-                            echo $total;
-                            ?></h6>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+      
     </div>
 </div>
 
+<div class="col-25">
+            <div class="container">
+                <br><br>
+              <h4 style="color:#37517e;"> My Cart <span class="price" style="color:#37517e;"><i class="fa fa-shopping-cart"></i> </span></h4>
+            <hr>
+          
+           <!--Start Table-->
+<div class="card mb-4">
+        <div class="card-body">
+          <div class="datatable table-responsive">
+            <table class="table table-bordered table-hover" id="tablecart" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                    <th style="width:30px;" >check</th>
+                  <th align="center">Service Name</th>
+                  <th align="center">Price </th>
+                </tr></thead>
+              <tbody>
+               
 
+                    <tr>
+                     <td> <form><input type="checkbox" ></form></td>
+                      <td align="center"><p><a href="#">Product 1</a> </P></td>
+                      <td align="center"><P> <span class="price">$15</span></p></td>
+                      <!-- <td align="center"></td> -->
+                     </tr>
+                     <tr>
+                     <td> <form><input type="checkbox" ></form></td>
+                      <td align="center"><p><a href="#">Product 1</a> </P></td>
+                      <td align="center"><P> <span class="price">$15</span></p></td>
+                      <!-- <td align="center"></td> -->
+                     </tr>
+                     <tr>
+                     <td> <form><input type="checkbox" ></form></td>
+                      <td align="center"><p><a href="#">Product 1</a> </P></td>
+                      <td align="center"><P> <span class="price">$15</span></p></td>
+                      <!-- <td align="center"></td> -->
+                     </tr>
+                     <tr>
+                     <td> <form><input type="checkbox" ></form></td>
+                      <td align="center"><p><a href="#">Product 1</a> </P></td>
+                      <td align="center"><P> <span class="price">$15</span></p></td>
+                      <!-- <td align="center"></td> -->
+                     </tr>
+                
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--End Table-->
+              <!-- <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+              <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+              <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
+              <hr>
+              <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            </div>
+          </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

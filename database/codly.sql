@@ -296,10 +296,9 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-
+ALTER TABLE `purchase_list` CHANGE `Status` `Status` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT 'uncomplete';
 CREATE TABLE `codly`.`cart` ( `cart_id` INT NOT NULL AUTO_INCREMENT , `customer-username` VARCHAR(20) NOT NULL , `service-id` INT NOT NULL , `service-name` VARCHAR(20) NOT NULL , `service-price` INT NOT NULL , `captain-username` VARCHAR(20) NOT NULL , PRIMARY KEY (`cart_id`)) ENGINE = InnoDB;
 ALTER TABLE `cart` ADD CONSTRAINT `fk-cust-name` FOREIGN KEY (`customer-username`) REFERENCES `customer`(`customerusername`) ON DELETE RESTRICT ON UPDATE RESTRICT;
  ALTER TABLE `cart` ADD CONSTRAINT `fk-sno` FOREIGN KEY (`service-id`) REFERENCES `detailed-service`(`sno`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
  ALTER TABLE `cart` ADD CONSTRAINT `fk-cap-name` FOREIGN KEY (`captain-username`) REFERENCES `captain`(`captainusername`) ON DELETE RESTRICT ON UPDATE RESTRICT;
- ALTER TABLE `cart` ADD `image` VARCHAR(25) NOT NULL AFTER `captain-username`;
- ALTER TABLE `cart` CHANGE `image` `image` BLOB NOT NULL;
+ 

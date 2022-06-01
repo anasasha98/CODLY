@@ -99,10 +99,12 @@ include './forms/connection.php';
               <div class="form-group">
                 <label for="user-name"><b>Customer User name:</b></label>
                 <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..." value="" />
+                <div class="invalid-feedback">Please enter your username.</div>
               </div>
               <div class="form-group">
                 <label for="user-name"><b>Captain User name:</b></label>
                 <input class="form-control" id="captain-user-name" required name="captain-user-name" type="text" placeholder="User name ..." value="" />
+                <div class="invalid-feedback">Please enter your username.</div>
               </div>
               <div class="form-group">
                 <label for="post-content"><b>Complaints Details:</b></label>

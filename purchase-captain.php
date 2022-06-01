@@ -1,6 +1,6 @@
 <!-- database connection -->
 <?php
-include './forms/connection.php';
+// include './forms/connection.php';
 require_once "controllerUserData.php";
 // session_start();
 ?>
@@ -226,7 +226,7 @@ border-color:#22dba8; */
                       <td align="center">
                         <form action="controllerUserData.php" method="POST">
                           <div class="form-group">
-                            <button type="submit" name="update-status" class="btn btn-success ">
+                            <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
                               click
                             </button>
                             <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
