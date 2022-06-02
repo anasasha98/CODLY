@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 01:47 PM
+-- Generation Time: Jun 01, 2022 at 03:02 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -33,7 +33,7 @@ CREATE TABLE `captain` (
   `lastname` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phonenumber` varchar(12) NOT NULL,
+  `phonenumber` varchar(13) NOT NULL,
   `dob` date NOT NULL,
   `major` varchar(25) NOT NULL,
   `bio` varchar(1000) NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE `captain` (
 --
 
 INSERT INTO `captain` (`captainusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`, `major`, `bio`, `attach`, `image`) VALUES
-('ali0Ziadeh', 'Ali', 'ziadeh', '12300123', 'a@gmail.com', '962779880022', '1999-04-25', 'SW', 'Mary Jones is an Administrative Assistant with eight years of experience working alongside the executive team of a Fortune 500 company. Mary specializes in administrative technology and is responsible for educating other employees on using progressive systems and applications, including accounting software, mass communication procedures and organizational apps. Mary is a powerful force in the workplace and uses her positive attitude and tireless energy to encourage others to work hard and succeed. Mary is inspired daily by her husband and their two daughters. In her free time', 'photo_2022-05-13_04-08-05.jpg', 'img_avatar.png'),
-('jamesbond', 'jams', 'bond', 'Aa123456', 'james@gmail.com', '962779271166', '1992-08-20', 'Full-Stack Developer', 'My name is Alex Drysdale and I am a Junior Web Developer for Oswald Technologies. I am an accomplished coder and programmer, and I enjoy using my skills to contribute to the exciting technological advances that happen every day at Oswald Tech. I graduated from the California Institute of Technology in 2016 with a Bachelor\'s Degree in Software Development. While in school, I earned the 2015 Edmund Gains Award for my exemplary academic performance and leadership skills.', 'icons8-facebook-240.webp', 'car-1.jpg');
+('ali0Ziadeh', 'Ali', 'ziadeh', 'Aa123000', 'a@gmail.com', '+962779880411', '2016-06-01', 'SW', 'Mary Jones is an Administrative Assistant with eight years of experience working alongside the executive team of a Fortune 500 company. Mary specializes in administrative technology and is responsible for educating other employees on using progressive systems and applications, including accounting software, mass communication procedures and organizational apps. Mary is a powerful force in the workplace and uses her positive attitude and tireless', 'Full_Stack_Developer.JPG', 'img_avatar.png'),
+('jamesbond', 'jams', 'bond', 'Aa123456', 'james@gmail.com', '+962779271166', '1992-08-20', 'Full-Stack Developer', 'My name is Alex Drysdale and I am a Junior Web Developer for Oswald Technologies. I am an accomplished coder and programmer, and I enjoy using my skills to contribute to the exciting technological advances that happen every day at Oswald Tech. I graduated from the California Institute of Technology in 2016 with a Bachelor\'s Degree in Software Development. While in school, I earned the 2015 Edmund Gains Award for my exemplary academic performance and leadership skills.', 'icons8-facebook-240.webp', 'car-1.jpg');
 
 -- --------------------------------------------------------
 
@@ -57,8 +57,8 @@ INSERT INTO `captain` (`captainusername`, `firstname`, `lastname`, `password`, `
 
 CREATE TABLE `complaint-user` (
   `complaint-id` int(11) NOT NULL,
-  `customer-username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `captin-username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `customer-username` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `captin-username` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `complaint-details` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `image` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -68,7 +68,10 @@ CREATE TABLE `complaint-user` (
 --
 
 INSERT INTO `complaint-user` (`complaint-id`, `customer-username`, `captin-username`, `complaint-details`, `image`) VALUES
-(2, 'mohammed', 'ford', 'no receving of the work', 0x69636f6e73382d696e7374616772616d2d3234302e706e67);
+(2, 'mohammed', 'ford', 'no receving of the work', 0x69636f6e73382d696e7374616772616d2d3234302e706e67),
+(3, 'heba', 'jafeer', '.......', ''),
+(4, 'Moahmmed', 'Ali', '', ''),
+(5, 'Moahmmed', 'Ali', 'Ali', '');
 
 -- --------------------------------------------------------
 
@@ -92,7 +95,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`, `image`) VALUES
-('mohammed_ahmed', 'Moh', 'Ahmed', 'Aa123456', 'moh@yahoo.com', '+971507570111', '2002-11-15', 'icons8-instagram-240.png');
+('Anas_asha', 'Anas', 'Asha', 'anas123', 'Anas@gmail.com', '+962', '0000-00-00', ''),
+('mohammed_ahmed', 'Moh', 'Ahmed', '3333', 'moh@yahoo.com', '+971507570111', '2002-11-15', 'good.png');
 
 -- --------------------------------------------------------
 
@@ -260,7 +264,7 @@ ALTER TABLE `service-section`
 -- AUTO_INCREMENT for table `complaint-user`
 --
 ALTER TABLE `complaint-user`
-  MODIFY `complaint-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `complaint-id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `detailed-service`
@@ -294,6 +298,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+<<<<<<< HEAD
 
 
 ALTER TABLE `purchase_list` CHANGE `Status` `Status` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT 'uncomplete';
@@ -302,3 +307,5 @@ ALTER TABLE `cart` ADD CONSTRAINT `fk-cust-name` FOREIGN KEY (`customer-username
  ALTER TABLE `cart` ADD CONSTRAINT `fk-sno` FOREIGN KEY (`service-id`) REFERENCES `detailed-service`(`sno`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
  ALTER TABLE `cart` ADD CONSTRAINT `fk-cap-name` FOREIGN KEY (`captain-username`) REFERENCES `captain`(`captainusername`) ON DELETE RESTRICT ON UPDATE RESTRICT;
  
+=======
+>>>>>>> 275fe916f4fa0e09b61a5ea7673dfe5938f788b9
