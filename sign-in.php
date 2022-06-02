@@ -13,6 +13,7 @@ if (isset($_POST['submitcaptain'])) {
   $results = mysqli_query($con, $query);
   if (mysqli_num_rows($results) == 1) {
     $_SESSION['username'] = $username;
+    $_SESSION['type'] = 'captain';
     $_SESSION['success'] = "You are now logged in";
     header('location: ./index.php');
   } else {
@@ -22,6 +23,7 @@ if (isset($_POST['submitcaptain'])) {
     echo '</script>';
   }
 }
+
 if (isset($_POST['submitcustomer'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -33,6 +35,7 @@ if (isset($_POST['submitcustomer'])) {
   $results = mysqli_query($con, $query);
   if (mysqli_num_rows($results) == 1) {
     $_SESSION['username'] = $username;
+    $_SESSION['type'] = 'customer';
     $_SESSION['success'] = "You are now logged in";
     header('location: index.php');
   } else {
@@ -137,7 +140,7 @@ if (isset($_POST['submitcustomer'])) {
                     <p class="text-center small">Enter your username & password to Sign in</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" method="post">
+                  <form class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
 
                     <div class="col-12">
                       <label for="username" class="form-label">Username</label>
@@ -153,7 +156,7 @@ if (isset($_POST['submitcustomer'])) {
                       <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
-                    <div class="link forget-pass text-left"><a href="forgot-password.php"><small>Forgot password?</small></a></div>
+                    <div class="link forget-pass text-left" style="margin: 0px 0px 5px 0px;"><a href="forgot-password.php"><small>Forgot password?</small></a></div>
                     <br>
                     <button type="submit" class="btn btn-info" class="btn btn-secondary btn-sm" name="submitcustomer" id="submitcustomer">Sign in as a Customer</button>
                     <button type="submit" class="btn btn-primary" class="btn btn-primary btn-sm" name="submitcaptain" id="submitcaptain">Sign in as a Captain</button>

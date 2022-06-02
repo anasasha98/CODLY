@@ -18,6 +18,11 @@ session_start();
   <link href="assets/img/c.png" rel="icon" />
   <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
+  <!-- Phone Number with Country Key -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
@@ -124,15 +129,8 @@ session_start();
 
   <!-- ===== Customer Account Details ===== -->
   <?php
-  $customerusername = 'mohammed_ahmed';
-  $_SESSION['cusview'] = $customerusername;
-  // get customer username from previos page
-  if (isset($_POST['customerusername'])) {
-    $customerusername = $_POST['customerusername'];
-  } else {
-    if (isset($_SESSION['cusview'])) {
-      $customerusername = $_SESSION['cusview'];
-    }
+  if (isset($_SESSION['username'])) {
+    $customerusername = $_SESSION['username'];
   }
   ?>
 
@@ -153,7 +151,7 @@ session_start();
           <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="#">Profile</a>
             <a class="nav-link" href="customer-security-page.php?customerusername=<?php echo $customerusername; ?>">Security</a>
-            <a class="nav-link" href="purchase-user.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
+            <a class="nav-link" href="customer-purchase.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 
@@ -313,7 +311,7 @@ session_start();
               <div class="card mb-4">
                 <div class="card-header">Customer Account Details</div>
                 <div class="card-body">
-                  <form name="form1" method="POST" action="customer-account-details.php" enctype="multipart/form-data">
+                  <form id="login" name="form1" method="POST" action="customer-account-details.php" enctype="multipart/form-data">
                     <!-- Form Group (username)-->
                     <div class="mb-3">
                       <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
@@ -342,13 +340,21 @@ session_start();
                     <div class="row gx-3 mb-3">
                       <!-- Form Group (phone number) - (optional)-->
                       <div class="col-md-6">
-                        <label class="small mb-1" for="inputPhone">Phone number</label>
-                        <input class="form-control" id="inputPhone" type="tel" name="phone" placeholder="Enter your phone number" value="<?php echo $row['phonenumber']; ?>" maxlength="13">
+                        <label class="small mb-1" for="phone">Phone number</label><br>
+                        <input class="form-control" id="phone" type="tel" name="phone" value="<?php echo $row['phonenumber']; ?>" maxlength="13" onchange="process(event)" pattern="[0-9]{12}+" required style="padding-right: 10.125rem;">
                       </div>
+
+                      <script>
+                        const phoneInputField = document.querySelector(" #phone");
+                        const phoneInput = window.intlTelInput(phoneInputField, {
+                          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                        });
+                      </script>
+
                       <!-- Form Group (birthday)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputBirthday">Date of Birth</label>
-                        <input class="form-control" id="inputBirthday" type="text" name="dob" placeholder="Enter your birthday" value="<?php echo $row['dob']; ?>" required>
+                        <input class="form-control" id="inputBirthday" type="text" name="dob" placeholder="Enter your birthday" value="<?php echo $row['dob']; ?>" min="1900-01-01" max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" required>
                       </div>
                     </div>
                     <!-- Save changes & Discard button-->
@@ -423,10 +429,10 @@ session_start();
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
             <div class="social-links mt-3" style="padding-left: 10px;">
               <h4>Our Social Networks</h4>
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 
@@ -446,6 +452,47 @@ session_start();
     </div>
   </footer>
   <!-- End Footer -->
+
+
+  <!-- Phone number with Country Key -->
+  <!-- Start script -->
+
+  <script>
+    function process(event) {
+      event.preventDefault();
+
+      const phoneNumber = phoneInput.getNumber();
+
+      document.getElementById("phone").value = `${phoneNumber}`;
+    }
+  </script>
+
+  <script>
+    function getIp(callback) {
+      fetch('https://ipinfo.io/json?token=<your token>', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then((resp) => resp.json())
+        .catch(() => {
+          return {
+            country: 'us',
+          };
+        })
+        .then((resp) => callback(resp.country));
+    }
+  </script>
+
+  <script>
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      preferredCountries: ["us", "co", "in", "de"],
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+  </script>
+
+  <!-- End script -->
+
 
   <style type="text/css">
     body {

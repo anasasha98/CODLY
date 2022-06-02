@@ -97,29 +97,48 @@ session_start();
 
       <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
 
-      <!-- <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
+          <!-- <li><a class="nav-link scrollto" href="index.php">Home</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="about.php#about">About</a></li> -->
 
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
               <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
             </ul>
-          </li>
+          </li> -->
 
-          <li><a class="nav-link scrollto" href="team.php#team">Success stories</a></li>
-          <li><a class="nav-link  active scrollto" href="index.php#ser">Services</a></li>
+          <!-- <li><a class="nav-link scrollto" href="team.php#team">Success stories</a></li> -->
+          <!-- <li><a class="nav-link  active scrollto" href="index.php#ser">Services</a></li> -->
 
-          <li><a class="nav-link scrollto" href="contact.php#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="sign-in.php">Sign in</a></li>
+          <!-- <li><a class="nav-link scrollto" href="contact.php#contact">Contact</a></li> -->
+
+          <?php
+          if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+          ?>
+            <li class="dropdown">
+              <a href="<?php echo $_SESSION['type'] ?>-account-details.php"><span><?php echo $username; ?></span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="logout.php">Logout</a></li>
+              </ul>
+            </li>
+          <?php
+          } else {
+          ?>
+            <li>
+              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav> -->
+      </nav>
       <!-- .navbar -->
     </div>
   </header>
@@ -128,15 +147,8 @@ session_start();
 
   <!-- ===== Captain Account Details ===== -->
   <?php
-  $captainusername = 'ali0Ziadeh';
-  // get captain username from previos page
-  if (isset($_GET['captainusername'])) {
-    $captainusername = $_GET['captainusername'];
-    $_SESSION['capview'] = $captainusername;
-  } else {
-    if (isset($_SESSION['capview'])) {
-      $captainusername = $_SESSION['capview'];
-    }
+  if (isset($_SESSION['username'])) {
+    $captainusername = $_SESSION['username'];
   }
   ?>
 
@@ -146,12 +158,12 @@ session_start();
     <div class="container-xl px-4 mt-4">
       <!-- Account page navigation-->
       <nav class="nav nav-borders">
-        <a class="nav-link  ms-0" href="captain-account-details.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
-        <a class="nav-link" href="captain-about-page.php?captainusername=<?php echo $captainusername; ?>">About</a>
-        <a class="nav-link" href="captain-security-page.php?captainusername=<?php echo $captainusername; ?>">Security</a>
-        <a class="nav-link" href="add-services.php?captainusername=<?php echo $captainusername; ?>">Publish serivce</a>
+        <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
+        <a class="nav-link" href="captain-about-page.php">About</a>
+        <a class="nav-link" href="captain-security-page.php">Security</a>
+        <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
         <a class="nav-link active" href="#">Purchased Service</a>
-        <a class="nav-link" href="captain-work.php?captainusername=<?php echo $captainusername; ?>">My Work</a>
+        <a class="nav-link" href="captain-work.php">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
 
@@ -309,10 +321,10 @@ session_start();
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
             <div class="social-links mt-3" style="padding-left: 10px;">
               <h4>Our Social Networks</h4>
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 

@@ -137,8 +137,8 @@ include './forms/connection.php';
                   <ul>
                     <li><strong>Category</strong>: <?php
                                                     $emp_id = $Get['emp_id'];
-                                                   
-                                                    $sername = mysqli_fetch_array(mysqli_query($con, " SELECT * FROM `detailed-service` WHERE `sno` = (SELECT `sno` FROM `service-provider` WHERE `emp_id` = 3 )") , MYSQLI_ASSOC);
+
+                                                    $sername = mysqli_fetch_array(mysqli_query($con, " SELECT * FROM `detailed-service` WHERE `sno` = (SELECT `sno` FROM `service-provider` WHERE `emp_id` = 3 )"), MYSQLI_ASSOC);
                                                     echo $sername['name'];
                                                     ?></li>
                     <li><strong>Provider</strong>:
@@ -167,7 +167,7 @@ include './forms/connection.php';
                   <h2>This is Discribtion for the service</h2>
                   <p>
                     <?php
-                    echo $row['job_desc'];?>
+                    echo $row['job_desc']; ?>
                   </p>
                 </div>
               </div>

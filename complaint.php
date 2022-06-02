@@ -99,12 +99,10 @@ include './forms/connection.php';
               <div class="form-group">
                 <label for="user-name"><b>Customer User name:</b></label>
                 <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..." value="" />
-                <div class="invalid-feedback">Please enter your username.</div>
               </div>
               <div class="form-group">
                 <label for="user-name"><b>Captain User name:</b></label>
                 <input class="form-control" id="captain-user-name" required name="captain-user-name" type="text" placeholder="User name ..." value="" />
-                <div class="invalid-feedback">Please enter your username.</div>
               </div>
               <div class="form-group">
                 <label for="post-content"><b>Complaints Details:</b></label>
@@ -187,10 +185,10 @@ include './forms/connection.php';
               <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
               <div class="social-links mt-3" style="padding-left: 10px;">
                 <h4>Our Social Networks</h4>
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
               </div>
             </div>
 

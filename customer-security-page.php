@@ -129,23 +129,16 @@ session_start();
     <div class="container-xl px-4 mt-4">
 
       <?php
-      // $customerusername = 'mohammed_ahmed';
-      // // get customer username from previos page
-      // if (isset($_GET['customerusername'])) {
-      //   $customerusername = $_GET['customerusername'];
-      //   $_SESSION['cusview'] = $customerusername;
-      // } else {
-      if (isset($_SESSION['cusview'])) {
-        $customerusername = $_SESSION['cusview'];
+      if (isset($_SESSION['username'])) {
+        $customerusername = $_SESSION['username'];
       }
-      // }
       ?>
 
       <!-- Account page navigation-->
       <nav class="nav nav-borders">
         <a class="nav-link  ms-0" href="customer-account-details.php?customerusername=<?php echo $customerusername; ?>">Profile</a>
         <a class="nav-link active" href="#">Security</a>
-        <a class="nav-link" href="Purchase-user.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
+        <a class="nav-link" href="customer-purchase.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
       </nav>
       <hr class="mt-0 mb-4">
 
@@ -320,10 +313,10 @@ session_start();
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
             <div class="social-links mt-3" style="padding-left: 10px;">
               <h4>Our Social Networks</h4>
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 

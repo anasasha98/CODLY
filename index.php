@@ -1,5 +1,7 @@
 <?php
+session_start();
 include './forms/connection.php';
+// echo $username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -88,9 +90,33 @@ include './forms/connection.php';
           <li>
             <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
           </li>
-          <li>
-            <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-          </li>
+          <?php
+          if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+          ?>
+            <li class="dropdown">
+              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;<?php echo $username; ?></span></a>
+              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
+              <ul>
+                <li><a href="captain-account-details.php">Profile</a></li>
+                <li><a href="captain-about-page">About</a></li>
+                <li><a href="captain-security-page.php">Security</a></li>
+                <li><a href="captain-add-service.php">Publish serivce</a></li>
+                <li><a href="captain-purchase.php">Purchased Service</a></li>
+                <li><a href="captain-work.php">My Work</a></li>
+                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
+              </ul>
+            </li>
+
+          <?php
+          } else {
+          ?>
+            <li>
+              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -109,7 +135,22 @@ include './forms/connection.php';
             Post a job for free and connect with independent talent today.
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+
+            <?php
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $type = $_SESSION['type'];
+            ?>
+              <a class="btn-get-started scrollto" style="cursor: pointer;" href="#ser"><span>Get Started</span></a>
+            <?php
+            } else {
+            ?>
+              <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+            <?php
+            }
+
+            ?>
+
             <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
               <i class="bi bi-play-circle"></i>
               <span>Watch Video</span>
@@ -359,10 +400,10 @@ include './forms/connection.php';
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
             <div class="social-links mt-3" style="padding-left: 10px;">
               <h4>Our Social Networks</h4>
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 
