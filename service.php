@@ -221,7 +221,7 @@ include './forms/connection.php';
                       </div>
                       <!--/.Service Provider-review-->
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
-                      <form action="addcart.php" method="POST"  >
+                      <form action="cart.php" method="POST"  >
                       
                   
                         
@@ -230,14 +230,7 @@ include './forms/connection.php';
                     </form>
                     </div>
                     <!--/.about-btn-->
-<<<<<<< HEAD
-                   
-=======
-                    <form action="cart.php">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart"> </i>
-                    </form>
->>>>>>> c858743f7492b624d75cafcae28f5ded1832f9b3
+                 
 
                   </div>
                   <!--/.single-package-item-txt-->

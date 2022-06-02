@@ -133,41 +133,6 @@ if (isset($_POST['remove'])) {
       </div>
     </div>
 
-<<<<<<< HEAD
-<div class="col-25">
-            <div class="container">
-                <br><br>
-              <h4 style="color:#37517e;"> My Cart <span class="price" style="color:#37517e;"><i class="fa fa-shopping-cart"></i> </span></h4>
-            <hr>
-          
-           <!--Start Table-->
-<div class="card mb-4">
-        <div class="card-body">
-          <div class="datatable table-responsive">
-            <table class="table table-bordered table-hover" id="tablecart" width="70%" cellspacing="0">
-              <thead>
-                <tr>
-                    <!-- <th style="width:30px;" >check</th> -->
-                  <th >Service Name</th>
-                  <th >Price </th>
-                  <th>Remove  </th>
-                  <th>Pay</th>
-                </tr></thead>
-
-              <tbody>
-                
-              <?php
-              // if (isset($_POST['add'])){
-               $qcart = " SELECT * FROM  `cart` ";
-                $rcart = mysqli_query($con, $qcart);
-            
-               
-                if ($rcart) {
-                  while ($row = mysqli_fetch_array($rcart, MYSQLI_ASSOC)) { ?>
-                    
-      
-                    
-=======
     <div class="col-25">
       <div class="container">
         <br><br>
@@ -181,38 +146,21 @@ if (isset($_POST['remove'])) {
               <table class="table table-bordered table-hover" id="tablecart" width="70%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th style="width:30px;">check</th>
+                    <!-- <th style="width:30px;">check</th> -->
                     <th>Service Name</th>
                     <th>Price </th>
                     <th>Remove </th>
+                  
+                  <th>Pay</th>
                   </tr>
                 </thead>
->>>>>>> c858743f7492b624d75cafcae28f5ded1832f9b3
 
                 <tbody>
 
-<<<<<<< HEAD
-                    <tr>
-                     <!-- <td align="center"> <form><input type="checkbox" id="ch1"></form></td> -->
-                      <td align="center"><?php echo $row['service-name']; ?> </td>
-                      <td align="center"><?php echo $row['service-price']; ?>$</td>
-                      <td align="center"> <input type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="remove"></td>
-                      <td align="center"><a href="payment.php"> <input type="submit"  class="btn btn-success mx-2 btn-hover" value="pay now"></a></td>
-                     </tr>
-                  
-                     <?php   }
-                } 
-                
-              // }
-              ?>
-                
-              </tbody>
-=======
                   <?php
                   // if (isset($_POST['add'])){
                   $qcart = " SELECT * FROM  `cart` ";
                   $rcart = mysqli_query($con, $qcart);
->>>>>>> c858743f7492b624d75cafcae28f5ded1832f9b3
 
 
                   if ($rcart) {
@@ -223,13 +171,13 @@ if (isset($_POST['remove'])) {
 
 
                       <tr>
-                        <td align="center">
-                          <form><input type="checkbox" id="ch1"></form>
-                        </td>
+                        <!-- <td align="center"> -->
+                          <!-- <form><input type="checkbox" id="ch1"></form> -->
+                        <!-- </td> -->
                         <td align="center"><?php echo $row['service-name']; ?> </td>
                         <td align="center"><?php echo $row['service-price']; ?>$</td>
                         <td align="center"> <button type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="<?php $row['cart_id']; ?>">remove</button></td>
-                        <!-- <td align="center"></td> -->
+                        <td align="center"><a href="payment.php"> <input type="submit"  class="btn btn-success mx-2 btn-hover" value="Pay Now"></a></td>
                       </tr>
 
                   <?php   }
@@ -248,19 +196,11 @@ if (isset($_POST['remove'])) {
         <!-- <p><a href="#">Product 2</a> <span class="price">$5</span></p>
               <p><a href="#">Product 3</a> <span class="price">$8</span></p>
               <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
-<<<<<<< HEAD
-              <hr>
-              <!-- <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;" ><b>30$</b></span> -->
-             <!-- <a href="payment.php"> <input type="submit" style="float:right;" class="btn btn-success mx-2 btn-hover" value="Pay Naw"></a> -->
-            </div>
-          </div>
-=======
         <hr>
-        <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;"><b>30$</b></span>
-        <a href="payment.php"> <input type="submit" style="float:right;" class="btn btn-success mx-2 btn-hover" value="Pay Naw"></a>
+        <!-- <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;"><b>30$</b></span> -->
+        
       </div>
     </div>
->>>>>>> c858743f7492b624d75cafcae28f5ded1832f9b3
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
