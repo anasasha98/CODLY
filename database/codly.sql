@@ -309,3 +309,5 @@ ALTER TABLE `cart` ADD CONSTRAINT `fk-cust-name` FOREIGN KEY (`customer-username
  
 =======
 >>>>>>> 275fe916f4fa0e09b61a5ea7673dfe5938f788b9
+ALTER TABLE `cart` DROP `customer-username`;
+ALTER TABLE `detailed-service` ADD `price` INT NOT NULL AFTER `sec-id`;

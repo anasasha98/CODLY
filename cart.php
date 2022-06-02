@@ -3,11 +3,18 @@
 session_start();
 
 include './forms/connection.php';
+// include 'service.php' ;
 // include 'service.php';
 
 
+// if(isset($_POST['add'])){
+// $cartq = $con -> prepare("INSERT INTO `cart` ( `service-id`, `service-name`, `service-price`) value(1004,'fff',20) ") ; 
+// // $cartq -> bind_param("isis" ,    );
+// $resu = mysqli_query($con, $cartq);
 
 
+// SELECT `sno`, `name`, `price` FROM `detailed-service` where sno=1006
+// }
 
 // $total = 0;
 // if (isset($_SESSION['cart'])){
@@ -144,10 +151,11 @@ if (isset($_POST['remove'])){
             <table class="table table-bordered table-hover" id="tablecart" width="70%" cellspacing="0">
               <thead>
                 <tr>
-                    <th style="width:30px;" >check</th>
+                    <!-- <th style="width:30px;" >check</th> -->
                   <th >Service Name</th>
                   <th >Price </th>
                   <th>Remove  </th>
+                  <th>Pay</th>
                 </tr></thead>
 
               <tbody>
@@ -159,18 +167,19 @@ if (isset($_POST['remove'])){
             
                
                 if ($rcart) {
-                  while ($row = mysqli_fetch_array($rcart, MYSQLI_ASSOC)) { 
-                    // $cart-id =(int) $row['cart_id'];
-                    ?>
+                  while ($row = mysqli_fetch_array($rcart, MYSQLI_ASSOC)) { ?>
+                    
+      
+                    
 
                
 
                     <tr>
-                     <td align="center"> <form><input type="checkbox" id="ch1"></form></td>
+                     <!-- <td align="center"> <form><input type="checkbox" id="ch1"></form></td> -->
                       <td align="center"><?php echo $row['service-name']; ?> </td>
                       <td align="center"><?php echo $row['service-price']; ?>$</td>
-                      <td align="center"> <button type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="<?php  $row['cart_id']; ?>">remove</button></td>
-                      <!-- <td align="center"></td> -->
+                      <td align="center"> <input type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="remove"></td>
+                      <td align="center"><a href="payment.php"> <input type="submit"  class="btn btn-success mx-2 btn-hover" value="pay now"></a></td>
                      </tr>
                   
                      <?php   }
@@ -190,8 +199,8 @@ if (isset($_POST['remove'])){
               <p><a href="#">Product 3</a> <span class="price">$8</span></p>
               <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
               <hr>
-              <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;" ><b>30$</b></span>
-             <a href="payment.php"> <input type="submit" style="float:right;" class="btn btn-success mx-2 btn-hover" value="Pay Naw"></a>
+              <!-- <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;" ><b>30$</b></span> -->
+             <!-- <a href="payment.php"> <input type="submit" style="float:right;" class="btn btn-success mx-2 btn-hover" value="Pay Naw"></a> -->
             </div>
           </div>
 

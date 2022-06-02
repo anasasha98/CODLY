@@ -221,12 +221,16 @@ include './forms/connection.php';
                       </div>
                       <!--/.Service Provider-review-->
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
+                      <form action="addcart.php" method="POST"  >
+                      
+                  
+                        
+           
+                      <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
+                    </form>
                     </div>
                     <!--/.about-btn-->
-                    <form action="cart.php" >
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart"> </i>
-                    </form>
+                   
 
                   </div>
                   <!--/.single-package-item-txt-->
