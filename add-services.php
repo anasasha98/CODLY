@@ -6,6 +6,8 @@ if (isset($_POST['submit'])) {
   $servicetitle = $_POST['servicetitle'];
   $service = $_POST['service'];
   $image1 = $_POST['image1'];
+  $image2 = $_POST['image2'];
+  $image3 = $_POST['image3'];
   $servicedetails = $_POST['servicedetails'];
   $tag1 = $_POST['tag1'];
   $tag2 = $_POST['tag2'];
@@ -26,7 +28,7 @@ if (isset($_POST['submit'])) {
   $sql2 = "SELECT MAX(emp_id) FROM `service-provider` WHERE `emp_id` = `emp_id`+1 ";
   $res = mysqli_query($con, $sql2);
   $emp_id = mysqli_fetch_assoc($res);
-  $sql3 = "INSERT INTO `service-provider` VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails' , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1' )";
+  $sql3 = "INSERT INTO `service-provider` VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails' , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1','$image2','$image3' )";
   if (mysqli_query($link, $sql3)) {
     echo '<script language="javascript">';
     echo 'alert("Records added successfully.")';
@@ -258,6 +260,14 @@ if (isset($_POST['submit'])) {
             <div class="form-group">
               <label for="post-title">Choose photo:</label>
               <input class="form-control" id="post-title" type="file" name="image1" required />
+            </div>
+            <div class="form-group">
+              <label for="post-title">Choose photo:</label>
+              <input class="form-control" id="post-title" type="file" name="image2" option />
+            </div>
+            <div class="form-group">
+              <label for="post-title">Choose photo:</label>
+              <input class="form-control" id="post-title" type="file" name="image3" option />
             </div>
 
             <div class="form-group">

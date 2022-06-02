@@ -92,64 +92,87 @@ include './forms/connection.php';
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Portfolio Details Section ======= -->
+
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
+        <?php
 
-        <div class="row gy-4">
+        $emp_id = 3;
+        $counter = 0;
+        $query = " SELECT * FROM `service-provider` WHERE `emp_id` = '$emp_id'   ";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $counter += 1;
+        ?>
+            <div class="row gy-4">
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+              <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                  <div class="swiper-wrapper align-items-center">
 
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-1.jpg" alt="">
-                </div>
+                    <div class="swiper-slide">
+                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image1']) . '" />'; ?>
+                    </div>
 
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-2.jpg" alt="">
-                </div>
+                    <div class="swiper-slide">
+                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image2']) . '" />'; ?>
+                    </div>
+                    <div class="swiper-slide">
+                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image3']) . '" />'; ?>
+                    </div>
 
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-3.jpg" alt="">
-                </div>
 
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>service information</h3>
-              <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Provider</strong>: ASU Company</li>
-                <li><strong>Service Rating</strong>:
-                  <div class="packages-review" style="display: inline-block; margin-bottom: -20px;">
-                    <p>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </p>
+
+
                   </div>
-                </li>
-                <li><strong>Service date</strong>: 01 March, 2020</li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia.
-                Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia
-                accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt
-                eius.
-              </p>
-            </div>
-          </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
 
-        </div>
+              <div class="col-lg-4">
+                <div class="portfolio-info">
+                  <h3>service information</h3>
+                  <ul>
+                    <li><strong>Category</strong>: <?php
+                                                    $emp_id = 3;
+                                                   
+                                                    $sername = mysqli_fetch_array(mysqli_query($con, " SELECT * FROM `detailed-service` WHERE `sno` = (SELECT `sno` FROM `service-provider` WHERE `emp_id` = 3 )") , MYSQLI_ASSOC);
+                                                    echo $sername['name'];
+                                                    ?></li>
+                    <li><strong>Provider</strong>:
+                      <?php
+                      echo $_GET['captainusername'];
+
+
+                      ?>
+
+                    </li>
+                    <li><strong>Service Rating</strong>:
+                      <div class="packages-review" style="display: inline-block; margin-bottom: -20px;">
+                        <p>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </p>
+                      </div>
+                    </li>
+                    <li><strong>Service date</strong>: 01 March, 2020</li>
+                  </ul>
+                </div>
+                <div class="portfolio-description">
+                  <h2>This is Discribtion for the service</h2>
+                  <p>
+                    <?php
+                    echo $row['job_desc'];?>
+                  </p>
+                </div>
+              </div>
+
+            </div>
 
       </div>
     </section><!-- End Portfolio Details Section -->
@@ -215,7 +238,16 @@ include './forms/connection.php';
           </div>
 
         </div>
-
+      <?php
+          }
+        }
+        if ($counter == 0) {
+      ?>
+      <h5 class="h5 pb-4 typo-space-line text-center">
+        <?php echo "❌ result is empty"; ?>
+      </h5>
+    <?php }
+    ?>
       </div>
     </section><!-- End Pricing Section -->
 
