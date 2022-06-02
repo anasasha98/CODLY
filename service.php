@@ -223,7 +223,7 @@ include './forms/connection.php';
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
                     </div>
                     <!--/.about-btn-->
-                    <form action="cart.php">
+                    <form action="cart.php" >
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart"> </i>
                     </form>

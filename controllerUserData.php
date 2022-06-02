@@ -98,11 +98,11 @@ $errors = array();
      
             
             
-            header('Location: purchase-captain.php');
+            header('Location: captain-work.php');
          
         } else {
             $_SESSION['status'] = ' not updated';
-            header('Location: purchase-captain.php');
+            header('Location: captain-work.php');
         }
         // header('Location:purchase-cabtain.php');
       

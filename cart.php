@@ -3,51 +3,76 @@
 session_start();
 
 include './forms/connection.php';
+// include 'service.php';
 
 
 
 
-if (isset($_POST['add'])){
-    //  print_r($_POST['sno']);
-    if(isset($_SESSION['cart'])){
+
+// $total = 0;
+// if (isset($_SESSION['cart'])){
+//     $product_id = array_column($_SESSION['cart'], 'service_id');
+
+   
+//     while ($row = mysqli_fetch_assoc($result)){
+//         foreach ($product_id as $id){
+//             if ($row[''] == $id){
+                
+//                 $total = $total + (int)$row['product_price'];
+//             }
+//         }
+//     }
+// }else{
+//     echo "<h5>Cart is Empty</h5>";
+// }
+
+
+
+
+// add to cart
+// if (isset($_POST['add'])){
+//   require_once ('service.php');
+//   // $ser-id  = $_POST['sno'];
+//   $query = " SELECT * FROM `service-provider` WHERE `sno` =1006";
+//   $result = mysqli_query($con, $query);
+//   if ($result) {
+//     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+//       $CaptainName = $row['ename'];
     
 
-        $item_array_id = array_column($_SESSION['cart'], "service-id");
+//     }}
+//     $query = " SELECT name FROM `detailed-service` WHERE `sno` = 1006 ";
+//     $result = mysqli_query($con, $query);
+//     if ($result) {
 
-        if(in_array($_POST['service-id '], $item_array_id)){
-            echo "<script>alert('Product is already added in the cart..!')</script>";
-            echo "<script>window.location = 'index.php'</script>";
-        }else{
-
-            $count = count($_SESSION['cart']);
-            $item_array = array(
-                'service-id' => $_POST['service-id']
-            );
-
-            $_SESSION['cart'][$count] = $item_array;
-        }
-
-    }else{
-
-        $item_array = array(
-                'service-id' => $_POST['service-id']
-        );
-
-        // Create new session variable
-        $_SESSION['cart'][0] = $item_array;
-        print_r($_SESSION['cart']);
-    }
+//         $servName = $row['name'];
+//       }
   
-}
+
+  
+//   $cartq = $con -> prepare("INSERT INTO `cart` (  `service-id`, `service-name`, `service-price`, `captain-username`) VALUES (?,?,?,?) ") ;
+// $cartq -> bind_param("isis" ,  1006 , 'logo' , 60 , 'heba');
+// $cartq->execute();
+
+
+
+// $cartq->close();
+// $con->close();}
+  
+  // $serName = " SELECT name FROM `detailed-service` WHERE `sno` = 1006";
+ 
+
 
 if (isset($_POST['remove'])){
   if ($_GET['action'] == 'remove'){
-      foreach ($_SESSION['cart'] as $key => $value){
-          if($value["service-id"] == $_GET['id']){
-              unset($_SESSION['cart'][$key]);
+      {
+        $query = "   DELETE FROM `cart` where cart_id = $cart-id ";
+       $result = mysqli_query($con, $query);
+     
+           
               echo "<script>alert('Product has been Removed...!')</script>";
               echo "<script>window.location = 'cart.php'</script>";
-          }
+          
       }
   }
 }
@@ -72,9 +97,10 @@ if (isset($_POST['remove'])){
 
     <!-- <link rel="stylesheet" href="style.css">  -->
     <style>
-        #tablecart thead tr{
-text-align="center";
-            color :#37517e;;
+        #tablecart  thead tr th{
+           /* width:50%; */
+           text-align:center;
+            color :#37517e;
 
 
 
@@ -86,6 +112,7 @@ text-align="center";
         </style>
 </head>
 <body class="bg-light">
+  
 
 <?php
     require_once ('header.php');
@@ -114,40 +141,43 @@ text-align="center";
 <div class="card mb-4">
         <div class="card-body">
           <div class="datatable table-responsive">
-            <table class="table table-bordered table-hover" id="tablecart" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" id="tablecart" width="70%" cellspacing="0">
               <thead>
                 <tr>
                     <th style="width:30px;" >check</th>
-                  <th align="center">Service Name</th>
-                  <th align="center">Price </th>
+                  <th >Service Name</th>
+                  <th >Price </th>
+                  <th>Remove  </th>
                 </tr></thead>
+
               <tbody>
+                
+              <?php
+              // if (isset($_POST['add'])){
+               $qcart = " SELECT * FROM  `cart` ";
+                $rcart = mysqli_query($con, $qcart);
+            
+               
+                if ($rcart) {
+                  while ($row = mysqli_fetch_array($rcart, MYSQLI_ASSOC)) { 
+                    // $cart-id =(int) $row['cart_id'];
+                    ?>
+
                
 
                     <tr>
-                     <td> <form><input type="checkbox" ></form></td>
-                      <td align="center"><p><a href="#">Product 1</a> </P></td>
-                      <td align="center"><P> <span class="price">$15</span></p></td>
+                     <td align="center"> <form><input type="checkbox" id="ch1"></form></td>
+                      <td align="center"><?php echo $row['service-name']; ?> </td>
+                      <td align="center"><?php echo $row['service-price']; ?>$</td>
+                      <td align="center"> <button type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="<?php  $row['cart_id']; ?>">remove</button></td>
                       <!-- <td align="center"></td> -->
                      </tr>
-                     <tr>
-                     <td> <form><input type="checkbox" ></form></td>
-                      <td align="center"><p><a href="#">Product 1</a> </P></td>
-                      <td align="center"><P> <span class="price">$15</span></p></td>
-                      <!-- <td align="center"></td> -->
-                     </tr>
-                     <tr>
-                     <td> <form><input type="checkbox" ></form></td>
-                      <td align="center"><p><a href="#">Product 1</a> </P></td>
-                      <td align="center"><P> <span class="price">$15</span></p></td>
-                      <!-- <td align="center"></td> -->
-                     </tr>
-                     <tr>
-                     <td> <form><input type="checkbox" ></form></td>
-                      <td align="center"><p><a href="#">Product 1</a> </P></td>
-                      <td align="center"><P> <span class="price">$15</span></p></td>
-                      <!-- <td align="center"></td> -->
-                     </tr>
+                  
+                     <?php   }
+                } 
+                
+              // }
+              ?>
                 
               </tbody>
 
@@ -160,7 +190,8 @@ text-align="center";
               <p><a href="#">Product 3</a> <span class="price">$8</span></p>
               <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
               <hr>
-              <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+              <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;" ><b>30$</b></span>
+             <a href="payment.php"> <input type="submit" style="float:right;" class="btn btn-success mx-2 btn-hover" value="Pay Naw"></a>
             </div>
           </div>
 
