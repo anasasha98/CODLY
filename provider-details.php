@@ -97,7 +97,7 @@ include './forms/connection.php';
       <div class="container">
         <?php
 
-        $emp_id = 3;
+        $emp_id = $Get['emp_id'];
         $counter = 0;
         $query = " SELECT * FROM `service-provider` WHERE `emp_id` = '$emp_id'   ";
         $result = mysqli_query($con, $query);
@@ -136,7 +136,7 @@ include './forms/connection.php';
                   <h3>service information</h3>
                   <ul>
                     <li><strong>Category</strong>: <?php
-                                                    $emp_id = 3;
+                                                    $emp_id = $Get['emp_id'];
                                                    
                                                     $sername = mysqli_fetch_array(mysqli_query($con, " SELECT * FROM `detailed-service` WHERE `sno` = (SELECT `sno` FROM `service-provider` WHERE `emp_id` = 3 )") , MYSQLI_ASSOC);
                                                     echo $sername['name'];
