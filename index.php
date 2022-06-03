@@ -383,7 +383,7 @@ include './forms/connection.php';
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="term.html">Term of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="term.php">Term of service</a></li>
             </ul>
           </div>
 

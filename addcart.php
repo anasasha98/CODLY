@@ -1,12 +1,14 @@
 <?php
 // include 'service.php';
-$username = "root";
-$password = "";
-$server = "localhost";
-$db = "codly";
+// $username = "root";
+// $password = "";
+// $server = "localhost";
+// $db = "codly";
 
 
-$con = mysqli_connect($server, $username, $password, $db);
+// $con = mysqli_connect($server, $username, $password, $db);
+
+include './forms/connection.php';
 
 if(isset($_POST['add'])){
 // $ser-id = $_POST['sno'];

@@ -51,7 +51,7 @@ session_start();
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
           <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
@@ -65,7 +65,7 @@ session_start();
             <a class="nav-link scrollto" href="team.php#team">Success stories</a>
           </li>
           <li class="dropdown">
-            <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Web development</a></li>
               <li class="dropdown">
@@ -85,9 +85,36 @@ session_start();
           <li>
             <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
           </li>
-          <li>
-            <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-          </li>
+          <?php
+          if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+          ?>
+            <li class="dropdown">
+              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
+                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
+              <ul>
+                <li><a href="captain-account-details.php">Profile</a></li>
+                <li><a href="captain-about-page">About</a></li>
+                <li><a href="captain-security-page.php">Security</a></li>
+                <li><a href="captain-add-service.php">Publish serivce</a></li>
+                <li><a href="captain-purchase.php">Purchased Service</a></li>
+                <li><a href="captain-work.php">My Work</a></li>
+                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
+              </ul>
+            </li>
+
+          <?php
+          } else {
+          ?>
+            <li>
+              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -106,8 +133,26 @@ session_start();
             Post a job for free and connect with independent talent today.
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Hire a Freelancer</a>
-            <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+
+            <?php
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $type = $_SESSION['type'];
+            ?>
+              <a class="btn-get-started scrollto" style="cursor: pointer;" href="#ser"><span>Get Started</span></a>
+            <?php
+            } else {
+            ?>
+              <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+            <?php
+            }
+
+            ?>
+
+            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
+              <i class="bi bi-play-circle"></i>
+              <span>Watch Video</span>
+            </a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">

@@ -1,5 +1,6 @@
 <?php
 include './forms/connection.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -44,18 +45,16 @@ include './forms/connection.php';
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
       <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
+          <li><a class="nav-link active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-
           <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -64,11 +63,60 @@ include './forms/connection.php';
             </ul>
           </li>
 
-          <li><a class="nav-link scrollto" href="team.php#team">Success stories</a></li>
-          <li><a class="nav-link  active scrollto" href="index.php#ser">Services</a></li>
+          <li>
+            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
+          </li>
+          <li class="dropdown">
+            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Web development</a></li>
+              <li class="dropdown">
+                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Design UI/UX</a></li>
+                  <li><a href="#"> Design Logo</a></li>
+                  <li><a href="#"> Game Art </a></li>
+                </ul>
+              </li>
+              <li><a href="#">Graphic</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Data </a></li>
+              <li><a href="#">WordPress</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
+          </li>
+          <?php
+          if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+          ?>
+            <li class="dropdown">
+              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
+                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
+              <ul>
+                <li><a href="captain-account-details.php">Profile</a></li>
+                <li><a href="captain-about-page">About</a></li>
+                <li><a href="captain-security-page.php">Security</a></li>
+                <li><a href="captain-add-service.php">Publish serivce</a></li>
+                <li><a href="captain-purchase.php">Purchased Service</a></li>
+                <li><a href="captain-work.php">My Work</a></li>
+                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
+              </ul>
+            </li>
 
-          <li><a class="nav-link scrollto" href="contact.php#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="sign-in.php">Sign in</a></li>
+          <?php
+          } else {
+          ?>
+            <li>
+              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -76,6 +124,7 @@ include './forms/connection.php';
     </div>
   </header>
   <!-- End Header -->
+
 
   <main id="main">
 
@@ -360,7 +409,7 @@ include './forms/connection.php';
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="development-team.html#team2">IT Development Team</a>
+        Designed by <a href="development-team.php#team2">IT Development Team</a>
       </div>
     </div>
   </footer>
