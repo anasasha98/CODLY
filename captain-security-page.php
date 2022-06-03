@@ -92,7 +92,7 @@ session_start();
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+  <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
       <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
