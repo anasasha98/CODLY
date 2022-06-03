@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
 
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <div class="form-group"><label class="small mb-1" for="inputUserName">User Name</label><input class="form-control py-4" id="inputUserName" type="text" placeholder="Enter user name" name="inputUserName" required /></div>
+                                                <div class="form-group"><label class="small mb-1" for="inputUserName">User Name</label><input class="form-control py-4" id="inputUserName" type="text" placeholder="Enter user name" name="inputUserName" style="text-transform:lowercase" pattern="^[a-z][a-z0-9_\s]*$" oninvalid="setCustomValidity('Invalid character in name & first character only & use underscore only')" oninput="setCustomValidity('')" required /></div>
                                             </div>
 
                                         </div>

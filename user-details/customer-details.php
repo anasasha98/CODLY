@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="username">Username</label>
-                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" required />
+                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase" pattern="^[a-z][a-z0-9_\s]*$" oninvalid="setCustomValidity('Invalid character in name & first character only & use underscore only')" oninput="setCustomValidity('')" required />
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="email">Email</label><input class="form-control py-4" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" min="1900-01-01" max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" required />
