@@ -11,8 +11,10 @@ session_start();
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>security page - Codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -172,7 +174,7 @@ session_start();
   <!-- ======= Main ======= -->
   <main id="main" style="padding-top: 60px;">
     <div class="container-xl px-4 mt-4">
-      
+
       <!-- ===== Customer Security Page ===== -->
       <?php
       if (isset($_SESSION['username'])) {

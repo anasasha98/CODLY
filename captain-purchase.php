@@ -15,8 +15,10 @@ session_start();
   <script src="assets/js/j/feather.min.js"></script>
 
   <title>purchase service - codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />

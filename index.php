@@ -12,8 +12,10 @@ include './forms/connection.php';
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -174,7 +176,7 @@ include './forms/connection.php';
       <div class="container">
         <div class="row" data-aos="zoom-in">
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.oracle.com" target="_blank">
+            <a href="https://www.mysql.com" target="_blank">
               <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
             </a>
           </div>

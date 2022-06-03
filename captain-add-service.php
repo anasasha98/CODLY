@@ -50,8 +50,10 @@ if (isset($_POST['submit'])) {
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>Add Service - Codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
