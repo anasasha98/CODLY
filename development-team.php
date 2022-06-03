@@ -34,11 +34,6 @@ session_start();
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" />
-
-  <!-- Features CSS File -->
-  <link href="assets/css/features.css" rel="stylesheet" />
 
   <!-- Profile account script -->
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -57,6 +52,8 @@ session_start();
     }
   </style>
 
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body>

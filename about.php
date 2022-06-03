@@ -324,7 +324,7 @@ session_start();
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="">IT Development Team</a>
+        Designed by <a href="development-team.php">IT Development Team</a>
       </div>
     </div>
   </footer>
