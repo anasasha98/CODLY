@@ -174,18 +174,27 @@ session_start();
               <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                   <div class="swiper-wrapper align-items-center">
-
-                    <div class="swiper-slide">
-                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image1']) . '" />'; ?>
-                    </div>
-
-                    <div class="swiper-slide">
-                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image2']) . '" />'; ?>
-                    </div>
-                    <div class="swiper-slide">
-                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image3']) . '" />'; ?>
-                    </div>
-
+                    <?php
+                    if ($row['image1']) {
+                    ?>
+                      <div class="swiper-slide">
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image1']) . '" />'; ?>
+                      </div>
+                    <?php }
+                    if (!empty($row['image2'])) {
+                    ?>
+                      <div class="swiper-slide">
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image2']) . '" />'; ?>
+                      </div>
+                    <?php }
+                    if (!empty($row['image3'])) {
+                    ?>
+                      <div class="swiper-slide">
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image3']) . '" />'; ?>
+                      </div>
+                    <?php
+                    }
+                    ?>
                   </div>
                   <div class="swiper-pagination"></div>
                 </div>
