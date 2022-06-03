@@ -1,5 +1,6 @@
 <?php
 include './forms/connection.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +10,7 @@ include './forms/connection.php';
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>codly</title>
+  <title>services - codly</title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
@@ -118,6 +119,50 @@ include './forms/connection.php';
   <!-- End Hero -->
 
   <main id="main">
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container">
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.oracle.com" target="_blank">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.microsoft.com" target="_blank">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.orange.com" target="_blank">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.ahu.edu.jo" target="_blank">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.paypal.com" target="_blank">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.github.com" target="_blank">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Cliens Section -->
+
     <!--packages start-->
     <section id="pack" class="packages">
       <?php
@@ -145,7 +190,7 @@ include './forms/connection.php';
             $num1 = null;
             $num2 = 20;
             $counter = 0;
-            $query = " SELECT * FROM `service-provider` WHERE `sno` = $sno ";
+            $query = " SELECT * FROM `service-provider` WHERE `sno` = '$sno' ";
             $result = mysqli_query($con, $query);
             if ($result) {
               while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -156,15 +201,28 @@ include './forms/connection.php';
                   <div class="single-package-item">
                     <!-- image -->
                     <div class="single-package-item-txt">
-                      <h3><?php echo $row['ename'] ?></h3>
+                      <h3>
+                        <?php
+                        $captainusername = $row['captainusername'];
+                        $name = " SELECT `firstname`, `lastname` FROM `captain` WHERE `captainusername` = '$captainusername' ";
+                        $getname = mysqli_query($con, $name);
+                        if ($getname) {
+                          $capname = mysqli_fetch_array($getname, MYSQLI_ASSOC);
+                          echo $capname['firstname'] . ' ' . $capname['lastname'];
+                          echo '<br><small style="font-size: 13px">';
+                          echo $captainusername;
+                          echo '</small>';
+                        }
+                        ?>
+                      </h3>
                       <h4><?php echo $row['job_title'] ?></h4>
                       <div class="packages-para">
                         <p>
                           <span>
-                            <i class="fa fa-angle-right"></i>
                             <?php
                             if ($row['tag1']) {
                             ?>
+                              <i class="fa fa-angle-right"></i>
                               <a href="#" style="color: #47b2e4;">
                                 <?php echo $row['tag1']; ?>
                               </a>
@@ -172,10 +230,10 @@ include './forms/connection.php';
                             }
                             ?>
                           </span>
-                          <i class="fa fa-angle-right"></i>
                           <?php
                           if ($row['tag2']) {
                           ?>
+                            <i class="fa fa-angle-right"></i>
                             <a href="#" style="color: #47b2e4;">
                               <?php echo $row['tag2']; ?>
                             </a>
@@ -185,10 +243,10 @@ include './forms/connection.php';
                         </p>
                         <p>
                           <span>
-                            <i class="fa fa-angle-right"></i>
                             <?php
                             if ($row['tag3']) {
                             ?>
+                              <i class="fa fa-angle-right"></i>
                               <a href="#" style="color: #47b2e4;">
                                 <?php echo $row['tag3']; ?>
                               </a>
@@ -196,10 +254,10 @@ include './forms/connection.php';
                             }
                             ?>
                           </span>
-                          <i class="fa fa-angle-right"></i>
                           <?php
                           if ($row['tag4']) {
                           ?>
+                            <i class="fa fa-angle-right"></i>
                             <a href="#" style="color: #47b2e4;">
                               <?php echo $row['tag4']; ?>
                             </a>
@@ -208,7 +266,6 @@ include './forms/connection.php';
                           ?>
                         </p>
                       </div>
-
                       <div class="packages-review">
                         <p>
                           <i class="fa fa-star"></i>
@@ -216,17 +273,24 @@ include './forms/connection.php';
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <span>0 reviews</span>
+                          <span style="margin-left: 50px;">0 reviews</span>
                         </p>
                       </div>
                       <!--/.Service Provider-review-->
-                      <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
+                      <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+                      <center>
+                        <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
+                          <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
+                        </a>
+                      </center>
                     </div>
+
                     <!--/.about-btn-->
-                    <form action="cart.php">
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart"> </i>
-                    </form>
+                    <!-- <form action="cart.php">
+                      <center>
+                        <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
+                      </center>
+                    </form> -->
 
                   </div>
                   <!--/.single-package-item-txt-->

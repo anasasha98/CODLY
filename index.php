@@ -95,7 +95,10 @@ include './forms/connection.php';
             $username = $_SESSION['username'];
           ?>
             <li class="dropdown">
-              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;<?php echo $username; ?></span></a>
+              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
+                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
+                <i class="bi bi-chevron-down"></i>
+              </a>
               <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
               <ul>
                 <li><a href="captain-account-details.php">Profile</a></li>

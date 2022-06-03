@@ -177,7 +177,7 @@
               <form action="/action_page.php">
 
                 <div class="row">
-                  <div class="col-50">
+                  <!-- <div class="col-50">
                     <h3>Billing Address</h3>
                     <label for="fname"><i class="fa fa-user"></i> Full Name</label>
                     <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
@@ -198,9 +198,9 @@
                         <input type="text" id="zip" name="zip" placeholder="10001">
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="col-50">
+                  <div class="col-20">
                     <h3>Payment</h3>
                     <label for="fname">Accepted Cards</label>
                     <div class="icon-container">
@@ -229,9 +229,19 @@
 
                 </div>
                 <label>
-                  <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                  <input type="checkbox" name="sameadr" required> I understand that by checking out this box I approve for all <a href="term.html">term of service</a> 
                 </label>
                 <input type="submit" value="Continue to checkout" class="btn">
+                <style>
+                  .btn {
+                    background-color: #47b2e4;
+                  }
+
+                  .btn:hover {
+                    color: #fff;
+                    background-color: #209DD8;
+                  }
+                </style>
               </form>
             </div>
           </div>

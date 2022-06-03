@@ -38,6 +38,7 @@ include './forms/connection.php';
 
   <!-- Features CSS File -->
   <link href="assets/css/features.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -78,33 +79,42 @@ include './forms/connection.php';
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+    <?php
 
-        <ol>
-          <li><a href="index.php">Home</a></li>
-          <li>Service Details</li>
-        </ol>
-        <h2>Service Details</h2>
+    $service_id = $_GET['service_id'];
+    $counter = 0;
+    $query = " SELECT * FROM `service-provider` WHERE `service_id` = '$service_id'   ";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $counter += 1;
+    ?>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+          <div class="container">
 
-    <!-- ======= Portfolio Details Section ======= -->
+            <ol>
+              <?php
+              // page 1
+              $sno = $row['sno'];
+              $sername = mysqli_fetch_array(mysqli_query($con, "SELECT `sno`, `name` FROM `detailed-service` WHERE `sno` = '$sno'"), MYSQLI_ASSOC);
+              $page1 = mysqli_fetch_array(mysqli_query($con, "SELECT `sec-id`, `sec-name`, `sec-desc` FROM `service-section` WHERE `sec-id` = (SELECT `sec-id` FROM `detailed-service` WHERE `sno` = $sno) "), MYSQLI_ASSOC);
+              ?>
+              <li><a href="index.php#ser">Home</a></li>
+              <li><a href="detailed-service.php?sid=<?php echo $page1['sec-id']; ?>&sname=<?php echo $page1['sec-name']; ?>&sdesc=<?php echo $page1['sec-desc']; ?> #ser"><?php echo $page1['sec-name']; ?></a></li>
+              <li><a href="service.php?sno=<?php echo $sername['sno']; ?>&sname=<?php echo $sername['name']; ?>#pack"><?php echo $sername['name']; ?></a></li>
+              <li></li>
+            </ol>
+            <h2><?php echo $row['job_title']; ?></h2>
 
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-        <?php
+          </div>
+        </section><!-- End Breadcrumbs -->
 
-        $emp_id = $Get['emp_id'];
-        $counter = 0;
-        $query = " SELECT * FROM `service-provider` WHERE `emp_id` = '$emp_id'   ";
-        $result = mysqli_query($con, $query);
-        if ($result) {
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $counter += 1;
-        ?>
+        <!-- ======= Portfolio Details Section ======= -->
+
+        <section id="portfolio-details" class="portfolio-details">
+          <div class="container">
             <div class="row gy-4">
 
               <div class="col-lg-8">
@@ -122,10 +132,6 @@ include './forms/connection.php';
                       <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image3']) . '" />'; ?>
                     </div>
 
-
-
-
-
                   </div>
                   <div class="swiper-pagination"></div>
                 </div>
@@ -135,17 +141,18 @@ include './forms/connection.php';
                 <div class="portfolio-info">
                   <h3>service information</h3>
                   <ul>
-                    <li><strong>Category</strong>: <?php
-                                                    $emp_id = $Get['emp_id'];
 
-                                                    $sername = mysqli_fetch_array(mysqli_query($con, " SELECT * FROM `detailed-service` WHERE `sno` = (SELECT `sno` FROM `service-provider` WHERE `emp_id` = 3 )"), MYSQLI_ASSOC);
-                                                    echo $sername['name'];
-                                                    ?></li>
-                    <li><strong>Provider</strong>:
+                    <li>
+                      <strong>Category</strong>:
                       <?php
-                      echo $_GET['captainusername'];
+                      echo $sername['name'];
+                      ?>
+                    </li>
 
-
+                    <li>
+                      <strong>Provider</strong>:
+                      <?php
+                      echo $row['captainusername'];
                       ?>
 
                     </li>
@@ -160,7 +167,12 @@ include './forms/connection.php';
                         </p>
                       </div>
                     </li>
-                    <li><strong>Service date</strong>: 01 March, 2020</li>
+                    <li><strong>Service Viewers</strong>:
+                      <?php
+                      echo 10;
+                      ?>
+                    </li>
+                    <li><strong>Publish date</strong>: 01 March, 2020</li>
                   </ul>
                 </div>
                 <div class="portfolio-description">
@@ -174,82 +186,109 @@ include './forms/connection.php';
 
             </div>
 
-      </div>
-    </section><!-- End Portfolio Details Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Pricing</h2>
-        </div>
-        <p class="text-center" style="margin-top: -15px;">Magnam dolores commodi suscipit. Necessitatibus eius
-          consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-          sit
-          in iste officiis commodi quidem hic quas.</p>
-
-        <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="box">
-              <h3>Free Plan</h3>
-              <h4><sup>$</sup>0<span>per month</span></h4>
-              <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <a href="payment.php#payment" class="buy-btn">Get Started</a>
-            </div>
           </div>
+        </section><!-- End Portfolio Details Section -->
 
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
-            <div class="box featured">
-              <h3>Business Plan</h3>
-              <h4><sup>$</sup>29<span>per month</span></h4>
-              <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-              </ul>
-              <a href="payment.php#payment" class="buy-btn">Get Started</a>
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+          <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+              <h2>Pricing</h2>
             </div>
-          </div>
+            <p class="text-center" style="margin-top: -15px;">Magnam dolores commodi suscipit. Necessitatibus eius
+              consequatur ex aliquid fuga eum quidem. Sit sint
+              consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+              sit
+              in iste officiis commodi quidem hic quas.</p>
 
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-            <div class="box">
-              <h3>Developer Plan</h3>
-              <h4><sup>$</sup>49<span>per month</span></h4>
-              <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-              </ul>
-              <a href="payment.php#payment" class="buy-btn">Get Started</a>
+            <div class="row">
+
+              <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <div class="box">
+                  <h3>Standard Plan</h3>
+                  <h4><sup>$</sup><?php echo $row['price1']; ?><span></span></h4>
+                  <ul>
+                    <?php
+                    $txt = $row['price1_desc'];
+                    if ($txt) {
+                      $lines = explode("-", $txt);
+                      foreach ($lines as $i => $value) {
+                    ?>
+                        <li>
+                          <i class="bx bx-check"></i>
+                          <?php echo $lines[$i]; ?>
+                        </li>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+                <div class="box featured">
+                  <h3>Premium Plan</h3>
+                  <h4><sup>$</sup><?php echo $row['price2']; ?><span></span></h4>
+                  <ul>
+                    <?php
+                    $txt = $row['price2_desc'];
+                    if ($txt) {
+                      $lines = explode("-", $txt);
+                      foreach ($lines as $i => $value) {
+                    ?>
+                        <li>
+                          <i class="bx bx-check"></i>
+                          <?php echo $lines[$i]; ?>
+                        </li>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                <div class="box">
+                  <h3>Professional Plan</h3>
+                  <h4><sup>$</sup><?php echo $row['price3']; ?><span></span></h4>
+                  <ul>
+                    <?php
+                    $txt = $row['price3_desc'];
+                    if ($txt) {
+                      $lines = explode("-", $txt);
+                      foreach ($lines as $i => $value) {
+                    ?>
+                        <li>
+                          <i class="bx bx-check"></i>
+                          <?php echo $lines[$i]; ?>
+                        </li>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                </div>
+              </div>
+
             </div>
-          </div>
-
-        </div>
-      <?php
-          }
+          <?php
         }
-        if ($counter == 0) {
-      ?>
-      <h5 class="h5 pb-4 typo-space-line text-center">
-        <?php echo "❌ result is empty"; ?>
-      </h5>
-    <?php }
-    ?>
-      </div>
-    </section><!-- End Pricing Section -->
+      }
+      if ($counter == 0) {
+          ?>
+          <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 10em;">
+            <?php echo "❌ result is empty"; ?>
+          </h5>
+        <?php }
+        ?>
+          </div>
+        </section><!-- End Pricing Section -->
 
   </main><!-- End #main -->
 
