@@ -55,7 +55,7 @@
                 <li><a href="<?php echo $_SESSION['type'] ?>-account-details.php">Profile</a></li>
                 <?php
                 if ($_SESSION['type'] == 'captain') {
-                  echo '<li><a href="captain-about-page">About</a></li>';
+                  echo '<li><a href="captain-about-page.php">About</a></li>';
                 }
                 ?>
                 <li><a href="<?php echo $_SESSION['type'] ?>-security-page.php">Security</a></li>

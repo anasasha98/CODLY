@@ -58,6 +58,13 @@ session_start();
     <?php
 
     $service_id = $_GET['service_id'];
+
+    if (isset($_SESSION['username'])) {
+      $veiwone = " UPDATE `service-provider` SET `views`= `views`+1 WHERE `service_id` = '$service_id' ";
+      $viewquery = mysqli_query($con, $veiwone);
+    }
+
+
     $counter = 0;
     $query = " SELECT * FROM `service-provider` WHERE `service_id` = '$service_id'   ";
     $result = mysqli_query($con, $query);
@@ -154,10 +161,10 @@ session_start();
                     </li>
                     <li><strong>Service Viewers</strong>:
                       <?php
-                      echo 10;
+                      echo $row['views'];
                       ?>
                     </li>
-                    <li><strong>Publish date</strong>: 01 March, 2020</li>
+                    <li><strong>Publish date</strong>: <?php echo $row['publish_date'] ?></li>
                   </ul>
                 </div>
                 <div class="portfolio-description">

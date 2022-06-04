@@ -45,7 +45,7 @@ session_start();
 
 <body>
   <!-- ======= Header ======= -->
-  <?php include './headers/header1.php'?>
+  <?php include './headers/header1.php' ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -250,10 +250,11 @@ session_start();
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <span style="margin-left: 50px;">0 reviews</span>
+                          <span style="margin-left: 50px;"><?php echo $row['views']; ?> reviews</span>
                         </p>
                       </div>
                       <!--/.Service Provider-review-->
+<<<<<<< HEAD
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
                       <center>
                       <!-- <form action="addcart.php" method="POST"  >
@@ -263,6 +264,9 @@ session_start();
                    
                     </center>
                       <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+=======
+
+>>>>>>> add1e5accf17948143faaa182b2086dcbb203e05
                       <center>
                         <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
                           <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
