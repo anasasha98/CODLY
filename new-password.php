@@ -10,6 +10,12 @@ $email = $_SESSION['email'];
 <head>
   <meta charset="UTF-8">
   <title>Create a New Password</title>
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
+
+  <!-- Favicons -->
+  <link href="assets/img/c.png" rel="icon" />
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script>
