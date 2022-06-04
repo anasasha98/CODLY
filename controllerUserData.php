@@ -18,7 +18,9 @@ if (isset($_POST['check-email'])) {
   $email = mysqli_real_escape_string($con, $_POST['email']);
   $check_email = "SELECT * FROM customer WHERE email='$email'";
   $run_sql = mysqli_query($con, $check_email);
-  if (mysqli_num_rows($run_sql) > 0) {
+  $check_email2 = "SELECT * FROM captain WHERE email='$email'";
+  $run_sql2 = mysqli_query($con, $check_email2);
+  if ((mysqli_num_rows($run_sql) or mysqli_num_rows($run_sql2))  > 0) {
     $_SESSION['info'] = "";
 
 
@@ -47,7 +49,9 @@ if (isset($_POST['change-password'])) {
   } else {
     $q = "SELECT * FROM customer WHERE customerusername = '$username' ";
     $r = mysqli_query($con, $q);
-    if (mysqli_num_rows($r) == 1) {
+    $q2 = "SELECT * FROM captain WHERE captainusername = '$username' ";
+    $r2 = mysqli_query($con, $q2);
+    if ((mysqli_num_rows($r) or mysqli_num_rows($r2))  == 1) {
       $_SESSION['username'] = $username;
       $_SESSION['success'] = "You are now logged in";
 
@@ -59,7 +63,9 @@ if (isset($_POST['change-password'])) {
       $encpass = password_hash($password, PASSWORD_BCRYPT);
       $update_pass = "UPDATE customer SET  password = '$password' WHERE customerusername = '$username'";
       $run_query = mysqli_query($con, $update_pass);
-      if ($run_query) {
+      $update_pass1 = "UPDATE captain SET  password = '$password' WHERE captainusername = '$username'";
+      $run_query1 = mysqli_query($con, $update_pass1);
+      if ($run_query or $run_query1 ) {
         $info = "Your password changed. Now you can login with your new password.";
         $_SESSION['info'] = $info;
         header('Location: password-changed.php');

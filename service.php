@@ -255,13 +255,12 @@ session_start();
                       </div>
                       <!--/.Service Provider-review-->
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
+                      <center>
                       <form action="addcart.php" method="POST"  >
-                      
-                  
-                        
-           
+        
                       <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
                     </form>
+                    </center>
                       <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
                       <center>
                         <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
@@ -271,11 +270,11 @@ session_start();
                     </div>
 
                     <!--/.about-btn-->
-                    <form action="cart.php">
+                    <!-- <form action="cart.php">
                       <center>
                         <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
                       </center>
-                    </form>
+                    </form> -->
 
                   </div>
                   <!--/.single-package-item-txt-->
