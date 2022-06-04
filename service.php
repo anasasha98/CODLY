@@ -1,5 +1,6 @@
 <?php
 include './forms/connection.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +10,11 @@ include './forms/connection.php';
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <title>services - codly</title>
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -42,57 +45,7 @@ include './forms/connection.php';
 
 <body>
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
-          <li class="dropdown">
-            <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <li>
-            <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-          </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header1.php'?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -105,8 +58,26 @@ include './forms/connection.php';
             Post a job for free and connect with independent talent today.
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Hire a Freelancer</a>
-            <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+
+            <?php
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $type = $_SESSION['type'];
+            ?>
+              <a class="btn-get-started scrollto" style="cursor: pointer;" href="#ser"><span>Get Started</span></a>
+            <?php
+            } else {
+            ?>
+              <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+            <?php
+            }
+
+            ?>
+
+            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
+              <i class="bi bi-play-circle"></i>
+              <span>Watch Video</span>
+            </a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -118,6 +89,50 @@ include './forms/connection.php';
   <!-- End Hero -->
 
   <main id="main">
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container">
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.mysql.com" target="_blank">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.microsoft.com" target="_blank">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.orange.com" target="_blank">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.ahu.edu.jo" target="_blank">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.paypal.com" target="_blank">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <a href="https://www.github.com" target="_blank">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Cliens Section -->
+
     <!--packages start-->
     <section id="pack" class="packages">
       <?php
@@ -145,7 +160,7 @@ include './forms/connection.php';
             $num1 = null;
             $num2 = 20;
             $counter = 0;
-            $query = " SELECT * FROM `service-provider` WHERE `sno` = $sno ";
+            $query = " SELECT * FROM `service-provider` WHERE `sno` = '$sno' ";
             $result = mysqli_query($con, $query);
             if ($result) {
               while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -156,15 +171,35 @@ include './forms/connection.php';
                   <div class="single-package-item">
                     <!-- image -->
                     <div class="single-package-item-txt">
-                      <h3><?php echo $row['ename'] ?></h3>
+                      <h3>
+                        <?php
+                        $captainusername = $row['captainusername'];
+                        $name = " SELECT `firstname`, `lastname` FROM `captain` WHERE `captainusername` = '$captainusername' ";
+                        $getname = mysqli_query($con, $name);
+                        if ($getname) {
+                          $capname = mysqli_fetch_array($getname, MYSQLI_ASSOC);
+                          echo $capname['firstname'] . ' ' . $capname['lastname'];
+                          echo '<br><small style="font-size: 13px">';
+                          if ($captainusername != $username) {
+                        ?>
+                            <a href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>"><?php echo $captainusername; ?></a>
+                        <?php
+                            echo '</small>';
+                          } else {
+                            echo '<a href="captain-account-details.php">' . $captainusername . '</a>';
+                            echo '</small>';
+                          }
+                        }
+                        ?>
+                      </h3>
                       <h4><?php echo $row['job_title'] ?></h4>
                       <div class="packages-para">
                         <p>
                           <span>
-                            <i class="fa fa-angle-right"></i>
                             <?php
                             if ($row['tag1']) {
                             ?>
+                              <i class="fa fa-angle-right"></i>
                               <a href="#" style="color: #47b2e4;">
                                 <?php echo $row['tag1']; ?>
                               </a>
@@ -172,10 +207,10 @@ include './forms/connection.php';
                             }
                             ?>
                           </span>
-                          <i class="fa fa-angle-right"></i>
                           <?php
                           if ($row['tag2']) {
                           ?>
+                            <i class="fa fa-angle-right"></i>
                             <a href="#" style="color: #47b2e4;">
                               <?php echo $row['tag2']; ?>
                             </a>
@@ -185,10 +220,10 @@ include './forms/connection.php';
                         </p>
                         <p>
                           <span>
-                            <i class="fa fa-angle-right"></i>
                             <?php
                             if ($row['tag3']) {
                             ?>
+                              <i class="fa fa-angle-right"></i>
                               <a href="#" style="color: #47b2e4;">
                                 <?php echo $row['tag3']; ?>
                               </a>
@@ -196,10 +231,10 @@ include './forms/connection.php';
                             }
                             ?>
                           </span>
-                          <i class="fa fa-angle-right"></i>
                           <?php
                           if ($row['tag4']) {
                           ?>
+                            <i class="fa fa-angle-right"></i>
                             <a href="#" style="color: #47b2e4;">
                               <?php echo $row['tag4']; ?>
                             </a>
@@ -208,7 +243,6 @@ include './forms/connection.php';
                           ?>
                         </p>
                       </div>
-
                       <div class="packages-review">
                         <p>
                           <i class="fa fa-star"></i>
@@ -216,10 +250,11 @@ include './forms/connection.php';
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
-                          <span>0 reviews</span>
+                          <span style="margin-left: 50px;">0 reviews</span>
                         </p>
                       </div>
                       <!--/.Service Provider-review-->
+<<<<<<< HEAD
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
                       <form action="addcart.php" method="POST"  >
                       
@@ -228,9 +263,22 @@ include './forms/connection.php';
            
                       <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
                     </form>
+=======
+                      <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+                      <center>
+                        <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
+                          <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
+                        </a>
+                      </center>
+>>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
                     </div>
+
                     <!--/.about-btn-->
-                 
+                    <!-- <form action="cart.php">
+                      <center>
+                        <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
+                      </center>
+                    </form> -->
 
                   </div>
                   <!--/.single-package-item-txt-->
@@ -326,7 +374,7 @@ include './forms/connection.php';
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="">IT Development Team</a>
+        Designed by <a href="development-team.php">IT Development Team</a>
       </div>
     </div>
   </footer>

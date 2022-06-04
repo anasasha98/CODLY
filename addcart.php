@@ -10,6 +10,7 @@ include 'insert-to-cart.php';
 
 
 // $con = mysqli_connect($server, $username, $password, $db);
+<<<<<<< HEAD
 ?>
 
 <!DOCTYPE html>
@@ -155,11 +156,34 @@ include 'insert-to-cart.php';
         </div>
       </div>
       <!--End Form-->
+=======
+
+include './forms/connection.php';
+
+if (isset($_POST['add'])) {
+  // $ser-id = $_POST['sno'];
+
+
+  // $pricecart = $_POST['price'];
+  // $sername = $_POST['job_title'];
+  // $capname = $_POST['ename']; 
+
+  $stmt = $con->prepare("INSERT INTO `cart` (`cart_id`, `customer-username`, `service-id`, `service-name`, `service-price`, `captain-username`) VALUES (1, 'hebamalo', '1007', 'editing video', '300', 'jamesbond') ");
+  // $stmt -> bind_param("sis" , $sername ,$pricecart ,  $capname );
+  $stmt->execute();
+
+  header('Location: cart.php');
+
+  $stmt->close();
+  $con->close();
+}
+>>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 
 
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -276,6 +300,11 @@ myinput1.onclick=function(){
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/purecounter/purecounter.js"></script>
+=======
+?>
+
+
+>>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 
 
     <!-- Template Main JS File -->

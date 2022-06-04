@@ -1,3 +1,8 @@
+<?php
+include './forms/connection.php';
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +11,10 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -46,9 +53,8 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
+          <li><a class="nav-link active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-
           <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -56,11 +62,12 @@
               <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
             </ul>
           </li>
+
           <li>
             <a class="nav-link scrollto" href="team.php#team">Success stories</a>
           </li>
           <li class="dropdown">
-            <a href="index.php #ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Web development</a></li>
               <li class="dropdown">
@@ -78,11 +85,38 @@
             </ul>
           </li>
           <li>
-            <a class="nav-link scrollto active" href="#contact">Contact</a>
+            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
           </li>
-          <li>
-            <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-          </li>
+          <?php
+          if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+          ?>
+            <li class="dropdown">
+              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
+                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
+              <ul>
+                <li><a href="captain-account-details.php">Profile</a></li>
+                <li><a href="captain-about-page">About</a></li>
+                <li><a href="captain-security-page.php">Security</a></li>
+                <li><a href="captain-add-service.php">Publish serivce</a></li>
+                <li><a href="captain-purchase.php">Purchased Service</a></li>
+                <li><a href="captain-work.php">My Work</a></li>
+                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
+              </ul>
+            </li>
+
+          <?php
+          } else {
+          ?>
+            <li>
+              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -101,8 +135,26 @@
             Post a job for free and connect with independent talent today.
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Hire a Freelancer</a>
-            <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+
+            <?php
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $type = $_SESSION['type'];
+            ?>
+              <a class="btn-get-started scrollto" style="cursor: pointer;" href="#ser"><span>Get Started</span></a>
+            <?php
+            } else {
+            ?>
+              <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
+            <?php
+            }
+
+            ?>
+
+            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
+              <i class="bi bi-play-circle"></i>
+              <span>Watch Video</span>
+            </a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -119,7 +171,7 @@
       <div class="container">
         <div class="row" data-aos="zoom-in">
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.oracle.com" target="_blank">
+            <a href="https://www.mysql.com" target="_blank">
               <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
             </a>
           </div>
@@ -194,7 +246,7 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="index.php" method="post" role="form" class="contact2">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -295,7 +347,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="">IT Development Team</a>
+        Designed by <a href="development-team.php">IT Development Team</a>
       </div>
     </div>
   </footer>

@@ -2,44 +2,6 @@
 <?php
 include './forms/connection.php';
 session_start();
-if (isset($_POST['submit'])) {
-  $servicetitle = $_POST['servicetitle'];
-  $service = $_POST['service'];
-  $image1 = $_POST['image1'];
-  $image2 = $_POST['image2'];
-  $image3 = $_POST['image3'];
-  $servicedetails = $_POST['servicedetails'];
-  $tag1 = $_POST['tag1'];
-  $tag2 = $_POST['tag2'];
-  $tag3 = $_POST['tag3'];
-  $tag4 = $_POST['tag4'];
-  $captainusername = $_SESSION['captainusername'];
-  if (isset($_GET['captainusername'])) {
-    $captainusername = $_GET['captainusername'];
-    $_SESSION['captainuser'] = $captainusername;
-  } else {
-    if (isset($_SESSION['captainuser'])) {
-      $captainusername = $_SESSION['captainuser'];
-    }
-  }
-  $sql1 = "SELECT `sno` FROM `detailed-service` WHERE `name` = '$service' ";
-  $res = mysqli_query($con, $sql1);
-  $sno = mysqli_fetch_assoc($res);
-  $sql2 = "SELECT MAX(emp_id) FROM `service-provider` WHERE `emp_id` = `emp_id`+1 ";
-  $res = mysqli_query($con, $sql2);
-  $emp_id = mysqli_fetch_assoc($res);
-  $sql3 = "INSERT INTO `service-provider` VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails' , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1','$image2','$image3' )";
-  if (mysqli_query($link, $sql3)) {
-    echo '<script language="javascript">';
-    echo 'alert("Records added successfully.")';
-    echo '</script>';
-  } else {
-    echo '<script language="javascript">';
-    echo 'alert("ERROR: Could not able to execute")';
-    echo '</script>';
-  }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +11,10 @@ if (isset($_POST['submit'])) {
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>Add Service - Codly</title>
+  <script data-search-pseudo-elements defer src="assets/js/j/all.min.js"></script>
+  <script src="assets/js/j/feather.min.js"></script>
+
+  <title>purchase service - codly</title>
   <meta content="Freelancer website" name="description" />
 
   <meta name="author" content="Codly">
@@ -73,11 +38,7 @@ if (isset($_POST['submit'])) {
 
   <!-- Contact Us CSS File -->
   <link rel="stylesheet" href="assets/css/contact-us.css" />
-  <link rel="stylesheet" href="admin/css/styles.css" />
   <script src="https://kit.fontawesome.com/852d1a5b7b.js" crossorigin="anonymous"></script>
-
-  <!-- Features CSS File -->
-  <link href="assets/css/features.css" rel="stylesheet" />
 
   <!-- Profile account script -->
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -85,45 +46,16 @@ if (isset($_POST['submit'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet" />
 
   <script>
     if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
     }
-
-
-    // shows alert success on screen
-    function showtrue(x) {
-      var box = document.getElementById("img_success");
-      box.innerHTML += x;
-      box.style.display = "block";
-    }
-
-    // remove alert success from screen
-    function hidetrue() {
-      document.getElementById("img_success").style.display = "none";
-    }
-    setTimeout(() => {
-      hidetrue();
-    }, 4000);
-
-    // shows alert wrong on screen
-    function showwrong(x) {
-      var box2 = document.getElementById("wrong");
-      box2.innerHTML += x;
-      box2.style.display = "block";
-    }
-
-    // remove alert wrong from screen
-    function hidewrong() {
-      document.getElementById("wrong").style.display = "none";
-    }
-    setTimeout(() => {
-      hidewrong();
-    }, 4000);
   </script>
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/st.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
 
 </head>
 
@@ -134,140 +66,89 @@ if (isset($_POST['submit'])) {
   <?php include './headers/header2.php' ?>
   <!-- End Header -->
 
+
   <!-- ===== Captain Account Details ===== -->
   <?php
-  if (isset($_SESSION['username'])) {
-    $captainusername = $_SESSION['username'];
+  if (isset($_GET['captainusername'])) {
+    $captainusername = $_GET['captainusername'];
   }
   ?>
 
-  <?php
-  if (isset($_SESSION['username'])) {
-    if (isset($_SESSION['type']) && $_SESSION['type'] == 'captain') {
-      $captainusername = $_SESSION['username'];
-    }
-  } else {
-    header("Location:index.php");
-  }
-  ?>
 
   <!-- ======== Profile information ======== -->
   <main id="main" style="padding-top: 60px;">
+
     <div class="container-xl px-4 mt-4">
       <!-- Account page navigation-->
       <nav class="nav nav-borders">
-        <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
-        <a class="nav-link" href="captain-about-page.php">About</a>
-        <a class="nav-link" href="captain-security-page.php">Security</a>
-        <a class="nav-link active" href="#">Publish serivce</a>
-        <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
-        <a class="nav-link" href="captain-work.php">My Work</a>
+        <a class="nav-link ms-0" href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
+        <a class="nav-link" href="captain-about-no-change.php?captainusername=<?php echo $captainusername; ?>">About</a>
+        <a class="nav-link active" href="#">Purchased Service</a>
       </nav>
       <hr class="mt-0 mb-4">
 
-      <!-- True Alert -->
-      <div class="alert success" id="img_success" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Success!</strong>
-      </div>
-
-      <!-- Wrong Alert -->
-      <div class="alert" id="wrong" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Error!</strong>
-      </div>
-
-      <!--Start Form-->
+      <!--Start Table-->
       <div class="card mb-4">
-        <div class="card-header">Create New Service</div>
         <div class="card-body">
-          <form method="post">
-            <div class="form-group">
-              <label for="post-title">Service Title:</label>
-              <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" required />
-            </div>
+          <div class="datatable table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Purchase ID</th>
+                  <th>Customer Username </th>
+                  <th>Service ID </th>
+                  <th>Service Name</th>
+                  <th>Captain Username</th>
+                  <th>Price</th>
+                  <th>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
-            <select class="selectpicker" name="service" required style="margin: 5px 0 15px 0;">
-              <optgroup label="Design" name="design" id="design">
-                <option value="design1">UX/UI Design</option>
-                <option value="design2">Graphic Designers</option>
-                <option value="design3">Illustration Design</option>
-                <option value="design4">Photoshop</option>
-                <option value="design5">Inerior Design</option>
+                  <th>Report</th>
+                  <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $query = " SELECT * FROM  `purchase_list` ";
+                $result = mysqli_query($con, $query);
+                if ($result) {
+                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
 
-                <option value="design5">Video Editing</option>
-                <option value="design7">Art Designers</option>
-                <option value="design8">Motion Design</option>
-              </optgroup>
-              <optgroup label="Design Logo" name="designlogo">
-                <option value="designlogo1">Design Logo1</option>
+                    <tr>
+                      <td align="center"><?php echo $row['Purchase ID']; ?></td>
+                      <td align="center"><?php echo $row['Customer Username']; ?></td>
+                      <td align="center"><?php echo $row['Service ID']; ?></td>
+
+                      <td>
+                        <?php echo $row['Service Name']; ?>
+                      </td>
+                      <td>
+                        <?php echo $row['Captin Username']; ?>
+                      </td>
+                      <td><?php echo $row['Price'] . '$'; ?></td>
+                      <td><?php echo $row['Date']; ?></td>
+
+                      <td align="center">
+                        <a href="complaint.php" class="btn btn-danger "><span>click</span></a>
 
 
-              </optgroup>
-              <optgroup label="Data" name="data">
-                <option value="data1">data1</option>
+                      </td>
+                      <td>
+                        <?php echo $row['Status']; ?>
+                      </td>
 
-              </optgroup>
-              <optgroup label="Graphic" name="graphic">
-                <option value="graphic1">Graphic1</option>
 
-              </optgroup>
-              <optgroup label="WordPress" name="wordpress">
-                <option value="wordpress1">WordPress</option>
 
-              </optgroup>
-              <optgroup label="Development" name="development">
-                <option value="development1">Development</option>
-
-              </optgroup>
-              <optgroup label="Business" name="business">
-                <option value="business1">Marketing</option>
-
-              </optgroup>
-              <optgroup label="Game Art" name="gameart">
-                <option value="gameart1">Game Animation</option>
-
-              </optgroup>
-            </select>
-
-            <div class="form-group">
-              <label for="post-title">Choose photo:</label>
-              <input class="form-control" id="post-title" type="file" name="image1" required />
-            </div>
-            <div class="form-group">
-              <label for="post-title">Choose photo:</label>
-              <input class="form-control" id="post-title" type="file" name="image2" option />
-            </div>
-            <div class="form-group">
-              <label for="post-title">Choose photo:</label>
-              <input class="form-control" id="post-title" type="file" name="image3" option />
-            </div>
-
-            <div class="form-group">
-              <label for="post-content">Service Details:</label>
-              <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails" required></textarea>
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
-              <input type="text" class="form-control" name="tag1">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
-              <input type="text" class="form-control" name="tag2">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
-              <input type="text" class="form-control" name="tag3">
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
-              <input type="text" class="form-control" name="tag4">
-            </div>
+                    </tr>
+                <?php
+                  }
+                }
+                ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Post Service Now</button>
-        </form>
       </div>
-      <!--End Form-->
+      <!--End Table-->
 
     </div>
   </main> <!-- End profile information -->
@@ -502,6 +383,10 @@ if (isset($_POST['submit'])) {
     .credits>a {
       color: #47b2e4;
     }
+
+    .table {
+      color: #687281;
+    }
   </style>
 
   <script type="text/javascript">
@@ -521,8 +406,13 @@ if (isset($_POST['submit'])) {
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/purecounter/purecounter.js"></script>
+
+
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/j/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/j/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/j/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

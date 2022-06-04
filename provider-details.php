@@ -1,5 +1,6 @@
 <?php
 include './forms/connection.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +10,14 @@ include './forms/connection.php';
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <!-- auto refresh page after 10 min -->
+  <meta http-equiv="refresh" content="600">
+
+
+  <title>provider details - codly</title>
+  <meta content="Freelancer website" name="description" />
+  <meta content="codly" name="keywords" />
+  <meta name="author" content="Codly">
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -38,94 +44,80 @@ include './forms/connection.php';
 
   <!-- Features CSS File -->
   <link href="assets/css/features.css" rel="stylesheet" />
+
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li><a class="nav-link scrollto" href="team.php#team">Success stories</a></li>
-          <li><a class="nav-link  active scrollto" href="index.php#ser">Services</a></li>
-
-          <li><a class="nav-link scrollto" href="contact.php#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="sign-in.php">Sign in</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header3.php' ?>
   <!-- End Header -->
+
 
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+    <?php
 
-        <ol>
-          <li><a href="index.php">Home</a></li>
-          <li>Service Details</li>
-        </ol>
-        <h2>Service Details</h2>
+    $service_id = $_GET['service_id'];
+    $counter = 0;
+    $query = " SELECT * FROM `service-provider` WHERE `service_id` = '$service_id'   ";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $counter += 1;
+    ?>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+          <div class="container">
 
-    <!-- ======= Portfolio Details Section ======= -->
+            <ol>
+              <?php
+              // page 1
+              $sno = $row['sno'];
+              $sername = mysqli_fetch_array(mysqli_query($con, "SELECT `sno`, `name` FROM `detailed-service` WHERE `sno` = '$sno'"), MYSQLI_ASSOC);
+              $page1 = mysqli_fetch_array(mysqli_query($con, "SELECT `sec-id`, `sec-name`, `sec-desc` FROM `service-section` WHERE `sec-id` = (SELECT `sec-id` FROM `detailed-service` WHERE `sno` = $sno) "), MYSQLI_ASSOC);
+              ?>
+              <li><a href="index.php#ser">Home</a></li>
+              <li><a href="detailed-service.php?sid=<?php echo $page1['sec-id']; ?>&sname=<?php echo $page1['sec-name']; ?>&sdesc=<?php echo $page1['sec-desc']; ?> #ser"><?php echo $page1['sec-name']; ?></a></li>
+              <li><a href="service.php?sno=<?php echo $sername['sno']; ?>&sname=<?php echo $sername['name']; ?>#pack"><?php echo $sername['name']; ?></a></li>
+              <li></li>
+            </ol>
+            <h2><?php echo $row['job_title']; ?></h2>
 
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-        <?php
+          </div>
+        </section><!-- End Breadcrumbs -->
 
-        $emp_id = $Get['emp_id'];
-        $counter = 0;
-        $query = " SELECT * FROM `service-provider` WHERE `emp_id` = '$emp_id'   ";
-        $result = mysqli_query($con, $query);
-        if ($result) {
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $counter += 1;
-        ?>
+        <!-- ======= Portfolio Details Section ======= -->
+
+        <section id="portfolio-details" class="portfolio-details">
+          <div class="container">
             <div class="row gy-4">
 
               <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                   <div class="swiper-wrapper align-items-center">
-
-                    <div class="swiper-slide">
-                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image1']) . '" />'; ?>
-                    </div>
-
-                    <div class="swiper-slide">
-                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image2']) . '" />'; ?>
-                    </div>
-                    <div class="swiper-slide">
-                      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image3']) . '" />'; ?>
-                    </div>
-
-
-
-
-
+                    <?php
+                    if ($row['image1']) {
+                    ?>
+                      <div class="swiper-slide">
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image1']) . '" />'; ?>
+                      </div>
+                    <?php }
+                    if (!empty($row['image2'])) {
+                    ?>
+                      <div class="swiper-slide">
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image2']) . '" />'; ?>
+                      </div>
+                    <?php }
+                    if (!empty($row['image3'])) {
+                    ?>
+                      <div class="swiper-slide">
+                        <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image3']) . '" />'; ?>
+                      </div>
+                    <?php
+                    }
+                    ?>
                   </div>
                   <div class="swiper-pagination"></div>
                 </div>
@@ -135,17 +127,18 @@ include './forms/connection.php';
                 <div class="portfolio-info">
                   <h3>service information</h3>
                   <ul>
-                    <li><strong>Category</strong>: <?php
-                                                    $emp_id = $Get['emp_id'];
 
-                                                    $sername = mysqli_fetch_array(mysqli_query($con, " SELECT * FROM `detailed-service` WHERE `sno` = (SELECT `sno` FROM `service-provider` WHERE `emp_id` = 3 )"), MYSQLI_ASSOC);
-                                                    echo $sername['name'];
-                                                    ?></li>
-                    <li><strong>Provider</strong>:
+                    <li>
+                      <strong>Category</strong>:
                       <?php
-                      echo $_GET['captainusername'];
+                      echo $sername['name'];
+                      ?>
+                    </li>
 
-
+                    <li>
+                      <strong>Provider</strong>:
+                      <?php
+                      echo $row['captainusername'];
                       ?>
 
                     </li>
@@ -160,7 +153,12 @@ include './forms/connection.php';
                         </p>
                       </div>
                     </li>
-                    <li><strong>Service date</strong>: 01 March, 2020</li>
+                    <li><strong>Service Viewers</strong>:
+                      <?php
+                      echo 10;
+                      ?>
+                    </li>
+                    <li><strong>Publish date</strong>: 01 March, 2020</li>
                   </ul>
                 </div>
                 <div class="portfolio-description">
@@ -174,82 +172,109 @@ include './forms/connection.php';
 
             </div>
 
-      </div>
-    </section><!-- End Portfolio Details Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Pricing</h2>
-        </div>
-        <p class="text-center" style="margin-top: -15px;">Magnam dolores commodi suscipit. Necessitatibus eius
-          consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-          sit
-          in iste officiis commodi quidem hic quas.</p>
-
-        <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="box">
-              <h3>Free Plan</h3>
-              <h4><sup>$</sup>0<span>per month</span></h4>
-              <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <a href="payment.php#payment" class="buy-btn">Get Started</a>
-            </div>
           </div>
+        </section><!-- End Portfolio Details Section -->
 
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
-            <div class="box featured">
-              <h3>Business Plan</h3>
-              <h4><sup>$</sup>29<span>per month</span></h4>
-              <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-              </ul>
-              <a href="payment.php#payment" class="buy-btn">Get Started</a>
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+          <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+              <h2>Pricing</h2>
             </div>
-          </div>
+            <p class="text-center" style="margin-top: -15px;">Magnam dolores commodi suscipit. Necessitatibus eius
+              consequatur ex aliquid fuga eum quidem. Sit sint
+              consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+              sit
+              in iste officiis commodi quidem hic quas.</p>
 
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-            <div class="box">
-              <h3>Developer Plan</h3>
-              <h4><sup>$</sup>49<span>per month</span></h4>
-              <ul>
-                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-              </ul>
-              <a href="payment.php#payment" class="buy-btn">Get Started</a>
+            <div class="row">
+
+              <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <div class="box">
+                  <h3>Standard Plan</h3>
+                  <h4><sup>$</sup><?php echo $row['price1']; ?><span></span></h4>
+                  <ul>
+                    <?php
+                    $txt = $row['price1_desc'];
+                    if ($txt) {
+                      $lines = explode("-", $txt);
+                      foreach ($lines as $i => $value) {
+                    ?>
+                        <li>
+                          <i class="bx bx-check"></i>
+                          <?php echo $lines[$i]; ?>
+                        </li>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+                <div class="box featured">
+                  <h3>Premium Plan</h3>
+                  <h4><sup>$</sup><?php echo $row['price2']; ?><span></span></h4>
+                  <ul>
+                    <?php
+                    $txt = $row['price2_desc'];
+                    if ($txt) {
+                      $lines = explode("-", $txt);
+                      foreach ($lines as $i => $value) {
+                    ?>
+                        <li>
+                          <i class="bx bx-check"></i>
+                          <?php echo $lines[$i]; ?>
+                        </li>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                </div>
+              </div>
+
+              <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                <div class="box">
+                  <h3>Professional Plan</h3>
+                  <h4><sup>$</sup><?php echo $row['price3']; ?><span></span></h4>
+                  <ul>
+                    <?php
+                    $txt = $row['price3_desc'];
+                    if ($txt) {
+                      $lines = explode("-", $txt);
+                      foreach ($lines as $i => $value) {
+                    ?>
+                        <li>
+                          <i class="bx bx-check"></i>
+                          <?php echo $lines[$i]; ?>
+                        </li>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                </div>
+              </div>
+
             </div>
-          </div>
-
-        </div>
-      <?php
-          }
+          <?php
         }
-        if ($counter == 0) {
-      ?>
-      <h5 class="h5 pb-4 typo-space-line text-center">
-        <?php echo "❌ result is empty"; ?>
-      </h5>
-    <?php }
-    ?>
-      </div>
-    </section><!-- End Pricing Section -->
+      }
+      if ($counter == 0) {
+          ?>
+          <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 10em;">
+            <?php echo "❌ result is empty"; ?>
+          </h5>
+        <?php }
+        ?>
+          </div>
+        </section><!-- End Pricing Section -->
 
   </main><!-- End #main -->
 
@@ -321,7 +346,7 @@ include './forms/connection.php';
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="development-team.html#team2">IT Development Team</a>
+        Designed by <a href="development-team.php#team2">IT Development Team</a>
       </div>
     </div>
   </footer>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'forms/connection.php';
+include './forms/connection.php';
 
 $email = "";
 $name = "";

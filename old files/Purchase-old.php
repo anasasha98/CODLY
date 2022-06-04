@@ -13,8 +13,10 @@ include './forms/connection.php';
   <script src="assets/js/j/feather.min.js"></script>
 
   <title>codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -327,7 +329,7 @@ include './forms/connection.php';
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-          Designed by <a href="">IT Development Team</a>
+          Designed by <a href="development-team.php">IT Development Team</a>
         </div>
       </div>
     </footer>

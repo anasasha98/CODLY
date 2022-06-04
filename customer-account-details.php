@@ -11,8 +11,10 @@ session_start();
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>profile account details - Codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -93,37 +95,7 @@ session_start();
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <!-- <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li><a class="nav-link scrollto" href="team.php#team">Success stories</a></li>
-          <li><a class="nav-link  active scrollto" href="index.php#ser">Services</a></li>
-
-          <li><a class="nav-link scrollto" href="contact.php#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="sign-in.php">Sign in</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav> -->
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header2.php' ?>
   <!-- End Header -->
 
 
@@ -447,7 +419,7 @@ session_start();
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="">IT Development Team</a>
+        Designed by <a href="development-team.php">IT Development Team</a>
       </div>
     </div>
   </footer>

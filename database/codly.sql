@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 03:02 AM
+-- Generation Time: Jun 03, 2022 at 09:58 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -46,8 +46,23 @@ CREATE TABLE `captain` (
 --
 
 INSERT INTO `captain` (`captainusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`, `major`, `bio`, `attach`, `image`) VALUES
-('ali0Ziadeh', 'Ali', 'ziadeh', 'Aa123000', 'a@gmail.com', '+962779880411', '2016-06-01', 'SW', 'Mary Jones is an Administrative Assistant with eight years of experience working alongside the executive team of a Fortune 500 company. Mary specializes in administrative technology and is responsible for educating other employees on using progressive systems and applications, including accounting software, mass communication procedures and organizational apps. Mary is a powerful force in the workplace and uses her positive attitude and tireless', 'Full_Stack_Developer.JPG', 'img_avatar.png'),
+('ali0Ziadeh', 'Ali', 'ziadeh', 'Aa123000', 'a@gmail.com', '+971507570200', '2016-06-01', 'SW', 'Mary Jones is an Administrative Assistant with eight years of experience working alongside the executive team of a Fortune 500 company. Mary specializes in administrative technology and is responsible for educating other employees on using progressive systems and applications, including accounting software, mass communication procedures and organizational apps. Mary is a powerful force in the workplace and uses her positive attitude and tireless', 'Full_Stack_Developer.JPG', 'img_avatar.png'),
 ('jamesbond', 'jams', 'bond', 'Aa123456', 'james@gmail.com', '+962779271166', '1992-08-20', 'Full-Stack Developer', 'My name is Alex Drysdale and I am a Junior Web Developer for Oswald Technologies. I am an accomplished coder and programmer, and I enjoy using my skills to contribute to the exciting technological advances that happen every day at Oswald Tech. I graduated from the California Institute of Technology in 2016 with a Bachelor\'s Degree in Software Development. While in school, I earned the 2015 Edmund Gains Award for my exemplary academic performance and leadership skills.', 'icons8-facebook-240.webp', 'car-1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `customer-username` varchar(20) NOT NULL,
+  `service-id` int(11) NOT NULL,
+  `service-name` varchar(20) NOT NULL,
+  `service-price` int(11) NOT NULL,
+  `captain-username` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -96,7 +111,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customerusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`, `image`) VALUES
 ('Anas_asha', 'Anas', 'Asha', 'anas123', 'Anas@gmail.com', '+962', '0000-00-00', ''),
-('mohammed_ahmed', 'Moh', 'Ahmed', '3333', 'moh@yahoo.com', '+971507570111', '2002-11-15', 'good.png');
+('mohammed_ahmed', 'Moh', 'Ahmed', '3333', 'moh@yahoo.com', '+962777570111', '2002-11-15', 'good.png');
 
 -- --------------------------------------------------------
 
@@ -150,7 +165,7 @@ CREATE TABLE `purchase_list` (
 --
 
 INSERT INTO `purchase_list` (`Purchase ID`, `Customer Username`, `Service ID`, `Service Name`, `Captin Username`, `Price`, `Date`, `Report`, `Status`) VALUES
-(1, 'heba-malo', 1001, ' Design ', 'ford', 20, '2022-05-03', 0, 'Un complete');
+(1, 'heba-malo', 1001, ' Design ', 'ford', 20, '2022-05-03', 0, 'complete');
 
 -- --------------------------------------------------------
 
@@ -160,23 +175,32 @@ INSERT INTO `purchase_list` (`Purchase ID`, `Customer Username`, `Service ID`, `
 
 CREATE TABLE `service-provider` (
   `sno` int(4) NOT NULL,
-  `emp_id` int(11) NOT NULL,
-  `ename` varchar(30) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `captainusername` varchar(25) NOT NULL,
   `job_title` varchar(30) NOT NULL,
   `job_desc` varchar(200) NOT NULL,
   `tag1` varchar(14) DEFAULT NULL,
   `tag2` varchar(14) DEFAULT NULL,
   `tag3` varchar(14) DEFAULT NULL,
-  `tag4` varchar(14) DEFAULT NULL
+  `tag4` varchar(14) DEFAULT NULL,
+  `image1` varchar(255) NOT NULL,
+  `image2` varchar(255) DEFAULT NULL,
+  `image3` varchar(255) DEFAULT NULL,
+  `price1` int(11) NOT NULL,
+  `price1_desc` varchar(250) NOT NULL,
+  `price2` int(11) DEFAULT NULL,
+  `price2_desc` varchar(250) DEFAULT NULL,
+  `price3` int(11) DEFAULT NULL,
+  `price3_desc` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `service-provider`
 --
 
-INSERT INTO `service-provider` (`sno`, `emp_id`, `ename`, `job_title`, `job_desc`, `tag1`, `tag2`, `tag3`, `tag4`) VALUES
-(1006, 1234, 'James Bond', 'Professional Video Editing', 'video editing using Adobe Premiere for adding and modifying all required effects to get a professional video as a result', 'video', 'creative', '', 'creation'),
-(8001, 1235, 'Jack Black', 'Advanced game animator', 'game animation is a special skill to make animation game for any purpose', NULL, NULL, NULL, NULL);
+INSERT INTO `service-provider` (`sno`, `service_id`, `captainusername`, `job_title`, `job_desc`, `tag1`, `tag2`, `tag3`, `tag4`, `image1`, `image2`, `image3`, `price1`, `price1_desc`, `price2`, `price2_desc`, `price3`, `price3_desc`) VALUES
+(1006, 1, 'ali0Ziadeh', 'Professional Video Editing', 'video editing using Adobe Premiere for adding and modifying all required effects to get a professional video as a result', 'video', 'creative', '', 'creation', '', '', '', 0, '', 0, '', 0, ''),
+(8001, 2, 'jamesbond', 'Advanced game animator', 'game animation is a special skill to make animation game for any purpose', NULL, NULL, NULL, NULL, '', '', '', 50, '', 100, '', 150, 'Delivery in 1 Day - High resoluation game animation - professional work - any changes on demand');
 
 -- --------------------------------------------------------
 
@@ -218,6 +242,15 @@ ALTER TABLE `captain`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `fk-cust-name` (`customer-username`),
+  ADD KEY `fk-sno` (`service-id`),
+  ADD KEY `fk-cap-name` (`captain-username`);
+
+--
 -- Indexes for table `complaint-user`
 --
 ALTER TABLE `complaint-user`
@@ -248,7 +281,9 @@ ALTER TABLE `purchase_list`
 -- Indexes for table `service-provider`
 --
 ALTER TABLE `service-provider`
-  ADD KEY `sno-fk` (`sno`);
+  ADD PRIMARY KEY (`service_id`),
+  ADD KEY `sno-fk` (`sno`),
+  ADD KEY `cap-fk` (`captainusername`);
 
 --
 -- Indexes for table `service-section`
@@ -259,6 +294,12 @@ ALTER TABLE `service-section`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `complaint-user`
@@ -273,6 +314,12 @@ ALTER TABLE `detailed-service`
   MODIFY `sno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8002;
 
 --
+-- AUTO_INCREMENT for table `service-provider`
+--
+ALTER TABLE `service-provider`
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `service-section`
 --
 ALTER TABLE `service-section`
@@ -281,6 +328,14 @@ ALTER TABLE `service-section`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk-cap-name` FOREIGN KEY (`captain-username`) REFERENCES `captain` (`captainusername`),
+  ADD CONSTRAINT `fk-cust-name` FOREIGN KEY (`customer-username`) REFERENCES `customer` (`customerusername`),
+  ADD CONSTRAINT `fk-sno` FOREIGN KEY (`service-id`) REFERENCES `detailed-service` (`sno`);
 
 --
 -- Constraints for table `detailed-service`
@@ -292,6 +347,7 @@ ALTER TABLE `detailed-service`
 -- Constraints for table `service-provider`
 --
 ALTER TABLE `service-provider`
+  ADD CONSTRAINT `cap-fk` FOREIGN KEY (`captainusername`) REFERENCES `captain` (`captainusername`),
   ADD CONSTRAINT `sno-fk` FOREIGN KEY (`sno`) REFERENCES `detailed-service` (`sno`);
 COMMIT;
 
@@ -304,5 +360,8 @@ ALTER TABLE `purchase_list` CHANGE `Report` `Report` TINYINT(1) NOT NULL DEFAULT
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207

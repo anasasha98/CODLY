@@ -12,8 +12,10 @@ include './forms/connection.php';
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <title>codly</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+  <meta content="Freelancer website" name="description" />
+
+  <meta name="author" content="Codly">
+  <meta content="codly" name="keywords" />
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
@@ -45,84 +47,10 @@ include './forms/connection.php';
 <body>
   <!-- ======= Splash Screen ======= -->
   <!-- <div class="splash" data-aos="zoom-out-down"></div> -->
-  <!-- End Header -->
+  <!-- End Splash Screen -->
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
-          <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <?php
-          if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-          ?>
-            <li class="dropdown">
-              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;<?php echo $username; ?></span></a>
-              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
-              <ul>
-                <li><a href="captain-account-details.php">Profile</a></li>
-                <li><a href="captain-about-page">About</a></li>
-                <li><a href="captain-security-page.php">Security</a></li>
-                <li><a href="captain-add-service.php">Publish serivce</a></li>
-                <li><a href="captain-purchase.php">Purchased Service</a></li>
-                <li><a href="captain-work.php">My Work</a></li>
-                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
-              </ul>
-            </li>
-
-          <?php
-          } else {
-          ?>
-            <li>
-              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header1.php'?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -171,7 +99,7 @@ include './forms/connection.php';
       <div class="container">
         <div class="row" data-aos="zoom-in">
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.oracle.com" target="_blank">
+            <a href="https://www.mysql.com" target="_blank">
               <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
             </a>
           </div>
@@ -380,7 +308,7 @@ include './forms/connection.php';
               <li><i class="bx bx-chevron-right"></i> <a href="about.php#about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#ser">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="contact.php#contact">Contact</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="term.html">Term of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="term.php">Term of service</a></li>
             </ul>
           </div>
 
@@ -418,7 +346,7 @@ include './forms/connection.php';
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-        Designed by <a href="">IT Development Team</a>
+        Designed by <a href="development-team.php">IT Development Team</a>
       </div>
     </div>
   </footer>

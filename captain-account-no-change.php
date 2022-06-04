@@ -105,8 +105,8 @@ session_start();
   <!-- ===== Captain Account Details ===== -->
   <?php
   // get captain username from previos page  
-  if (isset($_SESSION['username'])) {
-    $captainusername = $_SESSION['username'];
+  if (isset($_GET['captainusername'])) {
+    $captainusername = $_GET['captainusername'];
   }
   ?>
 
@@ -126,135 +126,13 @@ session_start();
           <!-- Account page navigation-->
           <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="#">Profile</a>
-            <a class="nav-link" href="captain-about-page.php">About</a>
-            <a class="nav-link" href="captain-security-page.php">Security</a>
-            <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
-            <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
-            <a class="nav-link" href="captain-work.php">My Work</a>
+            <a class="nav-link" href="captain-about-no-change.php?captainusername=<?php echo $captainusername; ?>">About</a>
+            <a class="nav-link" href="captain-purchase-no-change.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 
-          <!-- True Alert -->
-          <div class="alert success" id="img_success" style="display: none;">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Success!</strong>
-          </div>
-
-          <!-- Wrong Alert -->
-          <div class="alert" id="wrong" style="display: none;">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Error!</strong>
-          </div>
-
-          <!-- ===== send any changed information to db ===== -->
-          <?php
-          if (isset($_POST['save'])) {
-            // First name
-            $fname = $_POST['fname'];
-            // Last name
-            $lname = $_POST['lname'];
-            // Phone number
-            $phone = $_POST['phone'];
-            // major
-            $major = $_POST['major'];
-            // Date of birth
-            $dob = $_POST['dob'];
-
-            // Update DB 
-            $chnage = "UPDATE `captain` SET `firstname`='$fname',`lastname`='$lname',`phonenumber`='$phone',`dob`='$dob',`major`='$major' WHERE `captainusername` = '$captainusername'";
-            $info = mysqli_query($con, $chnage);
-            if ($info) {
-              echo '<script type="text/javascript">',
-              'showtrue("Info Updated Successfully.");',
-              '</script>';
-            } else {
-              echo '<script type="text/javascript">',
-              'showwrong("Data Not Updated.");',
-              '</script>';
-            }
-          }
-          ?>
           <div class="row">
-
-            <!-- php code for image upload -->
-            <?php
-            // Initialize message variable
-            $msg = "";
-            // If upload images is clicked ...
-            if (isset($_FILES["image"]) && !empty($_FILES["image"]["name"])) {
-              if (is_uploaded_file($_FILES["image"]["tmp_name"]) && $_FILES["image"]["error"] === 0) {
-                // everything okay, do process
-
-                // Your file has been uploaded
-                // the path to store the uploaded image
-                $target = "assets/img/captain_profile/" . basename($_FILES['image']['name']);
-
-                // Get all the submitted data from the form
-                $image = $_FILES['image']['name'];
-
-                // Stores the submitted data into the database table: captain
-                $sql = "UPDATE `captain` SET `image`='$image' WHERE `captainusername` = '$captainusername'";
-                // Execute query
-                $res = mysqli_query($con, $sql);
-
-                if ($res) {
-                  echo '<script type="text/javascript">',
-                  'showtrue("✔");',
-                  '</script>';
-                } else {
-                  echo '<script type="text/javascript">',
-                  'showwrong("✖");',
-                  '</script>';
-                }
-
-
-                // check before change 
-                $get_image = "SELECT `image` FROM `captain` where `captainusername` = '$captainusername' ";
-                $image_result = mysqli_query($con, $get_image);
-                $profile_image = mysqli_fetch_assoc($image_result);
-
-                error_reporting(E_ERROR | E_PARSE);
-
-                $filePath = "assets/img/captain_profile/{$row['image']}";
-                // echo $filePath;
-                if (file_exists($filePath)) {
-                  if ($profile_image['image'] != $row['image']) {
-                    unlink($filePath);
-                    // echo "Image Successfully Updated.";
-                    echo '<script type="text/javascript">',
-                    'showtrue("Image Updated Successfully.");',
-                    '</script>';
-                  }
-                } else {
-                  // echo "New Image Added.";
-                  echo '<script type="text/javascript">',
-                  'showtrue("New Image Added.");',
-                  '</script>';
-                }
-
-                // Now let's move the uploaded image into the folder: files
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-                  $msg = "Image uploaded successfully";
-                } else {
-                  $msg = "There was a problem uploading image";
-                }
-
-                unset($_POST);
-                $_POST = array();
-
-                // call fucntion reload to save username value;
-                echo '<script type="text/javascript">',
-                'reload();',
-                '</script>';
-
-                // header("Refresh:0");
-                // exit();
-              }
-            }
-            ?>
-
             <div class="col-xl-4">
-
 
               <!-- Profile picture card -->
               <div class="card mb-4 mb-xl-0">
@@ -271,13 +149,12 @@ session_start();
                   <div class="small font-italic text-muted mb-4">JPG or PNG or any image format</div>
 
                   <!-- Profile picture upload button-->
-                  <form method="POST" action="captain-account-details.php" enctype="multipart/form-data">
+                  <form enctype="multipart/form-data">
                     <input type="hidden" name="size" value="1000000">
                     <div style="height:0px; overflow:hidden;">
                       <input type="file" id="image" name="image" accept="image/*" onchange="javascript:this.form.submit();" />
                     </div>
                   </form>
-                  <button class="btn btn-primary" type="button" onclick="image.click();">Upload new image</button>
                 </div>
               </div>
             </div>
@@ -293,7 +170,7 @@ session_start();
               <div class="card mb-4">
                 <div class="card-header">Captain Account Details</div>
                 <div class="card-body">
-                  <form id="login" name="form1" method="POST" action="captain-account-details.php" enctype="multipart/form-data">
+                  <form id="login" name="form1" enctype="multipart/form-data">
                     <!-- Form Group (username)-->
                     <div class="mb-3">
                       <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
@@ -305,12 +182,12 @@ session_start();
                       <!-- Form Group (first name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputFirstName">First name</label>
-                        <input class="form-control" id="inputFirstName" type="text" name="fname" placeholder="Enter your first name" value="<?php echo $row['firstname']; ?>" maxlength="25" required>
+                        <input class="form-control" id="inputFirstName" type="text" name="fname" disabled placeholder="Enter your first name" value="<?php echo $row['firstname']; ?>" maxlength="25" required>
                       </div>
                       <!-- Form Group (last name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputLastName">Last name</label>
-                        <input class="form-control" id="inputLastName" type="text" name="lname" placeholder="Enter your last name" value="<?php echo $row['lastname']; ?>" maxlength="25" required>
+                        <input class="form-control" id="inputLastName" type="text" name="lname" disabled placeholder="Enter your last name" value="<?php echo $row['lastname']; ?>" maxlength="25" required>
                       </div>
                     </div>
                     <!-- Form Row -->
@@ -318,7 +195,7 @@ session_start();
                       <!-- Form Group (major title)-->
                       <div class="mb-3">
                         <label class="small mb-1" for="inputOrgName">Major</label>
-                        <input class="form-control" id="inputOrgName" type="text" name="major" placeholder="Enter your major field" value="<?php echo $row['major']; ?>" maxlength="25" required>
+                        <input class="form-control" id="inputOrgName" type="text" name="major" disabled placeholder="Enter your major field" value="<?php echo $row['major']; ?>" maxlength="25" required>
                       </div>
                     </div>
                     <!-- Form Group (email address)-->
@@ -331,27 +208,17 @@ session_start();
                       <!-- Form Group (phone number)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="phone">Phone number</label><br>
-                        <input class="form-control" id="phone" type="tel" name="phone" value="<?php echo $row['phonenumber']; ?>" maxlength="13" onchange="process(event)" pattern="[0-9]{12}+" required style="padding-right: 10.125rem;">
+                        <input class="form-control" id="phone" type="tel" name="phone" disabled value="<?php echo $row['phonenumber']; ?>" maxlength="13" onchange="process(event)" pattern="[0-9]{12}+" required style="padding-right: 10.125rem;">
                       </div>
-
-                      <script>
-                        const phoneInputField = document.querySelector(" #phone");
-                        const phoneInput = window.intlTelInput(phoneInputField, {
-                          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                        });
-                      </script>
 
                       <!-- Form Group (birthday)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputBirthday">Date of Birth</label>
-                        <input class="form-control" id="inputBirthday" type="date" name="dob" placeholder="Enter your birthday" value="<?php echo $row['dob']; ?>" min="1900-01-01" max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" required>
+                        <input class="form-control" id="inputBirthday" type="date" name="dob" disabled placeholder="Enter your birthday" value="<?php echo $row['dob']; ?>" min="1900-01-01" max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" required>
                       </div>
                     </div>
                     <!-- Save changes & Discard button-->
-                    <button class="btn btn-secondary" type="reset" id="discard" onClick="window.location.reload();">Discard</button>
-                    <button class="btn btn-primary" type="submit" id="save" name="save">Save changes</button>
                   </form>
-                  <script type="text/javascript" src="assets/js/btn_check.js"></script>
                 </div>
               </div>
             </div>
@@ -441,47 +308,6 @@ session_start();
   </div>
 </footer>
 <!-- End Footer -->
-
-
-<!-- Phone number with Country Key -->
-<!-- Start script -->
-
-<script>
-  function process(event) {
-    event.preventDefault();
-
-    const phoneNumber = phoneInput.getNumber();
-
-    document.getElementById("phone").value = `${phoneNumber}`;
-  }
-</script>
-
-<script>
-  function getIp(callback) {
-    fetch('https://ipinfo.io/json?token=<your token>', {
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then((resp) => resp.json())
-      .catch(() => {
-        return {
-          country: 'us',
-        };
-      })
-      .then((resp) => callback(resp.country));
-  }
-</script>
-
-<script>
-  const phoneInput = window.intlTelInput(phoneInputField, {
-    preferredCountries: ["us", "co", "in", "de"],
-    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-  });
-</script>
-
-<!-- End script -->
-
 
 <style type="text/css">
   body {
