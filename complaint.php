@@ -1,5 +1,6 @@
 <?php
 include './forms/connection.php';
+// $con = new mysqli('localhost','root','','codly');
 ?>
 
 <!DOCTYPE html>

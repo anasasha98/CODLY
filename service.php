@@ -221,7 +221,7 @@ include './forms/connection.php';
                       </div>
                       <!--/.Service Provider-review-->
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
-                      <form action="cart.php" method="POST"  >
+                      <form action="addcart.php" method="POST"  >
                       
                   
                         

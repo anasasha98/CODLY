@@ -1,74 +1,15 @@
 <?php
 
-session_start();
 
+// $i=1;
 include './forms/connection.php';
-// include 'service.php' ;
-// include 'service.php';
+// $username = "root";
+// $password = "";
+// $server = "localhost";
+// $db = "codly";
 
 
-// if(isset($_POST['add'])){
-// $cartq = $con -> prepare("INSERT INTO `cart` ( `service-id`, `service-name`, `service-price`) value(1004,'fff',20) ") ; 
-// // $cartq -> bind_param("isis" ,    );
-// $resu = mysqli_query($con, $cartq);
-
-
-// SELECT `sno`, `name`, `price` FROM `detailed-service` where sno=1006
-// }
-
-// $total = 0;
-// if (isset($_SESSION['cart'])){
-//     $product_id = array_column($_SESSION['cart'], 'service_id');
-
-
-//     while ($row = mysqli_fetch_assoc($result)){
-//         foreach ($product_id as $id){
-//             if ($row[''] == $id){
-
-//                 $total = $total + (int)$row['product_price'];
-//             }
-//         }
-//     }
-// }else{
-//     echo "<h5>Cart is Empty</h5>";
-// }
-
-
-
-
-// add to cart
-// if (isset($_POST['add'])){
-//   require_once ('service.php');
-//   // $ser-id  = $_POST['sno'];
-//   $query = " SELECT * FROM `service-provider` WHERE `sno` =1006";
-//   $result = mysqli_query($con, $query);
-//   if ($result) {
-//     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-//       $CaptainName = $row['ename'];
-
-
-//     }}
-//     $query = " SELECT name FROM `detailed-service` WHERE `sno` = 1006 ";
-//     $result = mysqli_query($con, $query);
-//     if ($result) {
-
-//         $servName = $row['name'];
-//       }
-
-
-
-//   $cartq = $con -> prepare("INSERT INTO `cart` (  `service-id`, `service-name`, `service-price`, `captain-username`) VALUES (?,?,?,?) ") ;
-// $cartq -> bind_param("isis" ,  1006 , 'logo' , 60 , 'heba');
-// $cartq->execute();
-
-
-
-// $cartq->close();
-// $con->close();}
-
-// $serName = " SELECT name FROM `detailed-service` WHERE `sno` = 1006";
-
-
+// $con = mysqli_connect($server, $username, $password, $db);
 
 if (isset($_POST['remove'])) {
   if ($_GET['action'] == 'remove') { {
@@ -116,16 +57,66 @@ if (isset($_POST['remove'])) {
 <body class="bg-light">
 
 
-  <?php
-  require_once('header.php');
-  ?>
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark "style=" background: #37517e;">
+        <a href="index.php" class="navbar-brand">
+            <h3 class="px-5">
+                <i class="fas fa-shopping-basket"></i> Shopping Cart
+            </h3>
+        </a>
+        <button class="navbar-toggler"
+            type="button"
+                data-toggle="collapse"
+                data-target = "#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="mr-auto"></div>
+            <div class="navbar-nav">
+                <a href="cart.php" class="nav-item nav-link active">
+                    <h5 class="px-5 cart">
+                        <i class="fas fa-shopping-cart"></i> 
+                       
+                        <?php
+                         
+
+                       
+                         
+                          $query = " SELECT * FROM `cart2` where id=(select id from cart2) ";
+                          $result = mysqli_query($con, $query);
+                       
+                          if ($result) {
+                            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {?>
+                         
+                              <sup><span id="cart_count" class="text-white">
+                             <?php echo  $row['count'];?> </span></sup>
+
+                          <?php  
+                        }
+                      }
+                     
+
+                        ?>
+                      
+                    </h5>
+                </a>
+            </div>
+        </div>
+
+    </nav>
+</header>
 
   <div class="container-fluid">
     <div class="row px-5">
       <div class="col-md-7">
         <div class="shopping-cart">
-          <!-- <h6>My Cart</h6>
-                <hr> -->
+    
+               
 
 
         </div>
@@ -149,7 +140,7 @@ if (isset($_POST['remove'])) {
                     <!-- <th style="width:30px;">check</th> -->
                     <th>Service Name</th>
                     <th>Price </th>
-                    <th>Remove </th>
+                    <!-- <th>Remove </th> -->
                   
                   <th>Pay</th>
                   </tr>
@@ -176,7 +167,8 @@ if (isset($_POST['remove'])) {
                         <!-- </td> -->
                         <td align="center"><?php echo $row['service-name']; ?> </td>
                         <td align="center"><?php echo $row['service-price']; ?>$</td>
-                        <td align="center"> <button type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="<?php $row['cart_id']; ?>">remove</button></td>
+                       
+                        <!-- <td align="center">< href="remove.php"> <input type="submit"  class="btn btn-danger mx-2 btn-hover" value="<?php $row['cart_id']; ?>"></a></td> -->
                         <td align="center"><a href="payment.php"> <input type="submit"  class="btn btn-success mx-2 btn-hover" value="Pay Now"></a></td>
                       </tr>
 

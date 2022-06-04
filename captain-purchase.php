@@ -188,7 +188,7 @@ session_start();
                 <tr>
                   <th>Purchase ID</th>
                   <th>Customer Username </th>
-                  <th>Service ID </th>
+                  <!-- <th>Service ID </th> -->
                   <th>Service Name</th>
                   <th>Captain Username</th>
                   <th>Price</th>
@@ -215,7 +215,9 @@ session_start();
                     <tr>
                       <td align="center"><?php echo $row['Purchase ID']; ?></td>
                       <td align="center"><?php echo $row['Customer Username']; ?></td>
-                      <td align="center"><?php echo $row['Service ID']; ?></td>
+                      <!-- <td align="center"><?php
+                      //  echo $row['Service ID']; 
+                      ?></td> -->
 
                       <td>
                         <?php echo $row['Service Name']; ?>
@@ -224,7 +226,7 @@ session_start();
                         <?php echo $row['Captin Username']; ?>
                       </td>
                       <td><?php echo $row['Price'] . '$'; ?></td>
-                      <td><?php echo $row['Date']; ?></td>
+                      <td><?php echo date("Y-m-d"); ?></td>
 
                       <td align="center">
                         <a href="complaint.php" class="btn btn-danger "><span>click</span></a>

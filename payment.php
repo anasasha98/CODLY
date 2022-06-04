@@ -1,3 +1,12 @@
+<?php
+include './forms/connection.php';
+include 'insert-to-cart.php'; 
+// include 'addcart.php';
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +47,52 @@
   <!-- Payment Resource -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/payment.css">
+  <style>
+    
+    .cvv{
+      display:none;
+background-color:#f4f4f4;
+border-color:#f4f4f4;
+
+
+    }
+ .log:hover + .cvv {
+  display:block ;
+
+ }
+
+ 
+    .exp-wrapper {
+  position: relative;
+  border: 1px solid #aaa;
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  height: 40px;
+  line-height: 36px;
+  font-size: 24px;
+}
+
+.exp-wrapper:after {
+  content: '/';
+  position: absolute;
+  left: 50%;
+  margin-left: -4px;
+  color: #aaa;
+}
+
+input.exp {
+  margin-top:5px;
+  float: left;
+  font-family: monospace;
+  /* border: 0; */
+  width: 100px;
+  /* outline: none; */
+  appearance: none;
+  font-size: 14px;
+}
+    
+</style>
 </head>
 
 <body>
@@ -50,8 +105,8 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
+          <li><a class="getstarted scrollto" href="index.php">Home</a></li>
+          <!-- <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
 
           <li class="dropdown">
             <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
@@ -86,7 +141,7 @@
           </li>
           <li>
             <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-          </li>
+          </li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -95,156 +150,198 @@
   </header>
   <!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Build your business with top freelancers</h1>
-          <h2>
-            Post a job for free and connect with independent talent today.
-          </h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Hire a Freelancer</a>
-            <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets\img\hero-img.png" class="img-fluid animated" alt="" />
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Hero -->
+  
 
   <main id="main">
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-      <div class="container">
-        <div class="row" data-aos="zoom-in">
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.oracle.com" target="_blank">
-              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.microsoft.com" target="_blank">
-              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.orange.com" target="_blank">
-              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.ahu.edu.jo" target="_blank">
-              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.paypal.com" target="_blank">
-              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.github.com" target="_blank">
-              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Cliens Section -->
+    
 
     <!-- ======= Payment Section ======= -->
     <section id="payment" style="margin-top: 50px;">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Payment Form</h2>
+          <h2 style=" display:inline;">Payment Form</h2>
         </div>
 
         <div class="row row2">
           <div class="col-75">
             <div class="container2">
-              <form action="/action_page.php">
+              <form action="insert-to-cart.php" method="POST" >
 
                 <div class="row">
                   <div class="col-50">
-                    <h3>Billing Address</h3>
-                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                    <input type="text" id="email" name="email" placeholder="john@example.com">
-                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                    <input type="text" id="city" name="city" placeholder="New York">
+                    <h3 >Billing Address</h3>
+                    <label style="  margin-top:30px; " for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="fname" name="firstname" class="form-control" placeholder="John M. Doe"  required>
+                    <label style="  margin-top:30px; " for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" style="height:50px;" required>
+            
+                    <label for="adr"style="  margin-top:30px; "><i class="fa fa-address-card-o"></i> Address</label>
+                    <input  class="form-control" type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
+                    <label for="city" style="  margin-top:30px; "><i class="fa fa-institution"></i> City</label>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="New York" required>
 
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-50">
                         <label for="state">State</label>
                         <input type="text" id="state" name="state" placeholder="NY">
-                      </div>
+                      </div> -->
+                     <div class="row">
                       <div class="col-50">
+                      <label for="state">State</label>
+                      <select  class="form-control" id="state" name="country-state" required>
+    <option value=""></option>
+    <option value="AF">Afghanistan</option>
+    <option value="AL">Algeria</option>
+    <option value="AR">Argentina</option>
+    <option value="BR">Bihar</option>
+    <option value="CH">Chandigarh</option>
+    <option value="CT">Canada</option>
+    <option value="CI">China</option>
+    <option value="DD">Daman and Diu</option>
+    <option value="DL">Delhi</option>
+    <option value="GA">Germany</option>
+    <option value="GJ">Gujarat</option>
+    <option value="HR">Haryana</option>
+    <option value="HP">Himachal Pradesh</option>
+    <option value="I">Iraq</option>
+    <option value="JH">Jordan</option>
+    <option value="KA">Kazakhstan</option>
+    <option value="KL">Kerala</option>
+    <option value="LA">Ladakh</option>
+    <option value="LD">Lakshadweep</option>
+    <option value="MP">Madhya Pradesh</option>
+    <option value="MH">Maharashtra</option>
+    <option value="MN">Manipur</option>
+    <option value="ML">Meghalaya</option>
+    <option value="MZ">Mizoram</option>
+    <option value="NL">Nagaland</option>
+    <option value="OR">Odisha</option>
+    <option value="PY">Puducherry</option>
+    <option value="PB">Punjab</option>
+    <option value="RJ">Rajasthan</option>
+    <option value="SK">Sikkim</option>
+    <option value="TN">Tamil Nadu</option>
+    <option value="TG">Telangana</option>
+    <option value="TR">Tripura</option>
+    <option value="UP">Uttar Pradesh</option>
+    <option value="UT">Uttarakhand</option>
+    <option value="WB">West Bengal</option>
+</select>    </div> 
+<div class="form-group" style="margin-top:30px;">
+                                <label for="CustomerUsername" style="margin-top:30px;" >Customer User name:</label>
+                                <select class="form-control"  id="CustomerUsername" name="customer-username"  required>
+                                <option value=""></option>
+                              <option value="hebamalo">hebamalo</option>
+                                  <option value="mohammed_ahmed">mohammed_ahmed</option>
+                                 
+                                </select>
+               </div>
+               <div class="form-group">
+                                <label style="  margin-top:30px; " for="CaptainUsername:">Captain User Name:</label>
+                                <select  class="form-control" id="CaptainUsername" name="captain-username" required >
+                                <option value=""></option>
+                                  <option value="ali0Ziadeh" >ali0Ziadeh</option>
+                                  <option value="jamesbond">jamesbond</option>
+                                
+                                </select>
+               </div>
+                      <!-- <div class="col-50">
                         <label for="zip">Zip</label>
                         <input type="text" id="zip" name="zip" placeholder="10001">
-                      </div>
+                      </div> -->
                     </div>
                   </div>
 
                   <div class="col-50">
-                    <h3>Payment</h3>
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
+                    <h3 style=" display:inline;">Payment</h3>
+                  
+                        <div  style="display:inline; float:right;" class="icon-container">
                       <i class="fa fa-cc-visa" style="color:navy;"></i>
                       <i class="fa fa-cc-amex" style="color:blue;"></i>
                       <i class="fa fa-cc-mastercard" style="color:red;"></i>
                       <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
-                    <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                    <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                    <label for="expmonth">Exp Month</label>
-                    <input type="text" id="expmonth" name="expmonth" placeholder="September">
-                    <div class="row">
-                      <div class="col-50">
-                        <label for="expyear">Exp Year</label>
-                        <input type="text" id="expyear" name="expyear" placeholder="2018">
-                      </div>
-                      <div class="col-50">
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" name="cvv" placeholder="352">
-                      </div>
-                    </div>
+                 
+                    <label for="cname" style="margin-top:30px;">Name on Card</label>
+                    <input  class="form-control" type="text" id="cname" name="cardname" placeholder="Name on Card" required>
+                    
+                 
+                   
+          
+                    <label for="ccnum" style="margin-top:30px;">Credit card number</label>
+                    <input  class="form-control"style="margin-top:30px;" type="number" id="ccnum" name="cardnumber" placeholder="Credit card number" style=" display:inline;" required>
+                   
+                        <label for="log" style="margin-top:30px;"> <i class="bi bi-credit-card-fill"></i> CVV</label>
+                        <input  class="form-control log" id="log"  type="number" max="999"  pattern="([0-9]|[0-9]|[0-9])" name="cvv" required/>
+              
+                        <input  class=" cvv"style="margin-top:30px;" type="text"   placeholder="Card Verification Value is a 3 digit number only " Readonly><i></i>
+                        <!-- <div class="geeks" style="display:none;">
+                              
+                        The CVV Number (Card Verification Value) is a 3 digit number on VISA®, MasterCard® and Discover® 
+                        </div> -->
+                        <!-- <input class="form-control" type="text" id="date" name="date"  " value="<?php 
+                        // echo date("Y-m-d"); 
+                        ?>" placeholder="Today date" readonly> -->
+                      
+                      <label for="" style=" margin-top:30px;"> Expiry date (MM /YY)  </label>
+<div class="exp-wrapper" >
+
+  <input  class="exp"  maxlength="2" pattern="[0-9]*"  placeholder="MM" type="text"  />
+  <input  class="exp"  maxlength="2" pattern="[0-9]*"  placeholder="YY" type="text"  />
+</div>
+
+
+                       
+
+<!-- info for purchase  -->
+
+               <div class="form-group">
+                                <label style="  margin-top:30px; "for="ser">Service Name:</label>
+                                <select  class="form-control" id="ser" name="service-name" required>
+                                  <option value="" > </option>
+                                  <option value="UX/UI Designers">UX/UI Designers</option>
+                                  <option value="Graphic Designers">Graphic Designers</option>
+                                  <option value="Illustration">Illustration</option>
+                                  <option value="Photoshop">Photoshop</option>
+                                  <option value="Interior Design">Interior Design</option>
+                                  <option value="Video Editing">Video Editing</option>
+                                  <option value="Art Designers">Art Designers</option>
+                                  <option value="Motion Design">Motion Design</option>
+                                  <option value="Marketing">Marketing</option>
+                                  <option value="Game Animation">Game Animation</option>
+                                </select>
+               </div>
+               <div class="form-group">
+                                <label style="  margin-top:30px; " for="price">Price:</label>
+                                <select class="form-control"   id="price" name="price" required>
+                                <option value=""></option>
+                                <!-- <option > Price:</option> -->
+                                  <option value="1">1$</option>
+                                  <option value="2$">2$</option>
+                                  <option value="3$">3$</option>
+                                
+                                </select>
+               </div>
+              
+               
+
+
+<!-- end info -->
+
+
                   </div>
 
                 </div>
                 <label>
-                  <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                  <input type="checkbox" checked="checked" name="sameadr" style="margin-top:20px;" > Shipping address same as billing Address
                 </label>
-                <input type="submit" value="Continue to checkout" class="btn">
+                <input type="submit" value="Pay" name="pay-now" class="btn" onClick='alert("Are you sure you want pay now...?") '>
               </form>
-            </div>
-          </div>
-          <!-- <div class="col-25"> -->
-            <!-- <div class="container">
-              <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-              <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-              <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-              <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-              <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-              <hr>
-              <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
-            <!-- </div> -->
+           
+         
+         
           </div>
         </div>
 
@@ -254,7 +351,25 @@
 
   </main>
   <!-- End #main -->
+  <script>
+//  var f = document.getElementById("field");
 
+// // When the user move on the cvv field, show the message box
+// f.onmouseover= function() {
+//   document.getElementById("geeks").style.display = "block";
+// }
+// const log = document.getElementById('log');
+
+// document.addEventListener('keydown', logKey);
+
+// function logKey(e) {
+//   document.getElementByClass("cvv").style.visibility: "visible";
+//   // log.textContent += ` ${e.code}`;
+// }
+
+
+
+</script>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

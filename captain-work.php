@@ -2,7 +2,7 @@
 <?php
 include './forms/connection.php';
 require_once "controllerUserData.php";
-session_start();
+// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -197,7 +197,7 @@ border-color:#22dba8; */
                 <tr>
                   <th>Purchase ID</th>
                   <th>Customer Username </th>
-                  <th>Service ID </th>
+                  <!-- <th>Service ID </th> -->
                   <th>Service Name</th>
                   <th>Captin Username</th>
                   <th>Price</th>
@@ -224,7 +224,11 @@ border-color:#22dba8; */
                     <tr>
                       <td align="center"><?php echo $row['Purchase ID']; ?></td>
                       <td align="center"><?php echo $row['Customer Username']; ?></td>
-                      <td align="center"><?php echo $row['Service ID']; ?></td>
+                      <!-- <td align="center">
+                        <?php 
+                        // echo $row['Service ID']; 
+                        ?>
+                    </td> -->
 
                       <td>
                         <?php echo $row['Service Name']; ?>
@@ -233,7 +237,7 @@ border-color:#22dba8; */
                         <?php echo $row['Captin Username']; ?>
                       </td>
                       <td><?php echo $row['Price'] . '$'; ?></td>
-                      <td><?php echo $row['Date']; ?></td>
+                      <td><?php echo date("Y-m-d"); ?></td>
 
                       <td align="center">
                         <form action="controllerUserData.php" method="POST">
