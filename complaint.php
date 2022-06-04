@@ -1,10 +1,7 @@
 <?php
 include './forms/connection.php';
-<<<<<<< HEAD
 // $con = new mysqli('localhost','root','','codly');
-=======
 session_start();
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 ?>
 
 <!DOCTYPE html>
