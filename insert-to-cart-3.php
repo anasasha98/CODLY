@@ -8,8 +8,6 @@ include './forms/connection.php';
 
 
 
-
-
 if ($con->connect_error){
   die('connection failed : '.$conn->connect_error);
 
@@ -17,8 +15,8 @@ if ($con->connect_error){
 
   // if (isset($_POST['add1'])) { 
     $service_id = $_GET['service_id'];
-    $price= $_GET['price1'];
-    $pricedesc1= "Standard Plan";
+    $price= $_GET['price3'];
+    $pricedesc1= "Professional Plan";
     $query = " SELECT * FROM `service-provider` WHERE `service_id` = '$service_id'   ";
     $result = mysqli_query($con, $query);
     if ($result) {
@@ -44,30 +42,14 @@ $captain=$row['captainusername'];
 $mycart = $con -> prepare("INSERT INTO `cart` ( `customer-username`, `service-id`, `service-name`, `service-price`, `price-plan`, `captain-username`) VALUES (?,?,?,?,?,?)") ;
 $mycart -> bind_param("sisiss",$username  ,  $service_id ,$sername, $price,$pricedesc1,$captain);
 $mycart->execute();
-
-$_SESSION['c']++;
 // $mycart2 = $con -> prepare("INSERT INTO `cart2`  (`count`) SELECT COUNT(*) FROM `cart` ") ;
 
 // $mycart2->execute();
-
+$_SESSION['c']++;
 
 header('Location:cart.php');
 
 $mycart->close();
 $con->close();
-
-
-
-// }
- 
-
-
-
-
-
-
-
-
-
 
 ?>

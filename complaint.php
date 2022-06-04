@@ -90,7 +90,7 @@ session_start();
               </div>
 
 
-              <input type="submit" class="btn btn-primary mr-2 my-1" type="button" name="send-complaint" value="Send My Complaint">
+              <input type="submit" onClick='alert("Are you sure to send a complaint?") '  class="btn btn-primary mr-2 my-1" type="button" name="send-complaint" value="Send My Complaint">
 
             </form>
           </div>

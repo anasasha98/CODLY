@@ -256,10 +256,11 @@ session_start();
                       <!--/.Service Provider-review-->
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
                       <center>
-                      <form action="addcart.php" method="POST"  >
+                      <!-- <form action="addcart.php" method="POST"  >
         
                       <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
-                    </form>
+                    </form> -->
+                   
                     </center>
                       <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
                       <center>
