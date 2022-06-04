@@ -7,8 +7,6 @@ include 'insert-to-cart.php';
 ?>
 
 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,94 +157,6 @@ input.exp {
   <main id="main">
 
     
-  <?php include './headers/header1.php'?>
-  <!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Build your business with top freelancers</h1>
-          <h2>
-            Post a job for free and connect with independent talent today.
-          </h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
-
-            <?php
-            if (isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $type = $_SESSION['type'];
-            ?>
-              <a class="btn-get-started scrollto" style="cursor: pointer;" href="#ser"><span>Get Started</span></a>
-            <?php
-            } else {
-            ?>
-              <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
-            <?php
-            }
-
-            ?>
-
-            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
-              <i class="bi bi-play-circle"></i>
-              <span>Watch Video</span>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets\img\hero-img.png" class="img-fluid animated" alt="" />
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-      <div class="container">
-        <div class="row" data-aos="zoom-in">
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.mysql.com" target="_blank">
-              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.microsoft.com" target="_blank">
-              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.orange.com" target="_blank">
-              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.ahu.edu.jo" target="_blank">
-              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.paypal.com" target="_blank">
-              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.github.com" target="_blank">
-              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Cliens Section -->
 
     <!-- ======= Payment Section ======= -->
     <section id="payment" style="margin-top: 50px;">
@@ -257,7 +167,7 @@ input.exp {
         </div>
 
         <div class="row row2">
-          <div class="col-75">
+          <div class="col-100">
             <div class="container2">
               <form action="insert-to-cart.php" method="POST" >
 
@@ -273,16 +183,6 @@ input.exp {
                     <input  class="form-control" type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
                     <label for="city" style="  margin-top:30px; "><i class="fa fa-institution"></i> City</label>
                     <input class="form-control" type="text" id="city" name="city" placeholder="New York" required>
-                  <!-- <div class="col-50">
-                    <h3>Billing Address</h3>
-                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                    <input type="text" id="email" name="email" placeholder="john@example.com">
-                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                    <input type="text" id="city" name="city" placeholder="New York">
 
                     <!-- <div class="row">
                       <div class="col-50">
@@ -353,17 +253,13 @@ input.exp {
                         <label for="zip">Zip</label>
                         <input type="text" id="zip" name="zip" placeholder="10001">
                       </div> -->
-                    </div>
-                  </div> -->
+                    
+                  
 
                   <div class="col-50">
-                    <h3 style=" display:inline;">Payment</h3>
+                    <h3 style=" display:inline; margin-top:30px;">Payment</h3>
                   
                         <div  style="display:inline; float:right;" class="icon-container">
-                  <div class="col-20">
-                    <h3>Payment</h3>
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
                       <i class="fa fa-cc-visa" style="color:navy;"></i>
                       <i class="fa fa-cc-amex" style="color:blue;"></i>
                       <i class="fa fa-cc-mastercard" style="color:red;"></i>
@@ -438,8 +334,11 @@ input.exp {
 
 
                   </div>
-
-                </div>
+                  </div>
+              
+                <label>
+                <input type="checkbox" name="sameadr" required> I understand that by checking out this box I approve for all <a href="term.php">term of service</a>
+                </label>
                 <label>
                   <input type="checkbox" checked="checked" name="sameadr" style="margin-top:20px;" > Shipping address same as billing Address
                 </label>
@@ -449,32 +348,6 @@ input.exp {
          
          
           </div>
-                  <input type="checkbox" name="sameadr" required> I understand that by checking out this box I approve for all <a href="term.php">term of service</a>
-                </label>
-                <input type="submit" value="Continue to checkout" class="btn">
-                <style>
-                  .btn {
-                    background-color: #47b2e4;
-                  }
-
-                  .btn:hover {
-                    color: #fff;
-                    background-color: #209DD8;
-                  }
-                </style>
-              </form>
-            </div>
-          </div>
-          <!-- <div class="col-25"> -->
-          <!-- <div class="container">
-              <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-              <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-              <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-              <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-              <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-              <hr>
-              <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
-          <!-- </div> -->
         </div>
       </div>
 
