@@ -10,7 +10,6 @@ include 'insert-to-cart.php';
 
 
 // $con = mysqli_connect($server, $username, $password, $db);
-<<<<<<< HEAD
 ?>
 
 <!DOCTYPE html>
@@ -156,9 +155,8 @@ include 'insert-to-cart.php';
         </div>
       </div>
       <!--End Form-->
-=======
 
-include './forms/connection.php';
+<!-- include './forms/connection.php';
 
 if (isset($_POST['add'])) {
   // $ser-id = $_POST['sno'];
@@ -176,14 +174,12 @@ if (isset($_POST['add'])) {
 
   $stmt->close();
   $con->close();
-}
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
+} -->
 
 
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -271,19 +267,19 @@ if (isset($_POST['add'])) {
       }
       </style> -->
     <script>
-  var myinput1 = document.getElementById("#CustomerUsername");
-  var myinput2 = document.getElementById("#CaptainUsername");
+  // var myinput1 = document.getElementById("#CustomerUsername");
+  // var myinput2 = document.getElementById("#CaptainUsername");
   // var btn = document.getElementById("addc");
-  var myinput3 = document.getElementById("#ser");
-  var myinput3 = document.getElementById("#price");
+  // var myinput3 = document.getElementById("#ser");
+  // var myinput3 = document.getElementById("#price");
 
   // When the user clicks on the password field, show the message box
-myinput1.onclick=function(){
-  var btn = document.getElementById("#addc");
-    btn.style.disabled =true;
+// myinput1.onclick=function(){
+//   var btn = document.getElementById("#addc");
+//     btn.style.disabled =true;
   
    
-  }
+//   }
   
   
   </script>
@@ -300,11 +296,9 @@ myinput1.onclick=function(){
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/purecounter/purecounter.js"></script>
-=======
 ?>
 
 
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 
 
     <!-- Template Main JS File -->

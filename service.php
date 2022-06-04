@@ -254,7 +254,6 @@ session_start();
                         </p>
                       </div>
                       <!--/.Service Provider-review-->
-<<<<<<< HEAD
                       <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a>
                       <form action="addcart.php" method="POST"  >
                       
@@ -263,22 +262,20 @@ session_start();
            
                       <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
                     </form>
-=======
                       <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
                       <center>
                         <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
                           <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
                         </a>
                       </center>
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
                     </div>
 
                     <!--/.about-btn-->
-                    <!-- <form action="cart.php">
+                    <form action="cart.php">
                       <center>
                         <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
                       </center>
-                    </form> -->
+                    </form>
 
                   </div>
                   <!--/.single-package-item-txt-->

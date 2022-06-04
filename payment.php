@@ -1,6 +1,5 @@
 <?php
 include './forms/connection.php';
-<<<<<<< HEAD
 include 'insert-to-cart.php'; 
 // include 'addcart.php';
 
@@ -8,10 +7,8 @@ include 'insert-to-cart.php';
 ?>
 
 
-=======
 session_start();
 ?>
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,7 +101,6 @@ input.exp {
 
 <body>
   <!-- ======= Header ======= -->
-<<<<<<< HEAD
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
       <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
@@ -163,7 +159,6 @@ input.exp {
   <main id="main">
 
     
-=======
   <?php include './headers/header1.php'?>
   <!-- End Header -->
 
@@ -252,7 +247,6 @@ input.exp {
       </div>
     </section>
     <!-- End Cliens Section -->
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 
     <!-- ======= Payment Section ======= -->
     <section id="payment" style="margin-top: 50px;">
@@ -268,7 +262,6 @@ input.exp {
               <form action="insert-to-cart.php" method="POST" >
 
                 <div class="row">
-<<<<<<< HEAD
                   <div class="col-50">
                     <h3 >Billing Address</h3>
                     <label style="  margin-top:30px; " for="fname"><i class="fa fa-user"></i> Full Name</label>
@@ -280,7 +273,6 @@ input.exp {
                     <input  class="form-control" type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
                     <label for="city" style="  margin-top:30px; "><i class="fa fa-institution"></i> City</label>
                     <input class="form-control" type="text" id="city" name="city" placeholder="New York" required>
-=======
                   <!-- <div class="col-50">
                     <h3>Billing Address</h3>
                     <label for="fname"><i class="fa fa-user"></i> Full Name</label>
@@ -291,7 +283,6 @@ input.exp {
                     <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                     <label for="city"><i class="fa fa-institution"></i> City</label>
                     <input type="text" id="city" name="city" placeholder="New York">
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
 
                     <!-- <div class="row">
                       <div class="col-50">
@@ -365,17 +356,14 @@ input.exp {
                     </div>
                   </div> -->
 
-<<<<<<< HEAD
                   <div class="col-50">
                     <h3 style=" display:inline;">Payment</h3>
                   
                         <div  style="display:inline; float:right;" class="icon-container">
-=======
                   <div class="col-20">
                     <h3>Payment</h3>
                     <label for="fname">Accepted Cards</label>
                     <div class="icon-container">
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
                       <i class="fa fa-cc-visa" style="color:navy;"></i>
                       <i class="fa fa-cc-amex" style="color:blue;"></i>
                       <i class="fa fa-cc-mastercard" style="color:red;"></i>
@@ -453,7 +441,6 @@ input.exp {
 
                 </div>
                 <label>
-<<<<<<< HEAD
                   <input type="checkbox" checked="checked" name="sameadr" style="margin-top:20px;" > Shipping address same as billing Address
                 </label>
                 <input type="submit" value="Pay" name="pay-now" class="btn" onClick='alert("Are you sure you want pay now...?") '>
@@ -462,7 +449,6 @@ input.exp {
          
          
           </div>
-=======
                   <input type="checkbox" name="sameadr" required> I understand that by checking out this box I approve for all <a href="term.php">term of service</a>
                 </label>
                 <input type="submit" value="Continue to checkout" class="btn">
@@ -489,7 +475,6 @@ input.exp {
               <hr>
               <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
           <!-- </div> -->
->>>>>>> 983aedb20a20a707e427bf3cdc30cc3b417ea207
         </div>
       </div>
 
