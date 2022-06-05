@@ -124,9 +124,8 @@ border-color:#22dba8; */
         <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
         <a class="nav-link" href="captain-about-page.php">About</a>
         <a class="nav-link" href="captain-security-page.php">Security</a>
-        <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
         <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
-        <a class="nav-link" href="captain-published.php">Published Service</a>
+        <a class="nav-link" href="captain-published.php">My serivce</a>
         <a class="nav-link active" href="#">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
@@ -180,7 +179,7 @@ border-color:#22dba8; */
                       <td align="center"><?php echo $row['Purchase ID']; ?></td>
                       <td align="center"><?php echo $row['Customer Username']; ?></td>
                       <!-- <td align="center">
-                        <?php 
+                        <?php
                         // echo $row['Service ID']; 
                         ?>
                     </td> -->
@@ -196,14 +195,14 @@ border-color:#22dba8; */
 
                       <td align="center">
                         <!-- <form action="controllerUserData.php" method="POST"> -->
-                          <div class="form-group">
-                            <!-- <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
+                        <div class="form-group">
+                          <!-- <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
                               click
                             </button> -->
-                            <button class="myBtn">Complete</button>
+                          <button class="myBtn">Complete</button>
 
-                            <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
-                          </div>
+                          <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
+                        </div>
                         <!-- </form> -->
 
 
@@ -255,24 +254,24 @@ border-color:#22dba8; */
 
   </main> <!-- End profile information -->
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
 
-<!-- Modal content -->
-<div class="modal-content">
-  <span class="close">&times; </span>
-  <p style ="color:black; margin-bottom:30px;">"✔" Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
-  <!-- <textarea id="desc" name="desc"  placeholder="Please provide us with information about the service"> -->
-  <form>
-  Provide a description of the service<br>
-  <input  type="text" required style="width:400px;height:50px"size="100"><br><br>
-  <input  type="file" required >
-  
-  <input class="upfile" type="submit" value="send" style="float:right;">
-</form>
-</div>
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times; </span>
+      <p style="color:black; margin-bottom:30px;">"✔" Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
+      <!-- <textarea id="desc" name="desc"  placeholder="Please provide us with information about the service"> -->
+      <form>
+        Provide a description of the service<br>
+        <input type="text" required style="width:400px;height:50px" size="100"><br><br>
+        <input type="file" required>
 
-</div>
+        <input class="upfile" type="submit" value="send" style="float:right;">
+      </form>
+    </div>
+
+  </div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
 

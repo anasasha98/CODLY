@@ -129,85 +129,7 @@ ON `service-provider`.`service_id` ='$serv_id'
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
-          <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <?php
-          if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-          ?>
-            <li class="dropdown">
-              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
-                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
-                <i class="bi bi-chevron-down"></i>
-              </a>
-              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
-              <ul>
-                <li><a href="captain-account-details.php">Profile</a></li>
-                <li><a href="captain-about-page">About</a></li>
-                <li><a href="captain-security-page.php">Security</a></li>
-                <li><a href="captain-add-service.php">Publish serivce</a></li>
-                <li> <a href="captain-purchase.php">Purchased Service</a></li>
-                <li> <a href="#">published Service</a></li>
-                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
-              </ul>
-            </li>
-
-          <?php
-
-          } else {
-          ?>
-            <li>
-              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header2.php'; ?>
   <!-- End Header -->
 
 
@@ -227,9 +149,8 @@ ON `service-provider`.`service_id` ='$serv_id'
         <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
         <a class="nav-link" href="captain-about-page.php">About</a>
         <a class="nav-link" href="captain-security-page.php">Security</a>
-        <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
         <a class="nav-link " href="captain-purchase.php">Purchased Service</a>
-        <a class="nav-link active" href="#">Published Service</a>
+        <a class="nav-link active" href="#">My Service</a>
         <a class="nav-link" href="captain-work.php">My Work</a>
 
       </nav>
@@ -247,89 +168,88 @@ ON `service-provider`.`service_id` ='$serv_id'
         <strong>Error!</strong>
       </div>
 
-    </div>
-
-    <!-- table -->
-    <div class="card mb-4">
-      <div class="card-body">
-        <div class="form-group">
-          <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Purchase ID</th>
-                <th>Captain Username</th>
-                <th>Job Title</th>
-
-                <th>Tag1</th>
-                <th>Tag2</th>
-                <th>Tag3</th>
-                <th>Tag4</th>
-                <th>Price1</th>
-                <th>Price2</th>
-                <th>Price3</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Delete</th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-              <?php
-              if (isset($_SESSION['username'])) {
-                $username = $_SESSION['username'];
-
-                $query = " SELECT * FROM  `service-provider` WHERE captainusername = '$username'  ";
-                $result = mysqli_query($con, $query);
-
-                if ($result) {
-                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-
-                    <tr>
-                      <td align="center"><?php echo $row['service_id']; ?></td>
-                      <td align="center"><?php echo $_SESSION['username'] ?></td>
-                      <td align="center"><?php echo $row['job_title']; ?></td>
 
 
-                      <td>
-                        <?php echo $row['tag1']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['tag2']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['tag3']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['tag4']; ?>
-                      </td>
+      <!-- table -->
+      <div class="card mb-4">
 
 
+        <div class="card-body">
+          <div class="form-group" style="overflow-x: scroll;">
+            <button class="btn btn-light" name="" style="width: 180px; float:right; margin-bottom: 12px;"><a href="captain-add-service.php">&plus; Add new service</a></button>
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Purchase ID</th>
+                  <th>Captain Username</th>
+                  <th>Job Title</th>
 
-                      <td><?php echo $row['price1'] . '$'; ?></td>
-                      <td><?php echo $row['price2'] . '$'; ?></td>
-                      <td><?php echo $row['price3'] . '$'; ?></td>
-                      <td><?php echo $row['date']; ?></td>
-                      <td>
-                        <?php echo $row['status']; ?>
-                      </td>
+                  <th>Tag1</th>
+                  <th>Tag2</th>
+                  <th>Tag3</th>
+                  <th>Tag4</th>
+                  <th>Price1</th>
+                  <th>Price2</th>
+                  <th>Price3</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Delete</th>
 
-                      <td align=center>
-                        <form method="post">
-                          <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delserv" value="<?= $row['service_id'];  ?>" class="btn btn-outline-danger"><i data-feather="trash-2"></i>Delete Service</button></a>
-                        </form>
-                      </td>
+                </tr>
+
+              </thead>
+
+              <tbody>
+                <?php
+                if (isset($_SESSION['username'])) {
+                  $username = $_SESSION['username'];
+
+                  $query = " SELECT * FROM  `service-provider` WHERE captainusername = '$username'  ";
+                  $result = mysqli_query($con, $query);
+
+                  if ($result) {
+                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+
+                      <tr>
+                        <td align="center"><?php echo $row['service_id']; ?></td>
+                        <td align="center"><?php echo $_SESSION['username'] ?></td>
+                        <td align="center"><?php echo $row['job_title']; ?></td>
+
+
+                        <td>
+                          <?php echo $row['tag1']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['tag2']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['tag3']; ?>
+                        </td>
+                        <td>
+                          <?php echo $row['tag4']; ?>
+                        </td>
 
 
 
+                        <td><?php echo $row['price1'] . '$'; ?></td>
+                        <td><?php echo $row['price2'] . '$'; ?></td>
+                        <td><?php echo $row['price3'] . '$'; ?></td>
+                        <td><?php echo $row['publish_date']; ?></td>
+                        <td><?php // echo $row['status']; 
+                            ?></td>
 
-                    </tr>
-              <?php
+                        <td align=center>
+                          <form method="post">
+                            <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delserv" value="<?= $row['service_id'];  ?>" class="btn btn-outline-danger"><i data-feather="trash-2"></i>Delete Service</button></a>
+                          </form>
+                        </td>
+
+                      </tr>
+                <?php
+                    }
                   }
-                }
-              } ?>
-              <!-- <tr> 
+                } ?>
+                <!-- <tr> 
                                   <td align="center">2</td>
                                   <td>
                                     Design web
@@ -351,13 +271,14 @@ ON `service-provider`.`service_id` ='$serv_id'
                                   </td>
                                 
                               </tr>     -->
-            </tbody>
+              </tbody>
 
-          </table>
+            </table>
+          </div>
         </div>
       </div>
+      <!-- table-end -->
     </div>
-    <!-- table-end -->
   </main> <!-- End profile information -->
 
 

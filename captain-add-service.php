@@ -156,153 +156,153 @@ if (isset($_POST['submit'])) {
   ?>
 
       <!--========Profile information========-->
-      <main id="main" style="padding-top: 60px;">
+      <main id="main" style="padding-top: 60px; margin-bottom: -60px;">
         <div class="container-xl px-4 mt-4">
-          <!-- Account page navigation-->
-          <nav class="nav nav-borders">
-            <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
-            <a class="nav-link" href="captain-about-page.php">About</a>
-            <a class="nav-link" href="captain-security-page.php">Security</a>
-            <a class="nav-link active" href="#">Publish serivce</a>
-            <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
-            <a class="nav-link" href="captain-published.php">Published Service</a>
-            <a class="nav-link" href="captain-work.php">My Work</a>
-          </nav>
-          <hr class="mt-0 mb-4">
+          <div class="page-header pb-10 ">
+            <div class="container-fluid">
 
-          <!-- True Alert -->
-          <div class="alert success" id="img_success" style="display: none;">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Success!</strong>
-          </div>
-
-          <!-- Wrong Alert -->
-          <div class="alert" id="wrong" style="display: none;">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Error!</strong>
-          </div>
-
-          <!--Start Form-->
-          <div class="card mb-4">
-            <div class="card-header">Create New Service</div>
-            <div class="card-body">
-              <form method="post">
-                <div class="form-group">
-                  <label for="post-title">Service Title:</label>
-                  <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" required />
-                </div>
-
-                <select class="selectpicker" name="service" required style="margin: 5px 0 15px 0;">
-                  <optgroup label="Design" name="design" id="design">
-                    <option value="design1">UX/UI Design</option>
-                    <option value="design2">Graphic Designers</option>
-                    <option value="design3">Illustration Design</option>
-                    <option value="design4">Photoshop</option>
-                    <option value="design5">Inerior Design</option>
-
-                    <option value="design5">Video Editing</option>
-                    <option value="design7">Art Designers</option>
-                    <option value="design8">Motion Design</option>
-                  </optgroup>
-                  <optgroup label="Design Logo" name="designlogo">
-                    <option value="designlogo1">Design Logo1</option>
-
-
-                  </optgroup>
-                  <optgroup label="Data" name="data">
-                    <option value="data1">data1</option>
-
-                  </optgroup>
-                  <optgroup label="Graphic" name="graphic">
-                    <option value="graphic1">Graphic1</option>
-
-                  </optgroup>
-                  <optgroup label="WordPress" name="wordpress">
-                    <option value="wordpress1">WordPress</option>
-
-                  </optgroup>
-                  <optgroup label="Development" name="development">
-                    <option value="development1">Development</option>
-
-                  </optgroup>
-                  <optgroup label="Business" name="business">
-                    <option value="business1">Marketing</option>
-
-                  </optgroup>
-                  <optgroup label="Game Art" name="gameart">
-                    <option value="gameart1">Game Animation</option>
-
-                  </optgroup>
-                </select>
-
-                <div class="form-group">
-                  <label for="post-title">Choose photo:</label>
-                  <input class="form-control" id="post-title" type="file" name="image1" required />
-                </div>
-                <div class="form-group">
-                  <label for="post-title">Choose photo:</label>
-                  <input class="form-control" id="post-title" type="file" name="image2" option />
-                </div>
-                <div class="form-group">
-                  <label for="post-title">Choose photo:</label>
-                  <input class="form-control" id="post-title" type="file" name="image3" option />
-                </div>
-
-                <div class="form-group">
-                  <label for="post-content">Service Details:</label>
-                  <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails" required></textarea>
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
-                  <input type="text" class="form-control" name="tag1">
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
-                  <input type="text" class="form-control" name="tag2">
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
-                  <input type="text" class="form-control" name="tag3">
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
-                  <input type="text" class="form-control" name="tag4">
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 1</span>
-                  <input type="text" class="form-control" name="price1">
-                </div>
-                <div class="form-group">
-                  <label for="textaria1">Price 1 Details:</label>
-                  <textarea class="form-control" placeholder="Type here..." id="textaria1" rows="9" name="price1details" required></textarea>
-                </div>
-
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 2</span>
-                  <input type="text" class="form-control" name="price2">
-                </div>
-                <div class="form-group">
-                  <label for="textaria2">Price 2 Details:</label>
-                  <textarea class="form-control" placeholder="Type here..." id="textaria2" rows="9" name="price2details" option></textarea>
-                </div>
-
-
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 3</span>
-                  <input type="text" class="form-control" name="price3">
-                </div>
-                <div class="form-group">
-                  <label for="textaria3">Price 3 Details:</label>
-                  <textarea class="form-control" placeholder="Type here..." id="textaria3" rows="9" name="price3details" option></textarea>
-                </div>
+              <div class="section-title" data-aos="zoom-out">
+                <h2>Add Service Form</h2>
+              </div>
             </div>
-            <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Post Service Now</button>
-            </form>
+            <!-- START FORM -->
+
+
+
+            <!-- True Alert -->
+            <div class="alert success" id="img_success" style="display: none;">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <strong>Success!</strong>
+            </div>
+
+            <!-- Wrong Alert -->
+            <div class="alert" id="wrong" style="display: none;">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <strong>Error!</strong>
+            </div>
+
+            <!--Start Form-->
+
+            <div class="card mb-4">
+              <div class="card-header">Create New Service</div>
+              <div class="card-body">
+                <form method="post">
+                  <div class="form-group">
+                    <label for="post-title">Service Title:</label>
+                    <input class="form-control" id="post-title" type="text" placeholder="Service title ..." name="servicetitle" required />
+                  </div>
+
+                  <select class="selectpicker" name="service" required style="margin: 5px 0 15px 0;">
+                    <optgroup label="Design" name="design" id="design">
+                      <option value="design1">UX/UI Design</option>
+                      <option value="design2">Graphic Designers</option>
+                      <option value="design3">Illustration Design</option>
+                      <option value="design4">Photoshop</option>
+                      <option value="design5">Inerior Design</option>
+
+                      <option value="design5">Video Editing</option>
+                      <option value="design7">Art Designers</option>
+                      <option value="design8">Motion Design</option>
+                    </optgroup>
+                    <optgroup label="Design Logo" name="designlogo">
+                      <option value="designlogo1">Design Logo1</option>
+
+
+                    </optgroup>
+                    <optgroup label="Data" name="data">
+                      <option value="data1">data1</option>
+
+                    </optgroup>
+                    <optgroup label="Graphic" name="graphic">
+                      <option value="graphic1">Graphic1</option>
+
+                    </optgroup>
+                    <optgroup label="WordPress" name="wordpress">
+                      <option value="wordpress1">WordPress</option>
+
+                    </optgroup>
+                    <optgroup label="Development" name="development">
+                      <option value="development1">Development</option>
+
+                    </optgroup>
+                    <optgroup label="Business" name="business">
+                      <option value="business1">Marketing</option>
+
+                    </optgroup>
+                    <optgroup label="Game Art" name="gameart">
+                      <option value="gameart1">Game Animation</option>
+
+                    </optgroup>
+                  </select>
+
+                  <div class="form-group">
+                    <label for="post-title">Choose photo:</label>
+                    <input class="form-control" id="post-title" type="file" name="image1" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="post-title">Choose photo:</label>
+                    <input class="form-control" id="post-title" type="file" name="image2" option />
+                  </div>
+                  <div class="form-group">
+                    <label for="post-title">Choose photo:</label>
+                    <input class="form-control" id="post-title" type="file" name="image3" option />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="post-content">Service Details:</label>
+                    <textarea class="form-control" placeholder="Type here..." id="post-content" rows="9" name="servicedetails" required></textarea>
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Tag1</span>
+                    <input type="text" class="form-control" name="tag1">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Tag2</span>
+                    <input type="text" class="form-control" name="tag2">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Tag3</span>
+                    <input type="text" class="form-control" name="tag3">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
+                    <input type="text" class="form-control" name="tag4">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 1</span>
+                    <input type="text" class="form-control" name="price1">
+                  </div>
+                  <div class="form-group">
+                    <label for="textaria1">Price 1 Details:</label>
+                    <textarea class="form-control" placeholder="Type here..." id="textaria1" rows="9" name="price1details" required></textarea>
+                  </div>
+
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 2</span>
+                    <input type="text" class="form-control" name="price2">
+                  </div>
+                  <div class="form-group">
+                    <label for="textaria2">Price 2 Details:</label>
+                    <textarea class="form-control" placeholder="Type here..." id="textaria2" rows="9" name="price2details" option></textarea>
+                  </div>
+
+
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 3</span>
+                    <input type="text" class="form-control" name="price3">
+                  </div>
+                  <div class="form-group">
+                    <label for="textaria3">Price 3 Details:</label>
+                    <textarea class="form-control" placeholder="Type here..." id="textaria3" rows="9" name="price3details" option></textarea>
+                  </div>
+              </div>
+              <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Post Service Now</button>
+              </form>
+            </div>
+
+            <!--End Form-->
+
           </div>
-
-          <!--End Form-->
-
-        </div>
       </main>
 
       <?php

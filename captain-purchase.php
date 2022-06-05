@@ -119,8 +119,8 @@ session_start();
             <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
             <a class="nav-link" href="captain-about-page.php">About</a>
             <a class="nav-link" href="captain-security-page.php">Security</a>
-            <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
             <a class="nav-link active" href="#">Purchased Service</a>
+            <a class="nav-link" href="captain-published.php">My serivce</a>
             <a class="nav-link" href="captain-work.php">My Work</a>
           </nav>
           <hr class="mt-0 mb-4">
