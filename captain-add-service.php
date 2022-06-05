@@ -13,6 +13,12 @@ if (isset($_POST['submit'])) {
   $tag2 = $_POST['tag2'];
   $tag3 = $_POST['tag3'];
   $tag4 = $_POST['tag4'];
+  $date = date("Y-m-d", time());
+  $price1 = $_POST['price1'];
+  $price1_desc = $_POST['price1_desc'];
+  $price2 = $_POST['price2'];
+  $price2_desc = $_POST['price2_desc'];
+  $price3 = $_POST['price3'];
   $captainusername = $_SESSION['captainusername'];
   if (isset($_GET['captainusername'])) {
     $captainusername = $_GET['captainusername'];
@@ -28,7 +34,8 @@ if (isset($_POST['submit'])) {
   $sql2 = "SELECT MAX(emp_id) FROM `service-provider` WHERE `emp_id` = `emp_id`+1 ";
   $res = mysqli_query($con, $sql2);
   $emp_id = mysqli_fetch_assoc($res);
-  $sql3 = "INSERT INTO `service-provider` VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails' , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1','$image2','$image3' )";
+  $sql3 = "INSERT INTO `service-provider` (`sno`, `service_id`, `captainusername`, `job_title`, `job_desc`, `publish_date`, `tag1`, `tag2`, `tag3`, `tag4`, `image1`, `image2`,`image3`, `price1`, `price1_desc`, `price2`, `price2_desc`, `price3`, `price3_desc`)
+                                   VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails',`$date` , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1','$image2','$image3','$price1','$price1_desc','$price2','$price2_desc','$price3','$price3_desc' )";
   if (mysqli_query($link, $sql3)) {
     echo '<script language="javascript">';
     echo 'alert("Records added successfully.")';

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'include/header.php';
 include '../forms/connection.php';
 
@@ -7,9 +8,13 @@ if (isset($_POST['deleteCaptain'])) {
     $query = "DELETE FROM captain WHERE captainusername='$captain_username'";
     $result = mysqli_query($con, $query);
     if ($result) {
-        $_SESSION["message"] = "captain deleted successfully";
+        echo '<script language="javascript">';
+        echo 'alert("captain deleted successfully")';
+        echo '</script>';
     } else {
-        $_SESSION["message"] = "Something Wrong!";
+        echo '<script language="javascript">';
+        echo 'alert("Something Wrong!")';
+        echo '</script>';
     }
 }
 // search

@@ -130,6 +130,7 @@ session_start();
             <a class="nav-link" href="captain-security-page.php">Security</a>
             <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
             <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
+            <a class="nav-link" href="captain-published.php">Published Service</a>
             <a class="nav-link" href="captain-work.php">My Work</a>
           </nav>
           <hr class="mt-0 mb-4">
