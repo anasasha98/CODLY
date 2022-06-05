@@ -150,8 +150,8 @@ if (isset($_POST['remove'])) {
                     <th>Service Name</th>
                     <th>Price </th>
                     <th>Remove </th>
-                  
-                  <th>Pay</th>
+
+                    <th>Pay</th>
                   </tr>
                 </thead>
 
@@ -172,12 +172,12 @@ if (isset($_POST['remove'])) {
 
                       <tr>
                         <!-- <td align="center"> -->
-                          <!-- <form><input type="checkbox" id="ch1"></form> -->
+                        <!-- <form><input type="checkbox" id="ch1"></form> -->
                         <!-- </td> -->
                         <td align="center"><?php echo $row['service-name']; ?> </td>
                         <td align="center"><?php echo $row['service-price']; ?>$</td>
                         <td align="center"> <button type="submit" class="btn btn-danger mx-2 btn-hover" name="remove" value="<?php $row['cart_id']; ?>">remove</button></td>
-                        <td align="center"><a href="payment.php"> <input type="submit"  class="btn btn-success mx-2 btn-hover" value="Pay Now"></a></td>
+                        <td align="center"><a href="payment.php"> <input type="submit" class="btn btn-success mx-2 btn-hover" value="Pay Now"></a></td>
                       </tr>
 
                   <?php   }
@@ -198,7 +198,7 @@ if (isset($_POST['remove'])) {
               <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
         <hr>
         <!-- <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;"><b>30$</b></span> -->
-        
+
       </div>
     </div>
 
@@ -208,3 +208,4 @@ if (isset($_POST['remove'])) {
 </body>
 
 </html>
+

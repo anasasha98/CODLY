@@ -1,4 +1,9 @@
+<?php
+session_start();
 
+include '../forms/connection.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +16,8 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script data-search-pseudo-elements defer src="js/all.min.js"></script>
     <script src="js/feather.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
 <body class="nav-fixed">
@@ -54,25 +61,45 @@
                     </a><a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
                 </div>
             </li>
+            <?php
+            if (isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
 
-            <li class="nav-item dropdown no-caret mr-3 dropdown-user">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="./assets/img/user.jpg" /></a>
-                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
-                    <h6 class="dropdown-header d-flex align-items-center">
 
-                        <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name">codly admin</div>
-                            <div class="dropdown-user-details-email">codly@email.com</div>
-                        </div>
-                    </h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#!">
-                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Logout
-                    </a>
-                </div>
-            </li>
+            ?>
+                <li class="nav-item dropdown no-caret mr-3 dropdown-user">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php
+                    echo $ext = pathinfo($_SESSION['image'], PATHINFO_EXTENSION);
+                    echo '<img class="img-fluid" src="data:image/' . $ext . ';base64,' . base64_encode($_SESSION['image']) . '" />'; 
+                    
+                    ?> </a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                        <h6 class="dropdown-header d-flex align-items-center">
+
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-details-name"><?php echo $username; ?></div>
+                                <div class="dropdown-user-details-email"><?php echo $_SESSION['email']; ?></div>
+                            </div>
+                        </h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="include/logout.php">
+                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                            Logout
+                        </a>
+
+                    </div>
+
+
+                </li>
+            <?php
+            } else {
+                echo "❌ result is empty";
+            }
+            ?>
+
+
         </ul>
+
     </nav>
 
 

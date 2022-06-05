@@ -13,6 +13,12 @@ if (isset($_POST['submit'])) {
   $tag2 = $_POST['tag2'];
   $tag3 = $_POST['tag3'];
   $tag4 = $_POST['tag4'];
+  $date = date("Y-m-d", time());
+  $price1 = $_POST['price1'];
+  $price1_desc = $_POST['price1_desc'];
+  $price2 = $_POST['price2'];
+  $price2_desc = $_POST['price2_desc'];
+  $price3 = $_POST['price3'];
   $captainusername = $_SESSION['captainusername'];
   if (isset($_GET['captainusername'])) {
     $captainusername = $_GET['captainusername'];
@@ -28,7 +34,8 @@ if (isset($_POST['submit'])) {
   $sql2 = "SELECT MAX(emp_id) FROM `service-provider` WHERE `emp_id` = `emp_id`+1 ";
   $res = mysqli_query($con, $sql2);
   $emp_id = mysqli_fetch_assoc($res);
-  $sql3 = "INSERT INTO `service-provider` VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails' , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1','$image2','$image3' )";
+  $sql3 = "INSERT INTO `service-provider` (`sno`, `service_id`, `captainusername`, `job_title`, `job_desc`, `publish_date`, `tag1`, `tag2`, `tag3`, `tag4`, `image1`, `image2`,`image3`, `price1`, `price1_desc`, `price2`, `price2_desc`, `price3`, `price3_desc`)
+                                   VALUES ('$sno', '$emp_id', '$captainusername' ,'$servicetitle', '$servicedetails',`$date` , '$tag1' , '$tag2' , '$tag3' , '$tag4' , '$image1','$image2','$image3','$price1','$price1_desc','$price2','$price2_desc','$price3','$price3_desc' )";
   if (mysqli_query($link, $sql3)) {
     echo '<script language="javascript">';
     echo 'alert("Records added successfully.")';
@@ -189,6 +196,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="captain-security-page.php">Security</a></li>
                 <li><a href="captain-add-service.php">Publish serivce</a></li>
                 <li><a href="captain-purchase.php">Purchased Service</a></li>
+                <li><a href="captain-published.php">Published Service</a></li>
                 <li><a href="captain-work.php">My Work</a></li>
                 <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
               </ul>
@@ -238,6 +246,7 @@ if (isset($_POST['submit'])) {
         <a class="nav-link" href="captain-security-page.php">Security</a>
         <a class="nav-link active" href="#">Publish serivce</a>
         <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
+        <a class="nav-link" href="captain-published.php">Published Service</a>
         <a class="nav-link" href="captain-work.php">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
@@ -340,10 +349,38 @@ if (isset($_POST['submit'])) {
               <span class="input-group-text" id="inputGroup-sizing-sm">Tag4</span>
               <input type="text" class="form-control" name="tag4">
             </div>
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 1</span>
+              <input type="text" class="form-control" name="price1">
+            </div>
+            <div class="form-group">
+              <label for="textaria1">Price 1 Details:</label>
+              <textarea class="form-control" placeholder="Type here..." id="textaria1" rows="9" name="price1details" required></textarea>
+            </div>
+
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 2</span>
+              <input type="text" class="form-control" name="price2">
+            </div>
+            <div class="form-group">
+              <label for="textaria2">Price 2 Details:</label>
+              <textarea class="form-control" placeholder="Type here..." id="textaria2" rows="9" name="price2details" option></textarea>
+            </div>
+
+
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 3</span>
+              <input type="text" class="form-control" name="price3">
+            </div>
+            <div class="form-group">
+              <label for="textaria3">Price 3 Details:</label>
+              <textarea class="form-control" placeholder="Type here..." id="textaria3" rows="9" name="price3details" option></textarea>
+            </div>
         </div>
         <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Post Service Now</button>
         </form>
       </div>
+
       <!--End Form-->
 
     </div>

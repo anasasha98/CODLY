@@ -1,4 +1,7 @@
-<?php include("include/header.php"); ?>
+<?php
+session_start();
+ include("include/header.php");
+ ?>
 <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
     <div class="container-fluid">
         <div class="page-header-content">

@@ -260,3 +260,149 @@ document.addEventListener('DOMContentLoaded', (e) => {
     splash.classList.add('display-none');
   }, 2000);
 })
+
+//text aria1
+var strings = [];
+strings.push(
+
+);
+
+var htmlContent='';
+var textAreaContent='';
+$(document).ready(function(){
+	strings.forEach(element => htmlContent += "<li>"+element+"</li>");
+	$("#display").html(htmlContent);
+	var i=1;
+	strings.forEach(function(element){ 
+  	if(strings.length==i)
+  		textAreaContent += "-"+ element;
+    else
+    	textAreaContent += "-"+ element+"\n";
+    i++;
+  });
+  $("#textaria1").val(textAreaContent);  
+})
+
+$("#display").click(function(){
+	$(this).css("display","none");
+  $("#textaria1").css("display","");
+  var currentText= $("#textaria1").val();
+  //currentText+="\n>";
+  $("#textaria1").val(currentText);
+	$("#textaria1").focus();
+});
+
+$("#textaria1").blur(function(){
+ var currentText=$("#textaria1").val();
+ var plainText=currentText.replace(/>/g, "")
+ var splitText=plainText.split("\n");
+ console.log(splitText);
+ 	htmlContent='';
+
+})
+
+$("#textaria1").keyup(function(e) {
+   var code = e.keyCode ? e.keyCode : e.which;
+   if (code == 13) {  
+   			var text=$(this).val();
+        text+="-";
+        $(this).val(text);
+     }
+});
+   //text area2
+var strings = [];
+strings.push(
+
+);
+
+var htmlContent='';
+var textAreaContent='';
+$(document).ready(function(){
+	strings.forEach(element => htmlContent += "<li>"+element+"</li>");
+	$("#display").html(htmlContent);
+	var i=1;
+	strings.forEach(function(element){ 
+  	if(strings.length==i)
+  		textAreaContent += "-"+ element;
+    else
+    	textAreaContent += "-"+ element+"\n";
+    i++;
+  });
+  $("#textaria2").val(textAreaContent);  
+})
+
+$("#display").click(function(){
+	$(this).css("display","none");
+  $("#textaria2").css("display","");
+  var currentText= $("#textaria2").val();
+  //currentText+="\n>";
+  $("#textaria2").val(currentText);
+	$("#textaria2").focus();
+});
+
+$("#textaria2").blur(function(){
+ var currentText=$("#textaria2").val();
+ var plainText=currentText.replace(/>/g, "")
+ var splitText=plainText.split("\n");
+ console.log(splitText);
+ 	htmlContent='';
+	
+})
+
+$("#textaria2").keyup(function(e) {
+   var code = e.keyCode ? e.keyCode : e.which;
+   if (code == 13) {  
+   			var text=$(this).val();
+        text+="-";
+        $(this).val(text);
+     }
+});
+   
+//text area3
+var strings = [];
+strings.push(
+
+);
+
+var htmlContent='';
+var textAreaContent='';
+$(document).ready(function(){
+strings.forEach(element => htmlContent += "<li>"+element+"</li>");
+$("#display").html(htmlContent);
+var i=1;
+strings.forEach(function(element){
+if(strings.length==i)
+textAreaContent += "-"+ element;
+else
+textAreaContent += "-"+ element+"\n";
+i++;
+});
+$("#textaria3").val(textAreaContent);
+})
+
+$("#display").click(function(){
+$(this).css("display","none");
+$("#textaria3").css("display","");
+var currentText= $("#textaria3").val();
+//currentText+="\n>";
+$("#textaria3").val(currentText);
+$("#textaria3").focus();
+});
+
+$("#textaria3").blur(function(){
+var currentText=$("#textaria3").val();
+var plainText=currentText.replace(/>/g, "")
+var splitText=plainText.split("\n");
+console.log(splitText);
+htmlContent='';
+
+})
+
+$("#textaria3").keyup(function(e) {
+var code = e.keyCode ? e.keyCode : e.which;
+if (code == 13) {
+var text=$(this).val();
+text+="-";
+$(this).val(text);
+}
+});

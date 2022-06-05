@@ -3,16 +3,21 @@ session_start();
 include '../forms/connection.php';
 
 if (isset($_POST['submit'])) {
-    $inputUserName = $_POST['inputUserName'];
+    $username = $_POST['username'];
     $inputPassword = $_POST['inputPassword'];
   
 
    
         
-        $query = "SELECT * FROM administrator WHERE username='$inputUserName' AND 'password' ='$inputPassword'";
+        $query = "SELECT * FROM `administrator` WHERE username='$username' AND password ='$inputPassword'";
         $results = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($results, MYSQLI_ASSOC);
+    $email = $row['email'];
+    $image = $row['image'];
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['username'] = $username;
+            $_SESSION['email'] = $row['email'];
+        $_SESSION['image'] = $row['image'];
             $_SESSION['success'] = "You are now logged in";
             header('location: index.php');
         } else {
@@ -22,6 +27,7 @@ if (isset($_POST['submit'])) {
             echo '</script>';
         }
     }
+
 
 
 ?>
@@ -52,7 +58,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="card-body">
                                     <form method="post">
-                                        <div class="form-group"><label class="small mb-1" for="inputUserName">User Name</label><input class="form-control py-4" id="inputUserName" type="text" placeholder="Enter User Name" name="inputUserName" required /></div>
+                                        <div class="form-group"><label class="small mb-1" for="username">User Name</label><input class="form-control py-4" id="username" type="text" placeholder="Enter User Name" name="username" required /></div>
                                         <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="inputPassword" required /></div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>

@@ -1,6 +1,29 @@
 <?php
 include './forms/connection.php';
 session_start();
+if (isset($_POST['submit'])) {
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
+  $errors = array();
+
+
+
+  if (count($errors) == 0) {
+    $result = mysqli_query($con, "insert into contact values('$username', '$email', '$subject', '$message')");
+    if ($result) {
+      echo "Registration Successfully";
+      header('location: index.php');
+    } else {
+      echo "failed:";
+    }
+  } else {
+    echo '<script language="javascript">';
+    echo 'alert("Username or email already exists")';
+    echo '</script>';
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -225,13 +248,13 @@ session_start();
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Ma'an</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p>codly@gmail.com</p>
               </div>
 
               <div class="phone">
@@ -246,31 +269,31 @@ session_start();
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form method="POST" class="contact2">
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 ">
                   <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+                  <input type="text" name="username" class="form-control" id="name" required>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 ">
                   <label for="name">Your Email</label>
                   <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label for="name">Subject</label>
                 <input type="text" class="form-control" name="subject" id="subject" required>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+
+              <div class="form-group mt-4 mb-0">
+                <center>
+                  <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Send Message</button>
+                </center>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
 

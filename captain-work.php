@@ -2,7 +2,7 @@
 <?php
 include './forms/connection.php';
 require_once "controllerUserData.php";
-session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -161,6 +161,7 @@ border-color:#22dba8; */
                 <li><a href="captain-security-page.php">Security</a></li>
                 <li><a href="captain-add-service.php">Publish serivce</a></li>
                 <li><a href="captain-purchase.php">Purchased Service</a></li>
+                <li><a href="captain-published.php">Published Service</a></li>
                 <li><a href="captain-work.php">My Work</a></li>
                 <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
               </ul>
@@ -202,6 +203,7 @@ border-color:#22dba8; */
         <a class="nav-link" href="captain-security-page.php">Security</a>
         <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
         <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
+        <a class="nav-link" href="captain-published.php">Published Service</a>
         <a class="nav-link active" href="#">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
