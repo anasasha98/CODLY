@@ -167,13 +167,13 @@ session_start();
             <p>
               Codly gives IT service providers and customer the best
               comfortable work environment; by providing a communication to
-              communicate with each other easily.<br />
+              communicate with each other easily.<br /><br><br><br>
               Only pay for work when it has been completed and you're 100%
               satisfied with the quality .
               <br />A customer can give feedback on the service that has been
               provided.
             </p>
-            <a href="#" class="btn-learn-more">Learn More</a>
+            <!-- <a href="#" class="btn-learn-more">Learn More</a> -->
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ session_start();
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>codly</title>
+  <title>services - codly</title>
   <meta content="Freelancer website" name="description" />
 
   <meta name="author" content="Codly">
@@ -18,7 +18,6 @@ session_start();
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
@@ -45,9 +44,7 @@ session_start();
 
 <body>
   <!-- ======= Header ======= -->
-  <?php
-  include './headers/header1.php';
-  ?>
+  <?php include './headers/header1.php' ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -135,78 +132,176 @@ session_start();
     </section>
     <!-- End Cliens Section -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Al-Hussein Bin Talal University students, Ma'an</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p><a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a></p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p><a href="tel:+962 32179000">+962 32179000</a></p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13783.832878660562!2d35.675448810559104!3d30.26677161135485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xecb9574de4155292!2sAl-Hussein%20Bin%20Talal%20University!5e0!3m2!1sen!2sjo!4v1650107281519!5m2!1sen!2sjo" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-            </div>
-
+    <!--packages start-->
+    <section id="pack" class="packages">
+      <?php
+      $tag = $_GET['tag'];
+      ?>
+      <div class="container">
+        <div class="gallary-header text-center">
+          <div class="section-title aos-init aos-animate text-center" data-aos="zoom-out">
+            <h2><?php echo $tag ?></h2>
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="index.php" method="post" role="form" class="contact2">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+          <div class="text-center service-heading text-start light-300" style="margin-top: -3%; color: #293C5D;">
+            <i class="bi bi-wrench" style="padding-right: 1%; font-size: 140%;"></i>
+            <h2 class="h3 pb-4 typo-space-line" style="display: contents;">
+              Service Providers
+            </h2>
           </div>
-
         </div>
 
+        <!--/.gallery-header-->
+        <div class="packages-content">
+          <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+            <?php
+            $counter = 0;
+            $query = " SELECT * FROM `service-provider` WHERE (`tag1` = '$tag') OR  (`tag2` = '$tag') OR (`tag3` = '$tag') OR (`tag4` = '$tag') ";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+              while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $counter += 1;
+            ?>
+                <!--  -->
+                <div class="col-6 col-md-4 col-sm-6 project ui branding">
+                  <div class="single-package-item">
+                    <!-- image -->
+                    <div class="single-package-item-txt">
+                      <h3>
+                        <?php
+                        $captainusername = $row['captainusername'];
+                        $name = " SELECT `firstname`, `lastname` FROM `captain` WHERE `captainusername` = '$captainusername' ";
+                        $getname = mysqli_query($con, $name);
+                        if ($getname) {
+                          $capname = mysqli_fetch_array($getname, MYSQLI_ASSOC);
+                          echo $capname['firstname'] . ' ' . $capname['lastname'];
+                          echo '<br><small style="font-size: 13px">';
+                          if ($captainusername != $username) {
+                        ?>
+                            <a href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>"><?php echo $captainusername; ?></a>
+                        <?php
+                            echo '</small>';
+                          } else {
+                            echo '<a href="captain-account-details.php">' . $captainusername . '</a>';
+                            echo '</small>';
+                          }
+                        }
+                        ?>
+                      </h3>
+                      <h4><?php echo $row['job_title'] ?></h4>
+                      <div class="packages-para">
+                        <p>
+                          <span>
+                            <?php
+                            if ($row['tag1']) {
+                            ?>
+                              <i class="fa fa-angle-right"></i>
+                              <a href="service-tag.php?tag=<?php echo $row['tag1']; ?>#pack" style="color: #47b2e4;">
+                                <?php echo $row['tag1']; ?>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                          </span>
+                          <?php
+                          if ($row['tag2']) {
+                          ?>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="service-tag.php?tag=<?php echo $row['tag2']; ?>#pack" style="color: #47b2e4;">
+                              <?php echo $row['tag2']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </p>
+                        <p>
+                          <span>
+                            <?php
+                            if ($row['tag3']) {
+                            ?>
+                              <i class="fa fa-angle-right"></i>
+                              <a href="service-tag.php?tag=<?php echo $row['tag3']; ?>#pack" style="color: #47b2e4;">
+                                <?php echo $row['tag3']; ?>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                          </span>
+                          <?php
+                          if ($row['tag4']) {
+                          ?>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="service-tag.php?tag=<?php echo $row['tag4']; ?>" style="color: #47b2e4;">
+                              <?php echo $row['tag4']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </p>
+                      </div>
+                      <div class="packages-review">
+                        <p>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <span style="margin-left: 50px;"><?php echo $row['views']; ?> reviews</span>
+                        </p>
+                      </div>
+                      <!--/.Service Provider-review-->
+                      <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+                      <center>
+                        <!-- <form action="addcart.php" method="POST"  >
+
+                      <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
+                    </form> -->
+
+                      </center>
+                      <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+                      <center>
+                        <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
+                          <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
+                        </a>
+                      </center>
+                    </div>
+
+                    <!--/.about-btn-->
+                    <!-- <form action="cart.php">
+                      <center>
+                        <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
+                      </center>
+                    </form> -->
+
+                  </div>
+                  <!--/.single-package-item-txt-->
+
+                </div>
+                <!--  -->
+
+              <?php
+              }
+            }
+            if ($counter == 0) {
+              ?>
+              <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 80px;">
+                <?php echo "❌ result is empty"; ?>
+              </h5>
+            <?php }
+            ?>
+
+            <!--/.single-package-item-->
+            <!--/.single-package-item-txt-->
+          </div>
+        </div>
+        <!--/.col-->
       </div>
-    </section><!-- End Contact Section -->
-
+    </section>
+    <!--/.packages-->
+    <!--packages end-->
 
   </main>
-  <!-- End #main -->
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -254,10 +349,10 @@ session_start();
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
             <div class="social-links mt-3" style="padding-left: 10px;">
               <h4>Our Social Networks</h4>
-              <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 

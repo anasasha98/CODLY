@@ -200,7 +200,7 @@ session_start();
                             if ($row['tag1']) {
                             ?>
                               <i class="fa fa-angle-right"></i>
-                              <a href="#" style="color: #47b2e4;">
+                              <a href="service-tag.php?tag=<?php echo $row['tag1']; ?>#pack" style="color: #47b2e4;">
                                 <?php echo $row['tag1']; ?>
                               </a>
                             <?php
@@ -211,7 +211,7 @@ session_start();
                           if ($row['tag2']) {
                           ?>
                             <i class="fa fa-angle-right"></i>
-                            <a href="#" style="color: #47b2e4;">
+                            <a href="service-tag.php?tag=<?php echo $row['tag2']; ?>#pack" style="color: #47b2e4;">
                               <?php echo $row['tag2']; ?>
                             </a>
                           <?php
@@ -224,7 +224,7 @@ session_start();
                             if ($row['tag3']) {
                             ?>
                               <i class="fa fa-angle-right"></i>
-                              <a href="#" style="color: #47b2e4;">
+                              <a href="service-tag.php?tag=<?php echo $row['tag3']; ?>#pack" style="color: #47b2e4;">
                                 <?php echo $row['tag3']; ?>
                               </a>
                             <?php
@@ -235,7 +235,7 @@ session_start();
                           if ($row['tag4']) {
                           ?>
                             <i class="fa fa-angle-right"></i>
-                            <a href="#" style="color: #47b2e4;">
+                            <a href="service-tag.php?tag=<?php echo $row['tag4']; ?>#pack" style="color: #47b2e4;">
                               <?php echo $row['tag4']; ?>
                             </a>
                           <?php
