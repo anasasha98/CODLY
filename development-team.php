@@ -153,7 +153,7 @@ session_start();
               <div class="member-info">
                 <h4>Heba Maloalain</h4>
                 <span>Full-Stack Developer</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                <p>programmer,Passionate Teamwork,patient</p>
                 <div class="social">
                   <a href="" class="isDisabled" target="_blank"><i class="ri-twitter-fill"></i></a>
                   <a href="" class="isDisabled" target="_blank"><i class="ri-facebook-fill"></i></a>
