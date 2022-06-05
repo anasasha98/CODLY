@@ -10,7 +10,7 @@ session_start();
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>about - codly</title>
+  <title>services - codly</title>
   <meta content="Freelancer website" name="description" />
 
   <meta name="author" content="Codly">
@@ -18,7 +18,6 @@ session_start();
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
@@ -45,7 +44,7 @@ session_start();
 
 <body>
   <!-- ======= Header ======= -->
-  <?php include './headers/header1.php'; ?>
+  <?php include './headers/header1.php' ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -133,54 +132,175 @@ session_start();
     </section>
     <!-- End Cliens Section -->
 
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title" data-aos="zoom-out">
-          <h2>About us</h2>
+    <!--packages start-->
+    <section id="pack" class="packages">
+      <?php
+      $tag = $_GET['tag'];
+      ?>
+      <div class="container">
+        <div class="gallary-header text-center">
+          <div class="section-title aos-init aos-animate text-center" data-aos="zoom-out">
+            <h2><?php echo $tag ?></h2>
+          </div>
+
+          <div class="text-center service-heading text-start light-300" style="margin-top: -3%; color: #293C5D;">
+            <i class="bi bi-wrench" style="padding-right: 1%; font-size: 140%;"></i>
+            <h2 class="h3 pb-4 typo-space-line" style="display: contents;">
+              Service Providers
+            </h2>
+          </div>
         </div>
 
-        <div class="row content">
-          <div class="col-lg-6">
-            <p>
-              Codly is the world's largest freelancing marketplace by number
-              of users and projects. Through our marketplace, employers can
-              hire freelancers to do work in areas such as software
-              development, writing, data entry ,design , sales and marketing.
-            </p>
-            <ul>
-              <li>
-                <i class="ri-check-double-line"></i> It’s free and easy to
-                post a job.
-              </li>
-              <li>
-                <i class="ri-check-double-line"></i> We can help you find the
-                best freelancer for the job .
-              </li>
-              <li>
-                <i class="ri-check-double-line"></i> Display services to the
-                user without login.
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-              Codly gives IT service providers and customer the best
-              comfortable work environment; by providing a communication to
-              communicate with each other easily.<br /><br><br><br>
-              Only pay for work when it has been completed and you're 100%
-              satisfied with the quality .
-              <br />A customer can give feedback on the service that has been
-              provided.
-            </p>
-            <!-- <a href="#" class="btn-learn-more">Learn More</a> -->
+        <!--/.gallery-header-->
+        <div class="packages-content">
+          <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+            <?php
+            $counter = 0;
+            $query = " SELECT * FROM `service-provider` WHERE (`tag1` = '$tag') OR  (`tag2` = '$tag') OR (`tag3` = '$tag') OR (`tag4` = '$tag') ";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+              while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $counter += 1;
+            ?>
+                <!--  -->
+                <div class="col-6 col-md-4 col-sm-6 project ui branding">
+                  <div class="single-package-item">
+                    <!-- image -->
+                    <div class="single-package-item-txt">
+                      <h3>
+                        <?php
+                        $captainusername = $row['captainusername'];
+                        $name = " SELECT `firstname`, `lastname` FROM `captain` WHERE `captainusername` = '$captainusername' ";
+                        $getname = mysqli_query($con, $name);
+                        if ($getname) {
+                          $capname = mysqli_fetch_array($getname, MYSQLI_ASSOC);
+                          echo $capname['firstname'] . ' ' . $capname['lastname'];
+                          echo '<br><small style="font-size: 13px">';
+                          if ($captainusername != $username) {
+                        ?>
+                            <a href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>"><?php echo $captainusername; ?></a>
+                        <?php
+                            echo '</small>';
+                          } else {
+                            echo '<a href="captain-account-details.php">' . $captainusername . '</a>';
+                            echo '</small>';
+                          }
+                        }
+                        ?>
+                      </h3>
+                      <h4><?php echo $row['job_title'] ?></h4>
+                      <div class="packages-para">
+                        <p>
+                          <span>
+                            <?php
+                            if ($row['tag1']) {
+                            ?>
+                              <i class="fa fa-angle-right"></i>
+                              <a href="service-tag.php?tag=<?php echo $row['tag1']; ?>#pack" style="color: #47b2e4;">
+                                <?php echo $row['tag1']; ?>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                          </span>
+                          <?php
+                          if ($row['tag2']) {
+                          ?>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="service-tag.php?tag=<?php echo $row['tag2']; ?>#pack" style="color: #47b2e4;">
+                              <?php echo $row['tag2']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </p>
+                        <p>
+                          <span>
+                            <?php
+                            if ($row['tag3']) {
+                            ?>
+                              <i class="fa fa-angle-right"></i>
+                              <a href="service-tag.php?tag=<?php echo $row['tag3']; ?>#pack" style="color: #47b2e4;">
+                                <?php echo $row['tag3']; ?>
+                              </a>
+                            <?php
+                            }
+                            ?>
+                          </span>
+                          <?php
+                          if ($row['tag4']) {
+                          ?>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="service-tag.php?tag=<?php echo $row['tag4']; ?>" style="color: #47b2e4;">
+                              <?php echo $row['tag4']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </p>
+                      </div>
+                      <div class="packages-review">
+                        <p>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <span style="margin-left: 50px;"><?php echo $row['views']; ?> reviews</span>
+                        </p>
+                      </div>
+                      <!--/.Service Provider-review-->
+                      <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+                      <center>
+                        <!-- <form action="addcart.php" method="POST"  >
+
+                      <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart" > </i>
+                    </form> -->
+
+                      </center>
+                      <!-- <a href="provider-details.php" class="btn-get-started scrollto"><span>Preview</span></a> -->
+                      <center>
+                        <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
+                          <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
+                        </a>
+                      </center>
+                    </div>
+
+                    <!--/.about-btn-->
+                    <!-- <form action="cart.php">
+                      <center>
+                        <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
+                      </center>
+                    </form> -->
+
+                  </div>
+                  <!--/.single-package-item-txt-->
+
+                </div>
+                <!--  -->
+
+              <?php
+              }
+            }
+            if ($counter == 0) {
+              ?>
+              <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 80px;">
+                <?php echo "❌ result is empty"; ?>
+              </h5>
+            <?php }
+            ?>
+
+            <!--/.single-package-item-->
+            <!--/.single-package-item-txt-->
           </div>
         </div>
+        <!--/.col-->
       </div>
     </section>
-    <!-- End About Us Section -->
+    <!--/.packages-->
+    <!--packages end-->
+
   </main>
-  <!-- End #main -->
 
 
   <!-- ======= Footer ======= -->
@@ -229,10 +349,10 @@ session_start();
             <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
             <div class="social-links mt-3" style="padding-left: 10px;">
               <h4>Our Social Networks</h4>
-              <a href="https://twitter.com/codly_" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="https://www.instagram.com/_codly/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.youtube.com/channel/UC1ompEGRFX5HaUL_YVqoB7A/" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
             </div>
           </div>
 

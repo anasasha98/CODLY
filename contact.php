@@ -68,7 +68,9 @@ if (isset($_POST['submit'])) {
 
 <body>
   <!-- ======= Header ======= -->
-  <?php include './header/header1.php'; ?>
+  <?php
+  include './headers/header1.php';
+  ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -171,19 +173,19 @@ if (isset($_POST['submit'])) {
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>Ma'an</p>
+                <p>Al-Hussein Bin Talal University students, Ma'an</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>codly@gmail.com</p>
+                <p><a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a></p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p><a href="tel:+962 32179000">+962 32179000</a></p>
               </div>
 
               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13783.832878660562!2d35.675448810559104!3d30.26677161135485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xecb9574de4155292!2sAl-Hussein%20Bin%20Talal%20University!5e0!3m2!1sen!2sjo!4v1650107281519!5m2!1sen!2sjo" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
