@@ -1,0 +1,129 @@
+<section id="payment" style="margin-top: 50px;">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2 style=" display:inline;">Payment Form</h2>
+        </div>
+
+        <div class="row row2">
+          <div class="col-100">
+            <div class="container2">
+              <form action="insert-to-cart.php" method="POST" >
+
+                <div class="row">
+                  <div class="col-50">
+                    <div>
+                    <h3 >Billing Address</h3>
+                    <label style="  margin-top:30px; " for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="fname" name="firstname" class="form-control" placeholder="John M. Doe"  required>
+                    <label style="  margin-top:30px; " for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" style="height:50px;" required>
+            
+                    <label for="adr"style="  margin-top:30px; "><i class="fa fa-address-card-o"></i> Address</label>
+                    <input  class="form-control" type="text" id="adr" name="address" placeholder="542 W. 15th Street" required>
+                    <label for="city" style="  margin-top:30px; "><i class="fa fa-institution"></i> City</label>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="New York" required>
+
+                    <!-- <div class="row">
+                      <div class="col-50">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="NY">
+                      </div> -->
+                     <div class="row">
+                      <div class="col-50">
+                      <label for="state">State</label>
+                      <select  class="form-control" id="state" name="country-state" required>
+    <option value=""></option>
+    <option value="AF">Afghanistan</option>
+    <option value="AL">Algeria</option>
+    <option value="AR">Argentina</option>
+    <option value="BR">Bihar</option>
+    <option value="CH">Chandigarh</option>
+    <option value="CT">Canada</option>
+    <option value="CI">China</option>
+    <option value="DD">Daman and Diu</option>
+    <option value="DL">Delhi</option>
+    <option value="GA">Germany</option>
+    <option value="GJ">Gujarat</option>
+    <option value="HR">Haryana</option>
+    <option value="HP">Himachal Pradesh</option>
+    <option value="I">Iraq</option>
+    <option value="JH">Jordan</option>
+    <option value="KA">Kazakhstan</option>
+    <option value="KL">Kerala</option>
+    <option value="LA">Ladakh</option>
+    <option value="LD">Lakshadweep</option>
+    <option value="MP">Madhya Pradesh</option>
+    <option value="MH">Maharashtra</option>
+    <option value="MN">Manipur</option>
+    <option value="ML">Meghalaya</option>
+    <option value="MZ">Mizoram</option>
+    <option value="NL">Nagaland</option>
+    <option value="OR">Odisha</option>
+    <option value="PY">Puducherry</option>
+    <option value="PB">Punjab</option>
+    <option value="RJ">Rajasthan</option>
+    <option value="SK">Sikkim</option>
+    <option value="TN">Tamil Nadu</option>
+    <option value="TG">Telangana</option>
+    <option value="TR">Tripura</option>
+    <option value="UP">Uttar Pradesh</option>
+    <option value="UT">Uttarakhand</option>
+    <option value="WB">West Bengal</option>
+</select>    </div> 
+
+                    
+</div>
+
+                  <div class="col-50">
+                    <h3 style=" display:inline; margin-top:30px;">Payment</h3>
+                  
+                        <div  style="display:inline; float:right;" class="icon-container">
+                      <i class="fa fa-cc-visa" style="color:navy;"></i>
+                      <i class="fa fa-cc-amex" style="color:blue;"></i>
+                      <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                      <i class="fa fa-cc-discover" style="color:orange;"></i>
+                    </div>
+                 
+                    <label for="cname" style="margin-top:30px;">Name on Card</label>
+                    <input  class="form-control" type="text" id="cname" name="cardname" placeholder="Name on Card" required>
+                    
+                 
+                   
+          
+                    <label for="ccnum" style="margin-top:30px;">Credit card number</label>
+                    <input  class="form-control"style="margin-top:30px;" type="number" id="ccnum" name="cardnumber" placeholder="Credit card number" style=" display:inline;" required>
+                   
+                        <label for="log" style="margin-top:30px;"> <i class="bi bi-credit-card-fill"></i> CVV</label>
+                        <input  class="form-control log" id="log"  type="number" max="999"  pattern="([0-9]|[0-9]|[0-9])" name="cvv" required/>
+              
+                        <input  class=" cvv"style="margin-top:30px;" type="text"   placeholder="Card Verification Value is a 3 digit number only " Readonly><i></i>
+                       
+                      
+                      <label for="" style=" margin-top:30px;"> Expiry date (MM /YY)  </label>
+<div class="exp-wrapper" >
+
+  <input  class="exp"  maxlength="2" pattern="[0-9]*"  placeholder="MM" type="text"  />
+  <input  class="exp"  maxlength="2" pattern="[0-9]*"  placeholder="YY" type="text"  />
+</div>
+
+  </div>
+                  </div>
+              
+                <label>
+                <input type="checkbox" name="sameadr" required> I understand that by checking out this box I approve for all <a href="term.php">term of service</a>
+                </label>
+                <label>
+                  <input type="checkbox" checked="checked" name="sameadr" style="margin-top:20px;" > Shipping address same as billing Address
+                </label>
+                <input type="submit" value="Pay" name="pay-now" class="btn" onClick='alert("Are you sure you want pay now...?") '>
+              </form>
+           
+         
+         
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </section>

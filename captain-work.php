@@ -3,7 +3,24 @@
 include './forms/connection.php';
 require_once "controllerUserData.php";
 // session_start();
-?>
+
+
+if (isset($_POST['update-status'])) {
+
+  $purchaseId = "SELECT `Purchase ID` FROM `purchase_list`  ";
+  $updateQuery = "UPDATE purchase_list SET Status ='complete' ";
+  
+  $run_query = mysqli_query($con, $updateQuery);
+  
+  if ($run_query) {
+  
+  
+  
+    header('Location: captain-work.php');
+  } else {
+    $_SESSION['status'] = ' not updated';
+    header('Location: captain-work.php');
+  }}?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -174,7 +191,9 @@ border-color:#22dba8; */
                 $query = " SELECT * FROM  `purchase_list` ";
                 $result = mysqli_query($con, $query);
                 if ($result) {
-                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    // $id-list = $row['Purchase ID'];
+                    ?>
 
                     <tr>
                       <td align="center"><?php echo $row['Purchase ID']; ?></td>
@@ -200,7 +219,7 @@ border-color:#22dba8; */
                             <!-- <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
                               click
                             </button> -->
-                            <button class="myBtn">Complete</button>
+                            <button  class="myBtn">Complete</button>
 
                             <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
                           </div>
@@ -263,12 +282,12 @@ border-color:#22dba8; */
   <span class="close">&times; </span>
   <p style ="color:black; margin-bottom:30px;">"✔" Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
   <!-- <textarea id="desc" name="desc"  placeholder="Please provide us with information about the service"> -->
-  <form>
+  <form method="POST" >
   Provide a description of the service<br>
   <input  type="text" required style="width:400px;height:50px"size="100"><br><br>
-  <input  type="file" required >
-  
-  <input class="upfile" type="submit" value="send" style="float:right;">
+  <input  type="file" name="file" required >
+  <!-- <button class="upfile" name="upload" style="float:right;"> upload</button> -->
+  <input class="upfile" type="submit" name="update-status" value="upload" style=" height:50px;float:right;">
 </form>
 </div>
 

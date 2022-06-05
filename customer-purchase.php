@@ -166,7 +166,7 @@ session_start();
                   </thead>
                   <tbody>
                     <?php
-                    $query = " SELECT * FROM  `purchase_list` ";
+                    $query = " SELECT * FROM  `purchase_list`  ";
                     $result = mysqli_query($con, $query);
                     if ($result) {
                       while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
