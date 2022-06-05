@@ -35,3 +35,21 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.myBtn{
+
+background-color: rgb(110, 218, 110);
+color:#fefefe;
+border-color:rgb(110, 218, 110) ;
+border-radius: 4px;
+height: 40px;
+
+}
+.upfile{
+
+  background-color: rgb(110, 218, 110);
+  color:#fefefe;
+  border-color:rgb(110, 218, 110) ;
+
+
+}
