@@ -59,14 +59,10 @@
               }
               ?>
               <li><a href="<?php echo $_SESSION['type'] ?>-security-page.php">Security</a></li>
-              <?php
-              if ($_SESSION['type'] == 'captain') {
-                echo '<li><a href="captain-add-service.php">Publish serivce</a></li>';
-                echo '<li><a href="captain-add-service.php">Publish serivce</a></li>';
-              } ?>
               <li><a href="<?php echo $_SESSION['type'] ?>-purchase.php">Purchased Service</a></li>
               <?php
               if ($_SESSION['type'] == 'captain') {
+                echo '<li><a href="captain-published.php">My Service</a></li>';
                 echo '<li><a href="captain-work.php">My Work</a></li>';
               }
               ?>
