@@ -181,10 +181,10 @@ session_start();
                             <?php echo $row['Service Name']; ?>
                           </td>
                           <td>
-                            <?php echo $row['Captin Username']; ?>
+                            <?php echo $row['captain-username']; ?>
                           </td>
                           <td><?php echo $row['Price'] . '$'; ?></td>
-                          <td><?php echo date("Y-m-d"); ?></td>
+                          <td><?php echo $row['Date']; ?></td>
 
                           <td align="center">
                             <a href="complaint.php" class="btn btn-danger "><span>click</span></a>

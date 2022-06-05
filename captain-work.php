@@ -188,10 +188,10 @@ border-color:#22dba8; */
                         <?php echo $row['Service Name']; ?>
                       </td>
                       <td>
-                        <?php echo $row['Captin Username']; ?>
+                        <?php echo $row['captain-username']; ?>
                       </td>
                       <td><?php echo $row['Price'] . '$'; ?></td>
-                      <td><?php echo date("Y-m-d"); ?></td>
+                      <td><?php echo $row['Date']; ?></td>
 
                       <td align="center">
                         <!-- <form action="controllerUserData.php" method="POST"> -->
