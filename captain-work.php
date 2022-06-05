@@ -97,6 +97,7 @@ border-color:#22dba8; */
     /* } */
   </style>
   <link href="assets/css/st.css" rel="stylesheet" />
+  <link rel='stylesheet' type='text/css' href='modal.css'>
 </head>
 
 
@@ -193,14 +194,16 @@ border-color:#22dba8; */
                       <td><?php echo date("Y-m-d"); ?></td>
 
                       <td align="center">
-                        <form action="controllerUserData.php" method="POST">
+                        <!-- <form action="controllerUserData.php" method="POST"> -->
                           <div class="form-group">
-                            <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
+                            <!-- <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
                               click
-                            </button>
+                            </button> -->
+                            <button id="myBtn">Open Modal</button>
+
                             <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
                           </div>
-                        </form>
+                        <!-- </form> -->
 
 
 
@@ -248,9 +251,24 @@ border-color:#22dba8; */
       <!--End Table-->
 
     </div>
+
   </main> <!-- End profile information -->
 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="close">&times; </span>
+  <p style ="color:black; margin-bottom:30px;">Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
+  <form>
+  <input type="file">
+  <!-- <textarea id="desc" name="desc" rows="4" cols="50" placeholder="Please provide us with information about the service"> -->
+
+</form>
+</div>
+
+</div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -510,6 +528,7 @@ border-color:#22dba8; */
   <script src="assets/js/j/jquery-3.4.1.min.js"></script>
   <script src="assets/js/j/bootstrap.bundle.min.js"></script>
   <script src="assets/js/j/bootstrap.bundle.min.js"></script>
+  <script src="modal.js"></script>
 </body>
 
 </html>

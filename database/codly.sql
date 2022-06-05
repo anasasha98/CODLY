@@ -386,6 +386,19 @@ ALTER TABLE `service-provider`
   ADD CONSTRAINT `sno-fk` FOREIGN KEY (`sno`) REFERENCES `detailed-service` (`sno`);
 COMMIT;
 
+
+
+
+
+CREATE TABLE `codly`.`cart` ( `cart_id` INT NOT NULL AUTO_INCREMENT , `customer-username` VARCHAR(20) NOT NULL , `service-id` INT NOT NULL , `service-name` VARCHAR(40) NOT NULL , `service-price` INT NOT NULL , `price-plan` VARCHAR(40) NOT NULL , `captain-username` INT(40) NOT NULL , PRIMARY KEY (`cart_id`)) ENGINE = InnoDB;
+
+CREATE TABLE `codly`.`purchase_list` ( `Purchase ID` INT NOT NULL AUTO_INCREMENT , `Customer Username` VARCHAR(20) NOT NULL , `Service ID` INT NOT NULL , `Service Name` VARCHAR(20) NOT NULL , `Price` INT NOT NULL , `Date` DATE NOT NULL , `Report` INT NOT NULL DEFAULT '0' , `Status` VARCHAR(20) NOT NULL DEFAULT 'uncomplete' , PRIMARY KEY (`Purchase ID`)) ENGINE = InnoDB;
+
+
+ALTER TABLE `purchase_list` CHANGE `Date` `Date` TIMESTAMP NOT NULL;
+
+ALTER TABLE `purchase_list` ADD `captain-username` VARCHAR(20) NOT NULL AFTER `Status`;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -223,7 +223,10 @@ session_start();
                     }
                     ?>
                   </ul>
-                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                  <!-- <a href="payment.php#payment" class="buy-btn">Get Started</a> -->
+                  <a href="insert-to-cart.php?service_id=<?php echo $row['service_id']; ?>&price1=<?php echo $row['price1']; ?>">
+                          <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
+                        </a>
                 </div>
               </div>
 
@@ -247,7 +250,10 @@ session_start();
                     }
                     ?>
                   </ul>
-                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                  <a href="insert-to-cart-2.php?service_id=<?php echo $row['service_id']; ?>&price2=<?php echo $row['price2']; ?>">
+                          <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
+                        </a>
+                  
                 </div>
               </div>
 
@@ -271,7 +277,9 @@ session_start();
                     }
                     ?>
                   </ul>
-                  <a href="payment.php#payment" class="buy-btn">Get Started</a>
+                  <a href="insert-to-cart-3.php?service_id=<?php echo $row['service_id']; ?>&price3=<?php echo $row['price3']; ?>">
+                          <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
+                        </a>
                 </div>
               </div>
 
