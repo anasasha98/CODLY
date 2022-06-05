@@ -56,87 +56,11 @@ session_start();
   <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 
+
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
-          <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <?php
-          if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-          ?>
-            <li class="dropdown">
-              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
-                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
-                <i class="bi bi-chevron-down"></i>
-              </a>
-              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
-              <ul>
-                <li><a href="captain-account-details.php">Profile</a></li>
-                <li><a href="captain-about-page">About</a></li>
-                <li><a href="captain-security-page.php">Security</a></li>
-                <li><a href="captain-add-service.php">Publish serivce</a></li>
-                <li><a href="captain-purchase.php">Purchased Service</a></li>
-                <li><a href="captain-work.php">My Work</a></li>
-                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
-              </ul>
-            </li>
-
-          <?php
-          } else {
-          ?>
-            <li>
-              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header3.php' ?>
   <!-- End Header -->
 
 
@@ -147,94 +71,94 @@ session_start();
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-            in iste officiis commodi quidem hic quas.</p>
+          <h2>Development Team</h2>
+          <p>We are students expected to graduate from Al-Hussein Bin Talal University. We present to
+            you our graduation project, Codly which was created for the purposes of completing a bachelor's
+            degree in the College of Information Technology.</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-6">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="25">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="15">
+              <div class="pic"><img src="assets/img/team-name/1.png" class="img-fluid" alt=""></div>
+              <div class=" member-info">
+                <h4>Ali Ziadeh</h4>
+                <span>Team Leader & Full-Stack Developer</span>
+                <p>Leadership, Teamwork, Supportive, QA Tester, web prog.</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href="" class="isDisabled"> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="" target="_blank"><i class="ri-twitter-fill"></i></a>
+                  <a href="" target="_blank"><i class="ri-facebook-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-instagram-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="25">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="15">
+              <div class="pic"><img src="assets/img/team-name/3.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                <h4>Safa'a Bataineh</h4>
+                <span>Document Writer and QA</span>
+                <p>Designer, Painter, Teamwork, organized, and QA Tester..</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-twitter-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-facebook-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-instagram-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="25">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="15">
+              <div class="pic"><img src="assets/img/team-name/2.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <h4>Mohammad Daoud</h4>
+                <span>Document Writer and QA</span>
+                <p>Graphic Designer, Passionate Teamwork, Efficient Junior QA&nbsp;</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="https://twitter.com/Mohammad1572001?t=E0fyYg5lMnw1zaOAq7zx6A&s=09" target="_blank"><i class="ri-twitter-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-facebook-fill"></i></a>
+                  <a href="https://www.instagram.com/m.1o5h/" target="_blank"><i class="ri-instagram-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="25">
-              <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="15">
+              <div class="pic"><img src="assets/img/team-name/5.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <h4>Anas Asha</h4>
+                <span>Full-Stack Developer</span>
+                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-twitter-fill"></i></a>
+                  <a href="" target="_blank"><i class="ri-facebook-fill"></i></a>
+                  <a href="" target="_blank"><i class="ri-instagram-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="25">
-              <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="5">
+              <div class="pic"><img src="assets/img/team-name/4.png" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <h4>Heba Maloalain</h4>
+                <span>Full-Stack Developer</span>
+                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-twitter-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-facebook-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"><i class="ri-instagram-fill"></i></a>
+                  <a href="" class="isDisabled" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
               </div>
             </div>

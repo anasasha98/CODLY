@@ -4,23 +4,24 @@ $CaptainUserName = $_POST['captain-user-name'];
 $content = $_POST['content'];
 $ImageComp = $_POST['img-comp'];
 
+include './forms/connection.php';
 
 
 
 //database connection
-$conn = new mysqli('localhost','root','','codly');
-if ($conn->connect_error){
-  die('connection failed : '.$conn->connect_error);
+// $con = new mysqli('localhost','root','','codly');
+if ($con->connect_error){
+  die('connection failed : '.$con->connect_error);
 
 }else{
-$stmt = $conn -> prepare("INSERT INTO `complaint-user` ( `customer-username`, `captin-username`, `complaint-details`, `image`) VALUES ( ?, ?, ?, ?) ") ;
+$stmt = $con -> prepare("INSERT INTO `complaint-user` ( `customer-username`, `captin-username`, `complaint-details`, `image`) VALUES ( ?, ?, ?, ?) ") ;
 $stmt -> bind_param("ssss",$CustomerUserName , $CaptainUserName , $content , $ImageComp);
 $stmt->execute();
 
 header('Location: complaint.php');
 
 $stmt->close();
-$conn->close();
+$con->close();
 
 
 

@@ -14,7 +14,7 @@ session_start();
   <script data-search-pseudo-elements defer src="assets/js/j/all.min.js"></script>
   <script src="assets/js/j/feather.min.js"></script>
 
-  <title>purchase service - codly</title>
+  <title>captain's service - codly</title>
   <meta content="Freelancer website" name="description" />
 
   <meta name="author" content="Codly">
@@ -22,7 +22,6 @@ session_start();
 
   <!-- Favicons -->
   <link href="assets/img/c.png" rel="icon" />
-  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" /> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
@@ -51,37 +50,6 @@ session_start();
     if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
     }
-
-
-    // shows alert success on screen
-    function showtrue(x) {
-      var box = document.getElementById("img_success");
-      box.innerHTML += x;
-      box.style.display = "block";
-    }
-
-    // remove alert success from screen
-    function hidetrue() {
-      document.getElementById("img_success").style.display = "none";
-    }
-    setTimeout(() => {
-      hidetrue();
-    }, 4000);
-
-    // shows alert wrong on screen
-    function showwrong(x) {
-      var box2 = document.getElementById("wrong");
-      box2.innerHTML += x;
-      box2.style.display = "block";
-    }
-
-    // remove alert wrong from screen
-    function hidewrong() {
-      document.getElementById("wrong").style.display = "none";
-    }
-    setTimeout(() => {
-      hidewrong();
-    }, 4000);
   </script>
 
   <!-- Template Main CSS File -->
@@ -100,148 +68,161 @@ session_start();
 
   <!-- ===== Captain Account Details ===== -->
   <?php
-  // if (isset($_SESSION['username'])) {
-  //   $captainusername = $_SESSION['username'];
-  // }
+  if (isset($_GET['captainusername'])) {
+    $captainusername = $_GET['captainusername'];
+  }
   ?>
 
 
   <!-- ======== Profile information ======== -->
   <main id="main" style="padding-top: 60px;">
+
     <?php
-    if (isset($_SESSION['type']) && $_SESSION['type'] == 'captain') {
-      if (isset($_SESSION['username'])) {
-        $captainusername = $_SESSION['username'];
+    $counter = 0;
+    $query = " SELECT * FROM `service-provider` WHERE `captainusername` = '$captainusername' ";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $counter += 1;
     ?>
         <div class="container-xl px-4 mt-4">
           <!-- Account page navigation-->
           <nav class="nav nav-borders">
-            <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
-            <a class="nav-link" href="captain-about-page.php">About</a>
-            <a class="nav-link" href="captain-security-page.php">Security</a>
-            <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
-            <a class="nav-link active" href="#">Purchased Service</a>
-            <a class="nav-link" href="captain-work.php">My Work</a>
+            <a class="nav-link ms-0" href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
+            <a class="nav-link" href="captain-about-no-change.php?captainusername=<?php echo $captainusername; ?>">About</a>
+            <a class="nav-link active" href="#">My Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 
-          <!-- True Alert -->
-          <div class="alert success" id="img_success" style="display: none;">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Success!</strong>
-          </div>
+          <!--/.gallery-header-->
+          <div class="packages-content">
+            <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
 
-          <!-- Wrong Alert -->
-          <div class="alert" id="wrong" style="display: none;">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Error!</strong>
-          </div>
+              <div class="col-6 col-md-4 col-sm-6 project ui branding">
+                <div class="single-package-item">
+                  <!-- image -->
+                  <div class="single-package-item-txt">
+                    <h3>
+                      <?php
+                      $captainusername = $row['captainusername'];
+                      $name = " SELECT `firstname`, `lastname` FROM `captain` WHERE `captainusername` = '$captainusername' ";
+                      $getname = mysqli_query($con, $name);
+                      if ($getname) {
+                        $capname = mysqli_fetch_array($getname, MYSQLI_ASSOC);
+                        echo $capname['firstname'] . ' ' . $capname['lastname'];
+                        echo '<br><small style="font-size: 13px">';
+                        if ($captainusername != $username) {
+                      ?>
+                          <a href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>"><?php echo $captainusername; ?></a>
+                      <?php
+                        } else {
+                          echo '<a href="captain-account-details.php">' . $captainusername . '</a>';
+                        }
+                        echo '</small>';
+                      }
+                      ?>
+                    </h3>
+                    <h4><?php echo $row['job_title'] ?></h4>
+                    <div class="packages-para">
+                      <p>
+                        <span>
+                          <?php
+                          if ($row['tag1']) {
+                          ?>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="#" style="color: #47b2e4;">
+                              <?php echo $row['tag1']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </span>
+                        <?php
+                        if ($row['tag2']) {
+                        ?>
+                          <i class="fa fa-angle-right"></i>
+                          <a href="#" style="color: #47b2e4;">
+                            <?php echo $row['tag2']; ?>
+                          </a>
+                        <?php
+                        }
+                        ?>
+                      </p>
+                      <p>
+                        <span>
+                          <?php
+                          if ($row['tag3']) {
+                          ?>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="#" style="color: #47b2e4;">
+                              <?php echo $row['tag3']; ?>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </span>
+                        <?php
+                        if ($row['tag4']) {
+                        ?>
+                          <i class="fa fa-angle-right"></i>
+                          <a href="#" style="color: #47b2e4;">
+                            <?php echo $row['tag4']; ?>
+                          </a>
+                        <?php
+                        }
+                        ?>
+                      </p>
+                    </div>
+                    <div class="packages-review">
+                      <p>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <span style="margin-left: 50px;"><?php echo $row['views']; ?> reviews</span>
+                      </p>
+                    </div>
+                    <!--/.Service Provider-review-->
 
-          <!--Start Table-->
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="datatable table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Purchase ID</th>
-                      <th>Customer Username </th>
-                      <!-- <th>Service ID </th> -->
-                      <th>Service Name</th>
-                      <th>Captain Username</th>
-                      <th>Price</th>
-                      <th>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <center>
+                      <a href="provider-details.php?service_id=<?php echo $row['service_id']; ?>">
+                        <input type="submit" class="btn btn-secondary my-3" name="preview" value="Preview">
+                      </a>
+                    </center>
+                  </div>
 
-                      <th>Report</th>
-                      <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                  <!--/.about-btn-->
+                  <!-- <form action="cart.php">
+                      <center>
+                        <input type="submit" class="btn btn-secondary my-3" name="add" value="Add to Cart">
+                      </center>
+                    </form> -->
 
-                    </tr>
+                </div>
+                <!--/.single-package-item-txt-->
 
-
-
-
-
-
-                  </thead>
-                  <tbody>
-                    <?php
-                    $query = " SELECT * FROM  `purchase_list` ";
-                    $result = mysqli_query($con, $query);
-                    if ($result) {
-                      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-
-                        <tr>
-                          <td align="center"><?php echo $row['Purchase ID']; ?></td>
-                          <td align="center"><?php echo $row['Customer Username']; ?></td>
-                          <!-- <td align="center"><?php
-                                                  //  echo $row['Service ID']; 
-                                                  ?></td> -->
-
-                          <td>
-                            <?php echo $row['Service Name']; ?>
-                          </td>
-                          <td>
-                            <?php echo $row['captain-username']; ?>
-                          </td>
-                          <td><?php echo $row['Price'] . '$'; ?></td>
-                          <td><?php echo $row['Date']; ?></td>
-
-                          <td align="center">
-                            <a href="complaint.php" class="btn btn-danger "><span>click</span></a>
-
-
-                          </td>
-                          <td>
-                            <?php echo $row['Status']; ?>
-                          </td>
-
-
-
-                        </tr>
-                    <?php   }
-                    } ?>
-                    <!-- <tr> 
-                                  <td align="center">2</td>
-                                  <td>
-                                    Design web
-                                  </td>
-                                  <td>
-                                  Smith Blake
-                                  </td>
-                                  <td>Free $</td>
-                                  <td>17 Nov 2020</td>
-                                  <td>
-                                      <div class="badge badge-success">Pending
-                                      </div>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-success btn-icon"><i data-feather="mail"></i></button>
-                                  </td>
-                                  <td>
-                                      <button class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
-                                  </td>
-                                
-                              </tr>     -->
-                  </tbody>
-
-                </table>
               </div>
+              <!--  -->
+
+            <?php
+          }
+        }
+        if ($counter == 0) {
+            ?>
+            <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 80px;">
+              <?php echo "❌ result is empty"; ?>
+            </h5>
+          <?php }
+          ?>
+
+          <!--/.single-package-item-->
+          <!--/.single-package-item-txt-->
             </div>
           </div>
-          <!--End Table-->
+          <!--/.col-->
 
         </div>
-      <?php
-      }
-    } else {
-      // header("Location:index.php");
-      ?>
-      <h5 class="h5 pb-4 typo-space-line text-center" title="Profile Not Found" style="cursor: default; padding-top: 220px; font-weight: bold;">
-        <?php echo "❌ result is empty"; ?>
-      </h5>
-    <?php
-    }
-    ?>
   </main> <!-- End profile information -->
 
 

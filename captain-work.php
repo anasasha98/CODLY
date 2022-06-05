@@ -2,7 +2,7 @@
 <?php
 include './forms/connection.php';
 require_once "controllerUserData.php";
-
+// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -97,91 +97,14 @@ border-color:#22dba8; */
     /* } */
   </style>
   <link href="assets/css/st.css" rel="stylesheet" />
+  <link rel='stylesheet' type='text/css' href='modal.css'>
 </head>
 
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-inner-pages">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
-          <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <?php
-          if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-          ?>
-            <li class="dropdown">
-              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
-                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
-                <i class="bi bi-chevron-down"></i>
-              </a>
-              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
-              <ul>
-                <li><a href="captain-account-details.php">Profile</a></li>
-                <li><a href="captain-about-page">About</a></li>
-                <li><a href="captain-security-page.php">Security</a></li>
-                <li><a href="captain-add-service.php">Publish serivce</a></li>
-                <li><a href="captain-purchase.php">Purchased Service</a></li>
-                <li><a href="captain-published.php">Published Service</a></li>
-                <li><a href="captain-work.php">My Work</a></li>
-                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
-              </ul>
-            </li>
-
-          <?php
-          } else {
-          ?>
-            <li>
-              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header2.php' ?>
   <!-- End Header -->
 
 
@@ -229,7 +152,7 @@ border-color:#22dba8; */
                 <tr>
                   <th>Purchase ID</th>
                   <th>Customer Username </th>
-                  <th>Service ID </th>
+                  <!-- <th>Service ID </th> -->
                   <th>Service Name</th>
                   <th>Captin Username</th>
                   <th>Price</th>
@@ -256,26 +179,32 @@ border-color:#22dba8; */
                     <tr>
                       <td align="center"><?php echo $row['Purchase ID']; ?></td>
                       <td align="center"><?php echo $row['Customer Username']; ?></td>
-                      <td align="center"><?php echo $row['Service ID']; ?></td>
+                      <!-- <td align="center">
+                        <?php 
+                        // echo $row['Service ID']; 
+                        ?>
+                    </td> -->
 
                       <td>
                         <?php echo $row['Service Name']; ?>
                       </td>
                       <td>
-                        <?php echo $row['Captin Username']; ?>
+                        <?php echo $row['captain-username']; ?>
                       </td>
                       <td><?php echo $row['Price'] . '$'; ?></td>
                       <td><?php echo $row['Date']; ?></td>
 
                       <td align="center">
-                        <form action="controllerUserData.php" method="POST">
+                        <!-- <form action="controllerUserData.php" method="POST"> -->
                           <div class="form-group">
-                            <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
+                            <!-- <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
                               click
-                            </button>
+                            </button> -->
+                            <button id="myBtn">Open Modal</button>
+
                             <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
                           </div>
-                        </form>
+                        <!-- </form> -->
 
 
 
@@ -323,9 +252,24 @@ border-color:#22dba8; */
       <!--End Table-->
 
     </div>
+
   </main> <!-- End profile information -->
 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="close">&times; </span>
+  <p style ="color:black; margin-bottom:30px;">Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
+  <form>
+  <input type="file">
+  <!-- <textarea id="desc" name="desc" rows="4" cols="50" placeholder="Please provide us with information about the service"> -->
+
+</form>
+</div>
+
+</div>
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -585,6 +529,7 @@ border-color:#22dba8; */
   <script src="assets/js/j/jquery-3.4.1.min.js"></script>
   <script src="assets/js/j/bootstrap.bundle.min.js"></script>
   <script src="assets/js/j/bootstrap.bundle.min.js"></script>
+  <script src="modal.js"></script>
 </body>
 
 </html>

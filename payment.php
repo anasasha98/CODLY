@@ -1,7 +1,13 @@
 <?php
-include './forms/connection.php';
 session_start();
+include './forms/connection.php';
+
+// include 'addcart.php';
+
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,278 +50,225 @@ session_start();
   <!-- Payment Resource -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/payment.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap;
+      /* IE10 */
+      flex-wrap: wrap;
+      margin: 0 -16px;
+    }
+
+    .col-25 {
+      -ms-flex: 25%;
+      /* IE10 */
+      flex: 25%;
+    }
+
+    .col-50 {
+      -ms-flex: 50%;
+      /* IE10 */
+      flex: 50%;
+    }
+
+    .col-75 {
+      -ms-flex: 75%;
+      /* IE10 */
+      flex: 75%;
+    }
+
+    .col-25,
+    .col-50,
+    .col-75 {
+      padding: 0 16px;
+    }
+
+    .cont {
+      background-color: #f2f2f2;
+      padding: 5px 20px 15px 20px;
+      border: 1px solid lightgrey;
+      border-radius: 3px;
+    }
+
+    #cname,
+    #ccnum,
+    #expmonth,
+    #log {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    label {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .icon-container {
+      margin-bottom: 20px;
+      padding: 7px 0;
+      font-size: 24px;
+    }
+
+    .btn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      width: 100%;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      color: #2196F3;
+    }
+
+    hr {
+      border: 1px solid lightgrey;
+    }
+
+    span.price {
+      float: right;
+      color: grey;
+    }
+
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+    @media (max-width: 800px) {
+      .row {
+        flex-direction: column-reverse;
+      }
+
+      .col-25 {
+        margin-bottom: 20px;
+      }
+    }
+
+
+    .cvv {
+      display: none;
+      background-color: #f4f4f4;
+      border-color: #f4f4f4;
+
+
+    }
+
+    .log:hover+.cvv {
+      display: block;
+
+    }
+
+    .btn-success {
+      background-color: #44a6eb;
+    }
+
+    .btn-success:hover {
+      background-color: #3476a5;
+    }
+  </style>
 </head>
 
 <body>
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
-          <li class="dropdown">
-            <a href="ask.php#AskForHelp"><span>Ask us</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="ask.php#AskForHelp">Ask For Help</a></li>
-              <li><a href="ask.php#faq">Frequently Asked Questions</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a class="nav-link scrollto" href="team.php#team">Success stories</a>
-          </li>
-          <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
-          </li>
-          <?php
-          if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-          ?>
-            <li class="dropdown">
-              <a class=" scrollto" href="<?php echo $_SESSION['type'] ?>-account-details.php">
-                <i class="bi bi-person-circle"></i>&nbsp;<?php echo $username; ?>
-                <i class="bi bi-chevron-down"></i>
-              </a>
-              <!-- <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a> -->
-              <ul>
-                <li><a href="captain-account-details.php">Profile</a></li>
-                <li><a href="captain-about-page">About</a></li>
-                <li><a href="captain-security-page.php">Security</a></li>
-                <li><a href="captain-add-service.php">Publish serivce</a></li>
-                <li><a href="captain-purchase.php">Purchased Service</a></li>
-                <li><a href="captain-work.php">My Work</a></li>
-                <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
-              </ul>
-            </li>
-
-          <?php
-          } else {
-          ?>
-            <li>
-              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-      <!-- .navbar -->
-    </div>
-  </header>
+  <?php include './headers/header2.php'; ?>
   <!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Build your business with top freelancers</h1>
-          <h2>
-            Post a job for free and connect with independent talent today.
-          </h2>
-          <div class="d-flex justify-content-center justify-content-lg-start">
 
-            <?php
-            if (isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $type = $_SESSION['type'];
-            ?>
-              <a class="btn-get-started scrollto" style="cursor: pointer;" href="#ser"><span>Get Started</span></a>
-            <?php
-            } else {
-            ?>
-              <a href="sign-up.php" class="btn-get-started scrollto"><span>Sign up</span></a>
-            <?php
-            }
-
-            ?>
-
-            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
-              <i class="bi bi-play-circle"></i>
-              <span>Watch Video</span>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets\img\hero-img.png" class="img-fluid animated" alt="" />
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Hero -->
 
   <main id="main">
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-      <div class="container">
-        <div class="row" data-aos="zoom-in">
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.mysql.com" target="_blank">
-              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.microsoft.com" target="_blank">
-              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.orange.com" target="_blank">
-              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.ahu.edu.jo" target="_blank">
-              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.paypal.com" target="_blank">
-              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a href="https://www.github.com" target="_blank">
-              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Cliens Section -->
-
-    <!-- ======= Payment Section ======= -->
     <section id="payment" style="margin-top: 50px;">
-      <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up" style="margin-bottom:100px">
 
         <div class="section-title">
-          <h2>Payment Form</h2>
+          <h2 style=" display:inline; ">Payment Form</h2>
         </div>
 
-        <div class="row row2">
+        <!-- ======= Payment Section ======= -->
+        <div class="row" style="width: 550px; margin: 20px 27% -150px 25%;">
           <div class="col-75">
-            <div class="container2">
-              <form action="/action_page.php">
-
+            <div class="container cont">
+              <form action="" method="POST">
                 <div class="row">
-                  <!-- <div class="col-50">
-                    <h3>Billing Address</h3>
-                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                    <input type="text" id="email" name="email" placeholder="john@example.com">
-                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                    <input type="text" id="city" name="city" placeholder="New York">
+                  <div class="col-50">
+                    <!-- <h3>Payment</h3> -->
 
-                    <div class="row">
-                      <div class="col-50">
-                        <label for="state">State</label>
-                        <input type="text" id="state" name="state" placeholder="NY">
-                      </div>
-                      <div class="col-50">
-                        <label for="zip">Zip</label>
-                        <input type="text" id="zip" name="zip" placeholder="10001">
-                      </div>
-                    </div>
-                  </div> -->
-
-                  <div class="col-20">
-                    <h3>Payment</h3>
                     <label for="fname">Accepted Cards</label>
                     <div class="icon-container">
-                      <i class="fa fa-cc-visa" style="color:navy;"></i>
-                      <i class="fa fa-cc-amex" style="color:blue;"></i>
-                      <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                      <i class="fa fa-cc-discover" style="color:orange;"></i>
+                      <i class="fa fa-cc-visa" style="color:navy;" title="visa"></i>
+                      <i class="fa fa-cc-amex" style="color:blue;" title="american express"></i>
+                      <i class="fa fa-cc-mastercard" style="color:red;" title="master card"></i>
+                      <i class="fa fa-cc-discover" style="color:orange;" title="discover"></i>
                     </div>
-                    <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                    <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                    <label for="expmonth">Exp Month</label>
-                    <input type="text" id="expmonth" name="expmonth" placeholder="September">
-                    <div class="row">
-                      <div class="col-50">
-                        <label for="expyear">Exp Year</label>
-                        <input type="text" id="expyear" name="expyear" placeholder="2018">
-                      </div>
-                      <div class="col-50">
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" name="cvv" placeholder="352">
-                      </div>
-                    </div>
-                  </div>
 
+                    <label for="cname">Name on Card</label>
+                    <input type="text" class="form-input" id="cname" name="cardname" placeholder="John More Doe" required>
+
+                    <label for="ccnum">Credit card number</label>
+                    <input type="number" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+
+                    <label for="expmonth" style="margin: 20px 0 5px 0;">Expiry date (MM / YY)</label>
+                    <input type="month" id="expmonth" name="expmonth" required>
+
+                    <!-- <div class="row"> -->
+                    <!-- <div class="col-50"> -->
+                    <label for="log">CVV</label>
+                    <input type="number" id="log" class="log" max="999" pattern="([0-9]|[0-9]|[0-9])" name="cvv" placeholder="352" required>
+                    <!-- <  class=" cvv"style="margin-top:30px;" type="text"   placeholder="Card Verification Value is a 3 digit number only " Readonly><i></i> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
+                  </div>
                 </div>
                 <label>
-                  <input type="checkbox" name="sameadr" required> I understand that by checking out this box I approve for all <a href="term.php">term of service</a>
+                  <input type="checkbox" name="sameadr" required> I understand that by checking out this box <br>&nbsp;&nbsp;&nbsp;&nbsp;I approve for all <a href="term.php">term of service</a>
                 </label>
-                <input type="submit" value="Continue to checkout" class="btn">
-                <style>
-                  .btn {
-                    background-color: #47b2e4;
-                  }
 
-                  .btn:hover {
-                    color: #fff;
-                    background-color: #209DD8;
-                  }
-                </style>
               </form>
+
+              <?php
+              $cart_id = $_GET['cart_id'];
+
+
+              $query = " SELECT * FROM `cart` WHERE `cart_id` = '$cart_id'   ";
+              $result = mysqli_query($con, $query);
+              if ($result) {
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+                  $txt = $row['service-id'];
+
+
+              ?>
+                  <a href="insert-to-purchase.php?cart_id=<?php echo $row['cart_id']; ?>"><input type="submit" class=" btn btn-success mx-2 btn-hover" value="Pay Now" onClick='alert("Are you sure you want pay now...?") '></a>
+
+              <?php }
+              } ?>
             </div>
           </div>
-          <!-- <div class="col-25"> -->
-          <!-- <div class="container">
-              <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-              <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-              <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-              <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-              <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-              <hr>
-              <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
-          <!-- </div> -->
-        </div>
-      </div>
 
-      </div>
-    </section>
-    <!-- End Payment Section -->
+        </div>
+        <!-- End Payment Section -->
 
   </main>
   <!-- End #main -->
+  <script>
 
+
+  </script>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
