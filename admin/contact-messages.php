@@ -1,4 +1,20 @@
-<?php include("include/header.php"); ?>
+<?php
+session_start();
+include("include/header.php");
+include '../forms/connection.php';
+if (isset($_POST['deletemessage'])) {
+    $username = $_POST['deletemessage'];
+    $query = "DELETE FROM contact WHERE username='$username'";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+        $_SESSION["message"] = "message deleted successfully";
+    } else {
+        $_SESSION["message"] = "Something Wrong!";
+    }
+}
+
+
+?>
 <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
     <div class="container-fluid">
         <div class="page-header-content">
@@ -18,7 +34,7 @@
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+
                             <th>User Name</th>
                             <th>User Email</th>
                             <th>Subject</th>
@@ -28,28 +44,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>user name</td>
-                            <td>email.com</td>
-                            <td>Subject</td>
-                            <td>Details</td>
-                            <td>date</td>
-                            <td>
-                                <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>user name</td>
-                            <td>email.com</td>
-                            <td>Subject</td>
-                            <td>Details</td>
-                            <td>date</td>
-                            <td>
-                                <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                            </td>
-                        </tr>
+                        <?php
+                        include '../forms/connection.php';
+                        $query = " SELECT * FROM  `contact` ";
+                        $result = mysqli_query($con, $query);
+                        if ($result) {
+                            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+
+                                <tr>
+
+                                    <td><?php echo $row['username']; ?></td>
+                                    <td><?php echo $row['email']; ?></td>
+                                    <td><?php echo $row['subject']; ?></td>
+                                    <td><?php echo $row['message']; ?></td>
+                                    <td>date</td>
+                                    <td>
+                                        <form method="post">
+                                            <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="deletemessage" value="<?= $row['username'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
+                                        </form>
+                                    </td>
+                                </tr>
+                        <?php   }
+                        } ?>
+
                     </tbody>
                 </table>
             </div>

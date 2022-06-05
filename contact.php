@@ -1,6 +1,29 @@
 <?php
 include './forms/connection.php';
 session_start();
+if (isset($_POST['submit'])) {
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
+  $errors = array();
+
+
+
+  if (count($errors) == 0) {
+    $result = mysqli_query($con, "insert into contact values('$username', '$email', '$subject', '$message')");
+    if ($result) {
+      echo "Registration Successfully";
+      header('location: index.php');
+    } else {
+      echo "failed:";
+    }
+  } else {
+    echo '<script language="javascript">';
+    echo 'alert("Username or email already exists")';
+    echo '</script>';
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +68,9 @@ session_start();
 
 <body>
   <!-- ======= Header ======= -->
-  <?php include './header/header1.php'; ?>
+  <?php
+  include './headers/header1.php';
+  ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -148,19 +173,19 @@ session_start();
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Al-Hussein Bin Talal University students, Ma'an</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p><a href="mailto:codlywb@gmail.com">codlywb@gmail.com</a></p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p><a href="tel:+962 32179000">+962 32179000</a></p>
               </div>
 
               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13783.832878660562!2d35.675448810559104!3d30.26677161135485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xecb9574de4155292!2sAl-Hussein%20Bin%20Talal%20University!5e0!3m2!1sen!2sjo!4v1650107281519!5m2!1sen!2sjo" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
@@ -171,29 +196,29 @@ session_start();
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form action="index.php" method="post" role="form" class="contact2">
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 ">
                   <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+                  <input type="text" name="username" class="form-control" id="name" required>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 ">
                   <label for="name">Your Email</label>
                   <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label for="name">Subject</label>
                 <input type="text" class="form-control" name="subject" id="subject" required>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+
+              <div class="form-group mt-4 mb-0">
+                <center>
+                  <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Send Message</button>
+                </center>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
 

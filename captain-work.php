@@ -126,6 +126,7 @@ border-color:#22dba8; */
         <a class="nav-link" href="captain-security-page.php">Security</a>
         <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
         <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
+        <a class="nav-link" href="captain-published.php">Published Service</a>
         <a class="nav-link active" href="#">My Work</a>
       </nav>
       <hr class="mt-0 mb-4">
