@@ -39,69 +39,63 @@ session_start()
 <body class="bg-light">
 
 
-<header id="header">
-    <nav class="navbar navbar-expand-lg navbar-dark "style=" background: #37517e;">
-        <a href="index.php" class="navbar-brand">
-            <h3 class="px-5">
-                <i class="fas fa-shopping-basket"></i> Shopping Cart
-            </h3>
-        </a>
-        <button class="navbar-toggler"
-            type="button"
-                data-toggle="collapse"
-                data-target = "#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark " style=" background: #37517e;">
+      <a href="index.php" class="navbar-brand">
+        <h3 class="px-5">
+          <i class="fas fa-shopping-basket"></i> Shopping Cart
+        </h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="mr-auto"></div>
-            <div class="navbar-nav">
-                <a href="cart.php" class="nav-item nav-link active">
-              
-                    <h5 class="px-5 cart">
-                        <i class="fas fa-shopping-cart"></i> 
-                       
-                        <?php
-                         
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="mr-auto"></div>
+        <div class="navbar-nav">
+          <a href="cart.php" class="nav-item nav-link active">
 
-                      //  for counter cart
-                         
-                          // $query = " SELECT * FROM `cart2` where id=(select id from cart2) ";
-                          // $result = mysqli_query($con, $query);
-                       
-                          // if ($result) {
-                            // while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {?>
-                         
-                              <!-- <sup><span id="cart_count" class="text-white"> -->
-                             <!-- <?php 
-                            //  echo  $row['count'];
-                             ?> </span></sup> -->
-                        
-                          <?php  
-                      //   }
-                      // }
-                     
+            <h5 class="px-5 cart">
+              <i class="fas fa-shopping-cart"></i>
 
-                        ?>
-                      
-                    </h5>
-                </a>
-            </div>
+              <?php
+
+
+              //  for counter cart
+
+              // $query = " SELECT * FROM `cart2` where id=(select id from cart2) ";
+              // $result = mysqli_query($con, $query);
+
+              // if ($result) {
+              // while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+              ?>
+
+              <!-- <sup><span id="cart_count" class="text-white"> -->
+              <!-- <?php
+                    //  echo  $row['count'];
+                    ?> </span></sup> -->
+
+              <?php
+              //   }
+              // }
+
+
+              ?>
+
+            </h5>
+          </a>
         </div>
+      </div>
 
     </nav>
-</header>
+  </header>
 
   <div class="container-fluid">
     <div class="row px-5">
       <div class="col-md-7">
         <div class="shopping-cart">
-    
-               
+
+
 
 
         </div>
@@ -125,12 +119,12 @@ session_start()
                     <!-- <th style="width:30px;">check</th> -->
                     <th>Captain UserName</th>
                     <th>Service Name</th>
-                   
+
                     <th>Price </th>
                     <th>Price Plan</th>
                     <th>Remove </th>
-                  
-                  <th>Pay</th>
+
+                    <th>Pay</th>
                   </tr>
                 </thead>
 
@@ -151,15 +145,15 @@ session_start()
 
                       <tr>
                         <!-- <td align="center"> -->
-                          <!-- <form><input type="checkbox" id="ch1"></form> -->
+                        <!-- <form><input type="checkbox" id="ch1"></form> -->
                         <!-- </td> -->
                         <td align="center"><?php echo $row['captain-username']; ?> </td>
                         <td align="center"><?php echo $row['service-name']; ?> </td>
                         <td align="center"><?php echo $row['service-price']; ?>$</td>
                         <td align="center"><?php echo $row['price-plan']; ?> </td>
-                       
-                        <td align="center"><a href="remove.php?cart_id=<?php echo $row['cart_id']; ?>"> <input type="submit"  class="btn btn-danger mx-2 btn-hover" onClick='alert("Are you sure you want to remove it from the card?") ' value=" Remove"></a></td>
-                                               <td align="center"><a href="payment.php?cart_id=<?php echo $row['cart_id']; ?>"> <input type="submit"  class="btn btn-success mx-2 btn-hover" value="Pay Now"></a></td>
+
+                        <td align="center"><a href="remove.php?cart_id=<?php echo $row['cart_id']; ?>"> <input type="submit" class="btn btn-danger mx-2 btn-hover" onClick='alert("Are you sure you want to remove it from the card?") ' value=" Remove"></a></td>
+                        <td align="center"><a href="payment.php?cart_id=<?php echo $row['cart_id']; ?>"> <input type="submit" class="btn btn-success mx-2 btn-hover" value="Pay Now"></a></td>
                       </tr>
 
                   <?php   }
@@ -180,7 +174,7 @@ session_start()
               <p><a href="#">Product 4</a> <span class="price">$2</span></p> -->
         <hr>
         <!-- <h4 style="color:#37517e; display:inline;"> Total : </h4><span class="price" style="font-size:20px;"><b>30$</b></span> -->
-        
+
       </div>
     </div>
 

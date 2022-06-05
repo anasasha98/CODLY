@@ -45,7 +45,7 @@ session_start();
 
 <body>
   <!-- ======= Header ======= -->
-  <?php include './headers/header1.php'?>
+  <?php include './headers/header1.php' ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->

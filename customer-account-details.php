@@ -114,7 +114,7 @@ session_start();
   $result = mysqli_query($con, $query);
   if ($result) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-      $counter = 1;
+      $counter += 1;
   ?>
       <!-- ======== Profile information ======== -->
       <main id="main" style="padding-top: 60px;">

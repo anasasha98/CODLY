@@ -77,27 +77,27 @@ session_start();
   <!-- ======== Profile information ======== -->
   <main id="main" style="padding-top: 60px;">
 
-    <div class="container-xl px-4 mt-4">
-      <!-- Account page navigation-->
-      <nav class="nav nav-borders">
-        <a class="nav-link ms-0" href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
-        <a class="nav-link" href="captain-about-no-change.php?captainusername=<?php echo $captainusername; ?>">About</a>
-        <a class="nav-link active" href="#">My Service</a>
-      </nav>
-      <hr class="mt-0 mb-4">
+    <?php
+    $counter = 0;
+    $query = " SELECT * FROM `service-provider` WHERE `captainusername` = '$captainusername' ";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $counter += 1;
+    ?>
+        <div class="container-xl px-4 mt-4">
+          <!-- Account page navigation-->
+          <nav class="nav nav-borders">
+            <a class="nav-link ms-0" href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
+            <a class="nav-link" href="captain-about-no-change.php?captainusername=<?php echo $captainusername; ?>">About</a>
+            <a class="nav-link active" href="#">My Service</a>
+          </nav>
+          <hr class="mt-0 mb-4">
 
-      <!--/.gallery-header-->
-      <div class="packages-content">
-        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
-          <?php
-          $counter = 0;
-          $query = " SELECT * FROM `service-provider` WHERE `captainusername` = '$captainusername' ";
-          $result = mysqli_query($con, $query);
-          if ($result) {
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-              $counter += 1;
-          ?>
-              <!--  -->
+          <!--/.gallery-header-->
+          <div class="packages-content">
+            <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+
               <div class="col-6 col-md-4 col-sm-6 project ui branding">
                 <div class="single-package-item">
                   <!-- image -->
@@ -206,9 +206,9 @@ session_start();
               <!--  -->
 
             <?php
-            }
           }
-          if ($counter == 0) {
+        }
+        if ($counter == 0) {
             ?>
             <h5 class="h5 pb-4 typo-space-line text-center" style="margin-top: 80px;">
               <?php echo "❌ result is empty"; ?>
@@ -218,11 +218,11 @@ session_start();
 
           <!--/.single-package-item-->
           <!--/.single-package-item-txt-->
-        </div>
-      </div>
-      <!--/.col-->
+            </div>
+          </div>
+          <!--/.col-->
 
-    </div>
+        </div>
   </main> <!-- End profile information -->
 
 
