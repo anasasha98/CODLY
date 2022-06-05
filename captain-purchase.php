@@ -100,102 +100,107 @@ session_start();
 
   <!-- ===== Captain Account Details ===== -->
   <?php
-  if (isset($_SESSION['username'])) {
-    $captainusername = $_SESSION['username'];
-  }
+  // if (isset($_SESSION['username'])) {
+  //   $captainusername = $_SESSION['username'];
+  // }
   ?>
 
 
   <!-- ======== Profile information ======== -->
   <main id="main" style="padding-top: 60px;">
-    <div class="container-xl px-4 mt-4">
-      <!-- Account page navigation-->
-      <nav class="nav nav-borders">
-        <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
-        <a class="nav-link" href="captain-about-page.php">About</a>
-        <a class="nav-link" href="captain-security-page.php">Security</a>
-        <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
-        <a class="nav-link active" href="#">Purchased Service</a>
-        <a class="nav-link" href="captain-work.php">My Work</a>
-      </nav>
-      <hr class="mt-0 mb-4">
+    <?php
+    if (isset($_SESSION['type']) && $_SESSION['type'] == 'captain') {
+      if (isset($_SESSION['username'])) {
+        $captainusername = $_SESSION['username'];
+    ?>
+        <div class="container-xl px-4 mt-4">
+          <!-- Account page navigation-->
+          <nav class="nav nav-borders">
+            <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
+            <a class="nav-link" href="captain-about-page.php">About</a>
+            <a class="nav-link" href="captain-security-page.php">Security</a>
+            <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
+            <a class="nav-link active" href="#">Purchased Service</a>
+            <a class="nav-link" href="captain-work.php">My Work</a>
+          </nav>
+          <hr class="mt-0 mb-4">
 
-      <!-- True Alert -->
-      <div class="alert success" id="img_success" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Success!</strong>
-      </div>
+          <!-- True Alert -->
+          <div class="alert success" id="img_success" style="display: none;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Success!</strong>
+          </div>
 
-      <!-- Wrong Alert -->
-      <div class="alert" id="wrong" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Error!</strong>
-      </div>
+          <!-- Wrong Alert -->
+          <div class="alert" id="wrong" style="display: none;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Error!</strong>
+          </div>
 
-      <!--Start Table-->
-      <div class="card mb-4">
-        <div class="card-body">
-          <div class="datatable table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Purchase ID</th>
-                  <th>Customer Username </th>
-                  <!-- <th>Service ID </th> -->
-                  <th>Service Name</th>
-                  <th>Captain Username</th>
-                  <th>Price</th>
-                  <th>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-
-                  <th>Report</th>
-                  <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-
-                </tr>
-
-
-
-
-
-
-              </thead>
-              <tbody>
-                <?php
-                $query = " SELECT * FROM  `purchase_list` ";
-                $result = mysqli_query($con, $query);
-                if ($result) {
-                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-
+          <!--Start Table-->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="datatable table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
                     <tr>
-                      <td align="center"><?php echo $row['Purchase ID']; ?></td>
-                      <td align="center"><?php echo $row['Customer Username']; ?></td>
-                      <!-- <td align="center"><?php
-                      //  echo $row['Service ID']; 
-                      ?></td> -->
+                      <th>Purchase ID</th>
+                      <th>Customer Username </th>
+                      <!-- <th>Service ID </th> -->
+                      <th>Service Name</th>
+                      <th>Captain Username</th>
+                      <th>Price</th>
+                      <th>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
-                      <td>
-                        <?php echo $row['Service Name']; ?>
-                      </td>
-                      <td>
-                        <?php echo $row['Captin Username']; ?>
-                      </td>
-                      <td><?php echo $row['Price'] . '$'; ?></td>
-                      <td><?php echo date("Y-m-d"); ?></td>
-
-                      <td align="center">
-                        <a href="complaint.php" class="btn btn-danger "><span>click</span></a>
-
-
-                      </td>
-                      <td>
-                        <?php echo $row['Status']; ?>
-                      </td>
-
-
+                      <th>Report</th>
+                      <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 
                     </tr>
-                <?php   }
-                } ?>
-                <!-- <tr> 
+
+
+
+
+
+
+                  </thead>
+                  <tbody>
+                    <?php
+                    $query = " SELECT * FROM  `purchase_list` ";
+                    $result = mysqli_query($con, $query);
+                    if ($result) {
+                      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
+
+                        <tr>
+                          <td align="center"><?php echo $row['Purchase ID']; ?></td>
+                          <td align="center"><?php echo $row['Customer Username']; ?></td>
+                          <!-- <td align="center"><?php
+                                                  //  echo $row['Service ID']; 
+                                                  ?></td> -->
+
+                          <td>
+                            <?php echo $row['Service Name']; ?>
+                          </td>
+                          <td>
+                            <?php echo $row['Captin Username']; ?>
+                          </td>
+                          <td><?php echo $row['Price'] . '$'; ?></td>
+                          <td><?php echo date("Y-m-d"); ?></td>
+
+                          <td align="center">
+                            <a href="complaint.php" class="btn btn-danger "><span>click</span></a>
+
+
+                          </td>
+                          <td>
+                            <?php echo $row['Status']; ?>
+                          </td>
+
+
+
+                        </tr>
+                    <?php   }
+                    } ?>
+                    <!-- <tr> 
                                   <td align="center">2</td>
                                   <td>
                                     Design web
@@ -217,15 +222,26 @@ session_start();
                                   </td>
                                 
                               </tr>     -->
-              </tbody>
+                  </tbody>
 
-            </table>
+                </table>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <!--End Table-->
+          <!--End Table-->
 
-    </div>
+        </div>
+      <?php
+      }
+    } else {
+      // header("Location:index.php");
+      ?>
+      <h5 class="h5 pb-4 typo-space-line text-center" title="Profile Not Found" style="cursor: default; padding-top: 220px; font-weight: bold;">
+        <?php echo "❌ result is empty"; ?>
+      </h5>
+    <?php
+    }
+    ?>
   </main> <!-- End profile information -->
 
 

@@ -103,7 +103,7 @@ session_start();
 <body>
 
   <!-- ======= Header ======= -->
-  <?php include './headers/header2.php'?>
+  <?php include './headers/header2.php' ?>
   <!-- End Header -->
 
   <!-- ===== Captain Account Details ===== -->
@@ -116,67 +116,66 @@ session_start();
 
   <!-- ======== Profile information ======== -->
   <main id="main" style="padding-top: 60px;">
-    <div class="container-xl px-4 mt-4">
-      <!-- Account page navigation-->
-      <nav class="nav nav-borders">
-        <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
-        <a class="nav-link active" href="#">About</a>
-        <a class="nav-link" href="captain-security-page.php">Security</a>
-        <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
-        <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
-        <a class="nav-link" href="captain-work.php">My Work</a>
-      </nav>
-      <hr class="mt-0 mb-4">
 
-      <!-- True Alert -->
-      <div class="alert success" id="img_success" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Success!</strong>
-      </div>
+    <!-- ===== send any changed information to db ===== -->
+    <?php
+    if (isset($_POST['save'])) {
+      // Captain bio
 
-      <!-- Wrong Alert -->
-      <div class="alert" id="wrong" style="display: none;">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <strong>Error!</strong>
-      </div>
+      // $bio = $_POST['bio'];
+      $bio = mysqli_real_escape_string($con, $_POST['bio']);
 
-
-      <!-- ===== send any changed information to db ===== -->
-      <?php
-      if (isset($_POST['save'])) {
-        // Captain bio
-
-        // $bio = $_POST['bio'];
-        $bio = mysqli_real_escape_string($con, $_POST['bio']);
-
-        $query = "SELECT `bio`, `attach` FROM `captain` where `captainusername` = '$captainusername'";
-        $result = mysqli_query($con, $query);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-        // Update DB 
-        $change = " UPDATE `captain` SET `bio` = '$bio' WHERE `captainusername` = '$captainusername' ";
-        mysqli_query($con, $change);
-
-        $get_bio = " SELECT `bio` FROM `captain` WHERE `captainusername` = '$captainusername' ";
-        $query_bio = mysqli_query($con, $get_bio);
-        $profile_bio = mysqli_fetch_array($query_bio, MYSQLI_ASSOC);
-        if ($profile_bio['bio'] != $row['bio']) {
-          echo '<script type="text/javascript">',
-          'showtrue("Info Updated Successfully.");',
-          '</script>';
-        }
-      }
-      ?>
-
-      <?php
-      // pressed username
-      $counter = 0;
       $query = "SELECT `bio`, `attach` FROM `captain` where `captainusername` = '$captainusername'";
       $result = mysqli_query($con, $query);
-      if ($result) {
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-          $counter += 1;
-      ?>
+      $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+      // Update DB 
+      $change = " UPDATE `captain` SET `bio` = '$bio' WHERE `captainusername` = '$captainusername' ";
+      mysqli_query($con, $change);
+
+      $get_bio = " SELECT `bio` FROM `captain` WHERE `captainusername` = '$captainusername' ";
+      $query_bio = mysqli_query($con, $get_bio);
+      $profile_bio = mysqli_fetch_array($query_bio, MYSQLI_ASSOC);
+      if ($profile_bio['bio'] != $row['bio']) {
+        echo '<script type="text/javascript">',
+        'showtrue("Info Updated Successfully.");',
+        '</script>';
+      }
+    }
+    ?>
+
+    <?php
+    // pressed username
+    $counter = 0;
+    $query = "SELECT `bio`, `attach` FROM `captain` where `captainusername` = '$captainusername'";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $counter += 1;
+    ?>
+        <div class="container-xl px-4 mt-4">
+          <!-- Account page navigation-->
+          <nav class="nav nav-borders">
+            <a class="nav-link  ms-0" href="captain-account-details.php">Profile</a>
+            <a class="nav-link active" href="#">About</a>
+            <a class="nav-link" href="captain-security-page.php">Security</a>
+            <a class="nav-link" href="captain-add-service.php">Publish serivce</a>
+            <a class="nav-link" href="captain-purchase.php">Purchased Service</a>
+            <a class="nav-link" href="captain-work.php">My Work</a>
+          </nav>
+          <hr class="mt-0 mb-4">
+
+          <!-- True Alert -->
+          <div class="alert success" id="img_success" style="display: none;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Success!</strong>
+          </div>
+
+          <!-- Wrong Alert -->
+          <div class="alert" id="wrong" style="display: none;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Error!</strong>
+          </div>
           <div class="row">
 
             <!-- php code for attach upload -->
@@ -292,18 +291,18 @@ session_start();
               </div>
             </div>
           </div>
-    </div>
+        </div>
   </main> <!-- End profile information -->
 <?php
-        }
       }
-      if ($counter == 0) {
+    }
+    if ($counter == 0) {
 ?>
 <h5 class="h5 pb-4 typo-space-line text-center" title="Profile Not Found" style="cursor: default; padding-top: 220px;">
   <?php echo "❌ result is empty"; ?>
 </h5>
 <?php
-      }
+    }
 ?>
 
 

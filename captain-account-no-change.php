@@ -127,7 +127,7 @@ session_start();
           <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="#">Profile</a>
             <a class="nav-link" href="captain-about-no-change.php?captainusername=<?php echo $captainusername; ?>">About</a>
-            <a class="nav-link" href="captain-purchase-no-change.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+            <a class="nav-link" href="captain-service-no-change.php?captainusername=<?php echo $captainusername; ?>">My Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 

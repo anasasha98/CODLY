@@ -144,6 +144,17 @@ session_start();
                     <li>
                       <strong>Provider</strong>:
                       <?php
+                      // $captainusername = $row['captainusername'];
+                      // if ($captainusername != $username) {
+                      // 
+                      ?>
+                      <!-- <a href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>"><?php echo $captainusername; ?></a> -->
+                      <?php
+                      //   echo '</small>';
+                      // } else {
+                      //   echo '<a href="captain-account-details.php">' . $captainusername . '</a>';
+                      //   echo '</small>';
+                      // } 
                       echo $row['captainusername'];
                       ?>
 
@@ -188,11 +199,7 @@ session_start();
             <div class="section-title">
               <h2>Pricing</h2>
             </div>
-            <p class="text-center" style="margin-top: -15px;">Magnam dolores commodi suscipit. Necessitatibus eius
-              consequatur ex aliquid fuga eum quidem. Sit sint
-              consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-              sit
-              in iste officiis commodi quidem hic quas.</p>
+            <p class="text-center" style="margin-top: -15px;">Choose your plan to get the service, each plan shows it's pros and price, and by pressing 'Add To Cart', the your service will be transferd to your own cart and finally just checkout to connect to the service provider and your work will be delivered</p>
 
             <div class="row">
 

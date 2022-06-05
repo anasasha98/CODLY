@@ -59,7 +59,7 @@ session_start();
 
 
 <body>
-  
+
   <!-- ======= Header ======= -->
   <?php include './headers/header2.php'?>
   <!-- End Header -->
@@ -88,7 +88,7 @@ session_start();
           <nav class="nav nav-borders">
             <a class="nav-link ms-0" href="captain-account-no-change.php?captainusername=<?php echo $captainusername; ?>">Profile</a>
             <a class="nav-link active" href="#">About</a>
-            <a class="nav-link" href="captain-purchase-no-change.php?captainusername=<?php echo $captainusername; ?>">Purchased Service</a>
+            <a class="nav-link" href="captain-service-no-change.php?captainusername=<?php echo $captainusername; ?>">My Service</a>
           </nav>
           <hr class="mt-0 mb-4">
 
