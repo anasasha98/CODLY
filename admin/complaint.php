@@ -58,7 +58,7 @@
                               <th>Image</th>
                               <th>Date</th>
                               <th>Send Reply</th>
-                              <th>Check</th>
+
                               <th>Delete</th>
                           </tr>
                       </thead>
@@ -74,8 +74,14 @@
                                       <td class="show"><?php echo $row['customer-username']; ?></td>
                                       <td class="show"><?php echo $row['captin-username']; ?></td>
                                       <td class="show"><?php echo $row['complaint-details']; ?></td>
-                                      <td class="show"><?php echo '<img  src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" border=3 height=100 width=100 />'; ?></td>
-                                      <td class="show">date</td>
+                                      <td class="show"><?php if ($row['image'] == '') {
+                                                            echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                                                        } else {
+                                                            echo $ext = pathinfo($row['image'], PATHINFO_EXTENSION);
+                                                            echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image']) . '" />';
+                                                        } ?></td>
+                                      
+                                      <td class="show"><?php echo $row['data']; ?></td>
                                       <td>
                                           <div class=" form-group">
                                               <label for="reply">Send Reply</label>
@@ -84,20 +90,7 @@
                                           </div>
                                           <button type="button" class="btn btn-primary">Primary</button>
                                       </td>
-                                      <td>
-                                          <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="check" id="underreview" checked>
-                                              <label class=" form-check-label" for="underreview">
-                                                  Under review
-                                              </label>
-                                          </div>
-                                          <div class="form-check">
-                                              <input class="form-check-input" type="radio" name="check" id="reviewed">
-                                              <label class="form-check-label" for="reviewed">
-                                                  Reviewed
-                                              </label>
-                                          </div>
-                                      </td>
+
                                       <td>
 
                                           <form method="post">
@@ -123,4 +116,3 @@
 
 
   <?php include("include/footer.php"); ?>
-

@@ -1,11 +1,14 @@
 <?php
-
+session_start();
 include 'include/header.php';
 include '../forms/connection.php';
 
 
 if (isset($_POST['delservice'])) {
   $service_id  = $_POST['delservice'];
+
+
+
   $query = "DELETE FROM `service-provider` WHERE `service_id` ='$service_id'";
   $result = mysqli_query($con, $query);
   if ($result) {
@@ -17,6 +20,28 @@ if (isset($_POST['delservice'])) {
     echo 'alert("Something Wrong!")';
     echo '</script>';
   }
+}
+// search
+
+if (isset($_POST['search'])) {
+
+  $valueToSearch = $_POST['valueToSearch'];
+  // search in all table columns
+  // using concat mysql function
+  $query =
+    "SELECT * FROM `service-provider` WHERE CONCAT(`captainusername`,`service_id`,`job_title`)  LIKE '%" . $valueToSearch . "%'";
+  $search_result = filterTable($query);
+} else {
+  $query = "SELECT * FROM `service-provider`";
+  $search_result = filterTable($query);
+}
+
+
+function filterTable($query)
+{
+  include '../forms/connection.php';
+  $filter_Result = mysqli_query($con, $query);
+  return $filter_Result;
 }
 
 
@@ -40,6 +65,12 @@ if (isset($_POST['delservice'])) {
     <div class="card-header">All Services Published</div>
     <div class="card-body">
       <div class="datatable table-responsive">
+        <form method="post">
+          <div class="active-cyan-4 mb-4">
+            <input class="form-control" type="text" placeholder="Filter for Captain Username Or Job Titale Or Service ID" name="valueToSearch" aria-label="Search">
+            <button type="submit" name="search" class="btn btn-outline-primary">Search</button>
+          </div>
+        </form>
 
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead>
@@ -55,56 +86,65 @@ if (isset($_POST['delservice'])) {
               <th>Image1</th>
 
               <th>Image2</th>
-              <th>
+
               <th>Image3</th>
-              </th>
+
               <th>Price1</th>
               <th>Price2</th>
               <th>Price3</th>
-              <th>Status</th>
+
               <th>Delete</th>
             </tr>
           </thead>
 
           <tbody>
-            <?php
-            include '../forms/connection.php';
-            $query = " SELECT * FROM  `service-provider` ";
-            $result = mysqli_query($con, $query);
-            if ($result) {
-              while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
-                <tr>
-                  <td><?php echo $row['service_id']; ?></td>
+            <?php while ($row = mysqli_fetch_array($search_result)) : ?>
+              <tr>
+                <td><?php echo $row['service_id']; ?></td>
 
-                  <td><?php echo $row['captainusername']; ?></td>
-                  <td><?php echo "wait" ?></td>
-                  <td><?php echo $row['job_title']; ?></td>
-                  <td><?php echo $row['job_desc']; ?></td>
-                  <td><?php echo $row['publish_date']; ?></td>
-                  <td><?php echo $row['views']; ?></td>
-                  <td><?php echo $row['image1']; ?></td>
-                  <td><?php echo $row['image2']; ?></td>
-                  <td><?php echo $row['image3']; ?></td>
-                  <td><?php echo $row['price1']; ?></td>
-                  <td><?php echo $row['price2']; ?></td>
-                  <td><?php echo $row['price3']; ?></td>
+                <td><?php echo $row['captainusername']; ?></td>
+                <td><?php echo "wait" ?></td>
+                <td><?php echo $row['job_title']; ?></td>
+                <td><?php echo $row['job_desc']; ?></td>
+                <td><?php echo $row['publish_date']; ?></td>
+                <td><?php echo $row['views']; ?></td>
+                <td><?php if ($row['image1'] == '') {
+                      echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                    } else {
+                      echo $ext = pathinfo($row['image1'], PATHINFO_EXTENSION);
+                      echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image1']) . '" />';
+                    } ?></td>
+                <td><?php if ($row['image2'] == '') {
+                      echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                    } else {
+                      echo $ext = pathinfo($row['image2'], PATHINFO_EXTENSION);
+                      echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image2']) . '" />';
+                    } ?> </td>
+                <td><?php if ($row['image3'] == '') {
+                      echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                    } else {
+                      echo $ext = pathinfo($row['image3'], PATHINFO_EXTENSION);
+                      echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image3']) . '" />';
+                    } ?></td>
+
+                <td><?php echo $row['price1'] . '$'; ?></td>
+                <td><?php echo $row['price2'] . '$'; ?></td>
+                <td><?php echo $row['price3'] . '$'; ?></td>
 
 
 
-                  <td>
-                    <div class="badge badge-success">Published
-                    </div>
-                  </td>
-                  <td>
-                    <form method="post">
-                      <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delservice" value="<?= $row['service_id'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
-                    </form>
-                  </td>
-                </tr>
-            <?php   }
-            }
 
-            ?>
+
+
+                <td>
+                  <form method="post">
+                    <a href="deletelink" onclick="return confirm('Are you sure?')"><button type="submit" name="delservice" value="<?= $row['service_id'];  ?>" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button></a>
+                  </form>
+                </td>
+              </tr>
+            <?php endwhile; ?>
+
+
           </tbody>
         </table>
       </div>

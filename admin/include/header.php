@@ -68,11 +68,12 @@ include '../forms/connection.php';
 
             ?>
                 <li class="nav-item dropdown no-caret mr-3 dropdown-user">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php
-                    echo $ext = pathinfo($_SESSION['image'], PATHINFO_EXTENSION);
-                    echo '<img class="img-fluid" src="data:image/' . $ext . ';base64,' . base64_encode($_SESSION['image']) . '" />'; 
-                    
-                    ?> </a>
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if ($_SESSION['image'] == '') {
+                                                                                                                                                                                                                                echo '<img class="img-fluid" src="assets/img/user.jpg">';
+                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                echo $ext = pathinfo($_SESSION['image'], PATHINFO_EXTENSION);
+                                                                                                                                                                                                                                echo '<img class="img-fluid" src="data:image/' . $ext . ';base64,' . base64_encode($_SESSION['image']) . '" />';
+                                                                                                                                                                                                                            } ?> </a>
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                         <h6 class="dropdown-header d-flex align-items-center">
 
@@ -142,6 +143,10 @@ include '../forms/connection.php';
                         Complaint
                     </a>
 
+                    <a class="nav-link" href="include/logout.php">
+                        <div class="nav-link-icon"><i data-feather="log-out"></i></div>
+                        Logout
+                    </a>
 
 
                 </div>

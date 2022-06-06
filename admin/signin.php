@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include '../forms/connection.php';
 
 if (isset($_POST['submit'])) {
@@ -12,19 +13,23 @@ if (isset($_POST['submit'])) {
         $query = "SELECT * FROM `administrator` WHERE username='$username' AND password ='$inputPassword'";
         $results = mysqli_query($con, $query);
     $row = mysqli_fetch_array($results, MYSQLI_ASSOC);
+    $username = $row['username'];
+    $password = $row['password'];
     $email = $row['email'];
     $image = $row['image'];
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['username'] = $username;
-            $_SESSION['email'] = $row['email'];
-        $_SESSION['image'] = $row['image'];
-            $_SESSION['success'] = "You are now logged in";
-            header('location: index.php');
+            $_SESSION['password'] = $password;
+            $_SESSION['email'] = $email;
+            $_SESSION['image'] = $row['image'];
+            
+            header("location: index.php");
         } else {
 
             echo '<script language="javascript">';
             echo 'alert("Wrong username/password combination")';
             echo '</script>';
+            header('location: signin.php');
         }
     }
 
