@@ -6,32 +6,32 @@ include '../forms/connection.php';
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $inputPassword = $_POST['inputPassword'];
-  
 
-   
-        
-        $query = "SELECT * FROM `administrator` WHERE username='$username' AND password ='$inputPassword'";
-        $results = mysqli_query($con, $query);
+
+
+
+    $query = "SELECT * FROM `administrator` WHERE username='$username' AND password ='$inputPassword'";
+    $results = mysqli_query($con, $query);
     $row = mysqli_fetch_array($results, MYSQLI_ASSOC);
     $username = $row['username'];
     $password = $row['password'];
     $email = $row['email'];
     $image = $row['image'];
-        if (mysqli_num_rows($results) == 1) {
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            $_SESSION['email'] = $email;
-            $_SESSION['image'] = $row['image'];
-            
-            header("location: index.php");
-        } else {
+    if (mysqli_num_rows($results) == 1) {
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
+        $_SESSION['email'] = $email;
+        $_SESSION['image'] = $row['image'];
 
-            echo '<script language="javascript">';
-            echo 'alert("Wrong username/password combination")';
-            echo '</script>';
-            header('location: signin.php');
-        }
+        header("location: index.php");
+    } else {
+
+        echo '<script language="javascript">';
+        echo 'alert("Wrong username/password combination")';
+        echo '</script>';
+        header('location: signin.php');
     }
+}
 
 
 
@@ -71,6 +71,7 @@ if (isset($_POST['submit'])) {
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Sign In</button></div>
                                     </form>
                                 </div>
+                               
                                 <div class="card-footer text-center">
                                     <div class="small"><a href="signup.php">Need an account? Sign up!</a></div>
                                 </div>
