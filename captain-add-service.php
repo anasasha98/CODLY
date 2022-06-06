@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
     echo '<script language="javascript">';
     echo 'alert("Records added successfully.")';
     echo '</script>';
+    header('Refresh: 1; URL = captain-published.php');
   } else {
     echo '<script language="javascript">';
     echo 'alert("ERROR: Could not able to execute")';

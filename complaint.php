@@ -50,64 +50,89 @@ session_start();
 <body>
   <!-- ======= Header ======= -->
   <?php include './headers/header2.php' ?>
-  <!-- End Header -->
+  <!-- ======= End Header ======= -->
 
   <main id="main">
 
-    <main>
-      <div class="page-header pb-10 ">
-        <div class="container-fluid">
+    <?php
+    if (isset($_SESSION['username'])) {
+      $username = $_SESSION['username'];
+    ?>
+      <main>
+        <div class="page-header pb-10 ">
+          <div class="container-fluid">
 
-          <div class="section-title" data-aos="zoom-out">
-            <h2>Complaints Form</h2>
+            <div class="section-title" data-aos="zoom-out">
+              <h2>Complaints Form</h2>
+            </div>
+          </div>
+
+          <!-- START FORM -->
+          <?php
+          if (isset($_GET['purchase_id'])) {
+            $purchase_id = $_GET['purchase_id'];
+
+
+            $query = "SELECT `Customer Username`, `captain-username` FROM `purchase_list` WHERE `Purchase ID` = '$purchase_id' ";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            }
+          ?>
+
+        </div>
+        <div class="container-fluid mt-n10">
+          <div class="card mb-4">
+            <div class="card-header">Complaints Area:</div>
+            <div class="card-body">
+              <form action="test.php" method="post">
+                <div class="form-group">
+                  <label for="user-name"><b>Customer User name:</b></label>
+                  <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..." value="<?php echo $row['Customer Username']; ?>" disabled />
+                </div>
+                <div class="form-group">
+                  <label for="user-name"><b>Captain User name:</b></label>
+                  <input class="form-control" id="captain-user-name" required name="captain-user-name" type="text" placeholder="User name ..." value="<?php echo $row['captain-username']; ?>" disabled />
+                </div>
+                <div class="form-group">
+                  <label for="post-content"><b>Complaints Details:</b></label>
+                  <textarea class="form-control" placeholder="Type your complaint here..." id="content" name="content" rows="9" maxlength="1000" required></textarea>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="post-tags"><b>Image (optional)</b></label>
+                  <input type="file" class="form-control" id="img-comp" name="img-comp">
+                </div>
+
+
+                <input type="submit" onClick='alert("Are you sure to send a complaint?") ' class="btn btn-primary mr-2 my-1" type="button" name="send-complaint" value="Send My Complaint">
+
+              </form>
+            </div>
           </div>
         </div>
-        <!-- START FORM -->
-
-      </div>
-      <div class="container-fluid mt-n10">
-        <div class="card mb-4">
-          <div class="card-header">Complaints Area:</div>
-          <div class="card-body">
-            <form action="test.php" method="post">
-              <div class="form-group">
-                <label for="user-name"><b>Customer User name:</b></label>
-                <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..." value="" />
-              </div>
-              <div class="form-group">
-                <label for="user-name"><b>Captain User name:</b></label>
-                <input class="form-control" id="captain-user-name" required name="captain-user-name" type="text" placeholder="User name ..." value="" />
-              </div>
-              <div class="form-group">
-                <label for="post-content"><b>Complaints Details:</b></label>
-                <textarea class="form-control" placeholder="Type your complaint here..." id="content" name="content" rows="9" maxlength="1000" required></textarea>
-              </div>
-
-
-              <div class="form-group">
-                <label for="post-tags"><b>Image (optional)</b></label>
-                <input type="file" class="form-control" id="img-comp" name="img-comp">
-              </div>
-
-
-              <input type="submit" onClick='alert("Are you sure to send a complaint?") '  class="btn btn-primary mr-2 my-1" type="button" name="send-complaint" value="Send My Complaint">
-
-            </form>
-          </div>
-        </div>
-      </div>
+      <?php
+          } else {
+      ?>
+        <center>
+          <h5>❌ No Service Selected</h5>
+        </center>
+      <?php
+          }
+      ?>
       <!--End Form-->
 
-
-
-
-
-
-
-
-
-
-    </main>
+      </main>
+    <?php
+    } else {
+    ?>
+      <center>
+        <h5 style="margin-top: 13%"><i class="bi bi-exclamation-triangle"></i>To proceed .. Please <a href="sign-in.php">Sign-in</a> First </h5>
+      </center>
+    <?php
+    }
+    ?>
 
     <!-- End #main -->
 

@@ -15,7 +15,12 @@ session_start()
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cart</title>
+  <title>Cart - codly</title>
+
+  <link href="assets/img/c.png" rel="icon" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
@@ -29,12 +34,25 @@ session_start()
       /* width:50%; */
       text-align: center;
       color: #37517e;
+    }
 
 
-
+    .cart-count {
+      margin-bottom: 10px;
+      height: 20px;
+      width: 20px;
+      background-color: #243654;
+      border-radius: 50%;
+      display: inline-block;
     }
   </style>
 </head>
+
+<?php
+if (isset($_SESSION['username'])) {
+  $username = $_SESSION['username'];
+}
+?>
 
 <body class="bg-light">
 
@@ -43,7 +61,9 @@ session_start()
     <nav class="navbar navbar-expand-lg navbar-dark " style=" background: #37517e;">
       <a href="index.php" class="navbar-brand">
         <h3 class="px-5">
-          <i class="fas fa-shopping-basket"></i> Shopping Cart
+          <!-- <i class="fas fa-shopping-basket"></i>  -->
+          <!-- Shopping Cart -->
+          CODLY
         </h3>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +76,26 @@ session_start()
           <a href="cart.php" class="nav-item nav-link active">
 
             <h5 class="px-5 cart">
-              <i class="fas fa-shopping-cart"></i>
+              <i class="fas fa-shopping-cart">
+                <sub>
+                  <div class="cart-count">
+                    <sub style="float: right; margin: 7px 4px 0px 2px; font-size: 12px">
+                      <?php
+                      $cart_count = "SELECT COUNT(`customer-username`) AS count FROM `cart` WHERE `customer-username` = '$username' GROUP BY `customer-username` ";
+                      $get_count = mysqli_query($con, $cart_count);
+                      if ($get_count) {
+                        $num = mysqli_fetch_array($get_count, MYSQLI_ASSOC);
+                        if ($num != null) {
+                          echo $num['count'];
+                        } else {
+                          echo 0;
+                        }
+                      }
+                      ?>
+                    </sub>
+                  </div>
+                </sub>
+              </i>
 
               <?php
 
@@ -106,7 +145,10 @@ session_start()
     <div class="col-25">
       <div class="container">
         <br><br>
-        <h4 style="color:#37517e;"> My Cart <span class="price" style="color:#37517e;"><i class="fa fa-shopping-cart"></i> </span></h4>
+        <h3 class="px-5" style="color:#37517e; text-align: left; margin-left: -50px;">
+          <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Shopping Cart
+        </h3>
+        <!-- <h4 style="color:#37517e;"> My Cart <span class="price" style="color:#37517e;"><i class="fa fa-shopping-cart"></i> </span></h4> -->
         <hr>
 
         <!--Start Table-->
@@ -132,7 +174,7 @@ session_start()
 
                   <?php
                   // if (isset($_POST['add'])){
-                  $qcart = " SELECT * FROM  `cart` ";
+                  $qcart = " SELECT * FROM  `cart` WHERE `customer-username` = '$username' ";
                   $rcart = mysqli_query($con, $qcart);
 
 
@@ -184,4 +226,3 @@ session_start()
 </body>
 
 </html>
-

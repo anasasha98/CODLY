@@ -165,7 +165,7 @@ session_start();
                   </thead>
                   <tbody>
                     <?php
-                    $query = " SELECT * FROM  `purchase_list`  ";
+                    $query = " SELECT * FROM  `purchase_list` WHERE `Customer Username` = '$username' ";
                     $result = mysqli_query($con, $query);
                     if ($result) {
                       while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
@@ -187,7 +187,7 @@ session_start();
                           <td><?php echo $row['Date']; ?></td>
 
                           <td align="center">
-                            <a href="complaint.php" class="btn btn-danger "><span>click</span></a>
+                            <a href="complaint.php?purchase_id=<?php echo $row['Purchase ID']; ?>" class="btn btn-danger "><span>click</span></a>
 
 
                           </td>
