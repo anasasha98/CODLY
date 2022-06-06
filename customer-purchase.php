@@ -166,7 +166,7 @@ session_start();
                   </thead>
                   <tbody>
                     <?php
-                    $query = " SELECT * FROM `purchase_list` WHERE ";
+                    $query = " SELECT * FROM `purchase_list` WHERE `Customer Username` = '$username' ";
                     $result = mysqli_query($con, $query);
                     if ($result) {
                       while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
@@ -248,7 +248,7 @@ session_start();
 
       </main> <!-- End profile information -->
 
-      
+
 
 
       <!-- ======= Footer ======= -->

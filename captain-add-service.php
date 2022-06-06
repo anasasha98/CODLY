@@ -271,7 +271,7 @@ if (isset($_POST['submit'])) {
                   </div>
                   <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 1</span>
-                    <input type="text" class="form-control" name="price1">
+                    <input type="text" class="form-control" name="price1" min=2 title="Value must be greater than or equal to 2 US-Dollar" required>
                   </div>
                   <div class="form-group">
                     <label for="textaria1">Price 1 Details:</label>
@@ -280,7 +280,7 @@ if (isset($_POST['submit'])) {
 
                   <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 2</span>
-                    <input type="text" class="form-control" name="price2">
+                    <input type="text" class="form-control" name="price2" min=2 title="Value must be greater than or equal to 2 US-Dollar">
                   </div>
                   <div class="form-group">
                     <label for="textaria2">Price 2 Details:</label>
@@ -290,7 +290,7 @@ if (isset($_POST['submit'])) {
 
                   <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm" style="font-weight: bold;">Price 3</span>
-                    <input type="text" class="form-control" name="price3">
+                    <input type="number" class="form-control" name="price3" min=2 title="Value must be greater than or equal to 2 US-Dollar">
                   </div>
                   <div class="form-group">
                     <label for="textaria3">Price 3 Details:</label>
