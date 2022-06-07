@@ -11,6 +11,8 @@ include './forms/connection.php';
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
+  <meta http-equiv="refresh" content="300">
+
   <title>codly</title>
   <meta content="Freelancer website" name="description" />
 
@@ -79,7 +81,7 @@ include './forms/connection.php';
 
             ?>
 
-            <a href="https://youtu.be/mFFID0vPOcE" class="glightbox btn-watch-video">
+            <a href="https://www.youtube.com/embed/mFFID0vPOcE?cc_load_policy=1" class="glightbox btn-watch-video">
               <i class="bi bi-play-circle"></i>
               <span>Watch Video</span>
             </a>
@@ -244,7 +246,15 @@ include './forms/connection.php';
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <!-- Happy Clients / Customers -->
+              <span data-purecounter-start="0" data-purecounter-end="
+              <?php
+              $count1 = " SELECT COUNT(*) AS customer FROM `customer` ";
+              $get_customer_count = mysqli_query($con, $count1);
+              $customer_count = mysqli_fetch_array($get_customer_count, MYSQLI_ASSOC);
+              echo $customer_count['customer'];
+              ?>
+              " data-purecounter-duration="1" data-purecounter-once="false" class="purecounter"></span>
               <p>Happy Clients</p>
             </div>
           </div>
@@ -252,7 +262,15 @@ include './forms/connection.php';
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <!-- Project / All service -->
+              <span data-purecounter-start="0" data-purecounter-end="
+              <?php
+              $count2 = " SELECT COUNT(*) AS services FROM `service-provider` ";
+              $get_service_count = mysqli_query($con, $count2);
+              $service_count = mysqli_fetch_array($get_service_count, MYSQLI_ASSOC);
+              echo $service_count['services'];
+              ?>
+              " data-purecounter-duration="1" data-purecounter-once="false" class="purecounter"></span>
               <p>Projects</p>
             </div>
           </div>
@@ -260,15 +278,31 @@ include './forms/connection.php';
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <!-- Purchase Of Support / purchased services -->
+              <span data-purecounter-start="0" data-purecounter-end="
+              <?php
+              $count3 = " SELECT COUNT(*) AS support FROM `purchase_list` ";
+              $get_support_hours = mysqli_query($con, $count3);
+              $support_hours = mysqli_fetch_array($get_support_hours, MYSQLI_ASSOC);
+              echo $support_hours['support'];
+              ?>
+              " data-purecounter-duration="1" data-purecounter-once="false" class="purecounter"></span>
+              <p>Purchased Of Support</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <!-- Hard Workers / captain -->
+              <span data-purecounter-start="0" data-purecounter-end="
+              <?php
+              $count3 = " SELECT COUNT(*) AS captain FROM `captain` ";
+              $get_captain_count = mysqli_query($con, $count3);
+              $captain_count = mysqli_fetch_array($get_captain_count, MYSQLI_ASSOC);
+              echo $captain_count['captain'];
+              ?>
+              " data-purecounter-duration="1" data-purecounter-once="false" class="purecounter"></span>
               <p>Hard Workers</p>
             </div>
           </div>
