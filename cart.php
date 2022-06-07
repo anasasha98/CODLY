@@ -97,29 +97,6 @@ if (isset($_SESSION['username'])) {
                 </sub>
               </i>
 
-              <?php
-
-
-              //  for counter cart
-
-              // $query = " SELECT * FROM `cart2` where id=(select id from cart2) ";
-              // $result = mysqli_query($con, $query);
-
-              // if ($result) {
-              // while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-              ?>
-
-              <!-- <sup><span id="cart_count" class="text-white"> -->
-              <!-- <?php
-                    //  echo  $row['count'];
-                    ?> </span></sup> -->
-
-              <?php
-              //   }
-              // }
-
-
-              ?>
 
             </h5>
           </a>
