@@ -50,6 +50,7 @@ height: 40px;
   background-color: rgb(110, 218, 110);
   color:#fefefe;
   border-color:rgb(110, 218, 110) ;
-
+  border-radius: 10px;
+  margin-bottom:5px;
 
 }
