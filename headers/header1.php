@@ -69,6 +69,37 @@
                 <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
               </ul>
             </li>
+            <li> 
+                <!-- <div class="navbar-nav"> -->
+          <a href="cart.php" class="nav-item nav-link ">
+
+            <h5 class=" cart">
+              <i class="fas fa-5x fa-shopping-cart ">
+                <sub>
+                  <div class="cart-count">
+                    <sub style="float: right; margin: 7px 4px 0px 2px;  font-size: 12px">
+                      <?php
+                      $cart_count = "SELECT COUNT(`customer-username`) AS count FROM `cart` WHERE `customer-username` = '$username' GROUP BY `customer-username` ";
+                      $get_count = mysqli_query($con, $cart_count);
+                      if ($get_count) {
+                        $num = mysqli_fetch_array($get_count, MYSQLI_ASSOC);
+                        if ($num != null) {
+                          echo $num['count'];
+                        } else {
+                          echo 0;
+                        }
+                      }
+                      ?>
+                    </sub>
+                  </div>
+                </sub>
+              </i>
+
+
+            </h5>
+          </a>
+        <!-- </div> -->
+      </li>
 
           <?php
           } else {

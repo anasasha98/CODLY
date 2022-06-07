@@ -3,7 +3,27 @@
 include './forms/connection.php';
 // include 'captain-work.php';
 session_start();
-?>
+
+
+$purchase_id = $_GET['id'];
+
+    $updateQuery = "UPDATE purchase_list SET Status ='complete' where `Purchase ID` = '$purchase_id' ";
+    
+    $run_query = mysqli_query($con, $updateQuery);
+    
+
+
+
+if (isset($_POST['save'])) {
+  // $servicedesc = $_POST['desc'];
+  // $img = $_POST['image'];
+  // $update=" UPDATE `purchase_list` SET `info-service`='$servicedesc',`file`='$img' WHERE `Purchase ID` = '$purchase_id' ";
+  // $run_query = mysqli_query($con, $update);
+
+  header('Location: captain-work.php');
+  
+}
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,30 +144,7 @@ session_start();
    <!-- ===== send any changed information to db ===== -->
 
    
-   <?php
-  if (isset($_POST['save'])) {
-    // Captain bio
-
-    
-    
-    // $purchase_id = $_GET['id'];
-    // $purchaseId = "SELECT `Purchase ID` FROM `purchase_list` where `Purchase ID ` = '$purchase_id' ";
-    // $updateQuery = "UPDATE purchase_list SET Status ='complete' where `Purchase ID ` = '$purchase_id' ";
-    
-    // $run_query = mysqli_query($con, $updateQuery);
-    
-    // if ($run_query) {
-    
-    
-    
-    //   header('Location: captain-work.php');
-    // } else {
-    //   $_SESSION['status'] = ' not updated';
-    //   header('Location: captain-work.php');
-    }
   
-  
-  ?>
    
 
             <div class="col-lg-8">
@@ -158,7 +155,7 @@ session_start();
                   <form method="POST" action="completeservice.php" enctype="multipart/form-data">
                     <!-- Form Group -->
                     <div class="mb-3">
-                      <label class="small mb-1" for="bio">Please describe the service and add information about it</label>
+                      <label class="small mb-1" for="info">Please describe the service and add information about it</label>
                       <textarea class="form-control" name="desc" id="info" maxlength="1000" required oninput="countText()"></textarea>
                       <label class=" small mb-1" style="float: right;">
                         <span id="characters">0</span>
@@ -174,22 +171,8 @@ session_start();
                       // $profile_attach = mysqli_fetch_assoc($attach_result);
                       ?>
                       <label class="small mb-1" for="userfile">Attach File </label>
-                      <?php
-                      // if ($profile_attach['file'] != "") {
-                      ?>
-                        <!-- <embed src="assets/files/captain_profile/<?php 
-                        // echo $profile_attach['file']; ?>" width="680px" height="680px" /> -->
-                        <!-- <iframe src="assets/files/captain_profile/<?php 
-                        // echo $profile_attach['file']; ?>" width="680px" height="680px"></iframe> -->
-                      <?php
-                      // } else {
-                      ?>
-                        <!-- <h6>❌ No File Attached</h6> -->
-                      <?php
-                      // }
-                      ?>
-
-                      <input class="form-control" id="userfile" type="file" name="file" placeholder="Uplaod an Attachment" value="<?php echo $profile_attach['file']; ?>" accept="application/pdf, image/*, media_type">
+                   
+                      <input class="form-control" id="userfile" type="file" name="image" placeholder="Uplaod an Attachment"  accept="application/pdf, image/*, media_type">
                     </div>
                     <!-- Save changes & Discard button-->
                     <button class="btn btn-secondary" type="reset" id="discard" onClick="window.location.reload();">Discard</button>
@@ -202,19 +185,6 @@ session_start();
           </div>
         </div>
   </main> <!-- End profile information -->
-<?php
-    //   }
-    // }
-    // if ($counter == 0) {
-?>
-<!-- <h5 class="h5 pb-4 typo-space-line text-center" title="Profile Not Found" style="cursor: default; padding-top: 220px;"> -->
-  <?php
-  //  echo "❌ result is empty"; 
-  ?>
-<!-- </h5>/ -->
-<?php
-    // }
-?>
 
 
 <!-- ======= Footer ======= -->

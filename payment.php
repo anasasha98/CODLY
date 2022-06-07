@@ -52,136 +52,30 @@ include './forms/connection.php';
   <link rel="stylesheet" href="assets/css/payment.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
 
-    .row {
-      display: -ms-flexbox;
-      /* IE10 */
-      display: flex;
-      -ms-flex-wrap: wrap;
-      /* IE10 */
-      flex-wrap: wrap;
-      margin: 0 -16px;
-    }
+  <!-- for payment card -->
+    <title>Credit Card Validation Demo</title>
 
-    .col-25 {
-      -ms-flex: 25%;
-      /* IE10 */
-      flex: 25%;
-    }
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="payment/css/styles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="payment/css/demo.css"> -->
+    <style>
+      body{
+    font: normal 18px sans-serif;
+    color: #333;
+    background-color: #eee;
+}
 
-    .col-50 {
-      -ms-flex: 50%;
-      /* IE10 */
-      flex: 50%;
-    }
+.container-fluid{
+    padding:0;
+    margin:0;
+}
 
-    .col-75 {
-      -ms-flex: 75%;
-      /* IE10 */
-      flex: 75%;
-    }
+      </style>
 
-    .col-25,
-    .col-50,
-    .col-75 {
-      padding: 0 16px;
-    }
-
-    .cont {
-      background-color: #f2f2f2;
-      padding: 5px 20px 15px 20px;
-      border: 1px solid lightgrey;
-      border-radius: 3px;
-    }
-
-    #cname,
-    #ccnum,
-    #expmonth,
-    #log {
-      width: 100%;
-      margin-bottom: 20px;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-
-    label {
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .icon-container {
-      margin-bottom: 20px;
-      padding: 7px 0;
-      font-size: 24px;
-    }
-
-    .btn {
-      background-color: #04AA6D;
-      color: white;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      width: 100%;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 17px;
-    }
-
-    .btn:hover {
-      background-color: #45a049;
-    }
-
-    a {
-      color: #2196F3;
-    }
-
-    hr {
-      border: 1px solid lightgrey;
-    }
-
-    span.price {
-      float: right;
-      color: grey;
-    }
-
-    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-    @media (max-width: 800px) {
-      .row {
-        flex-direction: column-reverse;
-      }
-
-      .col-25 {
-        margin-bottom: 20px;
-      }
-    }
-
-
-    .cvv {
-      display: none;
-      background-color: #f4f4f4;
-      border-color: #f4f4f4;
-
-
-    }
-
-    .log:hover+.cvv {
-      display: block;
-
-    }
-
-    .btn-success {
-      background-color: #44a6eb;
-    }
-
-    .btn-success:hover {
-      background-color: #3476a5;
-    }
-  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 
 </head>
 
 <body>
@@ -196,51 +90,64 @@ include './forms/connection.php';
       <div class="container" data-aos="fade-up" style="margin-bottom:100px">
 
         <div class="section-title">
-          <h2 style=" display:inline; ">Payment Form</h2>
+          <!-- <h2 style=" display:inline; ">Payment Form</h2> -->
         </div>
 
         <!-- ======= Payment Section ======= -->
-        <div class="row" style="width: 550px; margin: 20px 27% -150px 25%;">
-          <div class="col-75">
-            <div class="container cont">
-              <form action="" method="POST">
-                <div class="row">
-                  <div class="col-50">
-                    <!-- <h3>Payment</h3> -->
 
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
-                      <i class="fa fa-cc-visa" style="color:navy;" title="visa"></i>
-                      <i class="fa fa-cc-amex" style="color:blue;" title="american express"></i>
-                      <i class="fa fa-cc-mastercard" style="color:red;" title="master card"></i>
-                      <i class="fa fa-cc-discover" style="color:orange;" title="discover"></i>
-                    </div>
-
-                    <label for="cname">Name on Card</label>
-                    <input type="text" class="form-input" id="cname" name="cardname" placeholder="John More Doe" required>
-
-                    <label for="ccnum">Credit card number</label>
-                    <input type="number" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
-
-                    <label for="expmonth" style="margin: 20px 0 5px 0;">Expiry date (MM / YY)</label>
-                    <input type="month" id="expmonth" name="expmonth" required>
-
-                    <!-- <div class="row"> -->
-                    <!-- <div class="col-50"> -->
-                    <label for="log">CVV</label>
-                    <input type="number" id="log" class="log" max="999" pattern="([0-9]|[0-9]|[0-9])" name="cvv" placeholder="352" required>
-                    <!-- <  class=" cvv"style="margin-top:30px;" type="text"   placeholder="Card Verification Value is a 3 digit number only " Readonly><i></i> -->
-                    <!-- </div> -->
-                    <!-- </div> -->
-                  </div>
-                </div>
-                <label>
-                  <input type="checkbox" name="sameadr" required> I understand that by checking out this box <br>&nbsp;&nbsp;&nbsp;&nbsp;I approve for all <a href="term.php">term of service</a>
-                </label>
-
-              </form>
-
-              <?php
+        <div class="creditCardForm">
+    <div class="heading">
+        <h1>Confirm Purchase</h1>
+    </div>
+    <div class="payment">
+        <form method="POST">
+            <div class="form-group owner">
+                <label for="owner">Owner</label>
+                <input type="text" class="form-control" id="owner" required>
+            </div>
+            <div class="form-group CVV">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv" required>
+            </div>
+            <div class="form-group" id="card-number-field">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" class="form-control" id="cardNumber" required>
+            </div>
+            <div class="form-group" id="expiration-date">
+                <label>Expiration Date</label>
+                <select required>
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option> 
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select required>
+                    <option value="16"> 2022</option>
+                    <option value="17"> 2023</option>
+                    <option value="18"> 2024</option>
+                    <option value="19"> 2025</option>
+                    <option value="20"> 2026</option>
+                    <option value="21"> 2027</option>
+                </select>
+            </div>
+            <div class="form-group" id="credit_cards">
+                <img src="payment/images/visa.jpg" id="visa">
+                <img src="payment/images/mastercard.jpg" id="mastercard">
+                <img src="payment/images/amex.jpg" id="amex">
+            </div>
+            <!-- <div class="form-group" id="pay-now">
+                <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+            </div> -->
+        </form>
+        <?php
               $cart_id = $_GET['cart_id'];
 
 
@@ -257,10 +164,90 @@ include './forms/connection.php';
 
               <?php }
               } ?>
-            </div>
-          </div>
+    </div>
+</div>
 
-        </div>
+
+<p class="examples-note">Here are some example credit card numbers and CVV codes :</p>
+
+<div class="examples">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Card Number</th>
+                    <th>Security Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Visa</td>
+                    <td>4716108999716531</td>
+                    <td>257</td>
+                </tr>
+                <tr>
+                    <td>Master Card</td>
+                    <td>5281037048916168</td>
+                    <td>043</td>
+                </tr>
+                <tr>
+                    <td>American Express</td>
+                    <td>342498818630298</td>
+                    <td>3156</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+
+        <!-- <div class="row" style="width: 550px; margin: 20px 27% -150px 25%;">
+          <div class="col-75">
+            <div class="container cont">
+              <form action="" method="POST">
+                <div class="row">
+                  <div class="col-50"> -->
+                    <!-- <h3>Payment</h3> -->
+
+                    <!-- <label for="fname">Accepted Cards</label>
+                    <div class="icon-container">
+                      <i class="fa fa-cc-visa" style="color:navy;" title="visa"></i>
+                      <i class="fa fa-cc-amex" style="color:blue;" title="american express"></i>
+                      <i class="fa fa-cc-mastercard" style="color:red;" title="master card"></i>
+                      <i class="fa fa-cc-discover" style="color:orange;" title="discover"></i>
+                    </div>
+
+                    <label for="cname">Name on Card</label>
+                    <input type="text" class="form-input" id="cname" name="cardname" placeholder="John More Doe" required>
+
+                    <label for="ccnum">Credit card number</label>
+                    <input type="number" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+
+                    <label for="expmonth" style="margin: 20px 0 5px 0;">Expiry date (MM / YY)</label>
+                    <input type="month" id="expmonth" name="expmonth" required> -->
+
+                    <!-- <div class="row"> -->
+                    <!-- <div class="col-50"> -->
+                    <!-- <label for="log">CVV</label>
+                    <input type="number" id="log" class="log" max="999" pattern="([0-9]|[0-9]|[0-9])" name="cvv" placeholder="352" required> -->
+                    <!-- <  class=" cvv"style="margin-top:30px;" type="text"   placeholder="Card Verification Value is a 3 digit number only " Readonly><i></i> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
+                  <!-- </div>
+                </div>
+                <label>
+                  <input type="checkbox" name="sameadr" required> I understand that by checking out this box <br>&nbsp;&nbsp;&nbsp;&nbsp;I approve for all <a href="term.php">term of service</a>
+                </label> -->
+
+              <!-- </form> -->
+
+             
+            <!-- </div> -->
+          <!-- </div> -->
+
+        <!-- </div> -->
         <!-- End Payment Section -->
 
   </main>
@@ -343,7 +330,71 @@ include './forms/connection.php';
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<script>
+  $(function() {
 
+var owner = $('#owner');
+var cardNumber = $('#cardNumber');
+var cardNumberField = $('#card-number-field');
+var CVV = $("#cvv");
+var mastercard = $("#mastercard");
+var confirmButton = $('#confirm-purchase');
+var visa = $("#visa");
+var amex = $("#amex");
+
+// Use the payform library to format and validate
+// the payment fields.
+
+cardNumber.payform('formatCardNumber');
+CVV.payform('formatCardCVC');
+
+
+cardNumber.keyup(function() {
+
+    amex.removeClass('transparent');
+    visa.removeClass('transparent');
+    mastercard.removeClass('transparent');
+
+    if ($.payform.validateCardNumber(cardNumber.val()) == false) {
+        cardNumberField.addClass('has-error');
+    } else {
+        cardNumberField.removeClass('has-error');
+        cardNumberField.addClass('has-success');
+    }
+
+    if ($.payform.parseCardType(cardNumber.val()) == 'visa') {
+        mastercard.addClass('transparent');
+        amex.addClass('transparent');
+    } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
+        mastercard.addClass('transparent');
+        visa.addClass('transparent');
+    } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
+        amex.addClass('transparent');
+        visa.addClass('transparent');
+    }
+});
+
+// confirmButton.click(function(e) {
+
+//     e.preventDefault();
+
+//     var isCardValid = $.payform.validateCardNumber(cardNumber.val());
+//     var isCvvValid = $.payform.validateCardCVC(CVV.val());
+
+//     if(owner.val().length < 5){
+//         alert("Wrong owner name");
+//     } else if (!isCardValid) {
+//         alert("Wrong card number");
+//     } else if (!isCvvValid) {
+//         alert("Wrong CVV");
+//     } else {
+//         // Everything is correct. Add your form submission code here.
+//         alert("Everything is correct");
+//     }
+// });
+});
+
+  </script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -355,6 +406,13 @@ include './forms/connection.php';
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+    <!-- The HTML for our form will go here -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="payment/js/jquery.payform.min.js" charset="utf-8"></script>
+    <!-- <script src="payment/js/script.js"></script> -->
+
 </body>
 
 </html>
