@@ -5,17 +5,13 @@ include 'forms/connection.php';
 if (isset($_POST['submitcaptain'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
-
-
-
-
-  $query = "SELECT * FROM captain WHERE captainusername ='$username' AND password ='$password'";
+  $query = "SELECT * FROM `captain` WHERE `captainusername` ='$username' AND password ='$password'";
   $results = mysqli_query($con, $query);
   if (mysqli_num_rows($results) == 1) {
     $_SESSION['username'] = $username;
     $_SESSION['type'] = 'captain';
     $_SESSION['success'] = "You are now logged in";
-    header('location: ./index.php');
+    header('location: index.php');
   } else {
 
     echo '<script language="javascript">';
@@ -27,11 +23,7 @@ if (isset($_POST['submitcaptain'])) {
 if (isset($_POST['submitcustomer'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
-
-
-
-
-  $query = "SELECT * FROM customer WHERE customerusername = '$username' AND password = '$password'";
+  $query = "SELECT * FROM `customer` WHERE `customerusername` = '$username' AND password = '$password'";
   $results = mysqli_query($con, $query);
   if (mysqli_num_rows($results) == 1) {
     $_SESSION['username'] = $username;

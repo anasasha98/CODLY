@@ -17,43 +17,52 @@ if (isset($_POST['submit'])) {
 
 
 
-  $user_check_query = "SELECT * FROM captain WHERE 'captainusername' ='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM captain WHERE 'captainusername' ='$username' OR email='$email' OR `phonenumber` = '$phone' LIMIT 1";
   $res = mysqli_query($con, $user_check_query);
   $user = mysqli_fetch_assoc($res);
 
   if ($user) { // if user exists
-    if ($user['captainusername'] === $username) {
-      array_push($errors, "Username already exists");
-    }
-
-    if ($user['email'] === $email) {
-      array_push($errors, "email already exists");
+    if (isset($user['captainusername'])) {
+      if ($user['captainusername'] === $username) {
+        array_push($errors, "Username already exists");
+      }
+    } else if (isset($user['email'])) {
+      if ($user['email'] === $email) {
+        array_push($errors, "email already exists");
+      }
+    } else {
+      if ($user['phonenumber'] == $phone) {
+        array_push($errors, "phone number already exists");
+      }
     }
   }
-
 
   if (count($errors) == 0) {
     $result = mysqli_query($con, "insert into captain values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$major','$writeaboutself','$attachment','$image')");
 
     if ($result) {
-      echo '<script>';
-      echo 'alert("data inserted properly ")';
+      echo '<script type="text/javascript">';
+      echo 'alert("data inserted properly");';
       echo '</script>';
-
-      header('location: ../sign-in.php');
+?>
+      <script>
+        setTimeout("document.location.href='../sign-in.php';", 300);
+      </script>';
+<?php
     } else {
-      echo '<script>';
-      echo 'alert("data not inserted ")';
+      echo '<script type="text/javascript">';
+      echo 'alert("data not inserted");';
       echo '</script>';
     }
   } else {
-    echo '<script language="javascript">';
+    echo '<script type="text/javascript"">';
     echo 'alert("Username or email already exists")';
     echo '</script>';
   }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,7 +138,7 @@ if (isset($_POST['submit'])) {
 
                     <div class="form-group">
                       <label class="small mb-1" for="username">Username</label>
-                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase" pattern="^[a-z][a-z0-9_\s]*$" oninvalid="setCustomValidity('Invalid character in name & first character only & use underscore only')" oninput="setCustomValidity('')" required />
+                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase"  required />
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="email">Email</label>

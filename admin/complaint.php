@@ -2,6 +2,15 @@
     session_start();
     include("include/header.php");
     include '../forms/connection.php';
+    if(isset($_POST['reply']))
+    {
+        $replymsg = $_POST['reply'];
+        $result = mysqli_query($con, "INSERT INTO `complaint-user` (replymessage) values($replymsg)");
+        echo '<script language="javascript">';
+        echo 'alert("message Message has been sent")';
+        echo '</script>';
+
+    }
     if (isset($_POST['deletemessage'])) {
         $complaint = $_POST['deletemessage'];
 
@@ -80,15 +89,17 @@
                                                             echo $ext = pathinfo($row['image'], PATHINFO_EXTENSION);
                                                             echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image']) . '" />';
                                                         } ?></td>
-                                      
+
                                       <td class="show"><?php echo $row['data']; ?></td>
                                       <td>
                                           <div class=" form-group">
                                               <label for="reply">Send Reply</label>
-                                              <textarea class="form-control" id="reply" rows="2"></textarea>
+                                              <textarea class="form-control" id="reply" rows="2" name="reply"></textarea>
 
                                           </div>
-                                          <button type="button" class="btn btn-primary">Primary</button>
+                                          <form method="post">
+                                              <button type="button" class="btn btn-primary">Send Reply</button>
+                                          </form>
                                       </td>
 
                                       <td>

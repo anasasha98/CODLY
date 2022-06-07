@@ -115,7 +115,8 @@ session_start();
   <?php
   if (isset($_SESSION['type']) && $_SESSION['type'] == 'customer') {
     if (isset($_SESSION['username'])) {
-      $captainusername = $_SESSION['username'];
+      $customerusername = $_SESSION['username'];
+
 
   ?>
       <main id="main" style="padding-top: 60px;">
@@ -125,6 +126,7 @@ session_start();
             <a class="nav-link  ms-0" href="customer-account-details.php">Profile</a>
             <a class="nav-link" href="customer-security-page.php">Security</a>
             <a class="nav-link active" href="#">Purchased Service</a>
+            <a class="nav-link " href="customer-replay-message.php">Message</a>
           </nav>
           <hr class="mt-0 mb-4">
 
@@ -200,15 +202,18 @@ session_start();
                             <?php echo $row['Status']; ?>
                           </td>
                           <td>
-                            <a href="bill.php"><button type="submit" class="btn btn-primary" name="invoice" value="<?= $row['Service ID'];  ?>">
-                                <i class="bi bi-printer-fill"></i>
-                              </button></a>
+                            <form method="get">
+                              <a href="bill.php"><button type="submit" class="btn btn-primary" name="invoicecustomer" value="<?= $row['Purchase ID'];  ?>">
+                                  <i class="bi bi-printer-fill"></i>
+                                </button></a>
+                            </form>
                           </td>
-                          
+
 
 
                         </tr>
-                    <?php   }
+                    <?php
+                      }
                     } ?>
                     <!-- <tr> 
                                   <td align="center">2</td>
