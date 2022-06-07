@@ -2,14 +2,14 @@
     session_start();
     include("include/header.php");
     include '../forms/connection.php';
-    if(isset($_POST['reply']))
-    {
+    if (isset($_POST['reply'])) {
         $replymsg = $_POST['reply'];
-        $result = mysqli_query($con, "INSERT INTO `complaint-user` (replymessage) values($replymsg)");
+        $message = $_POST['replym'];
+        $result = mysqli_query($con, "INSERT INTO `complaint-user` (`replymessage`) values ('$message') WHERE `complaint-id` = '$replymsg'");
+        
         echo '<script language="javascript">';
         echo 'alert("message Message has been sent")';
         echo '</script>';
-
     }
     if (isset($_POST['deletemessage'])) {
         $complaint = $_POST['deletemessage'];
@@ -93,13 +93,13 @@
                                       <td class="show"><?php echo $row['data']; ?></td>
                                       <td>
                                           <div class=" form-group">
-                                              <label for="reply">Send Reply</label>
-                                              <textarea class="form-control" id="reply" rows="2" name="reply"></textarea>
-
+                                              <form method="post">
+                                                  <label for="reply">Send Reply</label>
+                                                  <textarea class="form-control" id="replym" name="replym" rows="2" name="reply"></textarea>
+                                                  <button type="button" name="reply" class="btn btn-primary" value="<?= $row['complaint-id'];?>">  Send Reply</button>
                                           </div>
-                                          <form method="post">
-                                              <button type="button" class="btn btn-primary">Send Reply</button>
                                           </form>
+                                         
                                       </td>
 
                                       <td>

@@ -6,6 +6,7 @@ session_start();
 if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
   
+  
   $type = $_SESSION['type'];
 }
 if (isset($_POST['invoicecustomer'])) {
