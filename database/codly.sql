@@ -408,3 +408,5 @@ ALTER TABLE `purchase_list` ADD `file` VARCHAR(20) NOT NULL DEFAULT '...' AFTER 
 
 
    ALTER TABLE `purchase_list` ADD `info-service` VARCHAR(1000) NOT NULL AFTER `captain-username`, ADD `file` VARCHAR(25) NOT NULL AFTER `info-service`;
+
+   ALTER TABLE `purchase_list` CHANGE `file` `file` BLOB NOT NULL;
