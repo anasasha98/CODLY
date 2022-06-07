@@ -106,7 +106,7 @@ session_start();
     <?php
     if (isset($_SESSION['type']) && $_SESSION['type'] == 'customer') {
       if (isset($_SESSION['username'])) {
-        $captainusername = $_SESSION['username'];
+        $customerusername = $_SESSION['username'];
     ?>
 
         <div class="container-xl px-4 mt-4">

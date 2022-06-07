@@ -54,6 +54,7 @@ session_start();
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" />
 
+
   <script>
     if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
@@ -115,6 +116,7 @@ session_start();
   if (isset($_SESSION['type']) && $_SESSION['type'] == 'customer') {
     if (isset($_SESSION['username'])) {
       $captainusername = $_SESSION['username'];
+
   ?>
       <main id="main" style="padding-top: 60px;">
         <div class="container-xl px-4 mt-4">
@@ -155,6 +157,7 @@ session_start();
 
                       <th>Report</th>
                       <th>Status</th>
+                      <th>Print invoice</th>
 
                     </tr>
 
@@ -196,7 +199,12 @@ session_start();
                           <td>
                             <?php echo $row['Status']; ?>
                           </td>
-
+                          <td>
+                            <a href="bill.php"><button type="submit" class="btn btn-primary" name="invoice" value="<?= $row['Service ID'];  ?>">
+                                <i class="bi bi-printer-fill"></i>
+                              </button></a>
+                          </td>
+                          
 
 
                         </tr>

@@ -112,6 +112,7 @@ session_start();
     if (isset($_SESSION['type']) && $_SESSION['type'] == 'captain') {
       if (isset($_SESSION['username'])) {
         $captainusername = $_SESSION['username'];
+        
     ?>
         <div class="container-xl px-4 mt-4">
           <!-- Account page navigation-->
@@ -154,6 +155,7 @@ session_start();
 
                       <th>Report</th>
                       <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                      <th>Print invoice</th>
 
                     </tr>
 
@@ -193,6 +195,11 @@ session_start();
                           </td>
                           <td>
                             <?php echo $row['Status']; ?>
+                          </td>
+                          <td>
+                            <a href="bill.php"><button type="submit" class="btn btn-primary" name="invoice" value="<?= $row['Customer Username'];  ?>">
+                                <i class="bi bi-printer-fill"></i>
+                              </button></a>
                           </td>
 
 
