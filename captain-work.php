@@ -2,25 +2,13 @@
 <?php
 include './forms/connection.php';
 require_once "controllerUserData.php";
+
 // session_start();
 
 
-if (isset($_POST['update-status'])) {
+// if (isset($_POST['update-status'])) {
 
-  $purchaseId = "SELECT `Purchase ID` FROM `purchase_list`  ";
-  $updateQuery = "UPDATE purchase_list SET Status ='complete' ";
-  
-  $run_query = mysqli_query($con, $updateQuery);
-  
-  if ($run_query) {
-  
-  
-  
-    header('Location: captain-work.php');
-  } else {
-    $_SESSION['status'] = ' not updated';
-    header('Location: captain-work.php');
-  }}?>
+//   }?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -129,11 +117,21 @@ border-color:#22dba8; */
   if (isset($_SESSION['username'])) {
     $captainusername = $_SESSION['username'];
   }
-  ?>
+
+?>
+ 
+ 
+
 
 
   <!-- ======== Profile information ======== -->
   <main id="main" style="padding-top: 60px;">
+  <?php
+    if (isset($_SESSION['type']) && $_SESSION['type'] == 'captain') {
+      if (isset($_SESSION['username'])) {
+        $captainusername = $_SESSION['username'];}}
+    ?>
+ 
     <div class="container-xl px-4 mt-4">
       <!-- Account page navigation-->
       <nav class="nav nav-borders">
@@ -165,16 +163,16 @@ border-color:#22dba8; */
             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Purchase ID</th>
-                  <th>Customer Username </th>
+                  <th align="center">Purchase ID</th>
+                  <th align="center">Customer Username </th>
                   <!-- <th>Service ID </th> -->
-                  <th>Service Name</th>
-                  <th>Captin Username</th>
-                  <th>Price</th>
-                  <th>Date</th>
+                  <th align="center">Service Name</th>
+                  <th align="center">Captin Username</th>
+                  <th align="center">Price</th>
+                  <th align="center">Date</th>
 
-                  <th>Complete </th>
-                  <th>Status</th>
+                  <th align="center">Complete </th>
+                  <th align="center">Status</th>
 
                 </tr>
 
@@ -186,10 +184,12 @@ border-color:#22dba8; */
               </thead>
               <tbody>
                 <?php
-                $query = " SELECT * FROM  `purchase_list` ";
+              
+                $query = " SELECT * FROM  `purchase_list` where `captain-username` = '$captainusername ' ";
                 $result = mysqli_query($con, $query);
                 if ($result) {
                   while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $_SESSION['purchase_id'] =  $row['Purchase ID']; ;
                     // $id-list = $row['Purchase ID'];
                     ?>
 
@@ -217,17 +217,14 @@ border-color:#22dba8; */
                           <!-- <button type="submit" name="update-status" onClick='confirm("Are you sure you have completed the service...?") ' class="btn btn-success ">
                               click
                             </button> -->
-<<<<<<< HEAD
-                            <button  class="myBtn">Complete</button>
-=======
-                          <button class="myBtn">Complete</button>
->>>>>>> afb5c83660ad0addd393a24b943c8054901f8870
+                            <!-- <button  class="myBtn">Complete</button> -->
 
                           <!-- <input  class="btn btn-success form-control" type="submit" name="pstatus" value="click">  -->
                         </div>
                         <!-- </form> -->
 
-
+                        <a href="completeservice.php?id=<?php echo $row['Purchase ID']; ?>"  > 
+   <input class="upfile" type="submit" name="yes" value="Complete" style=" height:50px;"></a> 
 
 
 
@@ -277,39 +274,31 @@ border-color:#22dba8; */
   </main> <!-- End profile information -->
 
   <!-- The Modal -->
-  <div id="myModal" class="modal">
+  <!-- <div id="myModal" class="modal"> -->
 
-<<<<<<< HEAD
 <!-- Modal content -->
-<div class="modal-content">
-  <span class="close">&times; </span>
-  <p style ="color:black; margin-bottom:30px;">"✔" Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
-  <!-- <textarea id="desc" name="desc"  placeholder="Please provide us with information about the service"> -->
-  <form method="POST" >
-  Provide a description of the service<br>
-  <input  type="text" required style="width:400px;height:50px"size="100"><br><br>
-  <input  type="file" name="file" required >
-  <!-- <button class="upfile" name="upload" style="float:right;"> upload</button> -->
-  <input class="upfile" type="submit" name="update-status" value="upload" style=" height:50px;float:right;">
-</form>
-</div>
-=======
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times; </span>
-      <p style="color:black; margin-bottom:30px;">"✔" Are you sure you have completed the service...?If yes, please include the service file and then send it to the user</p>
-      <!-- <textarea id="desc" name="desc"  placeholder="Please provide us with information about the service"> -->
-      <form>
-        Provide a description of the service<br>
-        <input type="text" required style="width:400px;height:50px" size="100"><br><br>
-        <input type="file" required>
->>>>>>> afb5c83660ad0addd393a24b943c8054901f8870
+<!-- <div class="modal-content"> -->
+  <!-- <span class="close">&times; </span> -->
+  <!-- If yes, please include the service file and then send it to the user -->
+  <!-- <p style ="color:black; margin-bottom:30px;">"✔" Are you sure you have completed the service...?</p> -->
+  <!-- <form action="completeservice.php" method="GET"> -->
+  <!-- <div> -->
+ <!-- <input type="text" value="<?php
+  // echo $row['Purchase ID'];  ?>" hidden name="yesinfo"> -->
+  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- <a href="completeservice.php"  > -->
+  <!-- <input class="upfile" type="submit" name="yes" value="   Yes   " style=" height:50px;"></a> -->
+  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
-        <input class="upfile" type="submit" value="send" style="float:right;">
-      </form>
-    </div>
+  <!-- <a href="captain-work.php"> -->
+  <!-- <input class="upfile" type="submit"  value="   No   " style=" height:50px;"></a> -->
+  <!-- </form> -->
+<!-- </div></form> -->
+<!-- </div> -->
 
-  </div>
+   
+
+  <!-- </div> -->
   <!-- ======= Footer ======= -->
   <footer id="footer">
 

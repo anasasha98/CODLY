@@ -15,37 +15,45 @@ if (isset($_POST['submit'])) {
 
 
 
-  $user_check_query = "SELECT * FROM customer WHERE 'customerusername' ='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM `customer` WHERE `customerusername` = '$username' OR `email` = '$email' OR `phonenumber` = '$phone' LIMIT 1";
   $res = mysqli_query($con, $user_check_query);
-  $user = mysqli_fetch_assoc($res);
+  $user = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
   if ($user) { // if user exists
-    if ($user['username'] === $username) {
-      array_push($errors, "Username already exists");
-    }
-
-    if ($user['email'] === $email) {
-      array_push($errors, "email already exists");
+    if (isset($user['customerusername'])) {
+      if ($user['customerusername'] == $username) {
+        array_push($errors, "Username already exists");
+      }
+    } else if (isset($user['email'])) {
+      if ($user['email'] == $email) {
+        array_push($errors, "email already exists");
+      }
+    } else {
+      if ($user['phonenumber'] == $phone) {
+        array_push($errors, "phone number already exists");
+      }
     }
   }
-
 
   if (count($errors) == 0) {
     $result = mysqli_query($con, "insert into customer values('$username','$firstName', '$lastname', '$password', '$email','$phone' , '$date','$image')");
 
     if ($result) {
-      echo '<script>';
-      echo 'alert("data inserted properly ")';
+      echo '<script type="text/javascript">';
+      echo 'alert("data inserted properly");';
       echo '</script>';
-
-      header('location: ../sign-in.php');
+?>
+      <script>
+        setTimeout("document.location.href='../sign-in.php';", 300);
+      </script>';
+<?php
     } else {
-      echo '<script>';
-      echo 'alert("data not inserted ")';
+      echo '<script type="text/javascript">';
+      echo 'alert("data not inserted");';
       echo '</script>';
     }
   } else {
-    echo '<script language="javascript">';
+    echo '<script type="text/javascript"">';
     echo 'alert("Username or email already exists")';
     echo '</script>';
   }
@@ -109,7 +117,7 @@ if (isset($_POST['submit'])) {
                   <h3 class="font-weight-light my-4">Customer Sign Up Details</h3>
                 </div>
                 <div class="card-body">
-                  <form id="login" name="form1" method="POST" action="captain-account-details.php" enctype="multipart/form-data">
+                  <form id="login" name="form1" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                       <div class="col-md-6">
                         <div class="form-group"><label class="small mb-1" for="firstName">First Name</label><input class="form-control py-4" id="firstName" type="text" placeholder="Enter first name" name="firstName" required /></div>
@@ -120,7 +128,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="username">Username</label>
-                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase" pattern="^[a-z][a-z0-9_\s]*$" oninvalid="setCustomValidity('Invalid character in name & first character only & use underscore only')" oninput="setCustomValidity('')" required />
+                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase" pattern="^[a-z][a-z0-9\s]$" oninvalid="setCustomValidity('Invalid character in name & first character only & use underscore only')" oninput="setCustomValidity('')" required />
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="email">Email</label><input class="form-control py-4" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" min="1900-01-01" max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" required />
@@ -149,9 +157,11 @@ if (isset($_POST['submit'])) {
                       <label for="image">Your Image <small style="font-size: 0.835em; font-weight: 200;">(optional)</small></label>
                       <input type="file" class="form-control-file" id="image" name="image" style="font-size: 0.90em;">
                     </div>
+                    <div class="form-group mt-4 mb-0">
+                      <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Create Customer Account</button>
+                    </div>
                   </form>
                 </div>
-                <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Create Customer Account</button></div>
               </div>
               <div class="card-footer text-center">
                 <div class="small"><a href="../sign-in.php" style="color: #F9F5EC;">Have an account? Go to sign in</a></div>

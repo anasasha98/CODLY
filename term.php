@@ -363,12 +363,11 @@ session_start();
               <li>you are not entitled to any compensation or reimbursement of any kind from Codly under any
                 circumstances.</li>
             </ul>
-            <h3 id="16-indemnity">16. INDEMNITY</h3>
-            <p>You agree to indemnify and hold Codly and its subsidiaries, affiliates, officers, agents, employees,
-              partners and licensors harmless from any claim or demand, including reasonable attorneys' fees, made by any
-              third party due to or arising out of Content you submit, post, transmit or otherwise make available through
-              the Service, your use of the Service, your connection to the Service, your violation of the TOS, or your
-              violation of any rights of another.</p>
+            <h3 id="16-indemnity">16. Captain Add service</h3>
+            <p>You agree to After creating your account, you must know that when you want to publish your
+              services on Codly, Codly will tack all the money that the customer give you for your service,
+              then when you give the customer his service; Codly will deduct one dollar (1$) from this purchased
+              service for our fees then will give you all the.</p>
             <h3 id="17-no-resale-of-service">17. NO RESALE OF SERVICE</h3>
             <p>You agree not to reproduce, duplicate, copy, sell, trade, resell or exploit for any commercial purposes,
               any portion of the Service (including your Codly ID), use of the Service, or access to the Service,
