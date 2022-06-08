@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include 'include/header.php';
 include '../forms/connection.php';
 

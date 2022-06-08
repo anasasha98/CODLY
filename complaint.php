@@ -12,12 +12,11 @@ if (isset($_POST['send-complaint'])) {
 
   $result = mysqli_query($con, "insert into `complaint-user` (`customer-username`, `captin-username`, `complaint-details`, `image`, `date`)  values ('$customerusername', '$captainusername', '$content','$imgcomp' , '$date')");
   if ($result) {
-    
+
     echo '<script language="javascript">';
     echo 'alert("Complaint has been sent)';
     echo '</script>';
     header('location: customer-purchase.php');
-    
   } else {
     echo "failed:";
   }
@@ -109,14 +108,14 @@ if (isset($_POST['send-complaint'])) {
           <div class="card mb-4">
             <div class="card-header">Complaints Area:</div>
             <div class="card-body">
-              <form method="post" >
+              <form method="post">
                 <div class="form-group">
-                  <label for="user-name"><b>Customer User name:</b></label>
-                  <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..." value="<?php echo $row['Customer Username']; ?>" disabled />
+                 
+                  <input class="form-control" required id="customer-user-name" name="customer-user-name" type="hidden" placeholder="User name ..." value="<?php echo $row['Customer Username'];  ?>" read only />
                 </div>
                 <div class="form-group">
-                  <label for="user-name"><b>Captain User name:</b></label>
-                  <input class="form-control" id="captain-user-name" required name="captain-user-name" type="text" placeholder="User name ..." value="<?php echo $row['captain-username']; ?>" disabled />
+                 
+                  <input class="form-control" id="captain-user-name" required name="captain-user-name" type="hidden" placeholder="User name ..." value="<?php echo $row['captain-username']; ?>" read only />
                 </div>
                 <div class="form-group">
                   <label for="post-content"><b>Complaints Details:</b></label>
@@ -130,7 +129,7 @@ if (isset($_POST['send-complaint'])) {
                 </div>
 
 
-                <input type="submit" onClick='alert("Are you sure to send a complaint?") ' class="btn btn-primary mr-2 my-1"  name="send-complaint" value="Send My Complaint">
+                <input type="submit" onClick='alert("Are you sure to send a complaint?") ' class="btn btn-primary mr-2 my-1" name="send-complaint" value="Send My Complaint">
 
               </form>
             </div>

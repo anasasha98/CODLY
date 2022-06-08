@@ -149,9 +149,9 @@ session_start();
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Purchase ID</th>
+                                            <th>Message</th>
 
-                                            <th>Service Name</th>
+                                           
 
 
                                             <th>Date</th>
@@ -170,15 +170,15 @@ session_start();
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $query = " SELECT * FROM `purchase_list` WHERE `Customer Username` = '$username' ";
+                                        $query = " SELECT * FROM `complaint-user` WHERE `customer-username` = '$username' ";
                                         $result = mysqli_query($con, $query);
                                         if ($result) {
                                             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
 
                                                 <tr>
-                                                    <td align="center"><?php echo $row['Purchase ID']; ?></td>
-                                                    <td align="center"><?php echo $row['Customer Username']; ?></td>
-                                                    <td align="center"><?php echo $row['Customer Username']; ?></td>
+                                                    <td ><?php echo $row['replymessage']; ?></td>
+                                                  
+                                                    <td align="center"><?php echo $row['date']; ?></td>
 
                                                     <?php
 
