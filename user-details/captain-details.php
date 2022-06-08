@@ -9,10 +9,10 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $phone = $_POST['phone'];
   $date = $_POST['date'];
-  $image = $_POST['image'];
+  // $image = $_POST['image'];
   $major = $_POST['major'];
   $writeaboutself = $_POST['writeaboutself'];
-  $attachment = $_POST['attachment'];
+  // $attachment = $_POST['attachment'];
   $errors = array();
 
 
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
   }
 
   if (count($errors) == 0) {
-    $result = mysqli_query($con, "insert into captain values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$major','$writeaboutself','$attachment','$image')");
+    $result = mysqli_query($con, "insert into captain values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$major','$writeaboutself')");
 
     if ($result) {
       echo '<script type="text/javascript">';
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
       echo '</script>';
 ?>
       <script>
-        setTimeout("document.location.href='../sign-in.php';", 300);
+        setTimeout("document.location.href='../sign-in.php';", 10);
       </script>';
 <?php
     } else {
@@ -60,6 +60,8 @@ if (isset($_POST['submit'])) {
     echo '</script>';
   }
 }
+
+error_reporting(E_ERROR | E_PARSE);
 
 ?>
 
@@ -126,7 +128,7 @@ if (isset($_POST['submit'])) {
                   <h3 class="font-weight-light my-4">Captain Sign Up Details</h3>
                 </div>
                 <div class="card-body">
-                  <form id="login" name="form1" method="POST" action="captain-account-details.php" enctype="multipart/form-data">
+                  <form id="login" name="form1" method="POST" enctype="multipart/form-data">
                     <div class="form-row">
                       <div class="col-md-6">
                         <div class="form-group"><label class="small mb-1" for="firstname">First Name</label><input class="form-control py-4" id="firstname" type="text" placeholder="Enter first name" name="firstname" required /></div>
@@ -138,7 +140,7 @@ if (isset($_POST['submit'])) {
 
                     <div class="form-group">
                       <label class="small mb-1" for="username">Username</label>
-                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase"  required />
+                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase" required />
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="email">Email</label>
@@ -167,10 +169,10 @@ if (isset($_POST['submit'])) {
                       <label class="small mb-1" for="major">Major<small style="font-size: 0.8em;">: Software Engineering</small></label>
                       <input class="form-control py-4" id="major" type="text" name="major" placeholder="Enter your major" required />
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label class="small mb-1" for="image">Your Image</label>
                       <input type="file" class="form-control-file" id="image" name="image" required style="font-size: 0.90em;">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                       <label class="small mb-1" for="writeaboutself">Write About Yourself</label>
                       <textarea class="form-control" id="writeaboutself" rows="3" name="writeaboutself" maxlength="1000" required oninput="countText()"></textarea>
@@ -181,8 +183,8 @@ if (isset($_POST['submit'])) {
                       </label>
                     </div>
                     <div class="form-group">
-                      <label class="small mb-1" for="attachment">Upload Attachment - (.pdf recommended)</label>
-                      <input type="file" class="form-control-file" id="attachment" name="attachment" style="font-size: 0.90em;">
+                      <label class="small mb-1" for="attachment">In your profile add your image and attach your CV</label>
+                      <!-- <input type="file" class="form-control-file" id="attachment" name="attachment" style="font-size: 0.90em;" required> -->
                     </div>
                 </div>
                 <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Create Captain Account</button></div>

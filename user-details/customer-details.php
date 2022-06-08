@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $phone = $_POST['phone'];
   $date = $_POST['date'];
-  $image = $_POST['image'];
+  // $image = $_POST['image'];
 
   $errors = array();
 
@@ -36,16 +36,15 @@ if (isset($_POST['submit'])) {
   }
 
   if (count($errors) == 0) {
-    $result = mysqli_query($con, "insert into customer values('$username','$firstName', '$lastname', '$password', '$email','$phone' , '$date','$image')");
+    $result = mysqli_query($con, "insert into customer values('$username','$firstName', '$lastname', '$password', '$email','$phone' , '$date')");
 
     if ($result) {
       echo '<script type="text/javascript">';
       echo 'alert("data inserted properly");';
       echo '</script>';
+      header('location: sign-in.php');
 ?>
-      <script>
-        setTimeout("document.location.href='../sign-in.php';", 5000);
-      </script>';
+     
 <?php
     } else {
       echo '<script type="text/javascript">';
@@ -128,7 +127,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="username">Username</label>
-                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase"  required />
+                      <input class="form-control py-4" id="username" type="text" placeholder="Enter username" name="username" style="text-transform:lowercase" required />
                     </div>
                     <div class="form-group">
                       <label class="small mb-1" for="email">Email</label><input class="form-control py-4" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" min="1900-01-01" max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" required />
@@ -154,8 +153,8 @@ if (isset($_POST['submit'])) {
                     </div>
 
                     <div class="form-group">
-                      <label for="image">Your Image <small style="font-size: 0.835em; font-weight: 200;">(optional)</small></label>
-                      <input type="file" class="form-control-file" id="image" name="image" style="font-size: 0.90em;">
+                      <label for="image">In your profile add your image <small style="font-size: 0.835em; font-weight: 200;"></small></label>
+                      <!-- <input type="file" class="form-control-file" id="image" name="image" style="font-size: 0.90em;"> -->
                     </div>
                     <div class="form-group mt-4 mb-0">
                       <button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Create Customer Account</button>
