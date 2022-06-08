@@ -61,7 +61,7 @@ function filterTable($query)
 <div class="container-fluid mt-n10">
     <?php include('include/message-delete.php'); ?>
     <div class="card mb-4">
-        <div class="card-header">All Services Published</div>
+        <div class="card-header">All Services Purchase</div>
         <div class="card-body">
             <div class="datatable table-responsive">
                 <form method="post">
@@ -97,7 +97,7 @@ function filterTable($query)
                                 <td><?php echo $row['Service ID']; ?></td>
                                 <td><?php echo $row['Service Name']; ?></td>
                                 <td><?php echo $row['Price']; ?></td>
-                                <td>Payment method(cash , visa)</td>
+                                <td><?php echo $row['method']; ?></td>
                                 <td><?php echo $row['Date']; ?></td>
                                 <td><?php echo $row['Report']; ?></td>
 

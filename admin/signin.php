@@ -48,6 +48,8 @@ if (isset($_POST['submit'])) {
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script data-search-pseudo-elements defer src="js/all.min.js"></script>
     <script src="js/feather.min.js"></script>
+    <link href="assets/img/c.png" rel="icon" />
+
 </head>
 
 <body class="bg-primary">
@@ -66,12 +68,11 @@ if (isset($_POST['submit'])) {
                                         <div class="form-group"><label class="small mb-1" for="username">User Name</label><input class="form-control py-4" id="username" type="text" placeholder="Enter User Name" name="username" required /></div>
                                         <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="inputPassword" required /></div>
                                         <div class="form-group">
-                                            <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit" name="submit" id="submit">Sign In</button></div>
                                     </form>
                                 </div>
-                               
+
                                 <div class="card-footer text-center">
                                     <div class="small"><a href="signup.php">Need an account? Sign up!</a></div>
                                 </div>
