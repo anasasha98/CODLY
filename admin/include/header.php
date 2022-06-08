@@ -8,15 +8,17 @@ include '../forms/connection.php';
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/x-icon" href="assets/img/c.png" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>All Services || Admin Panel</title>
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+
     <script data-search-pseudo-elements defer src="js/all.min.js"></script>
     <script src="js/feather.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 </head>
 
@@ -25,7 +27,7 @@ include '../forms/connection.php';
         <a class="navbar-brand d-none d-sm-block" href="index.php">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
 
-          
+
             <?php
             if (isset($_SESSION['username'])) {
                 $username = $_SESSION['username'];

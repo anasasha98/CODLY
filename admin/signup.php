@@ -53,6 +53,8 @@ if (isset($_POST['submit'])) {
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script data-search-pseudo-elements defer src="js/all.min.js"></script>
     <script src="js/feather.min.js"></script>
+    <link href="assets/img/c.png" rel="icon" />
+
 </head>
 
 <body class="bg-primary">

@@ -5,13 +5,13 @@ session_start();
 
 if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
-  
-  
+
+
   $type = $_SESSION['type'];
 }
-if (isset($_GET['purchase_id'])){
+if (isset($_GET['purchase_id'])) {
   $purchase_id = $_GET['purchase_id'];
-  
+
   $querycustomer = " SELECT `Service Name`,`captain-username`,`method`,`Date`,`Price`,`Purchase ID` FROM `purchase_list` WHERE `purchase_list`.`Purchase ID` = '$purchase_id'";
   $result = mysqli_query($con, $querycustomer);
 
@@ -22,6 +22,8 @@ if (isset($_GET['purchase_id'])){
   <head>
     <title>Invoice Service</title>
     <link rel="stylesheet" type="text/css" href="assets/css/billstyles.css">
+    <link href="assets/img/c.png" rel="icon" />
+
   </head>
 
   <body>
@@ -39,7 +41,7 @@ if (isset($_GET['purchase_id'])){
 
 
 
-     
+
         if ($result) {
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
@@ -95,7 +97,7 @@ if (isset($_GET['purchase_id'])){
                   <div class="row">
                     <div class="col col_no">
 
-                     
+
                     </div>
                     <div class="col col_des">
                       <p class="bold"><?php echo $row['Service Name']; ?></p>
@@ -111,7 +113,7 @@ if (isset($_GET['purchase_id'])){
                       <p><?php echo $row['Price']; ?></p>
                     </div>
                   </div>
-                         <? $method = $row['Method']; ?>
+                  <? $method = $row['Method']; ?>
                 </div>
 
 
