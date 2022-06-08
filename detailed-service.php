@@ -161,7 +161,8 @@ session_start();
         <?php
         $sid = $_GET['sid'];
         $counter = 0;
-        $query = " SELECT `sno`, `name`, `img` FROM `detailed-service` WHERE `sec-id` = $sid  ";
+        $sec_name = mysqli_fetch_array(mysqli_query($con, " SELECT `sec-name` FROM `service-section` WHERE `sec-id` = '$sid' "), MYSQLI_ASSOC);
+        $query = " SELECT `sno`, `name`, `img` FROM `detailed-service` WHERE `sec-id` = '$sid'  ";
         $result = mysqli_query($con, $query);
         if ($result) {
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -169,7 +170,7 @@ session_start();
         ?>
             <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
               <a href="service.php?sno=<?php echo $row['sno']; ?>&sname=<?php echo $row['name']; ?>#pack" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                <img class="service card-img" src="./assets/img/detailed/<?php echo $row['img'] ?>" alt="Card image" />
+                <img class="service card-img" src="./assets/img/detailed/<?php echo $sid . '-' . $sec_name['sec-name'] ?>/<?php echo $row['img'] ?>" alt="Card image" />
                 <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                   <div class="service-work-content text-left text-light">
                     <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">

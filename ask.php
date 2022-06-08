@@ -40,6 +40,114 @@ session_start();
 
   <!-- Features CSS File -->
   <link href="assets/css/features.css" rel="stylesheet" />
+
+  <!-- show / hide quiz quesitons -->
+  <script>
+    // show question and button 
+    function showQ(num) {
+      if (num == 1) {
+        const q1 = document.getElementById("q1");
+        const txt1 = document.getElementById("txt1");
+        const name1 = document.getElementById("name1");
+        if (txt1.innerHTML == "Go") {
+          name1.style.display = "inline-flex";
+          q1.style.display = "inline-flex";
+          txt1.innerHTML = "Hide";
+        } else {
+          q1.style.display = "none";
+          txt1.innerHTML = "Go";
+        }
+      }
+      if (num == 2) {
+        const q2 = document.getElementById("q2");
+        const txt2 = document.getElementById("txt2");
+        const name2 = document.getElementById("name2");
+        if (txt2.innerHTML == "Go") {
+          name2.style.display = "inline-flex";
+          q2.style.display = "inline-flex";
+          txt2.innerHTML = "Hide";
+        } else {
+          q2.style.display = "none";
+          txt2.innerHTML = "Go";
+        }
+      }
+      if (num == 3) {
+        const q3 = document.getElementById("q3");
+        const txt3 = document.getElementById("txt3");
+        const name3 = document.getElementById("name3");
+        if (txt3.innerHTML == "Go") {
+          name3.style.display = "inline-flex";
+          q3.style.display = "inline-flex";
+          txt3.innerHTML = "Hide";
+        } else {
+          q3.style.display = "none";
+          txt3.innerHTML = "Go";
+        }
+      }
+      if (num == 4) {
+        const q4 = document.getElementById("q4");
+        const txt4 = document.getElementById("txt4");
+        const name4 = document.getElementById("name4");
+        if (txt4.innerHTML == "Go") {
+          name4.style.display = "inline-flex";
+          q4.style.display = "inline-flex";
+          txt4.innerHTML = "Hide";
+        } else {
+          q4.style.display = "none";
+          txt4.innerHTML = "Go";
+        }
+      }
+    }
+
+    function next(num) {
+      if (num == 1) {
+        const name1 = document.getElementById("name1");
+        const q1 = document.getElementById("q1");
+        const txt1 = document.getElementById("txt1");
+        if (txt1.innerHTML == "Hide") {
+          name1.style.display = "none";
+          q1.style.display = "none";
+          txt1.innerHTML == "Go";
+          showQ(2);
+        }
+      }
+      if (num == 2) {
+        const q2 = document.getElementById("q2");
+        const name2 = document.getElementById("name2");
+        const txt2 = document.getElementById("txt2");
+        if (txt2.innerHTML == "Hide") {
+          q2.style.display = "none";
+          txt2.innerHTML == "Go";
+          name2.style.display = "none";
+          showQ(3);
+        }
+      }
+      if (num == 3) {
+        const q3 = document.getElementById("q3");
+        const name3 = document.getElementById("name3");
+        const txt3 = document.getElementById("txt3");
+        if (txt3.innerHTML == "Hide") {
+          q3.style.display = "none";
+          txt3.innerHTML == "Go";
+          name3.style.display = "none";
+          showQ(4);
+        }
+      }
+      if (num == 4) {
+        const q4 = document.getElementById("q4");
+        const txt4 = document.getElementById("txt4");
+        const name4 = document.getElementById("name4");
+        if (txt4.innerHTML == "Hide") {
+          q4.style.display = "none";
+          txt4.innerHTML == "Go";
+          name4.style.display = "none";
+          alert("Thank You For Using 'Ask For Help'")
+          showQ(1)
+        }
+      }
+    }
+  </script>
+
 </head>
 
 <body>
@@ -140,40 +248,166 @@ session_start();
           <p></p>
         </div>
 
-        <div class="row gy-4">
+        <!-- Q1 -->
+        <div id="name1" class="row gy-4">
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="AskForHelp-box">
               <i class="ri-discuss-line icon"></i>
-              <h3>Questions</h3>
-              <p>more details</p>
-              <a href="#" class="go-to"><span>Go</span> <i class="bi bi-arrow-right"></i></a>
+              <h3>Questions 1</h3>
+              <p>for more details</p>
+              <a class="go-to" onclick="showQ(1)" style="cursor: pointer;"><span id="txt1">Go</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="AskForHelp-box">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Questions</h3>
-              <p>more details</p>
-              <a href="#" class="go-to"><span>Go</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="AskForHelp-box">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Questions</h3>
-              <p>more details</p>
-              <a href="#" class="go-to"><span>Go</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="AskForHelp-box">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Questions</h3>
-              <p>more details</p>
-              <a href="#" class="go-to"><span>Go</span> <i class="bi bi-arrow-right"></i></a>
+          <!-- <iframe src="question.php" frameborder="0"></iframe> -->
+          <div id="q1" class="row col-5" style="display: none;">
+            <h4 class="fw-bold text-center mt-3"></h4>
+            <form class=" bg-white px-4" action="">
+              <p class="fw-bold">How satisfied are you with our product?</p>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
+                <label class="form-check-label" for="radioExample1">
+                  Option 1
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
+                <label class="form-check-label" for="radioExample2">
+                  Option 2
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
+                <label class="form-check-label" for="radioExample3">
+                  Option 3
+                </label>
+              </div>
+            </form>
+            <div class="text-end">
+              <button type="button" onclick="next(1)" class="btn btn-primary">Next</button>
             </div>
           </div>
         </div>
+
+        <!-- Q2 -->
+        <div id="name2" class="row gy-4" style="display: none;">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="AskForHelp-box">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Questions2</h3>
+              <p>more details</p>
+              <a class="go-to" onclick="showQ(2)" style="cursor: pointer;"><span id="txt2">Go</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div id="q2" class="row col-5" style="display: none;">
+            <h4 class="fw-bold text-center mt-3"></h4>
+            <form class=" bg-white px-4" action="">
+              <p class="fw-bold">How satisfied are you with our product?</p>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
+                <label class="form-check-label" for="radioExample1">
+                  Option 1
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
+                <label class="form-check-label" for="radioExample2">
+                  Option 2
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
+                <label class="form-check-label" for="radioExample3">
+                  Option 3
+                </label>
+              </div>
+            </form>
+            <div class="text-end">
+              <button type="button" onclick="next(2)" class="btn btn-primary">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div id="name3" class="row gy-4" style="display: none;">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="AskForHelp-box">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Questions3</h3>
+              <p>more details</p>
+              <a class="go-to" onclick="showQ(3)" style="cursor: pointer;"><span id="txt3">Go</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div id="q3" class="row col-5" style="display: none;">
+            <h4 class="fw-bold text-center mt-3"></h4>
+            <form class=" bg-white px-4" action="">
+              <p class="fw-bold">How satisfied are you with our product?</p>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
+                <label class="form-check-label" for="radioExample1">
+                  Option 1
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
+                <label class="form-check-label" for="radioExample2">
+                  Option 2
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
+                <label class="form-check-label" for="radioExample3">
+                  Option 3
+                </label>
+              </div>
+            </form>
+            <div class="text-end">
+              <button type="button" onclick="next(3)" class="btn btn-primary">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div id="name4" class="row gy-4" style="display: none;">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="AskForHelp-box">
+              <i class="ri-discuss-line icon"></i>
+              <h3>Questions4</h3>
+              <p>more details</p>
+              <a class="go-to" onclick="showQ(4)" style="cursor: pointer;"><span id="txt4">Go</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div id="q4" class="row col-5" style="display: none;">
+            <h4 class="fw-bold text-center mt-3"></h4>
+            <form class=" bg-white px-4" action="">
+              <p class="fw-bold">How satisfied are you with our product?</p>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample1" />
+                <label class="form-check-label" for="radioExample1">
+                  Option 1
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample2" />
+                <label class="form-check-label" for="radioExample2">
+                  Option 2
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="exampleForm" id="radioExample3" />
+                <label class="form-check-label" for="radioExample3">
+                  Option 3
+                </label>
+              </div>
+            </form>
+            <div class="text-end">
+              <button type="button" onclick="next(4)" class="btn btn-primary">End</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
     <!-- End AskForHelp Section -->

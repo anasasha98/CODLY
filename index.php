@@ -44,6 +44,15 @@ include './forms/connection.php';
 
   <!-- Features CSS File -->
   <link href="assets/css/features.css" rel="stylesheet" />
+
+  <script>
+    function updateDiv() {
+      // $("#counts").load(window.location.href + " #counts");
+      $('#counts').load(document.URL + '  #counts');
+
+    }
+  </script>
+
 </head>
 
 <body>
@@ -148,7 +157,7 @@ include './forms/connection.php';
             <h2>Our Features</h2>
           </div>
 
-          <div class="row" id="fet">
+          <div class="row" id="fet" style="justify-content: space-evenly;">
             <div class="col-4">
               <abbr title="Creative Ideas">
                 <img src="assets/img/creative-ideas.png" />
@@ -214,7 +223,8 @@ include './forms/connection.php';
                     <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">
                       <?php
                       echo $row['sec-name'];
-                      ?></span>
+                      ?>
+                    </span>
                     <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
                   </div>
                 </div>
@@ -236,7 +246,7 @@ include './forms/connection.php';
 
     <!-- ======= Counts Section ======= -->
     <br /><br />
-    <section id="counts" class="counts section-bg" style="margin-top: -60px;">
+    <section id="counts" onblur="updateDiv()" onfocus="updateDiv()" onscroll="updateDiv()" class="counts section-bg" style="margin-top: -60px;">
       <div class="container">
         <div class="row">
           <div class="section-title" data-aos="zoom-out">
