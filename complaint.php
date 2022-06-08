@@ -2,6 +2,30 @@
 include './forms/connection.php';
 // $con = new mysqli('localhost','root','','codly');
 session_start();
+if (isset($_POST['send-complaint'])) {
+  $customerusername = $_POST['customer-user-name'];
+  $captainusername = $_POST['captain-user-name'];
+  $content = $_POST['content'];
+  $imgcomp = $_POST['img-comp'];
+  $date = date("Y-m-d", time());
+
+
+  $result = mysqli_query($con, "insert into `complaint-user` (`customer-username`, `captin-username`, `complaint-details`, `image`, `date`)  values ('$customerusername', '$captainusername', '$content','$imgcomp' , '$date')");
+  if ($result) {
+    
+    echo '<script language="javascript">';
+    echo 'alert("Complaint has been sent)';
+    echo '</script>';
+    header('location: customer-purchase.php');
+    
+  } else {
+    echo "failed:";
+  }
+} else {
+  echo '<script language="javascript">';
+  echo 'alert("Complaint has not been sent)';
+  echo '</script>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +109,7 @@ session_start();
           <div class="card mb-4">
             <div class="card-header">Complaints Area:</div>
             <div class="card-body">
-              <form action="test.php" method="post">
+              <form method="post" >
                 <div class="form-group">
                   <label for="user-name"><b>Customer User name:</b></label>
                   <input class="form-control" required id="customer-user-name" name="customer-user-name" type="text" placeholder="User name ..." value="<?php echo $row['Customer Username']; ?>" disabled />
@@ -106,7 +130,7 @@ session_start();
                 </div>
 
 
-                <input type="submit" onClick='alert("Are you sure to send a complaint?") ' class="btn btn-primary mr-2 my-1" type="button" name="send-complaint" value="Send My Complaint">
+                <input type="submit" onClick='alert("Are you sure to send a complaint?") ' class="btn btn-primary mr-2 my-1"  name="send-complaint" value="Send My Complaint">
 
               </form>
             </div>

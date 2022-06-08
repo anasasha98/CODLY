@@ -9,9 +9,10 @@ if (isset($_SESSION['username'])) {
   
   $type = $_SESSION['type'];
 }
-if (isset($_POST['invoicecustomer'])) {
-  $invoice_idcustomer = $_POST['invoicecustomer'];
-  $querycustomer = " SELECT `Service Name`,`captain-username`,`method`,`Date`,`Price`,`Purchase ID` FROM `purchase_list` WHERE `purchase_list`.`Purchase ID` = '$invoice_idcustomer'";
+if (isset($_GET['purchase_id'])){
+  $purchase_id = $_GET['purchase_id'];
+  
+  $querycustomer = " SELECT `Service Name`,`captain-username`,`method`,`Date`,`Price`,`Purchase ID` FROM `purchase_list` WHERE `purchase_list`.`Purchase ID` = '$purchase_id'";
   $result = mysqli_query($con, $querycustomer);
 
 ?>
@@ -38,7 +39,7 @@ if (isset($_POST['invoicecustomer'])) {
 
 
 
-
+     
         if ($result) {
           while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
@@ -94,7 +95,7 @@ if (isset($_POST['invoicecustomer'])) {
                   <div class="row">
                     <div class="col col_no">
 
-                      <p><?php echo $rowcount++; ?></p>
+                     
                     </div>
                     <div class="col col_des">
                       <p class="bold"><?php echo $row['Service Name']; ?></p>
@@ -110,17 +111,17 @@ if (isset($_POST['invoicecustomer'])) {
                       <p><?php echo $row['Price']; ?></p>
                     </div>
                   </div>
-
+                         <? $method = $row['Method']; ?>
                 </div>
 
 
               </div>
             </div>
 
-            <div class="paymethod_grandtotal_wrap" style="margin-top:1%" ;>
+            <div class="paymethod_grandtotal_wrap" style="margin:2%" ;>
               <div class="paymethod_sec">
                 <p class="bold">Payment Method</p>
-                <p>Visa , Cash amount</p>
+                <p>Visa , Cash Amount</p>
               </div>
 
             </div>

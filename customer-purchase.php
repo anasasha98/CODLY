@@ -201,12 +201,10 @@ session_start();
                           <td>
                             <?php echo $row['Status']; ?>
                           </td>
-                          <td>
-                            <form method="get">
-                              <a href="bill.php"><button type="submit" class="btn btn-primary" name="invoicecustomer" value="<?= $row['Purchase ID'];  ?>">
-                                  <i class="bi bi-printer-fill"></i>
-                                </button></a>
-                            </form>
+                          <td align="center">
+                            <a href="bill.php?purchase_id=<?php echo $row['Purchase ID']; ?>" class="bi bi-printer-fill" name="invoicecustomer"><span></span></a>
+
+
                           </td>
 
 
