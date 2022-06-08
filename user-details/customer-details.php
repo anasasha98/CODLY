@@ -9,7 +9,6 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $phone = $_POST['phone'];
   $date = $_POST['date'];
-  // $image = $_POST['image'];
 
   $errors = array();
 
@@ -28,7 +27,7 @@ if (isset($_POST['submit'])) {
       if ($user['email'] == $email) {
         array_push($errors, "email already exists");
       }
-    } else {
+    } else if (isset($user['phonenumber'])) {
       if ($user['phonenumber'] == $phone) {
         array_push($errors, "phone number already exists");
       }
@@ -36,15 +35,19 @@ if (isset($_POST['submit'])) {
   }
 
   if (count($errors) == 0) {
-    $result = mysqli_query($con, "insert into customer values('$username','$firstName', '$lastname', '$password', '$email','$phone' , '$date')");
+    $cus_new = "insert into `customer` (`customerusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`) values('$username','$firstName', '$lastname', '$password', '$email','$phone' , '$date')";
+    $result = mysqli_query($con, $cus_new);
 
     if ($result) {
       echo '<script type="text/javascript">';
       echo 'alert("data inserted properly");';
       echo '</script>';
-      header('location: sign-in.php');
+      // header('location: ../sign-in.php');
 ?>
-     
+      <script>
+        setTimeout("document.location.href='../sign-in.php';", 10);
+      </script>
+
 <?php
     } else {
       echo '<script type="text/javascript">';
@@ -116,7 +119,7 @@ if (isset($_POST['submit'])) {
                   <h3 class="font-weight-light my-4">Customer Sign Up Details</h3>
                 </div>
                 <div class="card-body">
-                  <form id="login" name="form1" method="POST" enctype="multipart/form-data">
+                  <form method="POST">
                     <div class="form-row">
                       <div class="col-md-6">
                         <div class="form-group"><label class="small mb-1" for="firstName">First Name</label><input class="form-control py-4" id="firstName" type="text" placeholder="Enter first name" name="firstName" required /></div>

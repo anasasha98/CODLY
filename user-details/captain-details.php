@@ -9,10 +9,8 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $phone = $_POST['phone'];
   $date = $_POST['date'];
-  // $image = $_POST['image'];
   $major = $_POST['major'];
   $writeaboutself = $_POST['writeaboutself'];
-  // $attachment = $_POST['attachment'];
   $errors = array();
 
 
@@ -30,7 +28,7 @@ if (isset($_POST['submit'])) {
       if ($user['email'] === $email) {
         array_push($errors, "email already exists");
       }
-    } else {
+    } else if (isset($user['phonenumber'])) {
       if ($user['phonenumber'] == $phone) {
         array_push($errors, "phone number already exists");
       }
@@ -38,7 +36,8 @@ if (isset($_POST['submit'])) {
   }
 
   if (count($errors) == 0) {
-    $result = mysqli_query($con, "insert into captain values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$major','$writeaboutself')");
+    $cap_new = "insert into `captain` (`captainusername`, `firstname`, `lastname`, `password`, `email`, `phonenumber`, `dob`, `major`, `bio`) values('$username','$firstname', '$lastname', '$password', '$email','$phone' , '$date','$major','$writeaboutself')";
+    $result = mysqli_query($con, $cap_new);
 
     if ($result) {
       echo '<script type="text/javascript">';
@@ -47,7 +46,7 @@ if (isset($_POST['submit'])) {
 ?>
       <script>
         setTimeout("document.location.href='../sign-in.php';", 10);
-      </script>';
+      </script>
 <?php
     } else {
       echo '<script type="text/javascript">';
