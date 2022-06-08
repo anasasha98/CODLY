@@ -28,6 +28,9 @@ session_start()
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
+
   <!-- <link rel="stylesheet" href="style.css">  -->
   <style>
     #tablecart thead tr th {
@@ -57,13 +60,13 @@ if (isset($_SESSION['username'])) {
 <body class="bg-light">
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+  <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
       <h1 class="logo me-auto"><a href="index.php">codly</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.php" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar" style="margin-left: 200px">
         <ul>
           <li><a class="nav-link" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="about.php#about">About</a></li>
@@ -177,7 +180,7 @@ if (isset($_SESSION['username'])) {
     <div class="col-25">
       <div class="container">
         <br><br>
-        <h3 class="px-5" style="color:#37517e; text-align: left; margin-left: -50px;">
+        <h3 class="px-5" style="color:#37517e; text-align: left; margin-left: -50px; margin-top:80px;">
           <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Shopping Cart
         </h3>
         <!-- <h4 style="color:#37517e;"> My Cart <span class="price" style="color:#37517e;"><i class="fa fa-shopping-cart"></i> </span></h4> -->

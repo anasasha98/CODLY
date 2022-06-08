@@ -54,7 +54,20 @@
                 <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
               </ul>
             </li>
+           
+
+          <?php
+          } else {
+          ?>
             <li>
+              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
+            </li>
+
+            
+          <?php
+          }
+          ?>
+           <li>
               <!-- <div class="navbar-nav"> -->
               <a href="cart.php" class="nav-item nav-link ">
 
@@ -85,16 +98,6 @@
               </a>
               <!-- </div> -->
             </li>
-
-          <?php
-          } else {
-          ?>
-            <li>
-              <a class="getstarted scrollto" href="sign-in.php">Sign in</a>
-            </li>
-          <?php
-          }
-          ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>

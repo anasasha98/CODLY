@@ -20,8 +20,23 @@
         <li>
           <a class="nav-link scrollto" href="team.php#team">Success stories</a>
         </li>
-        <li>
-          <a class="nav-link scrollto" href="index.php#ser">Services</a>
+        <li class="dropdown">
+          <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="#">Web development</a></li>
+            <li class="dropdown">
+              <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Design UI/UX</a></li>
+                <li><a href="#"> Design Logo</a></li>
+                <li><a href="#"> Game Art </a></li>
+              </ul>
+            </li>
+            <li><a href="#">Graphic</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Data </a></li>
+            <li><a href="#">WordPress</a></li>
+          </ul>
         </li>
         <li>
           <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
