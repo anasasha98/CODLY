@@ -106,7 +106,7 @@ session_start();
     <?php
     if (isset($_SESSION['type']) && $_SESSION['type'] == 'customer') {
       if (isset($_SESSION['username'])) {
-        $captainusername = $_SESSION['username'];
+        $customerusername = $_SESSION['username'];
     ?>
 
         <div class="container-xl px-4 mt-4">
@@ -116,6 +116,7 @@ session_start();
             <a class="nav-link  ms-0" href="customer-account-details.php?customerusername=<?php echo $customerusername; ?>">Profile</a>
             <a class="nav-link active" href="#">Security</a>
             <a class="nav-link" href="customer-purchase.php?customerusername=<?php echo $customerusername; ?>">Purchased Service</a>
+            <a class="nav-link"  href=" customer-replay-message.php?customerusername=<?php echo $customerusername; ?>">Message</a>
           </nav>
           <hr class="mt-0 mb-4">
 

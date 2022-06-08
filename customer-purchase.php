@@ -54,6 +54,7 @@ session_start();
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" />
 
+
   <script>
     if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
@@ -114,7 +115,9 @@ session_start();
   <?php
   if (isset($_SESSION['type']) && $_SESSION['type'] == 'customer') {
     if (isset($_SESSION['username'])) {
-      $captainusername = $_SESSION['username'];
+      $customerusername = $_SESSION['username'];
+
+
   ?>
       <main id="main" style="padding-top: 60px;">
         <div class="container-xl px-4 mt-4">
@@ -123,6 +126,7 @@ session_start();
             <a class="nav-link  ms-0" href="customer-account-details.php">Profile</a>
             <a class="nav-link" href="customer-security-page.php">Security</a>
             <a class="nav-link active" href="#">Purchased Service</a>
+            <a class="nav-link " href="customer-replay-message.php">Message</a>
           </nav>
           <hr class="mt-0 mb-4">
 
@@ -155,6 +159,7 @@ session_start();
 
                       <th>Report</th>
                       <th>Status</th>
+                      <th>Print invoice</th>
 
                     </tr>
 
@@ -196,11 +201,17 @@ session_start();
                           <td>
                             <?php echo $row['Status']; ?>
                           </td>
+                          <td align="center">
+                            <a href="bill.php?purchase_id=<?php echo $row['Purchase ID']; ?>" class="bi bi-printer-fill" name="invoicecustomer"><span></span></a>
+
+
+                          </td>
 
 
 
                         </tr>
-                    <?php   }
+                    <?php
+                      }
                     } ?>
                     <!-- <tr> 
                                   <td align="center">2</td>

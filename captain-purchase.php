@@ -112,6 +112,7 @@ session_start();
     if (isset($_SESSION['type']) && $_SESSION['type'] == 'captain') {
       if (isset($_SESSION['username'])) {
         $captainusername = $_SESSION['username'];
+
     ?>
         <div class="container-xl px-4 mt-4">
           <!-- Account page navigation-->
@@ -154,6 +155,7 @@ session_start();
 
                       <th>Report</th>
                       <th>Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                      <th>Print invoice</th>
 
                     </tr>
 
@@ -187,12 +189,17 @@ session_start();
                           <td><?php echo $row['Date']; ?></td>
 
                           <td align="center">
-                            <a href="complaint.php?purchase_id=<?php echo $row['Purchase ID']; ?>" class="btn btn-danger "><span>click</span></a>
+                            <a href="complaint.php?purchase_id=<?php echo $row['Purchase ID']; ?>" class="btn btn-danger"><span>clickddddd</span></a>
 
 
                           </td>
                           <td>
                             <?php echo $row['Status']; ?>
+                          </td>
+                          <td align="center">
+                            <a href="complaint.php?purchase_id=<?php echo $row['Purchase ID']; ?>" class="btn btn-danger"><span></span></a>
+
+
                           </td>
 
 

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'include/header.php';
 include '../forms/connection.php';
 
@@ -63,7 +63,7 @@ function filterTable($query)
   <?php include('include/message-delete.php'); ?>
   <div class="card mb-4">
     <div class="card-header">All Services Published</div>
-    <div class="card-body">
+    <div class="card-body" style="overflow-x: scroll;">
       <div class="datatable table-responsive">
         <form method="post">
           <div class="active-cyan-4 mb-4">
@@ -109,19 +109,19 @@ function filterTable($query)
                 <td><?php echo $row['publish_date']; ?></td>
                 <td><?php echo $row['views']; ?></td>
                 <td><?php if ($row['image1'] == '') {
-                      echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                      echo '<img width="150" height="150" src="assets/img/serviceicons.png">';
                     } else {
                       echo $ext = pathinfo($row['image1'], PATHINFO_EXTENSION);
                       echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image1']) . '" />';
                     } ?></td>
                 <td><?php if ($row['image2'] == '') {
-                      echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                      echo '<img width="150" height="150" src="assets/img/serviceicons.png">';
                     } else {
                       echo $ext = pathinfo($row['image2'], PATHINFO_EXTENSION);
                       echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image2']) . '" />';
                     } ?> </td>
                 <td><?php if ($row['image3'] == '') {
-                      echo '<img width="150" height="150" src="assets/img/defult_serv.png">';
+                      echo '<img width="150" height="150" src="assets/img/serviceicons.png">';
                     } else {
                       echo $ext = pathinfo($row['image3'], PATHINFO_EXTENSION);
                       echo '<img width="150" height="150" src="data:image/' . $ext . ';base64,' . base64_encode($row['image3']) . '" />';

@@ -1,3 +1,7 @@
+ <img src="../assets/img/logo.png" alt="codly" style=" display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;">
  </main>
  </div>
  </div>
