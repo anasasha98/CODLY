@@ -159,7 +159,7 @@ session_start();
                       ?>
 
                     </li>
-                    <li><strong>Service Rating</strong>:
+                    <!-- <li><strong>Service Rating</strong>:
                       <div class="packages-review" style="display: inline-block; margin-bottom: -20px;">
                         <p>
                           <i class="fa fa-star"></i>
@@ -169,7 +169,7 @@ session_start();
                           <i class="fa fa-star"></i>
                         </p>
                       </div>
-                    </li>
+                    </li> -->
                     <li><strong>Service Viewers</strong>:
                       <?php
                       echo $row['views'];
@@ -225,25 +225,25 @@ session_start();
                   </ul>
 
                   <?php
-            if (isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $type = $_SESSION['type'];
-            ?>
-       <a href="insert-to-cart.php?service_id=<?php echo $row['service_id']; ?>&price1=<?php echo $row['price1']; ?>">
-                    <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
-                  </a>
-            <?php
-            } else {
-            ?>
-              <a href="sign-in.php" class="btn  buy-btn my-3"><span>Sign in to add to your cart</span></a>
-            <?php
-            }
+                  if (isset($_SESSION['username'])) {
+                    $username = $_SESSION['username'];
+                    $type = $_SESSION['type'];
+                  ?>
+                    <a href="insert-to-cart.php?service_id=<?php echo $row['service_id']; ?>&price1=<?php echo $row['price1']; ?>">
+                      <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
+                    </a>
+                  <?php
+                  } else {
+                  ?>
+                    <a href="sign-in.php" class="btn  buy-btn my-3"><span>Sign in to add to your cart</span></a>
+                  <?php
+                  }
 
-            ?>
+                  ?>
 
 
-             
-                
+
+
                 </div>
               </div>
 
@@ -270,25 +270,25 @@ session_start();
                   <?php
                   if ($username != $row['captainusername']) {
                   ?>
- <?php
-            if (isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $type = $_SESSION['type'];
-            ?>
-        <a href="insert-to-cart-2.php?service_id=<?php echo $row['service_id']; ?>&price2=<?php echo $row['price2']; ?>">
-                      <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
-                    </a>
-                  </a>
-            <?php
-            } else {
-            ?>
-              <a href="sign-in.php" class="btn  buy-btn my-3"><span>Sign in to add to your cart</span></a>
-            <?php
-            }
+                    <?php
+                    if (isset($_SESSION['username'])) {
+                      $username = $_SESSION['username'];
+                      $type = $_SESSION['type'];
+                    ?>
+                      <a href="insert-to-cart-2.php?service_id=<?php echo $row['service_id']; ?>&price2=<?php echo $row['price2']; ?>">
+                        <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
+                      </a>
+                      </a>
+                    <?php
+                    } else {
+                    ?>
+                      <a href="sign-in.php" class="btn  buy-btn my-3"><span>Sign in to add to your cart</span></a>
+                    <?php
+                    }
 
-            ?>
+                    ?>
 
- <?php } ?>
+                  <?php } ?>
 
 
 
@@ -317,26 +317,26 @@ session_start();
                     ?>
                   </ul>
                   <?php
-            if (isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $type = $_SESSION['type'];
-            ?>
-       <a href="insert-to-cart-3.php?service_id=<?php echo $row['service_id']; ?>&price3=<?php echo $row['price3']; ?>">
-                    <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
-                  </a>
-            <?php
-            } else {
-            ?>
-              <a href="sign-in.php" class="btn  buy-btn my-3"><span>Sign in to add to your cart</span></a>
-            <?php
-            }
+                  if (isset($_SESSION['username'])) {
+                    $username = $_SESSION['username'];
+                    $type = $_SESSION['type'];
+                  ?>
+                    <a href="insert-to-cart-3.php?service_id=<?php echo $row['service_id']; ?>&price3=<?php echo $row['price3']; ?>">
+                      <input type="submit" class="btn  buy-btn my-3" name="add1" value="Add To Cart">
+                    </a>
+                  <?php
+                  } else {
+                  ?>
+                    <a href="sign-in.php" class="btn  buy-btn my-3"><span>Sign in to add to your cart</span></a>
+                  <?php
+                  }
 
-            ?>
-
-
+                  ?>
 
 
-                
+
+
+
                 </div>
               </div>
 

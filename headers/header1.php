@@ -20,23 +20,8 @@
           <li>
             <a class="nav-link scrollto" href="team.php#team">Success stories</a>
           </li>
-          <li class="dropdown">
-            <a href="index.php#ser"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Web development</a></li>
-              <li class="dropdown">
-                <a href="#"><span>Designing</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Design UI/UX</a></li>
-                  <li><a href="#"> Design Logo</a></li>
-                  <li><a href="#"> Game Art </a></li>
-                </ul>
-              </li>
-              <li><a href="#">Graphic</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Data </a></li>
-              <li><a href="#">WordPress</a></li>
-            </ul>
+          <li>
+            <a class="nav-link scrollto" href="index.php#ser">Services</a>
           </li>
           <li>
             <a class="nav-link scrollto" href="contact.php#contact">Contact</a>
@@ -69,37 +54,37 @@
                 <li><a href="logout.php">Logout <i class="bi bi-box-arrow-right"></i></a></li>
               </ul>
             </li>
-            <li> 
-                <!-- <div class="navbar-nav"> -->
-          <a href="cart.php" class="nav-item nav-link ">
+            <li>
+              <!-- <div class="navbar-nav"> -->
+              <a href="cart.php" class="nav-item nav-link ">
 
-            <h5 class=" cart">
-              <i class="fas fa-5x fa-shopping-cart ">
-                <sub>
-                  <div class="cart-count">
-                    <sub style="float: right; margin: 7px 4px 0px 2px;  font-size: 12px">
-                      <?php
-                      $cart_count = "SELECT COUNT(`customer-username`) AS count FROM `cart` WHERE `customer-username` = '$username' GROUP BY `customer-username` ";
-                      $get_count = mysqli_query($con, $cart_count);
-                      if ($get_count) {
-                        $num = mysqli_fetch_array($get_count, MYSQLI_ASSOC);
-                        if ($num != null) {
-                          echo $num['count'];
-                        } else {
-                          echo 0;
-                        }
-                      }
-                      ?>
+                <h5 class=" cart">
+                  <i class="fas fa-5x fa-shopping-cart ">
+                    <sub>
+                      <div class="cart-count">
+                        <sub style="float: right; margin: 7px 4px 0px 2px;  font-size: 12px">
+                          <?php
+                          $cart_count = "SELECT COUNT(`customer-username`) AS count FROM `cart` WHERE `customer-username` = '$username' GROUP BY `customer-username` ";
+                          $get_count = mysqli_query($con, $cart_count);
+                          if ($get_count) {
+                            $num = mysqli_fetch_array($get_count, MYSQLI_ASSOC);
+                            if ($num != null) {
+                              echo $num['count'];
+                            } else {
+                              echo 0;
+                            }
+                          }
+                          ?>
+                        </sub>
+                      </div>
                     </sub>
-                  </div>
-                </sub>
-              </i>
+                  </i>
 
 
-            </h5>
-          </a>
-        <!-- </div> -->
-      </li>
+                </h5>
+              </a>
+              <!-- </div> -->
+            </li>
 
           <?php
           } else {
